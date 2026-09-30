@@ -204,6 +204,37 @@
       display: none;
     }
 
+    /* ACADEMIC CALENDAR */
+
+    .calendar-box {
+      margin-top: 20px;
+    }
+
+    .calendar-event {
+      background: #f7f9fc;
+      border-left: 5px solid #173b6c;
+      padding: 15px;
+      margin-bottom: 12px;
+      border-radius: 8px;
+    }
+
+    .calendar-event h3 {
+      color: #173b6c;
+      font-size: 16px;
+      margin-bottom: 5px;
+    }
+
+    .calendar-event p {
+      font-size: 14px;
+      color: #555;
+    }
+
+    .calendar-title {
+      text-align: center;
+      color: #173b6c;
+      margin-bottom: 15px;
+    }
+
     footer {
       text-align: center;
       padding: 25px;
@@ -229,6 +260,7 @@
 <div class="container">
 
   <!-- HOME -->
+
   <div id="home">
 
     <div class="welcome">
@@ -238,31 +270,37 @@
 
     <div class="role-grid">
 
-      <button class="role-button" onclick="showBox('studentOptions')">
+      <button class="role-button"
+              onclick="showBox('studentOptions')">
         <span class="icon">🎓</span>
         Student
       </button>
 
-      <button class="role-button" onclick="showBox('otherStudentLogin')">
+      <button class="role-button"
+              onclick="showBox('otherStudentLogin')">
         <span class="icon">🧑‍🎓</span>
         Other College Student
       </button>
 
-      <button class="role-button" onclick="showBox('staffLogin')">
+      <button class="role-button"
+              onclick="showBox('staffLogin')">
         <span class="icon">👨‍🏫</span>
         Staff
       </button>
 
-      <button class="role-button" onclick="showBox('principalLogin')">
+      <button class="role-button"
+              onclick="showBox('principalLogin')">
         <span class="icon">👨‍💼</span>
         Principal
       </button>
 
     </div>
+
   </div>
 
 
   <!-- STUDENT OPTIONS -->
+
   <div id="studentOptions" class="box">
 
     <h2>🎓 Student</h2>
@@ -281,7 +319,8 @@
       🔐 Existing Student Login
     </button>
 
-    <button class="back-button" onclick="goHome()">
+    <button class="back-button"
+            onclick="goHome()">
       ← Back
     </button>
 
@@ -289,24 +328,31 @@
 
 
   <!-- REGISTRATION -->
+
   <div id="registrationBox" class="box">
 
     <h2>📝 Student Registration</h2>
 
     <label>Full Name</label>
-    <input id="studentName" type="text"
+    <input id="studentName"
+           type="text"
            placeholder="Enter full name">
 
     <label>Roll Number</label>
-    <input id="registerRoll" type="text"
+    <input id="registerRoll"
+           type="text"
            placeholder="Enter roll number">
 
     <label>Date of Birth</label>
-    <input id="studentDob" type="date">
+    <input id="studentDob"
+           type="date">
 
     <label>Department</label>
+
     <select id="studentDepartment">
+
       <option value="">Select Department</option>
+
       <option>Computer Science</option>
       <option>Information Technology</option>
       <option>Commerce</option>
@@ -315,12 +361,17 @@
       <option>Mathematics</option>
       <option>Physics</option>
       <option>Other</option>
+
     </select>
 
+
     <label>Joining Year</label>
+
     <select id="joiningYear"
             onchange="calculateEndingYear()">
+
       <option value="">Select Joining Year</option>
+
       <option value="2024">2024</option>
       <option value="2025">2025</option>
       <option value="2026">2026</option>
@@ -328,128 +379,179 @@
       <option value="2028">2028</option>
       <option value="2029">2029</option>
       <option value="2030">2030</option>
+
     </select>
 
+
     <label>Expected Ending Year</label>
+
     <input id="endingYear"
            type="text"
            readonly
            placeholder="Automatic">
 
+
     <label>Student Type</label>
+
     <select id="studentType">
+
       <option value="">Select Student Type</option>
+
       <option>Day Scholar</option>
       <option>Hosteler</option>
+
     </select>
 
+
     <label>Student Mobile Number</label>
+
     <input id="studentPhone"
            type="tel"
            placeholder="Enter mobile number">
 
+
     <label>Parent Mobile Number</label>
+
     <input id="parentPhone"
            type="tel"
            placeholder="Enter parent mobile number">
 
+
     <div class="info-box">
+
       For now this is a test OTP system.
       Real SMS OTP will be connected later.
+
     </div>
+
 
     <button class="primary-button"
             onclick="registerStudent()">
+
       Send OTP
+
     </button>
+
 
     <button class="back-button"
             onclick="showBox('studentOptions')">
+
       ← Back
+
     </button>
 
   </div>
 
 
   <!-- EXISTING STUDENT LOGIN -->
+
   <div id="studentLogin" class="box">
 
     <h2>🎓 Student Login</h2>
 
     <label>Roll Number</label>
+
     <input id="studentRoll"
            type="text"
            placeholder="Enter roll number">
 
+
     <label>Mobile Number</label>
+
     <input id="studentMobile"
            type="tel"
            placeholder="Enter mobile number">
 
+
     <button class="primary-button"
             onclick="studentLogin()">
+
       Send OTP
+
     </button>
+
 
     <button class="back-button"
             onclick="showBox('studentOptions')">
+
       ← Back
+
     </button>
 
   </div>
 
 
   <!-- OTHER COLLEGE STUDENT -->
+
   <div id="otherStudentLogin" class="box">
 
     <h2>🧑‍🎓 Other College Student</h2>
 
     <label>College Name</label>
+
     <input id="otherCollege"
            type="text"
            placeholder="Enter college name">
 
+
     <label>Roll Number</label>
+
     <input id="otherRoll"
            type="text"
            placeholder="Enter roll number">
 
+
     <label>Mobile Number</label>
+
     <input id="otherMobile"
            type="tel"
            placeholder="Enter mobile number">
 
+
     <button class="primary-button"
             onclick="otherStudentLogin()">
+
       Send OTP
+
     </button>
+
 
     <button class="back-button"
             onclick="goHome()">
+
       ← Back
+
     </button>
 
   </div>
 
 
   <!-- STAFF -->
+
   <div id="staffLogin" class="box">
 
     <h2>👨‍🏫 Staff Login</h2>
 
     <label>Staff ID</label>
+
     <input id="staffId"
            type="text"
            placeholder="Enter staff ID">
 
+
     <label>Mobile Number</label>
+
     <input id="staffMobile"
            type="tel"
            placeholder="Enter mobile number">
 
+
     <label>Department</label>
+
     <select id="staffDepartment">
+
       <option value="">Select Department</option>
+
       <option>Computer Science</option>
       <option>Information Technology</option>
       <option>Commerce</option>
@@ -458,54 +560,75 @@
       <option>Mathematics</option>
       <option>Physics</option>
       <option>Other</option>
+
     </select>
+
 
     <button class="primary-button"
             onclick="staffLogin()">
+
       Send OTP
+
     </button>
+
 
     <button class="back-button"
             onclick="goHome()">
+
       ← Back
+
     </button>
 
   </div>
 
 
   <!-- PRINCIPAL -->
+
   <div id="principalLogin" class="box">
 
     <h2>👨‍💼 Principal Login</h2>
 
     <label>Principal ID</label>
+
     <input id="principalId"
            type="text"
            placeholder="Enter Principal ID">
 
+
     <label>Mobile Number</label>
+
     <input id="principalMobile"
            type="tel"
            placeholder="Enter mobile number">
 
+
     <div class="info-box">
+
       Principal access will use two-step verification.
+
     </div>
+
 
     <button class="primary-button"
             onclick="principalLogin()">
+
       Continue
+
     </button>
+
 
     <button class="back-button"
             onclick="goHome()">
+
       ← Back
+
     </button>
 
   </div>
 
 
   <!-- OTP -->
+
   <div id="otpBox" class="box otp-box">
 
     <h2>🔐 Verify OTP</h2>
@@ -514,6 +637,7 @@
       Enter the 6-digit OTP sent to your mobile number.
     </p>
 
+
     <input id="otpInput"
            class="otp-input"
            type="text"
@@ -521,24 +645,35 @@
            inputmode="numeric"
            placeholder="------">
 
+
     <div class="test-code">
-      🧪 TEST OTP: <strong>123456</strong>
+
+      🧪 TEST OTP:
+      <strong>123456</strong>
+
     </div>
+
 
     <button class="primary-button"
             onclick="verifyOTP()">
+
       Verify OTP
+
     </button>
+
 
     <button class="back-button"
             onclick="goHome()">
+
       ← Cancel
+
     </button>
 
   </div>
 
 
   <!-- DASHBOARD -->
+
   <div id="dashboard" class="box">
 
     <h2 id="dashboardTitle">
@@ -549,9 +684,10 @@
       Welcome to MAM Campus Connect.
     </p>
 
+
     <div class="menu">
 
-      <button onclick="showMessage('Academic Calendar will be available here.')">
+      <button onclick="showCalendar()">
         📅 Academic Calendar
       </button>
 
@@ -577,19 +713,137 @@
 
     </div>
 
-    <div id="message" class="message"></div>
+
+    <div id="message"
+         class="message">
+    </div>
+
+
+    <!-- CALENDAR -->
+
+    <div id="calendarBox"
+         class="calendar-box"
+         style="display:none;">
+
+      <h3 class="calendar-title">
+        📅 Academic Calendar 2026
+      </h3>
+
+
+      <div class="calendar-event">
+
+        <h3>June 2026</h3>
+
+        <p>
+          Academic year begins
+        </p>
+
+      </div>
+
+
+      <div class="calendar-event">
+
+        <h3>July 2026</h3>
+
+        <p>
+          Regular classes and department activities
+        </p>
+
+      </div>
+
+
+      <div class="calendar-event">
+
+        <h3>August 2026</h3>
+
+        <p>
+          Internal academic activities
+        </p>
+
+      </div>
+
+
+      <div class="calendar-event">
+
+        <h3>September 2026</h3>
+
+        <p>
+          Internal Assessment / Academic activities
+        </p>
+
+      </div>
+
+
+      <div class="calendar-event">
+
+        <h3>October 2026</h3>
+
+        <p>
+          Semester academic activities
+        </p>
+
+      </div>
+
+
+      <div class="calendar-event">
+
+        <h3>November 2026</h3>
+
+        <p>
+          Semester examinations and academic activities
+        </p>
+
+      </div>
+
+
+      <div class="calendar-event">
+
+        <h3>December 2026</h3>
+
+        <p>
+          Semester completion activities
+        </p>
+
+      </div>
+
+
+      <div class="calendar-event">
+
+        <h3>January 2027</h3>
+
+        <p>
+          Next semester academic activities
+        </p>
+
+      </div>
+
+
+      <button class="back-button"
+              onclick="closeCalendar()">
+
+        ← Back to Dashboard
+
+      </button>
+
+    </div>
+
 
     <button class="back-button"
             onclick="goHome()">
+
       Logout
+
     </button>
 
   </div>
 
 </div>
 
+
 <footer>
+
   © 2026 MAM Campus Connect
+
 </footer>
 
 
@@ -602,11 +856,15 @@
 
     document.getElementById("home").style.display = "none";
 
-    const boxes = document.querySelectorAll(".box");
+    const boxes =
+      document.querySelectorAll(".box");
 
     boxes.forEach(function(box) {
+
       box.classList.remove("active");
+
     });
+
   }
 
 
@@ -614,7 +872,9 @@
 
     hideAll();
 
-    document.getElementById(id).classList.add("active");
+    document.getElementById(id)
+      .classList.add("active");
+
   }
 
 
@@ -622,7 +882,9 @@
 
     hideAll();
 
-    document.getElementById("home").style.display = "block";
+    document.getElementById("home")
+      .style.display = "block";
+
   }
 
 
@@ -631,11 +893,14 @@
     const joiningYear =
       document.getElementById("joiningYear").value;
 
+
     if (joiningYear !== "") {
 
       document.getElementById("endingYear").value =
         Number(joiningYear) + 3;
+
     }
+
   }
 
 
@@ -680,6 +945,7 @@
       alert("Please complete all fields.");
 
       return;
+
     }
 
 
@@ -692,6 +958,7 @@
     alert(
       "TEST MODE: Your OTP is 123456"
     );
+
   }
 
 
@@ -706,9 +973,12 @@
 
     if (roll === "" || mobile === "") {
 
-      alert("Please enter Roll Number and Mobile Number.");
+      alert(
+        "Please enter Roll Number and Mobile Number."
+      );
 
       return;
+
     }
 
 
@@ -721,6 +991,7 @@
     alert(
       "TEST MODE: Your OTP is 123456"
     );
+
   }
 
 
@@ -745,6 +1016,7 @@
       alert("Please complete all fields.");
 
       return;
+
     }
 
 
@@ -758,6 +1030,7 @@
     alert(
       "TEST MODE: Your OTP is 123456"
     );
+
   }
 
 
@@ -782,6 +1055,7 @@
       alert("Please complete all fields.");
 
       return;
+
     }
 
 
@@ -794,6 +1068,7 @@
     alert(
       "TEST MODE: Your OTP is 123456"
     );
+
   }
 
 
@@ -808,9 +1083,12 @@
 
     if (id === "" || mobile === "") {
 
-      alert("Please enter Principal ID and Mobile Number.");
+      alert(
+        "Please enter Principal ID and Mobile Number."
+      );
 
       return;
+
     }
 
 
@@ -823,6 +1101,7 @@
     alert(
       "TEST MODE: Your first verification OTP is 123456"
     );
+
   }
 
 
@@ -834,28 +1113,63 @@
 
     if (enteredOTP === "123456") {
 
-      document.getElementById("dashboardTitle").innerText =
+      document.getElementById("dashboardTitle")
+        .innerText =
         currentLoginType + " Dashboard";
+
 
       showBox("dashboard");
 
-      alert("OTP verified successfully! ✅");
+      alert(
+        "OTP verified successfully! ✅"
+      );
 
-    } else {
-
-      alert("Incorrect OTP. Use 123456 for this test.");
     }
+
+    else {
+
+      alert(
+        "Incorrect OTP. Use 123456 for this test."
+      );
+
+    }
+
+  }
+
+
+  function showCalendar() {
+
+    document.getElementById("message")
+      .style.display = "none";
+
+    document.getElementById("calendarBox")
+      .style.display = "block";
+
+  }
+
+
+  function closeCalendar() {
+
+    document.getElementById("calendarBox")
+      .style.display = "none";
+
   }
 
 
   function showMessage(text) {
 
+    document.getElementById("calendarBox")
+      .style.display = "none";
+
+
     const message =
       document.getElementById("message");
+
 
     message.innerText = text;
 
     message.style.display = "block";
+
   }
 
 </script>
