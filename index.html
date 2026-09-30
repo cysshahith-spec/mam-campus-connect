@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <meta name="theme-color" content="#07111f">
+
+    <title>MAM Campus Connect</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background:
+                radial-gradient(circle at top right, #123b58, transparent 35%),
+                linear-gradient(145deg, #030812, #071525, #02060c);
+
+            color: white;
+            min-height: 100vh;
+        }
+
+        .app {
+            width: 100%;
+            min-height: 100vh;
+            padding: 25px 18px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 600px;
+            margin: auto;
+        }
+
+        /* HEADER */
+
+        .header {
+            text-align: center;
+            padding-top: 25px;
+            margin-bottom: 35px;
+        }
+
+        .logo {
+            width: 75px;
+            height: 75px;
+
+            margin: auto;
+            margin-bottom: 18px;
+
+            border-radius: 22px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            background: linear-gradient(145deg, #123c5c, #071321);
+
+            border: 1px solid rgba(255,255,255,0.15);
+
+            box-shadow:
+                0 0 25px rgba(0,180,255,0.18);
+        }
+
+        .logo span {
+            font-size: 30px;
+        }
+
+        .title {
+            font-size: 27px;
+            font-weight: 800;
+            letter-spacing: 0.5px;
+        }
+
+        .subtitle {
+            margin-top: 8px;
+            color: #9baabd;
+            font-size: 14px;
+        }
+
+        /* LOGIN CARD */
+
+        .login-card {
+            background: rgba(12, 25, 40, 0.78);
+
+            border: 1px solid rgba(255,255,255,0.09);
+
+            border-radius: 24px;
+
+            padding: 22px;
+
+            backdrop-filter: blur(15px);
+
+            box-shadow:
+                0 20px 50px rgba(0,0,0,0.35);
+        }
+
+        .login-title {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 7px;
+        }
+
+        .login-description {
+            color: #91a0b4;
+            font-size: 13px;
+            margin-bottom: 22px;
+            line-height: 1.5;
+        }
+
+        /* ROLE BUTTONS */
+
+        .roles {
+            display: flex;
+            flex-direction: column;
+            gap: 13px;
+        }
+
+        .role-button {
+            width: 100%;
+
+            min-height: 76px;
+
+            padding: 15px;
+
+            border-radius: 17px;
+
+            border: 1px solid rgba(255,255,255,0.09);
+
+            background: rgba(255,255,255,0.035);
+
+            color: white;
+
+            display: flex;
+            align-items: center;
+
+            text-align: left;
+
+            cursor: pointer;
+
+            transition: 0.2s;
+        }
+
+        .role-button:hover {
+            background: rgba(255,255,255,0.08);
+            transform: translateY(-2px);
+        }
+
+        .role-button:active {
+            transform: scale(0.98);
+        }
+
+        .role-icon {
+            width: 48px;
+            height: 48px;
+
+            flex-shrink: 0;
+
+            border-radius: 14px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            background: rgba(0,160,255,0.12);
+
+            font-size: 23px;
+
+            margin-right: 14px;
+        }
+
+        .role-content {
+            flex: 1;
+        }
+
+        .role-name {
+            font-size: 16px;
+            font-weight: 700;
+
+            margin-bottom: 4px;
+        }
+
+        .role-info {
+            font-size: 12px;
+            color: #8796aa;
+
+            line-height: 1.4;
+        }
+
+        .arrow {
+            color: #718198;
+            font-size: 22px;
+        }
+
+        /* FOOTER */
+
+        .footer {
+            text-align: center;
+
+            margin-top: 28px;
+
+            color: #637287;
+
+            font-size: 11px;
+
+            line-height: 1.6;
+        }
+
+        .security {
+            margin-top: 7px;
+            color: #718198;
+        }
+
+        /* LOGIN SCREEN */
+
+        #loginScreen {
+            display: block;
+        }
+
+        #dashboard {
+            display: none;
+        }
+
+        /* DASHBOARD */
+
+        .dashboard-header {
+            padding: 20px 0;
+        }
+
+        .welcome {
+            font-size: 25px;
+            font-weight: 800;
+        }
+
+        .dashboard-subtitle {
+            color: #8d9caf;
+            margin-top: 6px;
+            font-size: 13px;
+        }
+
+        .dashboard-card {
+            background: rgba(12,25,40,0.8);
+
+            border: 1px solid rgba(255,255,255,0.08);
+
+            border-radius: 20px;
+
+            padding: 18px;
+
+            margin-bottom: 14px;
+        }
+
+        .dashboard-card h3 {
+            font-size: 17px;
+            margin-bottom: 7px;
+        }
+
+        .dashboard-card p {
+            color: #8d9caf;
+            font-size: 13px;
+            line-height: 1.5;
+        }
+
+        .back-button {
+            width: 100%;
+
+            margin-top: 20px;
+
+            padding: 14px;
+
+            border: none;
+
+            border-radius: 14px;
+
+            background: #123c5c;
+
+            color: white;
+
+            font-weight: 700;
+
+            cursor: pointer;
+        }
+
+        /* MOBILE */
+
+        @media (max-width: 380px) {
+
+            .app {
+                padding: 18px 13px;
+            }
+
+            .title {
+                font-size: 24px;
+            }
+
+            .login-card {
+                padding: 17px;
+            }
+
+            .role-button {
+                min-height: 70px;
+            }
+
+        }
+
+    </style>
+</head>
+
+<body>
+
+<div class="app">
+
+    <div class="container">
+
+        <!-- ========================= -->
+        <!-- LOGIN SCREEN -->
+        <!-- ========================= -->
+
+        <section id="loginScreen">
+
+            <div class="header">
+
+                <div class="logo">
+                    <span>🎓</span>
+                </div>
+
+                <h1 class="title">
+                    MAM Campus Connect
+                </h1>
+
+                <p class="subtitle">
+                    Smart College Campus Management
+                </p>
+
+            </div>
+
+
+            <div class="login-card">
+
+                <h2 class="login-title">
+                    Select Login
+                </h2>
+
+                <p class="login-description">
+                    Choose your account type to continue
+                    to the campus services.
+                </p>
+
+
+                <div class="roles">
+
+
+                    <!-- STUDENT -->
+
+                    <button
+                        class="role-button"
+                        onclick="selectRole('student')">
+
+                        <div class="role-icon">
+                            🎓
+                        </div>
+
+                        <div class="role-content">
+
+                            <div class="role-name">
+                                Student
+                            </div>
+
+                            <div class="role-info">
+                                Timetable, calendar, notices,
+                                campus map and student services.
+                            </div>
+
+                        </div>
+
+                        <div class="arrow">
+                            ›
+                        </div>
+
+                    </button>
+
+
+                    <!-- OTHER COLLEGE -->
+
+                    <button
+                        class="role-button"
+                        onclick="selectRole('other')">
+
+                        <div class="role-icon">
+                            🏫
+                        </div>
+
+                        <div class="role-content">
+
+                            <div class="role-name">
+                                Other College Student
+                            </div>
+
+                            <div class="role-info">
+                                View college events,
+                                programs, locations and maps.
+                            </div>
+
+                        </div>
+
+                        <div class="arrow">
+                            ›
+                        </div>
+
+                    </button>
+
+
+                    <!-- STAFF -->
+
+                    <button
+                        class="role-button"
+                        onclick="selectRole('staff')">
+
+                        <div class="role-icon">
+                            👨‍🏫
+                        </div>
+
+                        <div class="role-content">
+
+                            <div class="role-name">
+                                Staff Login
+                            </div>
+
+                            <div class="role-info">
+                                Department services,
+                                notices, students and staff tools.
+                            </div>
+
+                        </div>
+
+                        <div class="arrow">
+                            ›
+                        </div>
+
+                    </button>
+
+
+                    <!-- PRINCIPAL -->
+
+                    <button
+                        class="role-button"
+                        onclick="selectRole('principal')">
+
+                        <div class="role-icon">
+                            👑
+                        </div>
+
+                        <div class="role-content">
+
+                            <div class="role-name">
+                                Principal Login
+                            </div>
+
+                            <div class="role-info">
+                                Full campus administration
+                                and department management.
+                            </div>
+
+                        </div>
+
+                        <div class="arrow">
+                            ›
+                        </div>
+
+                    </button>
+
+
+                </div>
+
+            </div>
+
+
+            <div class="footer">
+
+                MAM Campus Connect
+
+                <div class="security">
+                    🔒 Secure campus access
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ========================= -->
+        <!-- TEMPORARY DASHBOARD -->
+        <!-- ========================= -->
+
+        <section id="dashboard">
+
+            <div class="dashboard-header">
+
+                <div class="welcome" id="welcomeText">
+                    Welcome
+                </div>
+
+                <div
+                    class="dashboard-subtitle"
+                    id="roleText">
+                    Account
+                </div>
+
+            </div>
+
+
+            <div class="dashboard-card">
+
+                <h3>
+                    🗺️ Campus Map
+                </h3>
+
+                <p>
+                    College buildings, laboratories,
+                    classrooms and important locations.
+                </p>
+
+            </div>
+
+
+            <div class="dashboard-card">
+
+                <h3>
+                    📅 Academic Calendar
+                </h3>
+
+                <p>
+                    View important academic dates,
+                    holidays and college events.
+                </p>
+
+            </div>
+
+
+            <div class="dashboard-card">
+
+                <h3>
+                    🕐 Timetable
+                </h3>
+
+                <p>
+                    Your department timetable will
+                    appear here.
+                </p>
+
+            </div>
+
+
+            <div class="dashboard-card">
+
+                <h3>
+                    📢 Notices & Events
+                </h3>
+
+                <p>
+                    Important college announcements
+                    and upcoming programs.
+                </p>
+
+            </div>
+
+
+            <button
+                class="back-button"
+                onclick="logout()">
+
+                ← Back to Login
+
+            </button>
+
+        </section>
+
+    </div>
+
+</div>
+
+
+<script>
+
+    /*
+     * ==========================================
+     * MAM CAMPUS CONNECT
+     * BASIC ROLE SELECTION
+     * ==========================================
+     */
+
+    function selectRole(role) {
+
+        let roleName = "";
+
+        if (role === "student") {
+            roleName = "Student";
+        }
+
+        else if (role === "other") {
+            roleName = "Other College Student";
+        }
+
+        else if (role === "staff") {
+            roleName = "Staff";
+        }
+
+        else if (role === "principal") {
+            roleName = "Principal";
+        }
+
+        document.getElementById("loginScreen").style.display = "none";
+
+        document.getElementById("dashboard").style.display = "block";
+
+        document.getElementById("welcomeText").innerText =
+            "Welcome";
+
+        document.getElementById("roleText").innerText =
+            roleName + " Dashboard";
+
+    }
+
+
+    function logout() {
+
+        document.getElementById("dashboard").style.display = "none";
+
+        document.getElementById("loginScreen").style.display = "block";
+
+    }
+
+</script>
+
+</body>
+                              </html>
