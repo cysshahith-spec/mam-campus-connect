@@ -57,6 +57,10 @@
       gap: 15px;
     }
 
+    button {
+      cursor: pointer;
+    }
+
     .role-button,
     .option-button {
       background: white;
@@ -64,16 +68,14 @@
       border-radius: 15px;
       padding: 25px 10px;
       box-shadow: 0 3px 12px rgba(0,0,0,0.1);
-      cursor: pointer;
       font-size: 17px;
       font-weight: bold;
       color: #173b6c;
-      transition: 0.2s;
     }
 
     .role-button:hover,
     .option-button:hover {
-      transform: translateY(-3px);
+      transform: translateY(-2px);
       background: #eaf2ff;
     }
 
@@ -83,10 +85,7 @@
       margin-bottom: 10px;
     }
 
-    .login-box,
-    .registration-box,
-    .student-options,
-    .dashboard {
+    .box {
       display: none;
       background: white;
       padding: 25px;
@@ -94,27 +93,13 @@
       box-shadow: 0 3px 15px rgba(0,0,0,0.1);
     }
 
-    .login-box.active,
-    .registration-box.active,
-    .student-options.active,
-    .dashboard.active {
+    .box.active {
       display: block;
     }
 
-    .login-box h2,
-    .registration-box h2,
-    .student-options h2,
-    .dashboard h2 {
+    .box h2 {
       text-align: center;
       color: #173b6c;
-      margin-bottom: 20px;
-    }
-
-    .student-options {
-      text-align: center;
-    }
-
-    .student-options p {
       margin-bottom: 20px;
     }
 
@@ -141,7 +126,7 @@
       font-size: 15px;
     }
 
-    .login-button {
+    .primary-button {
       width: 100%;
       margin-top: 20px;
       padding: 13px;
@@ -151,11 +136,6 @@
       color: white;
       font-size: 16px;
       font-weight: bold;
-      cursor: pointer;
-    }
-
-    .login-button:hover {
-      background: #0e2b50;
     }
 
     .back-button {
@@ -166,7 +146,6 @@
       border-radius: 8px;
       background: white;
       color: #173b6c;
-      cursor: pointer;
     }
 
     .info-box {
@@ -176,6 +155,26 @@
       border-radius: 8px;
       color: #173b6c;
       font-size: 14px;
+    }
+
+    .otp-box {
+      text-align: center;
+    }
+
+    .otp-input {
+      text-align: center;
+      font-size: 24px;
+      letter-spacing: 8px;
+      margin-top: 10px;
+    }
+
+    .test-code {
+      margin-top: 15px;
+      padding: 12px;
+      background: #fff4d6;
+      border-radius: 8px;
+      text-align: center;
+      font-weight: bold;
     }
 
     .dashboard h2 {
@@ -195,7 +194,6 @@
       background: #eaf2ff;
       color: #173b6c;
       font-weight: bold;
-      cursor: pointer;
     }
 
     .message {
@@ -240,22 +238,22 @@
 
     <div class="role-grid">
 
-      <button class="role-button" onclick="showStudentOptions()">
+      <button class="role-button" onclick="showBox('studentOptions')">
         <span class="icon">🎓</span>
         Student
       </button>
 
-      <button class="role-button" onclick="showLogin('otherStudent')">
+      <button class="role-button" onclick="showBox('otherStudentLogin')">
         <span class="icon">🧑‍🎓</span>
         Other College Student
       </button>
 
-      <button class="role-button" onclick="showLogin('staff')">
+      <button class="role-button" onclick="showBox('staffLogin')">
         <span class="icon">👨‍🏫</span>
         Staff
       </button>
 
-      <button class="role-button" onclick="showLogin('principal')">
+      <button class="role-button" onclick="showBox('principalLogin')">
         <span class="icon">👨‍💼</span>
         Principal
       </button>
@@ -265,17 +263,21 @@
 
 
   <!-- STUDENT OPTIONS -->
-  <div id="studentOptions" class="student-options">
+  <div id="studentOptions" class="box">
 
     <h2>🎓 Student</h2>
 
-    <p>Please select an option</p>
+    <p style="text-align:center; margin-bottom:20px;">
+      Please select an option
+    </p>
 
-    <button class="option-button" onclick="showRegistration()">
+    <button class="option-button"
+            onclick="showBox('registrationBox')">
       🆕 First-Time Registration
     </button>
 
-    <button class="option-button" onclick="showLogin('student')">
+    <button class="option-button"
+            onclick="showBox('studentLogin')">
       🔐 Existing Student Login
     </button>
 
@@ -286,30 +288,21 @@
   </div>
 
 
-  <!-- STUDENT REGISTRATION -->
-  <div id="registrationBox" class="registration-box">
+  <!-- REGISTRATION -->
+  <div id="registrationBox" class="box">
 
     <h2>📝 Student Registration</h2>
 
     <label>Full Name</label>
-    <input
-      type="text"
-      id="studentName"
-      placeholder="Enter your full name"
-    >
+    <input id="studentName" type="text"
+           placeholder="Enter full name">
 
     <label>Roll Number</label>
-    <input
-      type="text"
-      id="registerRoll"
-      placeholder="Enter roll number"
-    >
+    <input id="registerRoll" type="text"
+           placeholder="Enter roll number">
 
     <label>Date of Birth</label>
-    <input
-      type="date"
-      id="studentDob"
-    >
+    <input id="studentDob" type="date">
 
     <label>Department</label>
     <select id="studentDepartment">
@@ -325,7 +318,8 @@
     </select>
 
     <label>Joining Year</label>
-    <select id="joiningYear" onchange="calculateEndingYear()">
+    <select id="joiningYear"
+            onchange="calculateEndingYear()">
       <option value="">Select Joining Year</option>
       <option value="2024">2024</option>
       <option value="2025">2025</option>
@@ -337,12 +331,10 @@
     </select>
 
     <label>Expected Ending Year</label>
-    <input
-      type="text"
-      id="endingYear"
-      placeholder="Automatically calculated"
-      readonly
-    >
+    <input id="endingYear"
+           type="text"
+           readonly
+           placeholder="Automatic">
 
     <label>Student Type</label>
     <select id="studentType">
@@ -352,122 +344,110 @@
     </select>
 
     <label>Student Mobile Number</label>
-    <input
-      type="tel"
-      id="studentPhone"
-      placeholder="Enter mobile number"
-    >
+    <input id="studentPhone"
+           type="tel"
+           placeholder="Enter mobile number">
 
     <label>Parent Mobile Number</label>
-    <input
-      type="tel"
-      id="parentPhone"
-      placeholder="Enter parent mobile number"
-    >
+    <input id="parentPhone"
+           type="tel"
+           placeholder="Enter parent mobile number">
 
     <div class="info-box">
-      Your mobile number will later be verified using OTP.
+      For now this is a test OTP system.
+      Real SMS OTP will be connected later.
     </div>
 
-    <button class="login-button" onclick="registerStudent()">
-      Register & Verify Mobile
+    <button class="primary-button"
+            onclick="registerStudent()">
+      Send OTP
     </button>
 
-    <button class="back-button" onclick="showStudentOptions()">
+    <button class="back-button"
+            onclick="showBox('studentOptions')">
       ← Back
     </button>
 
   </div>
 
 
-  <!-- STUDENT LOGIN -->
-  <div id="studentLogin" class="login-box">
+  <!-- EXISTING STUDENT LOGIN -->
+  <div id="studentLogin" class="box">
 
     <h2>🎓 Student Login</h2>
 
     <label>Roll Number</label>
-    <input
-      type="text"
-      id="studentRoll"
-      placeholder="Enter roll number"
-    >
+    <input id="studentRoll"
+           type="text"
+           placeholder="Enter roll number">
 
     <label>Mobile Number</label>
-    <input
-      type="tel"
-      id="studentMobile"
-      placeholder="Enter mobile number"
-    >
+    <input id="studentMobile"
+           type="tel"
+           placeholder="Enter mobile number">
 
-    <button class="login-button" onclick="studentLogin()">
+    <button class="primary-button"
+            onclick="studentLogin()">
       Send OTP
     </button>
 
-    <button class="back-button" onclick="showStudentOptions()">
+    <button class="back-button"
+            onclick="showBox('studentOptions')">
       ← Back
     </button>
 
   </div>
 
 
-  <!-- OTHER COLLEGE STUDENT LOGIN -->
-  <div id="otherStudentLogin" class="login-box">
+  <!-- OTHER COLLEGE STUDENT -->
+  <div id="otherStudentLogin" class="box">
 
     <h2>🧑‍🎓 Other College Student</h2>
 
     <label>College Name</label>
-    <input
-      type="text"
-      id="otherCollege"
-      placeholder="Enter college name"
-    >
+    <input id="otherCollege"
+           type="text"
+           placeholder="Enter college name">
 
     <label>Roll Number</label>
-    <input
-      type="text"
-      id="otherRoll"
-      placeholder="Enter roll number"
-    >
+    <input id="otherRoll"
+           type="text"
+           placeholder="Enter roll number">
 
     <label>Mobile Number</label>
-    <input
-      type="tel"
-      id="otherMobile"
-      placeholder="Enter mobile number"
-    >
+    <input id="otherMobile"
+           type="tel"
+           placeholder="Enter mobile number">
 
-    <button class="login-button" onclick="otherStudentLogin()">
+    <button class="primary-button"
+            onclick="otherStudentLogin()">
       Send OTP
     </button>
 
-    <button class="back-button" onclick="goHome()">
+    <button class="back-button"
+            onclick="goHome()">
       ← Back
     </button>
 
   </div>
 
 
-  <!-- STAFF LOGIN -->
-  <div id="staffLogin" class="login-box">
+  <!-- STAFF -->
+  <div id="staffLogin" class="box">
 
     <h2>👨‍🏫 Staff Login</h2>
 
     <label>Staff ID</label>
-    <input
-      type="text"
-      id="staffId"
-      placeholder="Enter staff ID"
-    >
+    <input id="staffId"
+           type="text"
+           placeholder="Enter staff ID">
 
     <label>Mobile Number</label>
-    <input
-      type="tel"
-      id="staffMobile"
-      placeholder="Enter mobile number"
-    >
+    <input id="staffMobile"
+           type="tel"
+           placeholder="Enter mobile number">
 
     <label>Department</label>
-
     <select id="staffDepartment">
       <option value="">Select Department</option>
       <option>Computer Science</option>
@@ -480,57 +460,92 @@
       <option>Other</option>
     </select>
 
-    <button class="login-button" onclick="staffLogin()">
+    <button class="primary-button"
+            onclick="staffLogin()">
       Send OTP
     </button>
 
-    <button class="back-button" onclick="goHome()">
+    <button class="back-button"
+            onclick="goHome()">
       ← Back
     </button>
 
   </div>
 
 
-  <!-- PRINCIPAL LOGIN -->
-  <div id="principalLogin" class="login-box">
+  <!-- PRINCIPAL -->
+  <div id="principalLogin" class="box">
 
     <h2>👨‍💼 Principal Login</h2>
 
     <label>Principal ID</label>
-    <input
-      type="text"
-      id="principalId"
-      placeholder="Enter Principal ID"
-    >
+    <input id="principalId"
+           type="text"
+           placeholder="Enter Principal ID">
 
     <label>Mobile Number</label>
-    <input
-      type="tel"
-      id="principalMobile"
-      placeholder="Enter mobile number"
-    >
+    <input id="principalMobile"
+           type="tel"
+           placeholder="Enter mobile number">
 
     <div class="info-box">
       Principal access will use two-step verification.
     </div>
 
-    <button class="login-button" onclick="principalLogin()">
-      Continue to Verification
+    <button class="primary-button"
+            onclick="principalLogin()">
+      Continue
     </button>
 
-    <button class="back-button" onclick="goHome()">
+    <button class="back-button"
+            onclick="goHome()">
       ← Back
+    </button>
+
+  </div>
+
+
+  <!-- OTP -->
+  <div id="otpBox" class="box otp-box">
+
+    <h2>🔐 Verify OTP</h2>
+
+    <p>
+      Enter the 6-digit OTP sent to your mobile number.
+    </p>
+
+    <input id="otpInput"
+           class="otp-input"
+           type="text"
+           maxlength="6"
+           inputmode="numeric"
+           placeholder="------">
+
+    <div class="test-code">
+      🧪 TEST OTP: <strong>123456</strong>
+    </div>
+
+    <button class="primary-button"
+            onclick="verifyOTP()">
+      Verify OTP
+    </button>
+
+    <button class="back-button"
+            onclick="goHome()">
+      ← Cancel
     </button>
 
   </div>
 
 
   <!-- DASHBOARD -->
-  <div id="dashboard" class="dashboard">
+  <div id="dashboard" class="box">
 
-    <h2 id="dashboardTitle">Dashboard</h2>
+    <h2 id="dashboardTitle">
+      Dashboard
+    </h2>
 
-    <p id="dashboardMessage">
+    <p>
       Welcome to MAM Campus Connect.
     </p>
 
@@ -564,7 +579,8 @@
 
     <div id="message" class="message"></div>
 
-    <button class="back-button" onclick="goHome()">
+    <button class="back-button"
+            onclick="goHome()">
       Logout
     </button>
 
@@ -579,61 +595,34 @@
 
 <script>
 
+  let currentLoginType = "Student";
+
+
   function hideAll() {
 
     document.getElementById("home").style.display = "none";
 
-    document.getElementById("studentOptions").classList.remove("active");
+    const boxes = document.querySelectorAll(".box");
 
-    document.getElementById("registrationBox").classList.remove("active");
-
-    document.getElementById("studentLogin").classList.remove("active");
-
-    document.getElementById("otherStudentLogin").classList.remove("active");
-
-    document.getElementById("staffLogin").classList.remove("active");
-
-    document.getElementById("principalLogin").classList.remove("active");
-
-    document.getElementById("dashboard").classList.remove("active");
+    boxes.forEach(function(box) {
+      box.classList.remove("active");
+    });
   }
 
 
-  function showStudentOptions() {
+  function showBox(id) {
 
     hideAll();
 
-    document.getElementById("studentOptions").classList.add("active");
+    document.getElementById(id).classList.add("active");
   }
 
 
-  function showRegistration() {
+  function goHome() {
 
     hideAll();
 
-    document.getElementById("registrationBox").classList.add("active");
-  }
-
-
-  function showLogin(role) {
-
-    hideAll();
-
-    if (role === "student") {
-      document.getElementById("studentLogin").classList.add("active");
-    }
-
-    if (role === "otherStudent") {
-      document.getElementById("otherStudentLogin").classList.add("active");
-    }
-
-    if (role === "staff") {
-      document.getElementById("staffLogin").classList.add("active");
-    }
-
-    if (role === "principal") {
-      document.getElementById("principalLogin").classList.add("active");
-    }
+    document.getElementById("home").style.display = "block";
   }
 
 
@@ -644,11 +633,8 @@
 
     if (joiningYear !== "") {
 
-      const endingYear =
-        Number(joiningYear) + 3;
-
       document.getElementById("endingYear").value =
-        endingYear;
+        Number(joiningYear) + 3;
     }
   }
 
@@ -691,15 +677,20 @@
       parentPhone === ""
     ) {
 
-      alert("Please complete all registration fields.");
+      alert("Please complete all fields.");
 
       return;
     }
 
 
+    currentLoginType = "🎓 Student";
+
+    document.getElementById("otpInput").value = "";
+
+    showBox("otpBox");
+
     alert(
-      "Registration information received.\n\n" +
-      "OTP verification will be connected here."
+      "TEST MODE: Your OTP is 123456"
     );
   }
 
@@ -715,19 +706,21 @@
 
     if (roll === "" || mobile === "") {
 
-      alert(
-        "Please enter Roll Number and Mobile Number."
-      );
+      alert("Please enter Roll Number and Mobile Number.");
 
       return;
     }
 
 
-    alert(
-      "OTP verification will be connected here."
-    );
+    currentLoginType = "🎓 Student";
 
-    openDashboard("🎓 Student Dashboard");
+    document.getElementById("otpInput").value = "";
+
+    showBox("otpBox");
+
+    alert(
+      "TEST MODE: Your OTP is 123456"
+    );
   }
 
 
@@ -755,12 +748,15 @@
     }
 
 
-    alert(
-      "OTP verification will be connected here."
-    );
+    currentLoginType =
+      "🧑‍🎓 Other College Student";
 
-    openDashboard(
-      "🧑‍🎓 Other College Student Dashboard"
+    document.getElementById("otpInput").value = "";
+
+    showBox("otpBox");
+
+    alert(
+      "TEST MODE: Your OTP is 123456"
     );
   }
 
@@ -789,11 +785,15 @@
     }
 
 
-    alert(
-      "OTP verification will be connected here."
-    );
+    currentLoginType = "👨‍🏫 Staff";
 
-    openDashboard("👨‍🏫 Staff Dashboard");
+    document.getElementById("otpInput").value = "";
+
+    showBox("otpBox");
+
+    alert(
+      "TEST MODE: Your OTP is 123456"
+    );
   }
 
 
@@ -808,30 +808,43 @@
 
     if (id === "" || mobile === "") {
 
-      alert(
-        "Please enter Principal ID and Mobile Number."
-      );
+      alert("Please enter Principal ID and Mobile Number.");
 
       return;
     }
 
 
-    alert(
-      "Two-step verification will be connected here."
-    );
+    currentLoginType = "👨‍💼 Principal";
 
-    openDashboard("👨‍💼 Principal Dashboard");
+    document.getElementById("otpInput").value = "";
+
+    showBox("otpBox");
+
+    alert(
+      "TEST MODE: Your first verification OTP is 123456"
+    );
   }
 
 
-  function openDashboard(title) {
+  function verifyOTP() {
 
-    hideAll();
+    const enteredOTP =
+      document.getElementById("otpInput").value;
 
-    document.getElementById("dashboard").classList.add("active");
 
-    document.getElementById("dashboardTitle").innerText =
-      title;
+    if (enteredOTP === "123456") {
+
+      document.getElementById("dashboardTitle").innerText =
+        currentLoginType + " Dashboard";
+
+      showBox("dashboard");
+
+      alert("OTP verified successfully! ✅");
+
+    } else {
+
+      alert("Incorrect OTP. Use 123456 for this test.");
+    }
   }
 
 
@@ -843,14 +856,6 @@
     message.innerText = text;
 
     message.style.display = "block";
-  }
-
-
-  function goHome() {
-
-    hideAll();
-
-    document.getElementById("home").style.display = "block";
   }
 
 </script>
