@@ -57,7 +57,8 @@
       gap: 15px;
     }
 
-    .role-button {
+    .role-button,
+    .option-button {
       background: white;
       border: none;
       border-radius: 15px;
@@ -70,7 +71,8 @@
       transition: 0.2s;
     }
 
-    .role-button:hover {
+    .role-button:hover,
+    .option-button:hover {
       transform: translateY(-3px);
       background: #eaf2ff;
     }
@@ -81,7 +83,10 @@
       margin-bottom: 10px;
     }
 
-    .login-box {
+    .login-box,
+    .registration-box,
+    .student-options,
+    .dashboard {
       display: none;
       background: white;
       padding: 25px;
@@ -89,14 +94,35 @@
       box-shadow: 0 3px 15px rgba(0,0,0,0.1);
     }
 
-    .login-box.active {
+    .login-box.active,
+    .registration-box.active,
+    .student-options.active,
+    .dashboard.active {
       display: block;
     }
 
-    .login-box h2 {
+    .login-box h2,
+    .registration-box h2,
+    .student-options h2,
+    .dashboard h2 {
       text-align: center;
       color: #173b6c;
       margin-bottom: 20px;
+    }
+
+    .student-options {
+      text-align: center;
+    }
+
+    .student-options p {
+      margin-bottom: 20px;
+    }
+
+    .option-button {
+      display: block;
+      width: 100%;
+      margin-bottom: 12px;
+      padding: 18px;
     }
 
     label {
@@ -143,21 +169,17 @@
       cursor: pointer;
     }
 
-    .dashboard {
-      display: none;
-      background: white;
-      padding: 25px;
-      border-radius: 15px;
-      box-shadow: 0 3px 15px rgba(0,0,0,0.1);
-    }
-
-    .dashboard.active {
-      display: block;
+    .info-box {
+      margin-top: 15px;
+      padding: 12px;
+      background: #eaf2ff;
+      border-radius: 8px;
+      color: #173b6c;
+      font-size: 14px;
     }
 
     .dashboard h2 {
-      color: #173b6c;
-      margin-bottom: 15px;
+      text-align: left;
     }
 
     .menu {
@@ -218,7 +240,7 @@
 
     <div class="role-grid">
 
-      <button class="role-button" onclick="showLogin('student')">
+      <button class="role-button" onclick="showStudentOptions()">
         <span class="icon">🎓</span>
         Student
       </button>
@@ -242,22 +264,146 @@
   </div>
 
 
+  <!-- STUDENT OPTIONS -->
+  <div id="studentOptions" class="student-options">
+
+    <h2>🎓 Student</h2>
+
+    <p>Please select an option</p>
+
+    <button class="option-button" onclick="showRegistration()">
+      🆕 First-Time Registration
+    </button>
+
+    <button class="option-button" onclick="showLogin('student')">
+      🔐 Existing Student Login
+    </button>
+
+    <button class="back-button" onclick="goHome()">
+      ← Back
+    </button>
+
+  </div>
+
+
+  <!-- STUDENT REGISTRATION -->
+  <div id="registrationBox" class="registration-box">
+
+    <h2>📝 Student Registration</h2>
+
+    <label>Full Name</label>
+    <input
+      type="text"
+      id="studentName"
+      placeholder="Enter your full name"
+    >
+
+    <label>Roll Number</label>
+    <input
+      type="text"
+      id="registerRoll"
+      placeholder="Enter roll number"
+    >
+
+    <label>Date of Birth</label>
+    <input
+      type="date"
+      id="studentDob"
+    >
+
+    <label>Department</label>
+    <select id="studentDepartment">
+      <option value="">Select Department</option>
+      <option>Computer Science</option>
+      <option>Information Technology</option>
+      <option>Commerce</option>
+      <option>Management</option>
+      <option>English</option>
+      <option>Mathematics</option>
+      <option>Physics</option>
+      <option>Other</option>
+    </select>
+
+    <label>Joining Year</label>
+    <select id="joiningYear" onchange="calculateEndingYear()">
+      <option value="">Select Joining Year</option>
+      <option value="2024">2024</option>
+      <option value="2025">2025</option>
+      <option value="2026">2026</option>
+      <option value="2027">2027</option>
+      <option value="2028">2028</option>
+      <option value="2029">2029</option>
+      <option value="2030">2030</option>
+    </select>
+
+    <label>Expected Ending Year</label>
+    <input
+      type="text"
+      id="endingYear"
+      placeholder="Automatically calculated"
+      readonly
+    >
+
+    <label>Student Type</label>
+    <select id="studentType">
+      <option value="">Select Student Type</option>
+      <option>Day Scholar</option>
+      <option>Hosteler</option>
+    </select>
+
+    <label>Student Mobile Number</label>
+    <input
+      type="tel"
+      id="studentPhone"
+      placeholder="Enter mobile number"
+    >
+
+    <label>Parent Mobile Number</label>
+    <input
+      type="tel"
+      id="parentPhone"
+      placeholder="Enter parent mobile number"
+    >
+
+    <div class="info-box">
+      Your mobile number will later be verified using OTP.
+    </div>
+
+    <button class="login-button" onclick="registerStudent()">
+      Register & Verify Mobile
+    </button>
+
+    <button class="back-button" onclick="showStudentOptions()">
+      ← Back
+    </button>
+
+  </div>
+
+
   <!-- STUDENT LOGIN -->
   <div id="studentLogin" class="login-box">
 
     <h2>🎓 Student Login</h2>
 
     <label>Roll Number</label>
-    <input type="text" id="studentRoll" placeholder="Enter roll number">
+    <input
+      type="text"
+      id="studentRoll"
+      placeholder="Enter roll number"
+    >
 
     <label>Mobile Number</label>
-    <input type="tel" id="studentMobile" placeholder="Enter mobile number">
+    <input
+      type="tel"
+      id="studentMobile"
+      placeholder="Enter mobile number"
+    >
 
     <button class="login-button" onclick="studentLogin()">
       Send OTP
     </button>
 
-    <button class="back-button" onclick="goHome()">
+    <button class="back-button" onclick="showStudentOptions()">
       ← Back
     </button>
 
@@ -270,13 +416,25 @@
     <h2>🧑‍🎓 Other College Student</h2>
 
     <label>College Name</label>
-    <input type="text" id="otherCollege" placeholder="Enter college name">
+    <input
+      type="text"
+      id="otherCollege"
+      placeholder="Enter college name"
+    >
 
     <label>Roll Number</label>
-    <input type="text" id="otherRoll" placeholder="Enter roll number">
+    <input
+      type="text"
+      id="otherRoll"
+      placeholder="Enter roll number"
+    >
 
     <label>Mobile Number</label>
-    <input type="tel" id="otherMobile" placeholder="Enter mobile number">
+    <input
+      type="tel"
+      id="otherMobile"
+      placeholder="Enter mobile number"
+    >
 
     <button class="login-button" onclick="otherStudentLogin()">
       Send OTP
@@ -295,10 +453,18 @@
     <h2>👨‍🏫 Staff Login</h2>
 
     <label>Staff ID</label>
-    <input type="text" id="staffId" placeholder="Enter staff ID">
+    <input
+      type="text"
+      id="staffId"
+      placeholder="Enter staff ID"
+    >
 
     <label>Mobile Number</label>
-    <input type="tel" id="staffMobile" placeholder="Enter mobile number">
+    <input
+      type="tel"
+      id="staffMobile"
+      placeholder="Enter mobile number"
+    >
 
     <label>Department</label>
 
@@ -331,10 +497,22 @@
     <h2>👨‍💼 Principal Login</h2>
 
     <label>Principal ID</label>
-    <input type="text" id="principalId" placeholder="Enter Principal ID">
+    <input
+      type="text"
+      id="principalId"
+      placeholder="Enter Principal ID"
+    >
 
     <label>Mobile Number</label>
-    <input type="tel" id="principalMobile" placeholder="Enter mobile number">
+    <input
+      type="tel"
+      id="principalMobile"
+      placeholder="Enter mobile number"
+    >
+
+    <div class="info-box">
+      Principal access will use two-step verification.
+    </div>
 
     <button class="login-button" onclick="principalLogin()">
       Continue to Verification
@@ -405,6 +583,10 @@
 
     document.getElementById("home").style.display = "none";
 
+    document.getElementById("studentOptions").classList.remove("active");
+
+    document.getElementById("registrationBox").classList.remove("active");
+
     document.getElementById("studentLogin").classList.remove("active");
 
     document.getElementById("otherStudentLogin").classList.remove("active");
@@ -414,6 +596,22 @@
     document.getElementById("principalLogin").classList.remove("active");
 
     document.getElementById("dashboard").classList.remove("active");
+  }
+
+
+  function showStudentOptions() {
+
+    hideAll();
+
+    document.getElementById("studentOptions").classList.add("active");
+  }
+
+
+  function showRegistration() {
+
+    hideAll();
+
+    document.getElementById("registrationBox").classList.add("active");
   }
 
 
@@ -439,25 +637,95 @@
   }
 
 
-  function goHome() {
+  function calculateEndingYear() {
 
-    hideAll();
+    const joiningYear =
+      document.getElementById("joiningYear").value;
 
-    document.getElementById("home").style.display = "block";
+    if (joiningYear !== "") {
+
+      const endingYear =
+        Number(joiningYear) + 3;
+
+      document.getElementById("endingYear").value =
+        endingYear;
+    }
+  }
+
+
+  function registerStudent() {
+
+    const name =
+      document.getElementById("studentName").value;
+
+    const roll =
+      document.getElementById("registerRoll").value;
+
+    const dob =
+      document.getElementById("studentDob").value;
+
+    const department =
+      document.getElementById("studentDepartment").value;
+
+    const joiningYear =
+      document.getElementById("joiningYear").value;
+
+    const studentType =
+      document.getElementById("studentType").value;
+
+    const phone =
+      document.getElementById("studentPhone").value;
+
+    const parentPhone =
+      document.getElementById("parentPhone").value;
+
+
+    if (
+      name === "" ||
+      roll === "" ||
+      dob === "" ||
+      department === "" ||
+      joiningYear === "" ||
+      studentType === "" ||
+      phone === "" ||
+      parentPhone === ""
+    ) {
+
+      alert("Please complete all registration fields.");
+
+      return;
+    }
+
+
+    alert(
+      "Registration information received.\n\n" +
+      "OTP verification will be connected here."
+    );
   }
 
 
   function studentLogin() {
 
-    const roll = document.getElementById("studentRoll").value;
-    const mobile = document.getElementById("studentMobile").value;
+    const roll =
+      document.getElementById("studentRoll").value;
+
+    const mobile =
+      document.getElementById("studentMobile").value;
+
 
     if (roll === "" || mobile === "") {
-      alert("Please enter Roll Number and Mobile Number.");
+
+      alert(
+        "Please enter Roll Number and Mobile Number."
+      );
+
       return;
     }
 
-    alert("OTP verification will be connected here.");
+
+    alert(
+      "OTP verification will be connected here."
+    );
 
     openDashboard("🎓 Student Dashboard");
   }
@@ -465,33 +733,65 @@
 
   function otherStudentLogin() {
 
-    const college = document.getElementById("otherCollege").value;
-    const roll = document.getElementById("otherRoll").value;
-    const mobile = document.getElementById("otherMobile").value;
+    const college =
+      document.getElementById("otherCollege").value;
 
-    if (college === "" || roll === "" || mobile === "") {
+    const roll =
+      document.getElementById("otherRoll").value;
+
+    const mobile =
+      document.getElementById("otherMobile").value;
+
+
+    if (
+      college === "" ||
+      roll === "" ||
+      mobile === ""
+    ) {
+
       alert("Please complete all fields.");
+
       return;
     }
 
-    alert("OTP verification will be connected here.");
 
-    openDashboard("🧑‍🎓 Other College Student Dashboard");
+    alert(
+      "OTP verification will be connected here."
+    );
+
+    openDashboard(
+      "🧑‍🎓 Other College Student Dashboard"
+    );
   }
 
 
   function staffLogin() {
 
-    const id = document.getElementById("staffId").value;
-    const mobile = document.getElementById("staffMobile").value;
-    const department = document.getElementById("staffDepartment").value;
+    const id =
+      document.getElementById("staffId").value;
 
-    if (id === "" || mobile === "" || department === "") {
+    const mobile =
+      document.getElementById("staffMobile").value;
+
+    const department =
+      document.getElementById("staffDepartment").value;
+
+
+    if (
+      id === "" ||
+      mobile === "" ||
+      department === ""
+    ) {
+
       alert("Please complete all fields.");
+
       return;
     }
 
-    alert("OTP verification will be connected here.");
+
+    alert(
+      "OTP verification will be connected here."
+    );
 
     openDashboard("👨‍🏫 Staff Dashboard");
   }
@@ -499,15 +799,26 @@
 
   function principalLogin() {
 
-    const id = document.getElementById("principalId").value;
-    const mobile = document.getElementById("principalMobile").value;
+    const id =
+      document.getElementById("principalId").value;
+
+    const mobile =
+      document.getElementById("principalMobile").value;
+
 
     if (id === "" || mobile === "") {
-      alert("Please enter Principal ID and Mobile Number.");
+
+      alert(
+        "Please enter Principal ID and Mobile Number."
+      );
+
       return;
     }
 
-    alert("Two-step verification will be connected here.");
+
+    alert(
+      "Two-step verification will be connected here."
+    );
 
     openDashboard("👨‍💼 Principal Dashboard");
   }
@@ -519,17 +830,27 @@
 
     document.getElementById("dashboard").classList.add("active");
 
-    document.getElementById("dashboardTitle").innerText = title;
+    document.getElementById("dashboardTitle").innerText =
+      title;
   }
 
 
   function showMessage(text) {
 
-    const message = document.getElementById("message");
+    const message =
+      document.getElementById("message");
 
     message.innerText = text;
 
     message.style.display = "block";
+  }
+
+
+  function goHome() {
+
+    hideAll();
+
+    document.getElementById("home").style.display = "block";
   }
 
 </script>
