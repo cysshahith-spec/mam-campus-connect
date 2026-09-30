@@ -235,6 +235,64 @@
       margin-bottom: 15px;
     }
 
+    /* NOTICES */
+
+    .notices-box {
+      margin-top: 20px;
+    }
+
+    .notice-card {
+      background: #f7f9fc;
+      border-left: 5px solid #173b6c;
+      padding: 15px;
+      margin-bottom: 15px;
+      border-radius: 8px;
+    }
+
+    .notice-card h3 {
+      color: #173b6c;
+      font-size: 17px;
+      margin-bottom: 8px;
+    }
+
+    .notice-date {
+      font-size: 13px;
+      color: #777;
+      margin-bottom: 8px;
+    }
+
+    .notice-card p {
+      font-size: 14px;
+      line-height: 1.5;
+      color: #444;
+    }
+
+    .event-card {
+      background: #fff8e8;
+      border-left: 5px solid #d49a00;
+      padding: 15px;
+      margin-bottom: 15px;
+      border-radius: 8px;
+    }
+
+    .event-card h3 {
+      color: #8a6500;
+      font-size: 17px;
+      margin-bottom: 8px;
+    }
+
+    .event-card p {
+      font-size: 14px;
+      line-height: 1.5;
+      color: #444;
+    }
+
+    .section-heading {
+      color: #173b6c;
+      margin: 20px 0 12px;
+      font-size: 19px;
+    }
+
     footer {
       text-align: center;
       padding: 25px;
@@ -295,7 +353,6 @@
       </button>
 
     </div>
-
   </div>
 
 
@@ -344,15 +401,13 @@
            placeholder="Enter roll number">
 
     <label>Date of Birth</label>
-    <input id="studentDob"
-           type="date">
+    <input id="studentDob" type="date">
 
     <label>Department</label>
 
     <select id="studentDepartment">
 
       <option value="">Select Department</option>
-
       <option>Computer Science</option>
       <option>Information Technology</option>
       <option>Commerce</option>
@@ -364,14 +419,12 @@
 
     </select>
 
-
     <label>Joining Year</label>
 
     <select id="joiningYear"
             onchange="calculateEndingYear()">
 
       <option value="">Select Joining Year</option>
-
       <option value="2024">2024</option>
       <option value="2025">2025</option>
       <option value="2026">2026</option>
@@ -382,7 +435,6 @@
 
     </select>
 
-
     <label>Expected Ending Year</label>
 
     <input id="endingYear"
@@ -390,18 +442,15 @@
            readonly
            placeholder="Automatic">
 
-
     <label>Student Type</label>
 
     <select id="studentType">
 
       <option value="">Select Student Type</option>
-
       <option>Day Scholar</option>
       <option>Hosteler</option>
 
     </select>
-
 
     <label>Student Mobile Number</label>
 
@@ -409,35 +458,25 @@
            type="tel"
            placeholder="Enter mobile number">
 
-
     <label>Parent Mobile Number</label>
 
     <input id="parentPhone"
            type="tel"
            placeholder="Enter parent mobile number">
 
-
     <div class="info-box">
-
       For now this is a test OTP system.
       Real SMS OTP will be connected later.
-
     </div>
-
 
     <button class="primary-button"
             onclick="registerStudent()">
-
       Send OTP
-
     </button>
-
 
     <button class="back-button"
             onclick="showBox('studentOptions')">
-
       ← Back
-
     </button>
 
   </div>
@@ -455,27 +494,20 @@
            type="text"
            placeholder="Enter roll number">
 
-
     <label>Mobile Number</label>
 
     <input id="studentMobile"
            type="tel"
            placeholder="Enter mobile number">
 
-
     <button class="primary-button"
             onclick="studentLogin()">
-
       Send OTP
-
     </button>
-
 
     <button class="back-button"
             onclick="showBox('studentOptions')">
-
       ← Back
-
     </button>
 
   </div>
@@ -493,13 +525,11 @@
            type="text"
            placeholder="Enter college name">
 
-
     <label>Roll Number</label>
 
     <input id="otherRoll"
            type="text"
            placeholder="Enter roll number">
-
 
     <label>Mobile Number</label>
 
@@ -507,20 +537,14 @@
            type="tel"
            placeholder="Enter mobile number">
 
-
     <button class="primary-button"
             onclick="otherStudentLogin()">
-
       Send OTP
-
     </button>
-
 
     <button class="back-button"
             onclick="goHome()">
-
       ← Back
-
     </button>
 
   </div>
@@ -538,20 +562,17 @@
            type="text"
            placeholder="Enter staff ID">
 
-
     <label>Mobile Number</label>
 
     <input id="staffMobile"
            type="tel"
            placeholder="Enter mobile number">
 
-
     <label>Department</label>
 
     <select id="staffDepartment">
 
       <option value="">Select Department</option>
-
       <option>Computer Science</option>
       <option>Information Technology</option>
       <option>Commerce</option>
@@ -563,20 +584,14 @@
 
     </select>
 
-
     <button class="primary-button"
             onclick="staffLogin()">
-
       Send OTP
-
     </button>
-
 
     <button class="back-button"
             onclick="goHome()">
-
       ← Back
-
     </button>
 
   </div>
@@ -594,34 +609,24 @@
            type="text"
            placeholder="Enter Principal ID">
 
-
     <label>Mobile Number</label>
 
     <input id="principalMobile"
            type="tel"
            placeholder="Enter mobile number">
 
-
     <div class="info-box">
-
       Principal access will use two-step verification.
-
     </div>
-
 
     <button class="primary-button"
             onclick="principalLogin()">
-
       Continue
-
     </button>
-
 
     <button class="back-button"
             onclick="goHome()">
-
       ← Back
-
     </button>
 
   </div>
@@ -637,7 +642,6 @@
       Enter the 6-digit OTP sent to your mobile number.
     </p>
 
-
     <input id="otpInput"
            class="otp-input"
            type="text"
@@ -645,28 +649,18 @@
            inputmode="numeric"
            placeholder="------">
 
-
     <div class="test-code">
-
-      🧪 TEST OTP:
-      <strong>123456</strong>
-
+      🧪 TEST OTP: <strong>123456</strong>
     </div>
-
 
     <button class="primary-button"
             onclick="verifyOTP()">
-
       Verify OTP
-
     </button>
-
 
     <button class="back-button"
             onclick="goHome()">
-
       ← Cancel
-
     </button>
 
   </div>
@@ -684,7 +678,6 @@
       Welcome to MAM Campus Connect.
     </p>
 
-
     <div class="menu">
 
       <button onclick="showCalendar()">
@@ -695,7 +688,7 @@
         🕐 Timetable
       </button>
 
-      <button onclick="showMessage('College notices and functions will appear here.')">
+      <button onclick="showNotices()">
         📢 Notices & Events
       </button>
 
@@ -714,12 +707,14 @@
     </div>
 
 
+    <!-- MESSAGE -->
+
     <div id="message"
          class="message">
     </div>
 
 
-    <!-- CALENDAR -->
+    <!-- ACADEMIC CALENDAR -->
 
     <div id="calendarBox"
          class="calendar-box"
@@ -729,97 +724,210 @@
         📅 Academic Calendar 2026
       </h3>
 
-
       <div class="calendar-event">
-
         <h3>June 2026</h3>
-
-        <p>
-          Academic year begins
-        </p>
-
+        <p>Academic year begins.</p>
       </div>
 
-
       <div class="calendar-event">
-
         <h3>July 2026</h3>
-
-        <p>
-          Regular classes and department activities
-        </p>
-
+        <p>Regular classes and department activities.</p>
       </div>
 
-
       <div class="calendar-event">
-
         <h3>August 2026</h3>
-
-        <p>
-          Internal academic activities
-        </p>
-
+        <p>Internal academic activities.</p>
       </div>
 
-
       <div class="calendar-event">
-
         <h3>September 2026</h3>
-
-        <p>
-          Internal Assessment / Academic activities
-        </p>
-
+        <p>Internal assessment and academic activities.</p>
       </div>
 
-
       <div class="calendar-event">
-
         <h3>October 2026</h3>
-
-        <p>
-          Semester academic activities
-        </p>
-
+        <p>Semester academic activities.</p>
       </div>
 
-
       <div class="calendar-event">
-
         <h3>November 2026</h3>
-
-        <p>
-          Semester examinations and academic activities
-        </p>
-
+        <p>Semester examinations and academic activities.</p>
       </div>
 
-
       <div class="calendar-event">
-
         <h3>December 2026</h3>
+        <p>Semester completion activities.</p>
+      </div>
+
+      <div class="calendar-event">
+        <h3>January 2027</h3>
+        <p>Next semester academic activities.</p>
+      </div>
+
+      <button class="back-button"
+              onclick="closeCalendar()">
+        ← Back to Dashboard
+      </button>
+
+    </div>
+
+
+    <!-- COLLEGE NOTICES & EVENTS -->
+
+    <div id="noticesBox"
+         class="notices-box"
+         style="display:none;">
+
+      <h3 class="calendar-title">
+        📢 College Notices & Events
+      </h3>
+
+
+      <h3 class="section-heading">
+        📌 Important Notices
+      </h3>
+
+
+      <div class="notice-card">
+
+        <h3>College Working Day Notice</h3>
+
+        <div class="notice-date">
+          📅 01 October 2026
+        </div>
 
         <p>
-          Semester completion activities
+          Students are requested to follow the regular
+          college timetable and attend their scheduled
+          classes.
         </p>
 
       </div>
 
 
-      <div class="calendar-event">
+      <div class="notice-card">
 
-        <h3>January 2027</h3>
+        <h3>Internal Assessment Notice</h3>
+
+        <div class="notice-date">
+          📅 05 October 2026
+        </div>
 
         <p>
-          Next semester academic activities
+          Students are requested to check their department
+          timetable for internal assessment details.
+        </p>
+
+      </div>
+
+
+      <div class="notice-card">
+
+        <h3>Student ID Card Notice</h3>
+
+        <div class="notice-date">
+          📅 10 October 2026
+        </div>
+
+        <p>
+          Students should carry their valid college ID card
+          while entering the campus.
+        </p>
+
+      </div>
+
+
+      <h3 class="section-heading">
+        🎉 Upcoming Events
+      </h3>
+
+
+      <div class="event-card">
+
+        <h3>🎊 College Cultural Event</h3>
+
+        <p>
+          <strong>📅 Date:</strong>
+          15 October 2026
+        </p>
+
+        <p>
+          <strong>⏰ Time:</strong>
+          10:00 AM
+        </p>
+
+        <p>
+          <strong>📍 Venue:</strong>
+          College Auditorium
+        </p>
+
+        <p>
+          <strong>ℹ️ Details:</strong>
+          Students can participate in cultural activities
+          organized by the college.
+        </p>
+
+      </div>
+
+
+      <div class="event-card">
+
+        <h3>🏆 Sports Day</h3>
+
+        <p>
+          <strong>📅 Date:</strong>
+          25 October 2026
+        </p>
+
+        <p>
+          <strong>⏰ Time:</strong>
+          9:00 AM
+        </p>
+
+        <p>
+          <strong>📍 Venue:</strong>
+          College Ground
+        </p>
+
+        <p>
+          <strong>ℹ️ Details:</strong>
+          Students can participate in the sports events
+          conducted by the college.
+        </p>
+
+      </div>
+
+
+      <div class="event-card">
+
+        <h3>💻 Department Technical Event</h3>
+
+        <p>
+          <strong>📅 Date:</strong>
+          05 November 2026
+        </p>
+
+        <p>
+          <strong>⏰ Time:</strong>
+          10:00 AM
+        </p>
+
+        <p>
+          <strong>📍 Venue:</strong>
+          Seminar Hall
+        </p>
+
+        <p>
+          <strong>ℹ️ Details:</strong>
+          Technical activities and student presentations
+          will be conducted.
         </p>
 
       </div>
 
 
       <button class="back-button"
-              onclick="closeCalendar()">
+              onclick="closeNotices()">
 
         ← Back to Dashboard
 
@@ -841,9 +949,7 @@
 
 
 <footer>
-
   © 2026 MAM Campus Connect
-
 </footer>
 
 
@@ -854,7 +960,8 @@
 
   function hideAll() {
 
-    document.getElementById("home").style.display = "none";
+    document.getElementById("home")
+      .style.display = "none";
 
     const boxes =
       document.querySelectorAll(".box");
@@ -892,7 +999,6 @@
 
     const joiningYear =
       document.getElementById("joiningYear").value;
-
 
     if (joiningYear !== "") {
 
@@ -1124,9 +1230,7 @@
         "OTP verified successfully! ✅"
       );
 
-    }
-
-    else {
+    } else {
 
       alert(
         "Incorrect OTP. Use 123456 for this test."
@@ -1140,6 +1244,9 @@
   function showCalendar() {
 
     document.getElementById("message")
+      .style.display = "none";
+
+    document.getElementById("noticesBox")
       .style.display = "none";
 
     document.getElementById("calendarBox")
@@ -1156,9 +1263,34 @@
   }
 
 
+  function showNotices() {
+
+    document.getElementById("message")
+      .style.display = "none";
+
+    document.getElementById("calendarBox")
+      .style.display = "none";
+
+    document.getElementById("noticesBox")
+      .style.display = "block";
+
+  }
+
+
+  function closeNotices() {
+
+    document.getElementById("noticesBox")
+      .style.display = "none";
+
+  }
+
+
   function showMessage(text) {
 
     document.getElementById("calendarBox")
+      .style.display = "none";
+
+    document.getElementById("noticesBox")
       .style.display = "none";
 
 
