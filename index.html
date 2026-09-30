@@ -7,6 +7,7 @@
   <title>MAM Campus Connect</title>
 
   <style>
+
     * {
       box-sizing: border-box;
       margin: 0;
@@ -285,12 +286,66 @@
       font-size: 14px;
       line-height: 1.5;
       color: #444;
+      margin-bottom: 4px;
     }
 
     .section-heading {
       color: #173b6c;
       margin: 20px 0 12px;
       font-size: 19px;
+    }
+
+    /* CAMPUS MAP */
+
+    .map-box {
+      margin-top: 20px;
+    }
+
+    .map-card {
+      background: #f7f9fc;
+      padding: 20px;
+      border-radius: 12px;
+      text-align: center;
+    }
+
+    .map-icon {
+      font-size: 55px;
+      margin-bottom: 15px;
+    }
+
+    .map-card h3 {
+      color: #173b6c;
+      margin-bottom: 10px;
+    }
+
+    .map-card p {
+      color: #555;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    .map-button {
+      display: block;
+      width: 100%;
+      margin-top: 18px;
+      padding: 13px;
+      border: none;
+      border-radius: 8px;
+      background: #173b6c;
+      color: white;
+      font-size: 16px;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    .map-note {
+      margin-top: 15px;
+      padding: 12px;
+      background: #fff4d6;
+      border-radius: 8px;
+      color: #765800;
+      font-size: 13px;
+      text-align: left;
     }
 
     footer {
@@ -301,58 +356,93 @@
     }
 
     @media (max-width: 500px) {
+
       .role-grid {
         grid-template-columns: 1fr;
       }
+
     }
+
   </style>
 </head>
 
 <body>
 
+
 <header>
+
   <h1>🏫 MAM Campus Connect</h1>
-  <p>College Campus Information & Communication System</p>
+
+  <p>
+    College Campus Information & Communication System
+  </p>
+
 </header>
 
+
 <div class="container">
+
 
   <!-- HOME -->
 
   <div id="home">
 
     <div class="welcome">
+
       <h2>Welcome</h2>
-      <p>Select your login type</p>
+
+      <p>
+        Select your login type
+      </p>
+
     </div>
+
 
     <div class="role-grid">
 
+
       <button class="role-button"
               onclick="showBox('studentOptions')">
+
         <span class="icon">🎓</span>
+
         Student
+
       </button>
+
 
       <button class="role-button"
               onclick="showBox('otherStudentLogin')">
+
         <span class="icon">🧑‍🎓</span>
+
         Other College Student
+
       </button>
+
 
       <button class="role-button"
               onclick="showBox('staffLogin')">
+
         <span class="icon">👨‍🏫</span>
+
         Staff
+
       </button>
+
 
       <button class="role-button"
               onclick="showBox('principalLogin')">
+
         <span class="icon">👨‍💼</span>
+
         Principal
+
       </button>
 
+
     </div>
+
   </div>
 
 
@@ -366,19 +456,28 @@
       Please select an option
     </p>
 
+
     <button class="option-button"
             onclick="showBox('registrationBox')">
+
       🆕 First-Time Registration
+
     </button>
+
 
     <button class="option-button"
             onclick="showBox('studentLogin')">
+
       🔐 Existing Student Login
+
     </button>
+
 
     <button class="back-button"
             onclick="goHome()">
+
       ← Back
+
     </button>
 
   </div>
@@ -390,24 +489,35 @@
 
     <h2>📝 Student Registration</h2>
 
+
     <label>Full Name</label>
+
     <input id="studentName"
            type="text"
            placeholder="Enter full name">
 
+
     <label>Roll Number</label>
+
     <input id="registerRoll"
            type="text"
            placeholder="Enter roll number">
 
+
     <label>Date of Birth</label>
-    <input id="studentDob" type="date">
+
+    <input id="studentDob"
+           type="date">
+
 
     <label>Department</label>
 
     <select id="studentDepartment">
 
-      <option value="">Select Department</option>
+      <option value="">
+        Select Department
+      </option>
+
       <option>Computer Science</option>
       <option>Information Technology</option>
       <option>Commerce</option>
@@ -419,12 +529,16 @@
 
     </select>
 
+
     <label>Joining Year</label>
 
     <select id="joiningYear"
             onchange="calculateEndingYear()">
 
-      <option value="">Select Joining Year</option>
+      <option value="">
+        Select Joining Year
+      </option>
+
       <option value="2024">2024</option>
       <option value="2025">2025</option>
       <option value="2026">2026</option>
@@ -435,6 +549,7 @@
 
     </select>
 
+
     <label>Expected Ending Year</label>
 
     <input id="endingYear"
@@ -442,15 +557,20 @@
            readonly
            placeholder="Automatic">
 
+
     <label>Student Type</label>
 
     <select id="studentType">
 
-      <option value="">Select Student Type</option>
+      <option value="">
+        Select Student Type
+      </option>
+
       <option>Day Scholar</option>
       <option>Hosteler</option>
 
     </select>
+
 
     <label>Student Mobile Number</label>
 
@@ -458,25 +578,35 @@
            type="tel"
            placeholder="Enter mobile number">
 
+
     <label>Parent Mobile Number</label>
 
     <input id="parentPhone"
            type="tel"
            placeholder="Enter parent mobile number">
 
+
     <div class="info-box">
+
       For now this is a test OTP system.
       Real SMS OTP will be connected later.
+
     </div>
+
 
     <button class="primary-button"
             onclick="registerStudent()">
+
       Send OTP
+
     </button>
+
 
     <button class="back-button"
             onclick="showBox('studentOptions')">
+
       ← Back
+
     </button>
 
   </div>
@@ -488,11 +618,13 @@
 
     <h2>🎓 Student Login</h2>
 
+
     <label>Roll Number</label>
 
     <input id="studentRoll"
            type="text"
            placeholder="Enter roll number">
+
 
     <label>Mobile Number</label>
 
@@ -500,14 +632,20 @@
            type="tel"
            placeholder="Enter mobile number">
 
+
     <button class="primary-button"
             onclick="studentLogin()">
+
       Send OTP
+
     </button>
+
 
     <button class="back-button"
             onclick="showBox('studentOptions')">
+
       ← Back
+
     </button>
 
   </div>
@@ -519,11 +657,13 @@
 
     <h2>🧑‍🎓 Other College Student</h2>
 
+
     <label>College Name</label>
 
     <input id="otherCollege"
            type="text"
            placeholder="Enter college name">
+
 
     <label>Roll Number</label>
 
@@ -531,20 +671,27 @@
            type="text"
            placeholder="Enter roll number">
 
+
     <label>Mobile Number</label>
 
     <input id="otherMobile"
            type="tel"
            placeholder="Enter mobile number">
 
+
     <button class="primary-button"
             onclick="otherStudentLogin()">
+
       Send OTP
+
     </button>
+
 
     <button class="back-button"
             onclick="goHome()">
+
       ← Back
+
     </button>
 
   </div>
@@ -556,11 +703,13 @@
 
     <h2>👨‍🏫 Staff Login</h2>
 
+
     <label>Staff ID</label>
 
     <input id="staffId"
            type="text"
            placeholder="Enter staff ID">
+
 
     <label>Mobile Number</label>
 
@@ -568,11 +717,15 @@
            type="tel"
            placeholder="Enter mobile number">
 
+
     <label>Department</label>
 
     <select id="staffDepartment">
 
-      <option value="">Select Department</option>
+      <option value="">
+        Select Department
+      </option>
+
       <option>Computer Science</option>
       <option>Information Technology</option>
       <option>Commerce</option>
@@ -584,14 +737,20 @@
 
     </select>
 
+
     <button class="primary-button"
             onclick="staffLogin()">
+
       Send OTP
+
     </button>
+
 
     <button class="back-button"
             onclick="goHome()">
+
       ← Back
+
     </button>
 
   </div>
@@ -603,11 +762,13 @@
 
     <h2>👨‍💼 Principal Login</h2>
 
+
     <label>Principal ID</label>
 
     <input id="principalId"
            type="text"
            placeholder="Enter Principal ID">
+
 
     <label>Mobile Number</label>
 
@@ -615,18 +776,27 @@
            type="tel"
            placeholder="Enter mobile number">
 
+
     <div class="info-box">
+
       Principal access will use two-step verification.
+
     </div>
+
 
     <button class="primary-button"
             onclick="principalLogin()">
+
       Continue
+
     </button>
+
 
     <button class="back-button"
             onclick="goHome()">
+
       ← Back
+
     </button>
 
   </div>
@@ -642,6 +812,7 @@
       Enter the 6-digit OTP sent to your mobile number.
     </p>
 
+
     <input id="otpInput"
            class="otp-input"
            type="text"
@@ -649,18 +820,28 @@
            inputmode="numeric"
            placeholder="------">
 
+
     <div class="test-code">
-      🧪 TEST OTP: <strong>123456</strong>
+
+      🧪 TEST OTP:
+      <strong>123456</strong>
+
     </div>
+
 
     <button class="primary-button"
             onclick="verifyOTP()">
+
       Verify OTP
+
     </button>
+
 
     <button class="back-button"
             onclick="goHome()">
+
       ← Cancel
+
     </button>
 
   </div>
@@ -678,31 +859,51 @@
       Welcome to MAM Campus Connect.
     </p>
 
+
     <div class="menu">
 
+
       <button onclick="showCalendar()">
+
         📅 Academic Calendar
+
       </button>
+
 
       <button onclick="showMessage('Department timetable will be available here.')">
+
         🕐 Timetable
+
       </button>
+
 
       <button onclick="showNotices()">
+
         📢 Notices & Events
+
       </button>
 
-      <button onclick="showMessage('College location will be available here.')">
+
+      <button onclick="showMap()">
+
         📍 Campus Map
+
       </button>
+
 
       <button onclick="showMessage('Feedback section will be available here.')">
+
         💬 Feedback
+
       </button>
 
+
       <button onclick="showMessage('AI Campus Assistant will be available here.')">
+
         🤖 AI Assistant
+
       </button>
+
 
     </div>
 
@@ -720,77 +921,139 @@
          class="calendar-box"
          style="display:none;">
 
+
       <h3 class="calendar-title">
+
         📅 Academic Calendar 2026
+
       </h3>
 
+
       <div class="calendar-event">
+
         <h3>June 2026</h3>
-        <p>Academic year begins.</p>
+
+        <p>
+          Academic year begins.
+        </p>
+
       </div>
 
+
       <div class="calendar-event">
+
         <h3>July 2026</h3>
-        <p>Regular classes and department activities.</p>
+
+        <p>
+          Regular classes and department activities.
+        </p>
+
       </div>
 
+
       <div class="calendar-event">
+
         <h3>August 2026</h3>
-        <p>Internal academic activities.</p>
+
+        <p>
+          Internal academic activities.
+        </p>
+
       </div>
 
+
       <div class="calendar-event">
+
         <h3>September 2026</h3>
-        <p>Internal assessment and academic activities.</p>
+
+        <p>
+          Internal assessment and academic activities.
+        </p>
+
       </div>
 
+
       <div class="calendar-event">
+
         <h3>October 2026</h3>
-        <p>Semester academic activities.</p>
+
+        <p>
+          Semester academic activities.
+        </p>
+
       </div>
 
+
       <div class="calendar-event">
+
         <h3>November 2026</h3>
-        <p>Semester examinations and academic activities.</p>
+
+        <p>
+          Semester examinations and academic activities.
+        </p>
+
       </div>
 
+
       <div class="calendar-event">
+
         <h3>December 2026</h3>
-        <p>Semester completion activities.</p>
+
+        <p>
+          Semester completion activities.
+        </p>
+
       </div>
 
+
       <div class="calendar-event">
+
         <h3>January 2027</h3>
-        <p>Next semester academic activities.</p>
+
+        <p>
+          Next semester academic activities.
+        </p>
+
       </div>
+
 
       <button class="back-button"
               onclick="closeCalendar()">
+
         ← Back to Dashboard
+
       </button>
+
 
     </div>
 
 
-    <!-- COLLEGE NOTICES & EVENTS -->
+    <!-- NOTICES -->
 
     <div id="noticesBox"
          class="notices-box"
          style="display:none;">
 
+
       <h3 class="calendar-title">
+
         📢 College Notices & Events
+
       </h3>
 
 
       <h3 class="section-heading">
+
         📌 Important Notices
+
       </h3>
 
 
       <div class="notice-card">
 
-        <h3>College Working Day Notice</h3>
+        <h3>
+          College Working Day Notice
+        </h3>
 
         <div class="notice-date">
           📅 01 October 2026
@@ -807,7 +1070,9 @@
 
       <div class="notice-card">
 
-        <h3>Internal Assessment Notice</h3>
+        <h3>
+          Internal Assessment Notice
+        </h3>
 
         <div class="notice-date">
           📅 05 October 2026
@@ -823,7 +1088,9 @@
 
       <div class="notice-card">
 
-        <h3>Student ID Card Notice</h3>
+        <h3>
+          Student ID Card Notice
+        </h3>
 
         <div class="notice-date">
           📅 10 October 2026
@@ -838,13 +1105,17 @@
 
 
       <h3 class="section-heading">
+
         🎉 Upcoming Events
+
       </h3>
 
 
       <div class="event-card">
 
-        <h3>🎊 College Cultural Event</h3>
+        <h3>
+          🎊 College Cultural Event
+        </h3>
 
         <p>
           <strong>📅 Date:</strong>
@@ -872,7 +1143,9 @@
 
       <div class="event-card">
 
-        <h3>🏆 Sports Day</h3>
+        <h3>
+          🏆 Sports Day
+        </h3>
 
         <p>
           <strong>📅 Date:</strong>
@@ -900,7 +1173,9 @@
 
       <div class="event-card">
 
-        <h3>💻 Department Technical Event</h3>
+        <h3>
+          💻 Department Technical Event
+        </h3>
 
         <p>
           <strong>📅 Date:</strong>
@@ -933,8 +1208,86 @@
 
       </button>
 
+
     </div>
 
+
+    <!-- CAMPUS MAP -->
+
+    <div id="mapBox"
+         class="map-box"
+         style="display:none;">
+
+
+      <h3 class="calendar-title">
+
+        📍 Campus Map
+
+      </h3>
+
+
+      <div class="map-card">
+
+
+        <div class="map-icon">
+          🏫
+        </div>
+
+
+        <h3>
+          MAM Campus
+        </h3>
+
+
+        <p>
+
+          <strong>Campus Address</strong>
+
+        </p>
+
+
+        <p>
+
+          XQWH+654, Trichy Chennai Trunk Road,
+          Siruganur, Tamil Nadu 621105
+
+        </p>
+
+
+        <a
+          class="map-button"
+          href="https://www.google.com/maps/search/?api=1&query=XQWH%2B654%2C%20Trichy%20Chennai%20Trunk%20Road%2C%20Siruganur%2C%20Tamil%20Nadu%20621105"
+          target="_blank"
+          rel="noopener noreferrer">
+
+          🗺️ Open in Google Maps
+
+        </a>
+
+
+        <div class="map-note">
+
+          📌 This button opens the college location
+          directly in Google Maps.
+
+        </div>
+
+
+      </div>
+
+
+      <button class="back-button"
+              onclick="closeMap()">
+
+        ← Back to Dashboard
+
+      </button>
+
+
+    </div>
+
+
+    <!-- LOGOUT -->
 
     <button class="back-button"
             onclick="goHome()">
@@ -943,17 +1296,21 @@
 
     </button>
 
+
   </div>
 
 </div>
 
 
 <footer>
+
   © 2026 MAM Campus Connect
+
 </footer>
 
 
 <script>
+
 
   let currentLoginType = "Student";
 
@@ -963,8 +1320,10 @@
     document.getElementById("home")
       .style.display = "none";
 
+
     const boxes =
       document.querySelectorAll(".box");
+
 
     boxes.forEach(function(box) {
 
@@ -979,6 +1338,7 @@
 
     hideAll();
 
+
     document.getElementById(id)
       .classList.add("active");
 
@@ -988,6 +1348,7 @@
   function goHome() {
 
     hideAll();
+
 
     document.getElementById("home")
       .style.display = "block";
@@ -999,6 +1360,7 @@
 
     const joiningYear =
       document.getElementById("joiningYear").value;
+
 
     if (joiningYear !== "") {
 
@@ -1057,9 +1419,13 @@
 
     currentLoginType = "🎓 Student";
 
-    document.getElementById("otpInput").value = "";
+
+    document.getElementById("otpInput")
+      .value = "";
+
 
     showBox("otpBox");
+
 
     alert(
       "TEST MODE: Your OTP is 123456"
@@ -1077,7 +1443,10 @@
       document.getElementById("studentMobile").value;
 
 
-    if (roll === "" || mobile === "") {
+    if (
+      roll === "" ||
+      mobile === ""
+    ) {
 
       alert(
         "Please enter Roll Number and Mobile Number."
@@ -1090,9 +1459,13 @@
 
     currentLoginType = "🎓 Student";
 
-    document.getElementById("otpInput").value = "";
+
+    document.getElementById("otpInput")
+      .value = "";
+
 
     showBox("otpBox");
+
 
     alert(
       "TEST MODE: Your OTP is 123456"
@@ -1129,9 +1502,13 @@
     currentLoginType =
       "🧑‍🎓 Other College Student";
 
-    document.getElementById("otpInput").value = "";
+
+    document.getElementById("otpInput")
+      .value = "";
+
 
     showBox("otpBox");
+
 
     alert(
       "TEST MODE: Your OTP is 123456"
@@ -1167,9 +1544,13 @@
 
     currentLoginType = "👨‍🏫 Staff";
 
-    document.getElementById("otpInput").value = "";
+
+    document.getElementById("otpInput")
+      .value = "";
+
 
     showBox("otpBox");
+
 
     alert(
       "TEST MODE: Your OTP is 123456"
@@ -1187,7 +1568,10 @@
       document.getElementById("principalMobile").value;
 
 
-    if (id === "" || mobile === "") {
+    if (
+      id === "" ||
+      mobile === ""
+    ) {
 
       alert(
         "Please enter Principal ID and Mobile Number."
@@ -1200,9 +1584,13 @@
 
     currentLoginType = "👨‍💼 Principal";
 
-    document.getElementById("otpInput").value = "";
+
+    document.getElementById("otpInput")
+      .value = "";
+
 
     showBox("otpBox");
+
 
     alert(
       "TEST MODE: Your first verification OTP is 123456"
@@ -1217,7 +1605,10 @@
       document.getElementById("otpInput").value;
 
 
-    if (enteredOTP === "123456") {
+    if (
+      enteredOTP === "123456"
+    ) {
+
 
       document.getElementById("dashboardTitle")
         .innerText =
@@ -1226,28 +1617,49 @@
 
       showBox("dashboard");
 
+
       alert(
         "OTP verified successfully! ✅"
       );
 
+
     } else {
+
 
       alert(
         "Incorrect OTP. Use 123456 for this test."
       );
+
 
     }
 
   }
 
 
-  function showCalendar() {
+  function hideDashboardSections() {
+
+    document.getElementById("calendarBox")
+      .style.display = "none";
+
+
+    document.getElementById("noticesBox")
+      .style.display = "none";
+
+
+    document.getElementById("mapBox")
+      .style.display = "none";
+
 
     document.getElementById("message")
       .style.display = "none";
 
-    document.getElementById("noticesBox")
-      .style.display = "none";
+  }
+
+
+  function showCalendar() {
+
+    hideDashboardSections();
+
 
     document.getElementById("calendarBox")
       .style.display = "block";
@@ -1265,11 +1677,8 @@
 
   function showNotices() {
 
-    document.getElementById("message")
-      .style.display = "none";
+    hideDashboardSections();
 
-    document.getElementById("calendarBox")
-      .style.display = "none";
 
     document.getElementById("noticesBox")
       .style.display = "block";
@@ -1285,13 +1694,28 @@
   }
 
 
+  function showMap() {
+
+    hideDashboardSections();
+
+
+    document.getElementById("mapBox")
+      .style.display = "block";
+
+  }
+
+
+  function closeMap() {
+
+    document.getElementById("mapBox")
+      .style.display = "none";
+
+  }
+
+
   function showMessage(text) {
 
-    document.getElementById("calendarBox")
-      .style.display = "none";
-
-    document.getElementById("noticesBox")
-      .style.display = "none";
+    hideDashboardSections();
 
 
     const message =
@@ -1300,11 +1724,14 @@
 
     message.innerText = text;
 
+
     message.style.display = "block";
 
   }
 
+
 </script>
+
 
 </body>
 </html>
