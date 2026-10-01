@@ -28,37 +28,56 @@ header{
   padding:16px;
   text-align:center;
   position:relative;
+  min-height:78px;
   box-shadow:0 2px 8px rgba(0,0,0,.15);
 }
 
 header h1{
   font-size:23px;
+  padding-left:45px;
+  padding-right:10px;
 }
 
 header p{
   margin-top:5px;
   font-size:13px;
+  padding-left:45px;
+  padding-right:10px;
 }
 
-/* ================= THREE DOT / MENU BUTTON ================= */
+/* ================= THREE LINE MENU ================= */
 
 .menu-button{
   position:absolute;
-  left:12px;
-  top:12px;
-  width:45px;
-  height:45px;
+  left:8px;
+  top:8px;
+  width:52px;
+  height:52px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
   margin:0;
   padding:0;
-  background:transparent;
-  border:none;
-  font-size:30px;
+  background:#123c69;
   color:white;
+  border:2px solid rgba(255,255,255,.35);
+  border-radius:8px;
+  font-family:Arial,sans-serif;
+  font-size:31px;
+  line-height:1;
+  font-weight:bold;
   cursor:pointer;
+  z-index:2000;
+  -webkit-appearance:none;
+  appearance:none;
 }
 
 .menu-button:hover{
-  background:rgba(255,255,255,.15);
+  background:#0d2e50;
+}
+
+.menu-button:active{
+  transform:scale(.96);
 }
 
 /* ================= SIDE MENU ================= */
@@ -68,9 +87,10 @@ header p{
   top:0;
   left:-300px;
   width:290px;
-  height:100%;
+  height:100vh;
+  height:100dvh;
   background:white;
-  z-index:1000;
+  z-index:3000;
   box-shadow:3px 0 12px rgba(0,0,0,.25);
   transition:left .3s ease;
   overflow-y:auto;
@@ -84,11 +104,13 @@ header p{
   background:#123c69;
   color:white;
   padding:25px 20px;
+  min-height:110px;
 }
 
 .menu-header h2{
   color:white;
   margin:0;
+  padding-right:35px;
 }
 
 .menu-header p{
@@ -107,7 +129,8 @@ header p{
   background:transparent;
   color:white;
   border:none;
-  font-size:25px;
+  font-size:28px;
+  z-index:3001;
 }
 
 .menu-item{
@@ -135,7 +158,7 @@ header p{
   width:100%;
   height:100%;
   background:rgba(0,0,0,.4);
-  z-index:999;
+  z-index:2500;
   display:none;
 }
 
@@ -373,8 +396,26 @@ footer{
     grid-template-columns:1fr;
   }
 
+  header{
+    padding:15px 8px;
+  }
+
   header h1{
     font-size:20px;
+    padding-left:45px;
+  }
+
+  header p{
+    font-size:12px;
+    padding-left:45px;
+  }
+
+  .menu-button{
+    left:7px;
+    top:8px;
+    width:48px;
+    height:48px;
+    font-size:29px;
   }
 
   .container{
@@ -401,16 +442,12 @@ footer{
 
 <body>
 
-
-<!-- =====================================================
-     SIDE MENU
-===================================================== -->
+<!-- ================= SIDE MENU ================= -->
 
 <div id="menuOverlay"
      class="menu-overlay"
      onclick="closeMenu()">
 </div>
-
 
 <div id="sideMenu" class="side-menu">
 
@@ -427,40 +464,25 @@ footer{
 
   </div>
 
-
-  <!-- STAFF -->
-
   <button class="menu-item"
           onclick="showStaff()">
     👨‍🏫 &nbsp; Staff Login
   </button>
-
-
-  <!-- PRINCIPAL -->
 
   <button class="menu-item"
           onclick="showPrincipal()">
     👨‍💼 &nbsp; Principal Login
   </button>
 
-
-  <!-- CUSTOMER CARE -->
-
   <button class="menu-item"
           onclick="showCustomerCare()">
     📞 &nbsp; Customer Care
   </button>
 
-
-  <!-- FEEDBACK -->
-
   <button class="menu-item"
           onclick="showFeedback()">
     💬 &nbsp; Feedback
   </button>
-
-
-  <!-- HOME -->
 
   <button class="menu-item"
           onclick="goHome()">
@@ -469,15 +491,15 @@ footer{
 
 </div>
 
-
-<!-- =====================================================
-     HEADER
-===================================================== -->
+<!-- ================= HEADER ================= -->
 
 <header>
 
-  <button class="menu-button"
-          onclick="openMenu()">
+  <button
+    type="button"
+    class="menu-button"
+    aria-label="Open menu"
+    onclick="openMenu()">
     ☰
   </button>
 
@@ -489,13 +511,9 @@ footer{
 
 </header>
 
-
 <div class="container">
 
-
-<!-- =====================================================
-     HOME
-===================================================== -->
+<!-- ================= HOME ================= -->
 
 <section id="home" class="card">
 
@@ -505,42 +523,25 @@ footer{
     Select your account type to continue.
   </p>
 
-
   <div class="role-grid">
-
-
-    <!-- STUDENT -->
 
     <button class="role-btn"
             onclick="showStudentOptions()">
-
       🎓<br>
-
       Student
-
     </button>
-
-
-    <!-- OTHER COLLEGE STUDENT -->
 
     <button class="role-btn"
             onclick="showOtherCollege()">
-
       👨‍🎓<br>
-
       Other College Student
-
     </button>
-
 
   </div>
 
 </section>
 
-
-<!-- =====================================================
-     STUDENT OPTIONS
-===================================================== -->
+<!-- ================= STUDENT OPTIONS ================= -->
 
 <section id="studentOptions"
          class="card hidden">
@@ -548,48 +549,31 @@ footer{
   <h2>🎓 Student</h2>
 
   <button onclick="showRegistration()">
-
     📝 First-Time Student Registration
-
   </button>
-
 
   <button onclick="showExistingStudent()">
-
     🔐 Existing Student Login
-
   </button>
-
 
   <button class="secondary"
           onclick="goHome()">
-
     ← Back
-
   </button>
 
 </section>
 
-
-<!-- =====================================================
-     STUDENT REGISTRATION
-===================================================== -->
+<!-- ================= STUDENT REGISTRATION ================= -->
 
 <section id="registration"
          class="card hidden">
 
   <h2>📝 Student Registration</h2>
 
-
   <div class="info">
-
     Enter your official college details carefully.
-
-    Roll Number must start with
-    <b>8126</b>.
-
+    Roll Number must start with <b>8126</b>.
   </div>
-
 
   <label>Student Name</label>
 
@@ -598,7 +582,6 @@ footer{
     id="studentName"
     placeholder="Enter full name">
 
-
   <label>Roll Number</label>
 
   <input
@@ -606,13 +589,11 @@ footer{
     id="studentRoll"
     placeholder="Example: 8126XXXXXX">
 
-
   <label>Date of Birth</label>
 
   <input
     type="date"
     id="studentDOB">
-
 
   <label>Department / Course</label>
 
@@ -620,74 +601,27 @@ footer{
     id="studentDepartment"
     onchange="updateCourseDuration()">
 
-    <option value="">
-      Select Department / Course
-    </option>
+    <option value="">Select Department / Course</option>
 
     <option>Civil Engineering</option>
-
-    <option>
-      Computer Science & Engineering
-    </option>
-
-    <option>
-      Electrical & Electronics Engineering
-    </option>
-
-    <option>
-      Electronics & Communication Engineering
-    </option>
-
-    <option>
-      Electronics & Instrumentation Engineering
-    </option>
-
-    <option>
-      Information Technology
-    </option>
-
-    <option>
-      Mechanical Engineering
-    </option>
-
-    <option>
-      Cyber Security
-    </option>
-
-    <option>
-      Artificial Intelligence & Data Science
-    </option>
-
-    <option>
-      Artificial Intelligence & Machine Learning
-    </option>
-
-    <option>
-      Agricultural Engineering
-    </option>
-
-    <option>
-      Biomedical Engineering
-    </option>
-
-    <option>
-      Food Technology
-    </option>
-
-    <option>
-      Biotechnology
-    </option>
-
+    <option>Computer Science & Engineering</option>
+    <option>Electrical & Electronics Engineering</option>
+    <option>Electronics & Communication Engineering</option>
+    <option>Electronics & Instrumentation Engineering</option>
+    <option>Information Technology</option>
+    <option>Mechanical Engineering</option>
+    <option>Cyber Security</option>
+    <option>Artificial Intelligence & Data Science</option>
+    <option>Artificial Intelligence & Machine Learning</option>
+    <option>Agricultural Engineering</option>
+    <option>Biomedical Engineering</option>
+    <option>Food Technology</option>
+    <option>Biotechnology</option>
     <option>MBA</option>
-
     <option>MCA</option>
-
-    <option>
-      M.E. Environmental Engineering
-    </option>
+    <option>M.E. Environmental Engineering</option>
 
   </select>
-
 
   <label>Joining Year</label>
 
@@ -695,12 +629,9 @@ footer{
     id="joiningYear"
     onchange="calculateEndingYear()">
 
-    <option value="">
-      Select Joining Year
-    </option>
+    <option value="">Select Joining Year</option>
 
   </select>
-
 
   <label>Course Duration</label>
 
@@ -709,7 +640,6 @@ footer{
     id="courseDuration"
     readonly>
 
-
   <label>Expected Ending Year</label>
 
   <input
@@ -717,25 +647,15 @@ footer{
     id="endingYear"
     readonly>
 
-
   <label>Student Type</label>
 
   <select id="studentType">
 
-    <option value="">
-      Select
-    </option>
-
-    <option>
-      Day Scholar
-    </option>
-
-    <option>
-      Hosteler
-    </option>
+    <option value="">Select</option>
+    <option>Day Scholar</option>
+    <option>Hosteler</option>
 
   </select>
-
 
   <label>Student Mobile Number</label>
 
@@ -745,7 +665,6 @@ footer{
     maxlength="10"
     placeholder="10-digit mobile number">
 
-
   <label>Parent Mobile Number</label>
 
   <input
@@ -754,38 +673,27 @@ footer{
     maxlength="10"
     placeholder="10-digit parent mobile number">
 
-
   <div id="registrationError"
        class="error">
   </div>
 
-
   <button onclick="validateAndSendRegistrationOTP()">
-
     Send OTP
-
   </button>
-
 
   <button class="secondary"
           onclick="showStudentOptions()">
-
     ← Back
-
   </button>
 
 </section>
 
-
-<!-- =====================================================
-     EXISTING STUDENT LOGIN
-===================================================== -->
+<!-- ================= EXISTING STUDENT ================= -->
 
 <section id="existingStudent"
          class="card hidden">
 
   <h2>🔐 Existing Student Login</h2>
-
 
   <label>Roll Number</label>
 
@@ -793,7 +701,6 @@ footer{
     type="text"
     id="existingRoll"
     placeholder="Enter roll number">
-
 
   <label>Registered Mobile Number</label>
 
@@ -803,46 +710,32 @@ footer{
     maxlength="10"
     placeholder="10-digit mobile number">
 
-
   <div id="existingError"
        class="error">
   </div>
 
-
   <button onclick="validateExistingStudent()">
-
     Send OTP
-
   </button>
-
 
   <button class="secondary"
           onclick="showStudentOptions()">
-
     ← Back
-
   </button>
 
 </section>
 
-
-<!-- =====================================================
-     OTHER COLLEGE STUDENT
-===================================================== -->
+<!-- ================= OTHER COLLEGE ================= -->
 
 <section id="otherCollege"
          class="card hidden">
 
   <h2>👨‍🎓 Other College Student</h2>
 
-
   <div class="info">
-
     This account is for students visiting
     MAM Campus Connect from another college.
-
   </div>
-
 
   <label>College Name</label>
 
@@ -851,14 +744,12 @@ footer{
     id="otherCollegeName"
     placeholder="Enter college name">
 
-
   <label>Roll Number</label>
 
   <input
     type="text"
     id="otherRoll"
     placeholder="Enter roll number">
-
 
   <label>Mobile Number</label>
 
@@ -868,47 +759,33 @@ footer{
     maxlength="10"
     placeholder="10-digit mobile number">
 
-
   <div id="otherError"
        class="error">
   </div>
 
-
   <button onclick="sendOtherCollegeOTP()">
-
     Send OTP
-
   </button>
-
 
   <button class="secondary"
           onclick="goHome()">
-
     ← Back
-
   </button>
 
 </section>
 
-
-<!-- =====================================================
-     STAFF LOGIN
-===================================================== -->
+<!-- ================= STAFF ================= -->
 
 <section id="staff"
          class="card hidden">
 
   <h2>👨‍🏫 Staff Login</h2>
 
-
   <div class="info">
-
     Staff members can access students
     belonging to their assigned department
     after verification.
-
   </div>
-
 
   <label>Staff ID</label>
 
@@ -917,79 +794,31 @@ footer{
     id="staffId"
     placeholder="Enter Staff ID">
 
-
   <label>Department</label>
 
   <select id="staffDepartment">
 
-    <option value="">
-      Select Department
-    </option>
+    <option value="">Select Department</option>
 
     <option>Civil Engineering</option>
-
-    <option>
-      Computer Science & Engineering
-    </option>
-
-    <option>
-      Electrical & Electronics Engineering
-    </option>
-
-    <option>
-      Electronics & Communication Engineering
-    </option>
-
-    <option>
-      Electronics & Instrumentation Engineering
-    </option>
-
-    <option>
-      Information Technology
-    </option>
-
-    <option>
-      Mechanical Engineering
-    </option>
-
-    <option>
-      Cyber Security
-    </option>
-
-    <option>
-      Artificial Intelligence & Data Science
-    </option>
-
-    <option>
-      Artificial Intelligence & Machine Learning
-    </option>
-
-    <option>
-      Agricultural Engineering
-    </option>
-
-    <option>
-      Biomedical Engineering
-    </option>
-
-    <option>
-      Food Technology
-    </option>
-
-    <option>
-      Biotechnology
-    </option>
-
+    <option>Computer Science & Engineering</option>
+    <option>Electrical & Electronics Engineering</option>
+    <option>Electronics & Communication Engineering</option>
+    <option>Electronics & Instrumentation Engineering</option>
+    <option>Information Technology</option>
+    <option>Mechanical Engineering</option>
+    <option>Cyber Security</option>
+    <option>Artificial Intelligence & Data Science</option>
+    <option>Artificial Intelligence & Machine Learning</option>
+    <option>Agricultural Engineering</option>
+    <option>Biomedical Engineering</option>
+    <option>Food Technology</option>
+    <option>Biotechnology</option>
     <option>MBA</option>
-
     <option>MCA</option>
-
-    <option>
-      M.E. Environmental Engineering
-    </option>
+    <option>M.E. Environmental Engineering</option>
 
   </select>
-
 
   <label>Registered Mobile Number</label>
 
@@ -999,52 +828,35 @@ footer{
     maxlength="10"
     placeholder="10-digit mobile number">
 
-
   <div id="staffError"
        class="error">
   </div>
 
-
   <button onclick="sendStaffOTP()">
-
     Send Staff OTP
-
   </button>
-
 
   <button class="secondary"
           onclick="goHome()">
-
     ← Back
-
   </button>
 
 </section>
 
-
-<!-- =====================================================
-     PRINCIPAL LOGIN
-===================================================== -->
+<!-- ================= PRINCIPAL ================= -->
 
 <section id="principal"
          class="card hidden">
 
   <h2>👨‍💼 Principal Login</h2>
 
-
   <div class="warning-box">
-
     Principal access is only for the
     authorized Principal.
-
     Two-step verification is required.
-
   </div>
 
-
-  <label>
-    Principal Registered Mobile Number
-  </label>
+  <label>Principal Registered Mobile Number</label>
 
   <input
     type="tel"
@@ -1052,45 +864,31 @@ footer{
     maxlength="10"
     placeholder="10-digit mobile number">
 
-
   <div id="principalError"
        class="error">
   </div>
 
-
   <button onclick="sendPrincipalFirstOTP()">
-
     Start Verification
-
   </button>
-
 
   <button class="secondary"
           onclick="goHome()">
-
     ← Back
-
   </button>
 
 </section>
 
-
-<!-- =====================================================
-     CUSTOMER CARE
-===================================================== -->
+<!-- ================= CUSTOMER CARE ================= -->
 
 <section id="customerCare"
          class="card hidden">
 
   <h2>📞 Customer Care</h2>
 
-
   <div class="info">
-
     Need help with MAM Campus Connect?
-
   </div>
-
 
   <div class="dashboard-card">
 
@@ -1100,7 +898,6 @@ footer{
       Contact the MAM Campus Connect
       support team for assistance.
     </p>
-
 
     <a
       href="tel:+919999999999"
@@ -1115,53 +912,38 @@ footer{
         border-radius:8px;
         font-weight:bold;
       ">
-
       📞 Call Customer Care
-
     </a>
 
   </div>
 
-
   <div class="warning-box">
-
     <b>Important:</b>
-
     The number above is currently a
     placeholder for development.
-
     Replace it with the official
     college/customer-care number
     before publishing the app.
-
   </div>
-
 
   <button class="secondary"
           onclick="goHome()">
-
     ← Back to Home
-
   </button>
 
 </section>
 
-
-<!-- =====================================================
-     FEEDBACK
-===================================================== -->
+<!-- ================= FEEDBACK ================= -->
 
 <section id="feedback"
          class="card hidden">
 
   <h2>💬 Feedback</h2>
 
-
   <p>
     Send your feedback about
     MAM Campus Connect.
   </p>
-
 
   <label>Your Name</label>
 
@@ -1169,7 +951,6 @@ footer{
     type="text"
     id="feedbackName"
     placeholder="Enter your name">
-
 
   <label>Your Mobile Number</label>
 
@@ -1179,63 +960,43 @@ footer{
     maxlength="10"
     placeholder="10-digit mobile number">
 
-
   <label>Feedback</label>
 
   <textarea
     id="feedbackText"
-    placeholder="Enter your feedback">
-  </textarea>
-
+    placeholder="Enter your feedback"></textarea>
 
   <div id="feedbackMessage"
        class="success-box hidden">
   </div>
 
-
   <button onclick="submitFeedback()">
-
     Send Feedback
-
   </button>
-
 
   <button class="secondary"
           onclick="goHome()">
-
     ← Back to Home
-
   </button>
 
 </section>
 
-
-<!-- =====================================================
-     OTP
-===================================================== -->
+<!-- ================= OTP ================= -->
 
 <section id="otpPage"
          class="card hidden">
 
   <h2>🔐 OTP Verification</h2>
 
-
   <div class="info">
-
     Development testing OTP:
-
     <strong>123456</strong>
-
   </div>
 
-
   <p id="otpMessage">
-
     Enter the OTP sent to your
     registered mobile number.
-
   </p>
-
 
   <label>Enter OTP</label>
 
@@ -1245,600 +1006,309 @@ footer{
     maxlength="6"
     placeholder="6-digit OTP">
 
-
   <div id="otpError"
        class="error">
   </div>
 
-
   <button onclick="verifyOTP()">
-
     Verify OTP
-
   </button>
-
 
   <button class="secondary"
           onclick="goHome()">
-
     Cancel
-
   </button>
 
 </section>
 
-
-<!-- =====================================================
-     STUDENT DASHBOARD
-===================================================== -->
+<!-- ================= STUDENT DASHBOARD ================= -->
 
 <section id="studentDashboard"
          class="card hidden">
 
-  <span class="badge">
-    STUDENT
-  </span>
-
+  <span class="badge">STUDENT</span>
 
   <h2>🎓 Student Dashboard</h2>
 
-
   <p id="studentWelcome">
-
     Welcome to MAM Campus Connect.
-
   </p>
-
 
   <div class="dashboard-grid">
 
-
     <div class="dashboard-card">
-
       <h3>📅 Academic Calendar</h3>
-
-      <p>
-        View important academic dates
-        and events.
-      </p>
-
-      <button onclick="showCalendar()">
-        Open Calendar
-      </button>
-
+      <p>View important academic dates and events.</p>
+      <button onclick="showCalendar()">Open Calendar</button>
     </div>
 
-
     <div class="dashboard-card">
-
       <h3>🕐 Timetable</h3>
-
-      <p>
-        View your department timetable.
-      </p>
-
-      <button onclick="showTimetable()">
-        Open Timetable
-      </button>
-
+      <p>View your department timetable.</p>
+      <button onclick="showTimetable()">Open Timetable</button>
     </div>
 
-
     <div class="dashboard-card">
-
       <h3>📢 College Updates</h3>
-
-      <p>
-        View college notices and functions.
-      </p>
-
-      <button onclick="showNotices()">
-        View Updates
-      </button>
-
+      <p>View college notices and functions.</p>
+      <button onclick="showNotices()">View Updates</button>
     </div>
 
-
     <div class="dashboard-card">
-
       <h3>📍 Campus Map</h3>
-
-      <p>
-        Find the college location.
-      </p>
-
-      <button onclick="showMap()">
-        Open Map
-      </button>
-
+      <p>Find the college location.</p>
+      <button onclick="showMap()">Open Map</button>
     </div>
 
-
     <div class="dashboard-card">
-
       <h3>💬 Feedback</h3>
-
-      <p>
-        Send feedback.
-      </p>
-
-      <button onclick="showFeedback()">
-        Give Feedback
-      </button>
-
+      <p>Send feedback.</p>
+      <button onclick="showFeedback()">Give Feedback</button>
     </div>
 
-
     <div class="dashboard-card">
-
       <h3>🤖 AI Assistant</h3>
-
-      <p>
-        Basic campus information assistant.
-      </p>
-
-      <button
-        onclick="showMessage(
-        'AI Assistant will be connected in the next stage.'
-        )">
-
+      <p>Basic campus information assistant.</p>
+      <button onclick="showMessage('AI Assistant will be connected in the next stage.')">
         Open AI Assistant
-
       </button>
-
     </div>
 
   </div>
 
-
   <button class="secondary"
           onclick="goHome()">
-
     Logout
-
   </button>
 
 </section>
 
-
-<!-- =====================================================
-     STAFF DASHBOARD
-===================================================== -->
+<!-- ================= STAFF DASHBOARD ================= -->
 
 <section id="staffDashboard"
          class="card hidden">
 
-  <span class="badge">
-    STAFF
-  </span>
-
+  <span class="badge">STAFF</span>
 
   <h2>👨‍🏫 Staff Dashboard</h2>
-
 
   <p id="staffWelcome">
     Welcome Staff.
   </p>
 
-
   <div class="dashboard-grid">
 
-
     <div class="dashboard-card">
-
       <h3>👨‍🎓 Department Students</h3>
-
-      <p>
-        Access students in your department.
-      </p>
-
-      <button
-        onclick="showMessage(
-        'Department student access will be connected to the secure database.'
-        )">
-
+      <p>Access students in your department.</p>
+      <button onclick="showMessage('Department student access will be connected to the secure database.')">
         View Students
-
       </button>
-
     </div>
 
-
     <div class="dashboard-card">
-
       <h3>📢 Notices</h3>
-
-      <p>
-        View department notices.
-      </p>
-
-      <button
-        onclick="showMessage(
-        'Staff notice management will be connected in the next stage.'
-        )">
-
+      <p>View department notices.</p>
+      <button onclick="showMessage('Staff notice management will be connected in the next stage.')">
         Manage Notices
-
       </button>
-
     </div>
 
-
     <div class="dashboard-card">
-
       <h3>📍 Function Locations</h3>
-
-      <p>
-        View college functions.
-      </p>
-
-      <button onclick="showMap()">
-
-        View Map
-
-      </button>
-
+      <p>View college functions.</p>
+      <button onclick="showMap()">View Map</button>
     </div>
 
-
     <div class="dashboard-card">
-
       <h3>💬 Student Chat</h3>
-
-      <p>
-        Private one-to-one communication.
-      </p>
-
-      <button
-        onclick="showMessage(
-        'Private staff/student chat will be connected in the next stage.'
-        )">
-
+      <p>Private one-to-one communication.</p>
+      <button onclick="showMessage('Private staff/student chat will be connected in the next stage.')">
         Open Chat
-
       </button>
-
     </div>
 
   </div>
 
-
   <button class="secondary"
           onclick="goHome()">
-
     Logout
-
   </button>
 
 </section>
 
-
-<!-- =====================================================
-     PRINCIPAL DASHBOARD
-===================================================== -->
+<!-- ================= PRINCIPAL DASHBOARD ================= -->
 
 <section id="principalDashboard"
          class="card hidden">
 
-  <span class="badge">
-    PRINCIPAL
-  </span>
-
+  <span class="badge">PRINCIPAL</span>
 
   <h2>👨‍💼 Principal Dashboard</h2>
 
-
   <div class="success-box">
-
     Principal access provides
     college-wide administration.
-
   </div>
-
 
   <div class="dashboard-grid">
 
-
     <div class="dashboard-card">
-
       <h3>🕐 Timetable Management</h3>
-
-      <p>
-        Manage department timetables.
-      </p>
-
-      <button
-        onclick="showMessage(
-        'Principal timetable management will be connected to the database in the next stage.'
-        )">
-
+      <p>Manage department timetables.</p>
+      <button onclick="showMessage('Principal timetable management will be connected to the database in the next stage.')">
         Manage Timetable
-
       </button>
-
     </div>
 
-
     <div class="dashboard-card">
-
       <h3>📅 Academic Calendar</h3>
-
-      <p>
-        Manage official academic calendar.
-      </p>
-
-      <button
-        onclick="showMessage(
-        'Principal calendar management will be connected in the next stage.'
-        )">
-
+      <p>Manage official academic calendar.</p>
+      <button onclick="showMessage('Principal calendar management will be connected in the next stage.')">
         Manage Calendar
-
       </button>
-
     </div>
 
-
     <div class="dashboard-card">
-
       <h3>👨‍🏫 Staff Management</h3>
-
-      <p>
-        Manage staff and assignments.
-      </p>
-
-      <button
-        onclick="showMessage(
-        'Staff management will be connected in the next stage.'
-        )">
-
+      <p>Manage staff and assignments.</p>
+      <button onclick="showMessage('Staff management will be connected in the next stage.')">
         Manage Staff
-
       </button>
-
     </div>
 
-
     <div class="dashboard-card">
-
       <h3>👨‍🎓 Student Information</h3>
-
-      <p>
-        View college-wide student information.
-      </p>
-
-      <button
-        onclick="showMessage(
-        'Student management will be connected to the secure database.'
-        )">
-
+      <p>View college-wide student information.</p>
+      <button onclick="showMessage('Student management will be connected to the secure database.')">
         View Students
-
       </button>
-
     </div>
 
-
     <div class="dashboard-card">
-
       <h3>📢 College Notices</h3>
-
-      <p>
-        Publish official announcements.
-      </p>
-
-      <button
-        onclick="showMessage(
-        'Notice management will be connected in the next stage.'
-        )">
-
+      <p>Publish official announcements.</p>
+      <button onclick="showMessage('Notice management will be connected in the next stage.')">
         Manage Notices
-
       </button>
-
     </div>
 
-
     <div class="dashboard-card">
-
       <h3>📍 College Functions</h3>
-
-      <p>
-        Manage college events.
-      </p>
-
-      <button
-        onclick="showMessage(
-        'Function management will be connected in the next stage.'
-        )">
-
+      <p>Manage college events.</p>
+      <button onclick="showMessage('Function management will be connected in the next stage.')">
         Manage Functions
-
       </button>
-
     </div>
 
   </div>
 
-
   <button class="secondary"
           onclick="goHome()">
-
     Logout
-
   </button>
 
 </section>
 
-
-<!-- =====================================================
-     CALENDAR
-===================================================== -->
+<!-- ================= CALENDAR ================= -->
 
 <section id="calendar"
          class="card hidden">
 
   <h2>📅 Academic Calendar</h2>
 
-
   <table>
 
     <thead>
-
       <tr>
-
         <th>Date</th>
-
         <th>Event</th>
-
         <th>Type</th>
-
       </tr>
-
     </thead>
-
 
     <tbody>
 
       <tr>
-
         <td>15 June 2026</td>
-
         <td>Academic Session</td>
-
         <td>Academic</td>
-
       </tr>
 
-
       <tr>
-
         <td>15 August 2026</td>
-
         <td>Independence Day</td>
-
         <td>Holiday</td>
-
       </tr>
 
-
       <tr>
-
         <td>5 September 2026</td>
-
         <td>Teachers' Day</td>
-
         <td>College Event</td>
-
       </tr>
 
-
       <tr>
-
         <td>26 January 2027</td>
-
         <td>Republic Day</td>
-
         <td>Holiday</td>
-
       </tr>
 
     </tbody>
 
   </table>
 
-
   <button class="secondary"
           onclick="showStudentDashboard()">
-
     ← Back to Dashboard
-
   </button>
 
 </section>
 
-
-<!-- =====================================================
-     TIMETABLE
-===================================================== -->
+<!-- ================= TIMETABLE ================= -->
 
 <section id="timetable"
          class="card hidden">
 
   <h2>🕐 Department Timetable</h2>
 
-
-  <label>
-    Select Department
-  </label>
-
+  <label>Select Department</label>
 
   <select
     id="timetableDepartment"
     onchange="loadTimetable()">
 
-    <option value="">
-      Select Department
-    </option>
-
-    <option value="CSE">
-      Computer Science & Engineering
-    </option>
-
-    <option value="IT">
-      Information Technology
-    </option>
-
-    <option value="ECE">
-      Electronics & Communication Engineering
-    </option>
-
-    <option value="EEE">
-      Electrical & Electronics Engineering
-    </option>
-
-    <option value="MECH">
-      Mechanical Engineering
-    </option>
-
-    <option value="CIVIL">
-      Civil Engineering
-    </option>
+    <option value="">Select Department</option>
+    <option value="CSE">Computer Science & Engineering</option>
+    <option value="IT">Information Technology</option>
+    <option value="ECE">Electronics & Communication Engineering</option>
+    <option value="EEE">Electrical & Electronics Engineering</option>
+    <option value="MECH">Mechanical Engineering</option>
+    <option value="CIVIL">Civil Engineering</option>
 
   </select>
-
 
   <div id="timetableContent">
 
     <div class="info">
-
       Select a department to view
       the available timetable.
-
     </div>
 
   </div>
 
-
   <button class="secondary"
           onclick="showStudentDashboard()">
-
     ← Back to Dashboard
-
   </button>
 
 </section>
 
-
-<!-- =====================================================
-     NOTICES
-===================================================== -->
+<!-- ================= NOTICES ================= -->
 
 <section id="notices"
          class="card hidden">
 
   <h2>📢 College Updates & Functions</h2>
-
 
   <div class="dashboard-card">
 
@@ -1850,7 +1320,6 @@ footer{
     </p>
 
   </div>
-
 
   <div class="dashboard-card"
        style="margin-top:15px;">
@@ -1864,146 +1333,97 @@ footer{
 
   </div>
 
-
   <button class="secondary"
           onclick="showStudentDashboard()">
-
     ← Back to Dashboard
-
   </button>
 
 </section>
 
-
-<!-- =====================================================
-     MAP
-===================================================== -->
+<!-- ================= MAP ================= -->
 
 <section id="map"
          class="card hidden">
 
   <h2>📍 MAM Campus Map</h2>
 
-
   <div class="map-box">
 
     <h3>College Address</h3>
 
     <p>
-
       XQWH+654, Trichy Chennai Trunk Road,
       Siruganur, Tamil Nadu 621105
-
     </p>
-
 
     <a
       class="map-link"
       href="https://www.google.com/maps/search/?api=1&query=XQWH%2B654%2C%20Trichy%20Chennai%20Trunk%20Road%2C%20Siruganur%2C%20Tamil%20Nadu%20621105"
       target="_blank">
-
       📍 Open College in Google Maps
-
     </a>
 
   </div>
 
-
   <button class="secondary"
           onclick="showStudentDashboard()">
-
     ← Back to Dashboard
-
   </button>
 
 </section>
 
-
 </div>
 
-
-<!-- =====================================================
-     FOOTER
-===================================================== -->
+<!-- ================= FOOTER ================= -->
 
 <footer>
-
   MAM Campus Connect<br>
-
   M.A.M. College of Engineering and Technology
-
 </footer>
-
 
 <script>
 
-/* =====================================================
-   GLOBAL VARIABLES
-===================================================== */
+/* ================= GLOBAL VARIABLES ================= */
 
 let currentRole = "";
-
 let currentStaffId = "";
-
 let currentStaffDepartment = "";
-
 let currentStudentName = "";
 
-
-/* =====================================================
-   MENU OPEN
-===================================================== */
+/* ================= MENU ================= */
 
 function openMenu(){
 
-  document
-    .getElementById("sideMenu")
+  document.getElementById("sideMenu")
     .classList.add("open");
 
-  document
-    .getElementById("menuOverlay")
+  document.getElementById("menuOverlay")
     .classList.add("show");
 
 }
 
-
-/* =====================================================
-   MENU CLOSE
-===================================================== */
-
 function closeMenu(){
 
-  document
-    .getElementById("sideMenu")
+  document.getElementById("sideMenu")
     .classList.remove("open");
 
-  document
-    .getElementById("menuOverlay")
+  document.getElementById("menuOverlay")
     .classList.remove("show");
 
 }
 
-
-/* =====================================================
-   HIDE ALL
-===================================================== */
+/* ================= HIDE ALL ================= */
 
 function hideAll(){
 
-  document
-    .querySelectorAll("section")
-    .forEach(section => {
-
+  document.querySelectorAll("section")
+    .forEach(section=>{
       section.classList.add("hidden");
-
     });
 
 }
 
-
-/* =====================================================
-   HOME
-===================================================== */
+/* ================= HOME ================= */
 
 function goHome(){
 
@@ -2011,219 +1431,148 @@ function goHome(){
 
   hideAll();
 
-  document
-    .getElementById("home")
+  document.getElementById("home")
     .classList.remove("hidden");
 
-  currentRole = "";
+  currentRole="";
 
 }
 
-
-/* =====================================================
-   STUDENT OPTIONS
-===================================================== */
+/* ================= STUDENT ================= */
 
 function showStudentOptions(){
 
   closeMenu();
-
   hideAll();
 
-  document
-    .getElementById("studentOptions")
+  document.getElementById("studentOptions")
     .classList.remove("hidden");
 
 }
-
-
-/* =====================================================
-   REGISTRATION
-===================================================== */
 
 function showRegistration(){
 
   closeMenu();
-
   hideAll();
 
-  document
-    .getElementById("registration")
+  document.getElementById("registration")
     .classList.remove("hidden");
 
 }
-
-
-/* =====================================================
-   EXISTING STUDENT
-===================================================== */
 
 function showExistingStudent(){
 
   closeMenu();
-
   hideAll();
 
-  document
-    .getElementById("existingStudent")
+  document.getElementById("existingStudent")
     .classList.remove("hidden");
 
 }
-
-
-/* =====================================================
-   OTHER COLLEGE
-===================================================== */
 
 function showOtherCollege(){
 
   closeMenu();
-
   hideAll();
 
-  document
-    .getElementById("otherCollege")
+  document.getElementById("otherCollege")
     .classList.remove("hidden");
 
 }
 
-
-/* =====================================================
-   STAFF
-===================================================== */
+/* ================= STAFF ================= */
 
 function showStaff(){
 
   closeMenu();
-
   hideAll();
 
-  document
-    .getElementById("staff")
+  document.getElementById("staff")
     .classList.remove("hidden");
 
 }
 
-
-/* =====================================================
-   PRINCIPAL
-===================================================== */
+/* ================= PRINCIPAL ================= */
 
 function showPrincipal(){
 
   closeMenu();
-
   hideAll();
 
-  document
-    .getElementById("principal")
+  document.getElementById("principal")
     .classList.remove("hidden");
 
 }
 
-
-/* =====================================================
-   CUSTOMER CARE
-===================================================== */
+/* ================= CUSTOMER CARE ================= */
 
 function showCustomerCare(){
 
   closeMenu();
-
   hideAll();
 
-  document
-    .getElementById("customerCare")
+  document.getElementById("customerCare")
     .classList.remove("hidden");
 
 }
 
-
-/* =====================================================
-   FEEDBACK
-===================================================== */
+/* ================= FEEDBACK ================= */
 
 function showFeedback(){
 
   closeMenu();
-
   hideAll();
 
-  document
-    .getElementById("feedback")
+  document.getElementById("feedback")
     .classList.remove("hidden");
 
 }
 
+/* ================= COURSE DURATIONS ================= */
 
-/* =====================================================
-   COURSE DURATIONS
-===================================================== */
-
-const courseDurations = {
+const courseDurations={
 
   "Civil Engineering":4,
-
   "Computer Science & Engineering":4,
-
   "Electrical & Electronics Engineering":4,
-
   "Electronics & Communication Engineering":4,
-
   "Electronics & Instrumentation Engineering":4,
-
   "Information Technology":4,
-
   "Mechanical Engineering":4,
-
   "Cyber Security":4,
-
   "Artificial Intelligence & Data Science":4,
-
   "Artificial Intelligence & Machine Learning":4,
-
   "Agricultural Engineering":4,
-
   "Biomedical Engineering":4,
-
   "Food Technology":4,
-
   "Biotechnology":4,
-
   "MBA":2,
-
   "MCA":2,
-
   "M.E. Environmental Engineering":2
 
 };
 
-
-/* =====================================================
-   JOINING YEARS
-===================================================== */
+/* ================= JOINING YEARS ================= */
 
 function loadJoiningYears(){
 
-  const select =
+  const select=
     document.getElementById("joiningYear");
 
-  const currentYear =
+  const currentYear=
     new Date().getFullYear();
 
-
   for(
-    let year = 2023;
-    year <= currentYear;
+    let year=2023;
+    year<=currentYear;
     year++
   ){
 
-    const option =
+    const option=
       document.createElement("option");
 
-    option.value = year;
-
-    option.textContent = year;
+    option.value=year;
+    option.textContent=year;
 
     select.appendChild(option);
 
@@ -2231,73 +1580,48 @@ function loadJoiningYears(){
 
 }
 
-
-/* =====================================================
-   COURSE DURATION
-===================================================== */
+/* ================= COURSE ================= */
 
 function updateCourseDuration(){
 
-  const course =
-    document
-      .getElementById("studentDepartment")
-      .value;
+  const course=
+    document.getElementById("studentDepartment").value;
 
-
-  const duration =
+  const duration=
     courseDurations[course];
 
-
-  document
-    .getElementById("courseDuration")
-    .value =
-      duration
-      ? duration + " Years"
-      : "";
-
+  document.getElementById("courseDuration").value=
+    duration ? duration+" Years" : "";
 
   calculateEndingYear();
 
 }
 
-
-/* =====================================================
-   ENDING YEAR
-===================================================== */
+/* ================= ENDING YEAR ================= */
 
 function calculateEndingYear(){
 
-  const joiningYear =
+  const joiningYear=
     parseInt(
       document.getElementById("joiningYear").value
     );
 
+  const course=
+    document.getElementById("studentDepartment").value;
 
-  const course =
-    document
-      .getElementById("studentDepartment")
-      .value;
-
-
-  const duration =
+  const duration=
     courseDurations[course];
-
 
   if(joiningYear && duration){
 
-    document
-      .getElementById("endingYear")
-      .value =
-        joiningYear + duration;
+    document.getElementById("endingYear").value=
+      joiningYear+duration;
 
   }
 
 }
 
-
-/* =====================================================
-   VALIDATE ROLL
-===================================================== */
+/* ================= VALIDATION ================= */
 
 function isValidRollNumber(roll){
 
@@ -2305,752 +1629,423 @@ function isValidRollNumber(roll){
 
 }
 
-
-/* =====================================================
-   VALIDATE MOBILE
-===================================================== */
-
 function isValidMobile(mobile){
 
   return /^[0-9]{10}$/.test(mobile);
 
 }
 
-
-/* =====================================================
-   STUDENT REGISTRATION
-===================================================== */
+/* ================= REGISTRATION ================= */
 
 function validateAndSendRegistrationOTP(){
 
-  const name =
-    document
-      .getElementById("studentName")
-      .value
-      .trim();
+  const name=
+    document.getElementById("studentName").value.trim();
 
+  const roll=
+    document.getElementById("studentRoll").value.trim();
 
-  const roll =
-    document
-      .getElementById("studentRoll")
-      .value
-      .trim();
+  const dob=
+    document.getElementById("studentDOB").value;
 
+  const department=
+    document.getElementById("studentDepartment").value;
 
-  const dob =
-    document
-      .getElementById("studentDOB")
-      .value;
+  const joiningYear=
+    document.getElementById("joiningYear").value;
 
+  const studentType=
+    document.getElementById("studentType").value;
 
-  const department =
-    document
-      .getElementById("studentDepartment")
-      .value;
+  const studentMobile=
+    document.getElementById("studentMobile").value.trim();
 
+  const parentMobile=
+    document.getElementById("parentMobile").value.trim();
 
-  const joiningYear =
-    document
-      .getElementById("joiningYear")
-      .value;
+  const error=
+    document.getElementById("registrationError");
 
-
-  const studentType =
-    document
-      .getElementById("studentType")
-      .value;
-
-
-  const studentMobile =
-    document
-      .getElementById("studentMobile")
-      .value
-      .trim();
-
-
-  const parentMobile =
-    document
-      .getElementById("parentMobile")
-      .value
-      .trim();
-
-
-  const error =
-    document
-      .getElementById("registrationError");
-
-
-  error.textContent = "";
-
+  error.textContent="";
 
   if(!name){
-
-    error.textContent =
-      "Please enter student name.";
-
+    error.textContent="Please enter student name.";
     return;
-
   }
-
 
   if(!isValidRollNumber(roll)){
-
-    error.textContent =
-      "Roll number must start with 8126.";
-
+    error.textContent="Roll number must start with 8126.";
     return;
-
   }
-
 
   if(!dob){
-
-    error.textContent =
-      "Please select date of birth.";
-
+    error.textContent="Please select date of birth.";
     return;
-
   }
-
 
   if(!department){
-
-    error.textContent =
-      "Please select department/course.";
-
+    error.textContent="Please select department/course.";
     return;
-
   }
-
 
   if(!joiningYear){
-
-    error.textContent =
-      "Please select joining year.";
-
+    error.textContent="Please select joining year.";
     return;
-
   }
-
 
   if(!studentType){
-
-    error.textContent =
-      "Please select Day Scholar or Hosteler.";
-
+    error.textContent="Please select Day Scholar or Hosteler.";
     return;
-
   }
-
 
   if(!isValidMobile(studentMobile)){
-
-    error.textContent =
-      "Student mobile must contain 10 digits.";
-
+    error.textContent="Student mobile must contain 10 digits.";
     return;
-
   }
-
 
   if(!isValidMobile(parentMobile)){
-
-    error.textContent =
-      "Parent mobile must contain 10 digits.";
-
+    error.textContent="Parent mobile must contain 10 digits.";
     return;
-
   }
 
-
-  if(studentMobile === parentMobile){
-
-    error.textContent =
+  if(studentMobile===parentMobile){
+    error.textContent=
       "Student and parent mobile numbers must be different.";
-
     return;
-
   }
 
+  currentRole="studentRegistration";
+  currentStudentName=name;
 
-  currentRole =
-    "studentRegistration";
+  document.getElementById("otpMessage").textContent=
+    "OTP verification for student registration.";
 
-
-  currentStudentName =
-    name;
-
-
-  document
-    .getElementById("otpMessage")
-    .textContent =
-      "OTP verification for student registration.";
-
-
-  document
-    .getElementById("otpInput")
-    .value = "";
-
-
-  document
-    .getElementById("otpError")
-    .textContent = "";
-
+  document.getElementById("otpInput").value="";
+  document.getElementById("otpError").textContent="";
 
   hideAll();
 
-
-  document
-    .getElementById("otpPage")
+  document.getElementById("otpPage")
     .classList.remove("hidden");
 
 }
 
-
-/* =====================================================
-   EXISTING STUDENT
-===================================================== */
+/* ================= EXISTING STUDENT ================= */
 
 function validateExistingStudent(){
 
-  const roll =
-    document
-      .getElementById("existingRoll")
-      .value
-      .trim();
+  const roll=
+    document.getElementById("existingRoll").value.trim();
 
+  const mobile=
+    document.getElementById("existingMobile").value.trim();
 
-  const mobile =
-    document
-      .getElementById("existingMobile")
-      .value
-      .trim();
+  const error=
+    document.getElementById("existingError");
 
-
-  const error =
-    document
-      .getElementById("existingError");
-
-
-  error.textContent = "";
-
+  error.textContent="";
 
   if(!isValidRollNumber(roll)){
-
-    error.textContent =
-      "Roll number must start with 8126.";
-
+    error.textContent="Roll number must start with 8126.";
     return;
-
   }
-
 
   if(!isValidMobile(mobile)){
-
-    error.textContent =
+    error.textContent=
       "Please enter a valid 10-digit mobile number.";
-
     return;
-
   }
 
+  currentRole="student";
 
-  currentRole = "student";
+  document.getElementById("otpMessage").textContent=
+    "OTP verification for existing student login.";
 
-
-  document
-    .getElementById("otpMessage")
-    .textContent =
-      "OTP verification for existing student login.";
-
-
-  document
-    .getElementById("otpInput")
-    .value = "";
-
-
-  document
-    .getElementById("otpError")
-    .textContent = "";
-
+  document.getElementById("otpInput").value="";
+  document.getElementById("otpError").textContent="";
 
   hideAll();
 
-
-  document
-    .getElementById("otpPage")
+  document.getElementById("otpPage")
     .classList.remove("hidden");
 
 }
 
-
-/* =====================================================
-   OTHER COLLEGE
-===================================================== */
+/* ================= OTHER COLLEGE ================= */
 
 function sendOtherCollegeOTP(){
 
-  const college =
-    document
-      .getElementById("otherCollegeName")
-      .value
-      .trim();
+  const college=
+    document.getElementById("otherCollegeName").value.trim();
 
+  const roll=
+    document.getElementById("otherRoll").value.trim();
 
-  const roll =
-    document
-      .getElementById("otherRoll")
-      .value
-      .trim();
+  const mobile=
+    document.getElementById("otherMobile").value.trim();
 
+  const error=
+    document.getElementById("otherError");
 
-  const mobile =
-    document
-      .getElementById("otherMobile")
-      .value
-      .trim();
-
-
-  const error =
-    document
-      .getElementById("otherError");
-
-
-  error.textContent = "";
-
+  error.textContent="";
 
   if(!college){
-
-    error.textContent =
-      "Please enter college name.";
-
+    error.textContent="Please enter college name.";
     return;
-
   }
-
 
   if(!roll){
-
-    error.textContent =
-      "Please enter roll number.";
-
+    error.textContent="Please enter roll number.";
     return;
-
   }
-
 
   if(!isValidMobile(mobile)){
-
-    error.textContent =
+    error.textContent=
       "Please enter a valid 10-digit mobile number.";
-
     return;
-
   }
 
+  currentRole="otherCollege";
 
-  currentRole =
-    "otherCollege";
+  document.getElementById("otpMessage").textContent=
+    "OTP verification for Other College Student.";
 
-
-  document
-    .getElementById("otpMessage")
-    .textContent =
-      "OTP verification for Other College Student.";
-
-
-  document
-    .getElementById("otpInput")
-    .value = "";
-
-
-  document
-    .getElementById("otpError")
-    .textContent = "";
-
+  document.getElementById("otpInput").value="";
+  document.getElementById("otpError").textContent="";
 
   hideAll();
 
-
-  document
-    .getElementById("otpPage")
+  document.getElementById("otpPage")
     .classList.remove("hidden");
 
 }
 
-
-/* =====================================================
-   STAFF OTP
-===================================================== */
+/* ================= STAFF ================= */
 
 function sendStaffOTP(){
 
-  const staffId =
-    document
-      .getElementById("staffId")
-      .value
-      .trim();
+  const staffId=
+    document.getElementById("staffId").value.trim();
 
+  const department=
+    document.getElementById("staffDepartment").value;
 
-  const department =
-    document
-      .getElementById("staffDepartment")
-      .value;
+  const mobile=
+    document.getElementById("staffMobile").value.trim();
 
+  const error=
+    document.getElementById("staffError");
 
-  const mobile =
-    document
-      .getElementById("staffMobile")
-      .value
-      .trim();
-
-
-  const error =
-    document
-      .getElementById("staffError");
-
-
-  error.textContent = "";
-
+  error.textContent="";
 
   if(!staffId){
-
-    error.textContent =
-      "Please enter Staff ID.";
-
+    error.textContent="Please enter Staff ID.";
     return;
-
   }
-
 
   if(!department){
-
-    error.textContent =
-      "Please select department.";
-
+    error.textContent="Please select department.";
     return;
-
   }
-
 
   if(!isValidMobile(mobile)){
-
-    error.textContent =
+    error.textContent=
       "Please enter a valid 10-digit mobile number.";
-
     return;
-
   }
 
+  currentRole="staff";
+  currentStaffId=staffId;
+  currentStaffDepartment=department;
 
-  currentRole =
-    "staff";
+  document.getElementById("otpMessage").textContent=
+    "OTP verification for Staff Login.";
 
-
-  currentStaffId =
-    staffId;
-
-
-  currentStaffDepartment =
-    department;
-
-
-  document
-    .getElementById("otpMessage")
-    .textContent =
-      "OTP verification for Staff Login.";
-
-
-  document
-    .getElementById("otpInput")
-    .value = "";
-
-
-  document
-    .getElementById("otpError")
-    .textContent = "";
-
+  document.getElementById("otpInput").value="";
+  document.getElementById("otpError").textContent="";
 
   hideAll();
 
-
-  document
-    .getElementById("otpPage")
+  document.getElementById("otpPage")
     .classList.remove("hidden");
 
 }
 
-
-/* =====================================================
-   PRINCIPAL
-===================================================== */
+/* ================= PRINCIPAL ================= */
 
 function sendPrincipalFirstOTP(){
 
-  const mobile =
-    document
-      .getElementById("principalMobile")
-      .value
-      .trim();
+  const mobile=
+    document.getElementById("principalMobile").value.trim();
 
+  const error=
+    document.getElementById("principalError");
 
-  const error =
-    document
-      .getElementById("principalError");
-
-
-  error.textContent = "";
-
+  error.textContent="";
 
   if(!isValidMobile(mobile)){
-
-    error.textContent =
+    error.textContent=
       "Please enter a valid 10-digit mobile number.";
-
     return;
-
   }
 
+  currentRole="principalFirst";
 
-  currentRole =
-    "principalFirst";
+  document.getElementById("otpMessage").textContent=
+    "First verification for Principal Login.";
 
-
-  document
-    .getElementById("otpMessage")
-    .textContent =
-      "First verification for Principal Login.";
-
-
-  document
-    .getElementById("otpInput")
-    .value = "";
-
-
-  document
-    .getElementById("otpError")
-    .textContent = "";
-
+  document.getElementById("otpInput").value="";
+  document.getElementById("otpError").textContent="";
 
   hideAll();
 
-
-  document
-    .getElementById("otpPage")
+  document.getElementById("otpPage")
     .classList.remove("hidden");
 
 }
 
-
-/* =====================================================
-   OTP
-===================================================== */
+/* ================= OTP ================= */
 
 function verifyOTP(){
 
-  const otp =
-    document
-      .getElementById("otpInput")
-      .value
-      .trim();
+  const otp=
+    document.getElementById("otpInput").value.trim();
 
+  const error=
+    document.getElementById("otpError");
 
-  const error =
-    document
-      .getElementById("otpError");
+  error.textContent="";
 
+  if(otp!=="123456"){
 
-  error.textContent = "";
-
-
-  /*
-    DEVELOPMENT TEST OTP
-
-    Real SMS OTP will be added later.
-  */
-
-
-  if(otp !== "123456"){
-
-    error.textContent =
+    error.textContent=
       "Invalid OTP. Use 123456 for testing.";
 
     return;
 
   }
 
-
-  /* STUDENT */
-
   if(
-    currentRole === "studentRegistration" ||
-    currentRole === "student" ||
-    currentRole === "otherCollege"
+    currentRole==="studentRegistration" ||
+    currentRole==="student" ||
+    currentRole==="otherCollege"
   ){
 
     showStudentDashboard();
-
     return;
 
   }
 
-
-  /* STAFF */
-
-  if(currentRole === "staff"){
+  if(currentRole==="staff"){
 
     showStaffDashboard();
 
-    document
-      .getElementById("staffWelcome")
-      .textContent =
-        "Welcome Staff ID: " +
-        currentStaffId +
-        " | Department: " +
-        currentStaffDepartment;
+    document.getElementById("staffWelcome").textContent=
+      "Welcome Staff ID: "+
+      currentStaffId+
+      " | Department: "+
+      currentStaffDepartment;
 
     return;
 
   }
 
+  if(currentRole==="principalFirst"){
 
-  /* PRINCIPAL FIRST STEP */
+    currentRole="principalSecond";
 
-  if(currentRole === "principalFirst"){
+    document.getElementById("otpInput").value="";
 
-    currentRole =
-      "principalSecond";
-
-
-    document
-      .getElementById("otpInput")
-      .value = "";
-
-
-    document
-      .getElementById("otpMessage")
-      .textContent =
-        "Second verification for Principal Login. Use OTP 123456.";
-
+    document.getElementById("otpMessage").textContent=
+      "Second verification for Principal Login. Use OTP 123456.";
 
     return;
 
   }
 
-
-  /* PRINCIPAL SECOND STEP */
-
-  if(currentRole === "principalSecond"){
+  if(currentRole==="principalSecond"){
 
     showPrincipalDashboard();
-
     return;
 
   }
 
 }
 
-
-/* =====================================================
-   DASHBOARDS
-===================================================== */
+/* ================= DASHBOARDS ================= */
 
 function showStudentDashboard(){
 
   hideAll();
 
-  document
-    .getElementById("studentDashboard")
+  document.getElementById("studentDashboard")
     .classList.remove("hidden");
 
 }
-
 
 function showStaffDashboard(){
 
   hideAll();
 
-  document
-    .getElementById("staffDashboard")
+  document.getElementById("staffDashboard")
     .classList.remove("hidden");
 
 }
-
 
 function showPrincipalDashboard(){
 
   hideAll();
 
-  document
-    .getElementById("principalDashboard")
+  document.getElementById("principalDashboard")
     .classList.remove("hidden");
 
 }
 
-
-/* =====================================================
-   CALENDAR
-===================================================== */
+/* ================= CALENDAR ================= */
 
 function showCalendar(){
 
   hideAll();
 
-  document
-    .getElementById("calendar")
+  document.getElementById("calendar")
     .classList.remove("hidden");
 
 }
 
-
-/* =====================================================
-   TIMETABLE
-===================================================== */
+/* ================= TIMETABLE ================= */
 
 function showTimetable(){
 
   hideAll();
 
-  document
-    .getElementById("timetable")
+  document.getElementById("timetable")
     .classList.remove("hidden");
 
 }
 
-
-/* =====================================================
-   TIMETABLE DATA
-===================================================== */
-
 function loadTimetable(){
 
-  const department =
-    document
-      .getElementById("timetableDepartment")
-      .value;
+  const department=
+    document.getElementById("timetableDepartment").value;
 
-
-  const content =
-    document
-      .getElementById("timetableContent");
-
+  const content=
+    document.getElementById("timetableContent");
 
   if(!department){
 
-    content.innerHTML =
+    content.innerHTML=
       '<div class="info">Select a department.</div>';
 
     return;
 
   }
 
-
   if(
-    department === "CSE" ||
-    department === "IT"
+    department==="CSE" ||
+    department==="IT"
   ){
 
-    content.innerHTML = `
+    content.innerHTML=`
 
       <div class="warning-box">
 
@@ -3067,19 +2062,12 @@ function loadTimetable(){
         <thead>
 
           <tr>
-
             <th>Day</th>
-
             <th>Period 1</th>
-
             <th>Period 2</th>
-
             <th>Period 3</th>
-
             <th>Period 4</th>
-
             <th>Period 5</th>
-
           </tr>
 
         </thead>
@@ -3087,87 +2075,48 @@ function loadTimetable(){
         <tbody>
 
           <tr>
-
             <td>Monday</td>
-
             <td>Maths</td>
-
             <td>DBMS</td>
-
             <td>OS</td>
-
             <td>Programming</td>
-
             <td>Lab</td>
-
           </tr>
 
-
           <tr>
-
             <td>Tuesday</td>
-
             <td>OS</td>
-
             <td>Maths</td>
-
             <td>DBMS</td>
-
             <td>Programming</td>
-
             <td>Lab</td>
-
           </tr>
 
-
           <tr>
-
             <td>Wednesday</td>
-
             <td>Programming</td>
-
             <td>Maths</td>
-
             <td>DBMS</td>
-
             <td>OS</td>
-
             <td>Library</td>
-
           </tr>
 
-
           <tr>
-
             <td>Thursday</td>
-
             <td>DBMS</td>
-
             <td>OS</td>
-
             <td>Maths</td>
-
             <td>Programming</td>
-
             <td>Sports</td>
-
           </tr>
 
-
           <tr>
-
             <td>Friday</td>
-
             <td>OS</td>
-
             <td>DBMS</td>
-
             <td>Programming</td>
-
             <td>Maths</td>
-
             <td>Seminar</td>
-
           </tr>
 
         </tbody>
@@ -3180,8 +2129,7 @@ function loadTimetable(){
 
   }
 
-
-  content.innerHTML = `
+  content.innerHTML=`
 
     <div class="warning-box">
 
@@ -3198,128 +2146,75 @@ function loadTimetable(){
 
 }
 
-
-/* =====================================================
-   NOTICES
-===================================================== */
+/* ================= NOTICES ================= */
 
 function showNotices(){
 
   hideAll();
 
-  document
-    .getElementById("notices")
+  document.getElementById("notices")
     .classList.remove("hidden");
 
 }
 
-
-/* =====================================================
-   MAP
-===================================================== */
+/* ================= MAP ================= */
 
 function showMap(){
 
   hideAll();
 
-  document
-    .getElementById("map")
+  document.getElementById("map")
     .classList.remove("hidden");
 
 }
 
-
-/* =====================================================
-   FEEDBACK SUBMIT
-===================================================== */
+/* ================= FEEDBACK ================= */
 
 function submitFeedback(){
 
-  const name =
-    document
-      .getElementById("feedbackName")
-      .value
-      .trim();
+  const name=
+    document.getElementById("feedbackName").value.trim();
 
+  const mobile=
+    document.getElementById("feedbackMobile").value.trim();
 
-  const mobile =
-    document
-      .getElementById("feedbackMobile")
-      .value
-      .trim();
+  const feedback=
+    document.getElementById("feedbackText").value.trim();
 
-
-  const feedback =
-    document
-      .getElementById("feedbackText")
-      .value
-      .trim();
-
-
-  const message =
-    document
-      .getElementById("feedbackMessage");
-
+  const message=
+    document.getElementById("feedbackMessage");
 
   message.classList.add("hidden");
 
-
   if(!name){
-
     alert("Please enter your name.");
-
     return;
-
   }
 
-
   if(!isValidMobile(mobile)){
-
     alert(
       "Please enter a valid 10-digit mobile number."
     );
-
     return;
-
   }
-
 
   if(!feedback){
-
     alert("Please enter your feedback.");
-
     return;
-
   }
 
-
-  message.textContent =
+  message.textContent=
     "Thank you. Your feedback has been recorded for this development version.";
-
 
   message.classList.remove("hidden");
 
-
-  document
-    .getElementById("feedbackName")
-    .value = "";
-
-
-  document
-    .getElementById("feedbackMobile")
-    .value = "";
-
-
-  document
-    .getElementById("feedbackText")
-    .value = "";
+  document.getElementById("feedbackName").value="";
+  document.getElementById("feedbackMobile").value="";
+  document.getElementById("feedbackText").value="";
 
 }
 
-
-/* =====================================================
-   MESSAGE
-===================================================== */
+/* ================= MESSAGE ================= */
 
 function showMessage(message){
 
@@ -3327,10 +2222,7 @@ function showMessage(message){
 
 }
 
-
-/* =====================================================
-   INITIALIZE
-===================================================== */
+/* ================= INITIALIZE ================= */
 
 loadJoiningYears();
 
