@@ -1910,4 +1910,487 @@ function validateExistingStudent(){
   }
 
 
-  if(!isValid
+  if(!isValidMobile(mobile)){
+
+    alert(
+      "Mobile number must contain exactly 10 digits."
+    );
+
+    return;
+
+  }
+
+
+  sendOTP();
+
+}
+
+
+/* =====================================
+   OTP
+===================================== */
+
+function sendOTP(){
+
+  hideAll();
+
+
+  document.getElementById("otpBox")
+    .classList.remove("hidden");
+
+}
+
+
+function verifyOTP(){
+
+  const otp =
+    document.getElementById("otp")
+      .value.trim();
+
+
+  if(!/^[0-9]{6}$/.test(otp)){
+
+    alert(
+      "Please enter a 6-digit OTP."
+    );
+
+    return;
+
+  }
+
+
+  if(otp === "123456"){
+
+    hideAll();
+
+
+    document.getElementById("dashboard")
+      .classList.remove("hidden");
+
+
+    alert(
+      "OTP verified successfully."
+    );
+
+  }
+  else{
+
+    alert(
+      "Incorrect OTP. Development test OTP is 123456."
+    );
+
+  }
+
+}
+
+
+/* =====================================
+   CALENDAR
+===================================== */
+
+function showCalendar(){
+
+  hideAll();
+
+
+  document.getElementById("calendarBox")
+    .classList.remove("hidden");
+
+}
+
+
+function closeCalendar(){
+
+  hideAll();
+
+
+  document.getElementById("dashboard")
+    .classList.remove("hidden");
+
+}
+
+
+/* =====================================
+   NOTICES
+===================================== */
+
+function showNotices(){
+
+  hideAll();
+
+
+  document.getElementById("noticesBox")
+    .classList.remove("hidden");
+
+}
+
+
+function closeNotices(){
+
+  hideAll();
+
+
+  document.getElementById("dashboard")
+    .classList.remove("hidden");
+
+}
+
+
+/* =====================================
+   MAP
+===================================== */
+
+function showMap(){
+
+  hideAll();
+
+
+  document.getElementById("mapBox")
+    .classList.remove("hidden");
+
+}
+
+
+function closeMap(){
+
+  hideAll();
+
+
+  document.getElementById("dashboard")
+    .classList.remove("hidden");
+
+}
+
+
+/* =====================================
+   TIMETABLE
+===================================== */
+
+function showTimetable(){
+
+  hideAll();
+
+
+  document.getElementById("timetableBox")
+    .classList.remove("hidden");
+
+}
+
+
+function closeTimetable(){
+
+  hideAll();
+
+
+  document.getElementById("dashboard")
+    .classList.remove("hidden");
+
+}
+
+
+function displayTimetable(){
+
+  const department =
+    document.getElementById("timetableDepartment")
+      .value;
+
+
+  const result =
+    document.getElementById("timetableResult");
+
+
+  if(!department){
+
+    result.innerHTML = "";
+
+    return;
+
+  }
+
+
+  const timetable = {
+
+    "Computer Science & Engineering":[
+
+      [
+        "9:00 - 10:00",
+        "Programming",
+        "Mathematics",
+        "DBMS",
+        "Operating Systems",
+        "Computer Networks"
+      ],
+
+      [
+        "10:00 - 11:00",
+        "Mathematics",
+        "Programming",
+        "Computer Networks",
+        "DBMS",
+        "English"
+      ],
+
+      [
+        "11:15 - 12:15",
+        "DBMS",
+        "Computer Networks",
+        "Programming",
+        "Mathematics",
+        "Operating Systems"
+      ],
+
+      [
+        "12:15 - 1:15",
+        "English",
+        "English",
+        "English",
+        "Programming",
+        "Mathematics"
+      ],
+
+      [
+        "2:00 - 3:00",
+        "Operating Systems",
+        "DBMS",
+        "Mathematics",
+        "Computer Networks",
+        "Programming"
+      ]
+
+    ],
+
+
+    "Information Technology":[
+
+      [
+        "9:00 - 10:00",
+        "Programming",
+        "Web Technology",
+        "Mathematics",
+        "Database",
+        "English"
+      ],
+
+      [
+        "10:00 - 11:00",
+        "Database",
+        "Programming",
+        "Web Technology",
+        "Mathematics",
+        "Networking"
+      ],
+
+      [
+        "11:15 - 12:15",
+        "Networking",
+        "Database",
+        "Programming",
+        "English",
+        "Web Technology"
+      ],
+
+      [
+        "12:15 - 1:15",
+        "English",
+        "Mathematics",
+        "English",
+        "Programming",
+        "Database"
+      ],
+
+      [
+        "2:00 - 3:00",
+        "Web Technology",
+        "Networking",
+        "Database",
+        "Programming",
+        "Mathematics"
+      ]
+
+    ]
+
+  };
+
+
+  const data =
+    timetable[department];
+
+
+  if(!data){
+
+    result.innerHTML = `
+
+      <div class="info-message">
+
+        📚 Official timetable for
+        <strong>${department}</strong>
+        will be added after the original college timetable
+        is provided.
+
+      </div>
+
+    `;
+
+    return;
+
+  }
+
+
+  let html = `
+
+    <div class="timetable-card">
+
+      <h3>
+        ${department} Department
+      </h3>
+
+      <p>
+        <strong>Sample timetable</strong>
+      </p>
+
+      <table class="timetable-table">
+
+        <tr>
+
+          <th>
+            Time
+          </th>
+
+          <th>
+            Monday
+          </th>
+
+          <th>
+            Tuesday
+          </th>
+
+          <th>
+            Wednesday
+          </th>
+
+          <th>
+            Thursday
+          </th>
+
+          <th>
+            Friday
+          </th>
+
+        </tr>
+
+  `;
+
+
+  data.forEach(row => {
+
+    html += `
+
+      <tr>
+
+        <td>
+          <strong>
+            ${row[0]}
+          </strong>
+        </td>
+
+        <td>
+          ${row[1]}
+        </td>
+
+        <td>
+          ${row[2]}
+        </td>
+
+        <td>
+          ${row[3]}
+        </td>
+
+        <td>
+          ${row[4]}
+        </td>
+
+        <td>
+          ${row[5]}
+        </td>
+
+      </tr>
+
+    `;
+
+  });
+
+
+  html += `
+
+      </table>
+
+      <p>
+
+        ⚠️ This is sample timetable data.
+        Official timetable will be added later.
+
+      </p>
+
+    </div>
+
+  `;
+
+
+  result.innerHTML =
+    html;
+
+}
+
+
+/* =====================================
+   MESSAGE
+===================================== */
+
+function showMessage(text){
+
+  hideAll();
+
+
+  document.getElementById("dashboard")
+    .classList.remove("hidden");
+
+
+  const message =
+    document.getElementById("message");
+
+
+  message.innerText =
+    text;
+
+
+  message.classList.remove("hidden");
+
+}
+
+
+/* =====================================
+   HOME
+===================================== */
+
+function goHome(){
+
+  hideAll();
+
+
+  document.getElementById("home")
+    .classList.remove("hidden");
+
+}
+
+
+/* =====================================
+   STARTUP
+===================================== */
+
+loadJoiningYears();
+
+</script>
+
+</body>
+  </html>
+  
