@@ -6,6 +6,12 @@
 <meta name="theme-color" content="#123c69">
 <title>MAM Campus Connect</title>
 
+<!-- ================= FIREBASE ================= -->
+
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+
 <style>
 *{
   box-sizing:border-box;
@@ -897,6 +903,7 @@ readonly>
 <input id="regMobile"
 type="tel"
 maxlength="10"
+inputmode="numeric"
 placeholder="10 digit mobile number">
 
 
@@ -905,6 +912,7 @@ placeholder="10 digit mobile number">
 <input id="regParentMobile"
 type="tel"
 maxlength="10"
+inputmode="numeric"
 placeholder="10 digit mobile number">
 
 
@@ -944,6 +952,7 @@ Development OTP: <strong>123456</strong>
 <input id="regOtp"
 type="text"
 maxlength="6"
+inputmode="numeric"
 placeholder="Enter 6 digit OTP">
 
 <button class="primary-btn"
@@ -983,6 +992,7 @@ placeholder="Enter roll number">
 <input id="loginMobile"
 type="tel"
 maxlength="10"
+inputmode="numeric"
 placeholder="Enter mobile number">
 
 
@@ -1015,6 +1025,7 @@ Development OTP: <strong>123456</strong>
 <input id="loginOtpInput"
 type="text"
 maxlength="6"
+inputmode="numeric"
 placeholder="Enter OTP">
 
 <button class="primary-btn"
@@ -1034,7 +1045,6 @@ Login
 <!-- ================================================= -->
 
 <section id="studentDashboard" class="hidden">
-
 
 <div class="student-top">
 
@@ -1072,7 +1082,6 @@ onclick="showSection('updates')">
 <!-- QUICK STATISTICS -->
 
 <div class="stats-grid">
-
 
 <div class="stat-card">
 
@@ -1133,7 +1142,6 @@ Current
 
 </div>
 
-
 </div>
 
 
@@ -1173,7 +1181,6 @@ academic announcements.
 
 
 <div class="dashboard-grid">
-
 
 <button class="dashboard-card"
 onclick="showSection('studentProfile')">
@@ -1314,12 +1321,11 @@ Get help with campus information
 
 </button>
 
-
 </div>
 
 
 <button class="secondary-btn"
-onclick="goHome()">
+onclick="logoutStudent()">
 🚪 Logout
 </button>
 
@@ -1401,7 +1407,6 @@ Student
 
 <div class="profile-details">
 
-
 <div class="profile-row">
 
 <small>Student Name</small>
@@ -1418,6 +1423,17 @@ Not available
 <small>Roll Number</small>
 
 <strong id="profileRoll">
+Not available
+</strong>
+
+</div>
+
+
+<div class="profile-row">
+
+<small>Date of Birth</small>
+
+<strong id="profileDob">
 Not available
 </strong>
 
@@ -1477,7 +1493,6 @@ Not available
 </strong>
 
 </div>
-
 
 </div>
 
@@ -1661,7 +1676,6 @@ onclick="showSection('studentDashboard')">
 <strong>Paid</strong>
 
 </div>
-
 
 </div>
 
@@ -1875,7 +1889,6 @@ Development Notice
 <p>
 Live notices will be added when the application
 is connected to the college backend.
-
 </p>
 
 </div>
@@ -1956,6 +1969,7 @@ placeholder="Enter roll number">
 <input id="otherMobile"
 type="tel"
 maxlength="10"
+inputmode="numeric"
 placeholder="10 digit mobile number">
 
 
@@ -2008,6 +2022,7 @@ placeholder="Enter department">
 <input id="staffMobile"
 type="tel"
 maxlength="10"
+inputmode="numeric"
 placeholder="10 digit mobile number">
 
 
@@ -2044,6 +2059,7 @@ Development OTP: <strong>123456</strong>
 <input id="staffOtpInput"
 type="text"
 maxlength="6"
+inputmode="numeric"
 placeholder="Enter OTP">
 
 
@@ -2172,6 +2188,7 @@ onclick="goHome()">
 <input id="principalMobile"
 type="tel"
 maxlength="10"
+inputmode="numeric"
 placeholder="Enter registered mobile">
 
 
@@ -2208,6 +2225,7 @@ Development OTP: <strong>123456</strong>
 <input id="principalOtpInput"
 type="text"
 maxlength="6"
+inputmode="numeric"
 placeholder="Enter OTP">
 
 
@@ -2404,6 +2422,7 @@ placeholder="Enter your name">
 <input id="feedbackMobile"
 type="tel"
 maxlength="10"
+inputmode="numeric"
 placeholder="Enter mobile number">
 
 
@@ -2438,13 +2457,41 @@ MAM Campus Connect © 2026
 
 <script>
 
-/* ================= VARIABLES ================= */
+/* ================================================= */
+/* FIREBASE CONFIGURATION */
+/* ================================================= */
+
+const firebaseConfig = {
+  apiKey: "AIzaSyDqBPMbGHSBOlvQlfwMsMObJrrZU5TvTsg",
+  authDomain: "mam-campus-connect.firebaseapp.com",
+  projectId: "mam-campus-connect",
+  storageBucket: "mam-campus-connect.firebasestorage.app",
+  messagingSenderId: "46200336704",
+  appId: "1:46200336704:web:74808b2fa8d3ad62a44aa5"
+};
+
+
+/* ================================================= */
+/* FIREBASE INITIALIZATION */
+/* ================================================= */
+
+firebase.initializeApp(firebaseConfig);
+
+const auth = firebase.auth();
+const db = firebase.firestore();
+
+
+/* ================================================= */
+/* VARIABLES */
+/* ================================================= */
 
 let currentRole="";
 let currentStudent=null;
 
 
-/* ================= MENU ================= */
+/* ================================================= */
+/* MENU */
+/* ================================================= */
 
 function openMenu(){
 
@@ -2468,7 +2515,9 @@ function closeMenu(){
 }
 
 
-/* ================= SECTIONS ================= */
+/* ================================================= */
+/* SECTIONS */
+/* ================================================= */
 
 function hideAll(){
 
@@ -2504,7 +2553,9 @@ function showSection(id){
 }
 
 
-/* ================= BOTTOM NAV ================= */
+/* ================================================= */
+/* BOTTOM NAV */
+/* ================================================= */
 
 function updateBottomNav(id){
 
@@ -2546,7 +2597,9 @@ function updateBottomNav(id){
 }
 
 
-/* ================= HOME ================= */
+/* ================================================= */
+/* HOME */
+/* ================================================= */
 
 function goHome(){
 
@@ -2563,7 +2616,9 @@ function goHome(){
 }
 
 
-/* ================= JOINING YEARS ================= */
+/* ================================================= */
+/* JOINING YEARS */
+/* ================================================= */
 
 function loadJoiningYears(){
 
@@ -2593,7 +2648,9 @@ function loadJoiningYears(){
 }
 
 
-/* ================= ENDING YEAR ================= */
+/* ================================================= */
+/* ENDING YEAR */
+/* ================================================= */
 
 function updateEndingYear(){
 
@@ -2627,7 +2684,9 @@ function updateEndingYear(){
 }
 
 
-/* ================= REGISTER ================= */
+/* ================================================= */
+/* REGISTER STUDENT */
+/* ================================================= */
 
 function registerStudent(){
 
@@ -2725,15 +2784,15 @@ function registerStudent(){
 
 
   currentStudent={
-    name,
-    roll,
-    dob,
-    course,
-    joining,
-    duration,
-    type,
-    mobile,
-    parent,
+    name:name,
+    roll:roll,
+    dob:dob,
+    course:course,
+    joining:joining,
+    duration:duration,
+    type:type,
+    mobile:mobile,
+    parent:parent,
     endingYear:
       parseInt(joining)+parseInt(duration)
   };
@@ -2746,9 +2805,11 @@ function registerStudent(){
 }
 
 
-/* ================= REGISTER OTP ================= */
+/* ================================================= */
+/* VERIFY REGISTRATION OTP + FIRESTORE SAVE */
+/* ================================================= */
 
-function verifyRegistrationOtp(){
+async function verifyRegistrationOtp(){
 
   const otp=
     document.getElementById("regOtp")
@@ -2768,28 +2829,111 @@ function verifyRegistrationOtp(){
   }
 
 
-  if(currentStudent){
+  if(!currentStudent){
+
+    message.innerHTML=
+      '<div class="warning">Registration information was lost. Please register again.</div>';
+
+    return;
+
+  }
+
+
+  message.innerHTML=
+    '<div class="info-box">Saving student information securely...</div>';
+
+
+  try{
+
+    /*
+     * Roll number is used as the Firestore document ID.
+     * This makes every roll number unique.
+     */
+
+    const studentRef=
+      db.collection("students")
+      .doc(currentStudent.roll);
+
+
+    const existing=
+      await studentRef.get();
+
+
+    if(existing.exists){
+
+      message.innerHTML=
+        '<div class="warning">This roll number is already registered.</div>';
+
+      return;
+
+    }
+
+
+    await studentRef.set({
+
+      name:currentStudent.name,
+      roll:currentStudent.roll,
+      dob:currentStudent.dob,
+      course:currentStudent.course,
+      joining:currentStudent.joining,
+      duration:currentStudent.duration,
+      endingYear:currentStudent.endingYear,
+      type:currentStudent.type,
+      mobile:currentStudent.mobile,
+      parent:currentStudent.parent,
+
+      createdAt:
+        firebase.firestore.FieldValue.serverTimestamp()
+
+    });
+
+
+    /*
+     * Keep a small local copy so the dashboard
+     * can remain available after page refresh.
+     */
 
     localStorage.setItem(
       "mamStudent",
       JSON.stringify(currentStudent)
     );
 
+
+    currentRole="student";
+
+    message.innerHTML=
+      '<div class="info-box">✓ Registration successful. Student data saved to Firebase.</div>';
+
+
+    loadStudentProfile();
+
+
+    setTimeout(function(){
+
+      showSection("studentDashboard");
+
+    },700);
+
+
   }
 
+  catch(error){
 
-  currentRole="student";
+    console.error(error);
 
-  loadStudentProfile();
+    message.innerHTML=
+      '<div class="warning">Firebase error: '+escapeHtml(error.message)+'</div>';
 
-  showSection("studentDashboard");
+  }
 
 }
 
 
-/* ================= STUDENT LOGIN ================= */
+/* ================================================= */
+/* STUDENT LOGIN */
+/* ================================================= */
 
-function studentLogin(){
+async function studentLogin(){
 
   const roll=
     document.getElementById("loginRoll")
@@ -2802,47 +2946,96 @@ function studentLogin(){
   const message=
     document.getElementById("loginMessage");
 
-  const saved=
-    localStorage.getItem("mamStudent");
 
-
-  if(!saved){
+  if(!roll || !/^[0-9]+$/.test(roll)){
 
     message.innerHTML=
-      '<div class="warning">No registered student found on this device. Complete registration first.</div>';
+      '<div class="warning">Enter a valid roll number.</div>';
 
     return;
 
   }
 
 
-  const student=
-    JSON.parse(saved);
-
-
-  if(
-    student.roll!==roll ||
-    student.mobile!==mobile
-  ){
+  if(!/^[0-9]{10}$/.test(mobile)){
 
     message.innerHTML=
-      '<div class="warning">Roll number or mobile number is incorrect.</div>';
+      '<div class="warning">Enter a valid 10 digit mobile number.</div>';
 
     return;
 
   }
 
 
-  currentStudent=student;
+  message.innerHTML=
+    '<div class="info-box">Checking student information...</div>';
 
-  message.innerHTML="";
 
-  showSection("loginOtp");
+  try{
+
+    const studentRef=
+      db.collection("students")
+      .doc(roll);
+
+
+    const studentDoc=
+      await studentRef.get();
+
+
+    if(!studentDoc.exists){
+
+      message.innerHTML=
+        '<div class="warning">Student record not found in Firebase. Please complete registration first.</div>';
+
+      return;
+
+    }
+
+
+    const student=
+      studentDoc.data();
+
+
+    if(student.mobile!==mobile){
+
+      message.innerHTML=
+        '<div class="warning">Roll number or registered mobile number is incorrect.</div>';
+
+      return;
+
+    }
+
+
+    currentStudent=student;
+
+
+    localStorage.setItem(
+      "mamStudent",
+      JSON.stringify(student)
+    );
+
+
+    message.innerHTML="";
+
+    showSection("loginOtp");
+
+  }
+
+  catch(error){
+
+    console.error(error);
+
+    message.innerHTML=
+      '<div class="warning">Firebase error: '+escapeHtml(error.message)+'</div>';
+
+  }
 
 }
 
 
-/* ================= LOGIN OTP ================= */
+/* ================================================= */
+/* LOGIN OTP */
+/* ================================================= */
 
 function verifyStudentLoginOtp(){
 
@@ -2873,7 +3066,9 @@ function verifyStudentLoginOtp(){
 }
 
 
-/* ================= LOAD PROFILE ================= */
+/* ================================================= */
+/* LOAD PROFILE */
+/* ================================================= */
 
 function loadStudentProfile(){
 
@@ -2884,8 +3079,20 @@ function loadStudentProfile(){
 
     if(saved){
 
-      currentStudent=
-        JSON.parse(saved);
+      try{
+
+        currentStudent=
+          JSON.parse(saved);
+
+      }
+
+      catch(error){
+
+        console.error(error);
+
+        currentStudent=null;
+
+      }
 
     }
 
@@ -2921,6 +3128,11 @@ function loadStudentProfile(){
     currentStudent.roll;
 
 
+  document.getElementById("profileDob")
+  .textContent=
+    currentStudent.dob || "Not available";
+
+
   document.getElementById("profileCourse")
   .textContent=
     currentStudent.course;
@@ -2948,7 +3160,29 @@ function loadStudentProfile(){
 }
 
 
-/* ================= OTHER COLLEGE ================= */
+/* ================================================= */
+/* STUDENT LOGOUT */
+/* ================================================= */
+
+function logoutStudent(){
+
+  currentStudent=null;
+  currentRole="";
+
+  localStorage.removeItem("mamStudent");
+
+  document.getElementById("loginRoll").value="";
+  document.getElementById("loginMobile").value="";
+  document.getElementById("loginOtpInput").value="";
+
+  goHome();
+
+}
+
+
+/* ================================================= */
+/* OTHER COLLEGE */
+/* ================================================= */
 
 function otherCollegeLogin(){
 
@@ -2988,7 +3222,9 @@ function otherCollegeLogin(){
 }
 
 
-/* ================= STAFF ================= */
+/* ================================================= */
+/* STAFF */
+/* ================================================= */
 
 function staffLogin(){
 
@@ -3066,7 +3302,9 @@ function verifyStaffOtp(){
 }
 
 
-/* ================= PRINCIPAL ================= */
+/* ================================================= */
+/* PRINCIPAL */
+/* ================================================= */
 
 function principalSendOtp(){
 
@@ -3120,7 +3358,9 @@ function verifyPrincipalOtp(){
 }
 
 
-/* ================= FEEDBACK ================= */
+/* ================================================= */
+/* FEEDBACK */
+/* ================================================= */
 
 function submitFeedback(){
 
@@ -3160,7 +3400,9 @@ function submitFeedback(){
 }
 
 
-/* ================= AI ================= */
+/* ================================================= */
+/* AI */
+/* ================================================= */
 
 function aiAssistant(){
 
@@ -3172,7 +3414,25 @@ function aiAssistant(){
 }
 
 
-/* ================= START ================= */
+/* ================================================= */
+/* SAFE ERROR TEXT */
+/* ================================================= */
+
+function escapeHtml(value){
+
+  return String(value)
+    .replace(/&/g,"&amp;")
+    .replace(/</g,"&lt;")
+    .replace(/>/g,"&gt;")
+    .replace(/"/g,"&quot;")
+    .replace(/'/g,"&#039;");
+
+}
+
+
+/* ================================================= */
+/* START */
+/* ================================================= */
 
 loadJoiningYears();
 
