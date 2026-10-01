@@ -83,12 +83,42 @@ select{
   font-size:16px;
 }
 
+input:focus,
+select:focus{
+  outline:none;
+  border-color:#123c69;
+}
+
 .hidden{
   display:none;
 }
 
 .message{
   background:#fff3cd;
+  padding:12px;
+  border-radius:8px;
+  margin-top:15px;
+}
+
+.error-message{
+  background:#f8d7da;
+  color:#842029;
+  padding:12px;
+  border-radius:8px;
+  margin-top:15px;
+}
+
+.success-message{
+  background:#d1e7dd;
+  color:#0f5132;
+  padding:12px;
+  border-radius:8px;
+  margin-top:15px;
+}
+
+.info-message{
+  background:#cff4fc;
+  color:#055160;
   padding:12px;
   border-radius:8px;
   margin-top:15px;
@@ -163,6 +193,15 @@ select{
   margin-top:25px;
 }
 
+.small-note{
+  font-size:13px;
+  color:#666;
+}
+
+.required{
+  color:red;
+}
+
 @media(max-width:600px){
   .role-grid,
   .dashboard-grid{
@@ -231,107 +270,305 @@ select{
 
 <!-- STUDENT REGISTRATION -->
 <div id="registration" class="card hidden">
+
   <h2>First-Time Student Registration</h2>
 
-  <label>Full Name</label>
-  <input id="regName" type="text" placeholder="Enter full name">
+  <p class="small-note">
+    All fields marked <span class="required">*</span> are required.
+  </p>
 
-  <label>Roll Number</label>
-  <input id="regRoll" type="text" placeholder="Enter roll number">
+  <label>
+    Full Name <span class="required">*</span>
+  </label>
 
-  <label>Date of Birth</label>
-  <input id="regDob" type="date">
+  <input
+    id="regName"
+    type="text"
+    placeholder="Enter full name"
+    autocomplete="name">
 
-  <label>Department</label>
-  <select id="regDepartment">
-    <option value="">Select Department</option>
-    <option>Computer Science</option>
-    <option>Information Technology</option>
-    <option>Commerce</option>
-    <option>Management</option>
-    <option>English</option>
-    <option>Mathematics</option>
-    <option>Physics</option>
+
+  <label>
+    Roll Number <span class="required">*</span>
+  </label>
+
+  <input
+    id="regRoll"
+    type="text"
+    placeholder="Example: 8126XXXXXXXX"
+    inputmode="numeric"
+    maxlength="20">
+
+  <p class="small-note">
+    Roll number must start with <strong>8126</strong>.
+  </p>
+
+
+  <label>
+    Date of Birth <span class="required">*</span>
+  </label>
+
+  <input
+    id="regDob"
+    type="date">
+
+
+  <label>
+    Department / Course <span class="required">*</span>
+  </label>
+
+  <select
+    id="regDepartment"
+    onchange="updateCourseDuration()">
+
+    <option value="">Select Department / Course</option>
+
+    <option value="Civil Engineering">
+      Civil Engineering
+    </option>
+
+    <option value="Computer Science & Engineering">
+      Computer Science & Engineering
+    </option>
+
+    <option value="Electrical & Electronics Engineering">
+      Electrical & Electronics Engineering
+    </option>
+
+    <option value="Electronics & Communication Engineering">
+      Electronics & Communication Engineering
+    </option>
+
+    <option value="Electronics & Instrumentation Engineering">
+      Electronics & Instrumentation Engineering
+    </option>
+
+    <option value="Information Technology">
+      Information Technology
+    </option>
+
+    <option value="Mechanical Engineering">
+      Mechanical Engineering
+    </option>
+
+    <option value="Cyber Security">
+      Cyber Security
+    </option>
+
+    <option value="Artificial Intelligence & Data Science">
+      Artificial Intelligence & Data Science
+    </option>
+
+    <option value="Artificial Intelligence & Machine Learning">
+      Artificial Intelligence & Machine Learning
+    </option>
+
+    <option value="Agricultural Engineering">
+      Agricultural Engineering
+    </option>
+
+    <option value="Biomedical Engineering">
+      Biomedical Engineering
+    </option>
+
+    <option value="Food Technology">
+      Food Technology
+    </option>
+
+    <option value="Biotechnology">
+      Biotechnology
+    </option>
+
+    <option value="MBA">
+      MBA
+    </option>
+
+    <option value="MCA">
+      MCA
+    </option>
+
+    <option value="M.E. Environmental Engineering">
+      M.E. Environmental Engineering
+    </option>
+
   </select>
 
-  <label>Joining Year</label>
-  <input id="joiningYear"
-         type="number"
-         placeholder="Example: 2026"
-         oninput="calculateEndingYear()">
 
-  <label>Expected Ending Year</label>
-  <input id="endingYear" type="text" readonly>
+  <label>
+    Course Duration
+  </label>
 
-  <label>Student Type</label>
+  <input
+    id="courseDuration"
+    type="text"
+    readonly
+    placeholder="Automatically selected">
+
+
+  <label>
+    Joining Year <span class="required">*</span>
+  </label>
+
+  <select
+    id="joiningYear"
+    onchange="calculateEndingYear()">
+
+    <option value="">Select Joining Year</option>
+
+  </select>
+
+
+  <label>
+    Expected Ending Year
+  </label>
+
+  <input
+    id="endingYear"
+    type="text"
+    readonly
+    placeholder="Automatically calculated">
+
+
+  <label>
+    Student Type <span class="required">*</span>
+  </label>
+
   <select id="studentType">
-    <option value="">Select Type</option>
-    <option>Day Scholar</option>
-    <option>Hosteler</option>
+
+    <option value="">
+      Select Type
+    </option>
+
+    <option value="Day Scholar">
+      Day Scholar
+    </option>
+
+    <option value="Hosteler">
+      Hosteler
+    </option>
+
   </select>
 
-  <label>Student Mobile</label>
-  <input id="studentMobile"
-         type="tel"
-         placeholder="Enter mobile number">
 
-  <label>Parent Mobile</label>
-  <input id="parentMobile"
-         type="tel"
-         placeholder="Enter parent mobile number">
+  <label>
+    Student Mobile <span class="required">*</span>
+  </label>
 
-  <button onclick="sendOTP()">
+  <input
+    id="studentMobile"
+    type="tel"
+    inputmode="numeric"
+    maxlength="10"
+    placeholder="Enter 10-digit mobile number">
+
+  <p class="small-note">
+    Enter exactly 10 digits.
+  </p>
+
+
+  <label>
+    Parent Mobile <span class="required">*</span>
+  </label>
+
+  <input
+    id="parentMobile"
+    type="tel"
+    inputmode="numeric"
+    maxlength="10"
+    placeholder="Enter 10-digit parent mobile number">
+
+  <p class="small-note">
+    Enter exactly 10 digits.
+  </p>
+
+
+  <div id="registrationMessage" class="hidden"></div>
+
+
+  <button onclick="validateAndSendRegistrationOTP()">
     📱 Send OTP
   </button>
 
-  <button class="secondary" onclick="goHome()">
+  <button class="secondary" onclick="showStudentOptions()">
     ← Back
   </button>
+
 </div>
 
 
 <!-- EXISTING STUDENT -->
 <div id="existingStudent" class="card hidden">
+
   <h2>Existing Student Login</h2>
 
-  <label>Roll Number</label>
-  <input id="existingRoll"
-         type="text"
-         placeholder="Enter roll number">
+  <label>
+    Roll Number
+  </label>
 
-  <label>Mobile Number</label>
-  <input id="existingMobile"
-         type="tel"
-         placeholder="Enter mobile number">
+  <input
+    id="existingRoll"
+    type="text"
+    inputmode="numeric"
+    maxlength="20"
+    placeholder="Roll number starting with 8126">
 
-  <button onclick="sendOTP()">
+  <p class="small-note">
+    Roll number must start with <strong>8126</strong>.
+  </p>
+
+
+  <label>
+    Mobile Number
+  </label>
+
+  <input
+    id="existingMobile"
+    type="tel"
+    inputmode="numeric"
+    maxlength="10"
+    placeholder="10-digit mobile number">
+
+  <button onclick="validateExistingStudent()">
     📱 Send OTP
   </button>
 
-  <button class="secondary" onclick="goHome()">
+  <button class="secondary" onclick="showStudentOptions()">
     ← Back
   </button>
+
 </div>
 
 
 <!-- OTHER COLLEGE -->
 <div id="otherCollege" class="card hidden">
+
   <h2>Other College Student</h2>
 
   <label>College Name</label>
-  <input id="otherCollegeName"
-         type="text"
-         placeholder="Enter college name">
+
+  <input
+    id="otherCollegeName"
+    type="text"
+    placeholder="Enter college name">
+
 
   <label>Roll Number</label>
-  <input id="otherRoll"
-         type="text"
-         placeholder="Enter roll number">
+
+  <input
+    id="otherRoll"
+    type="text"
+    placeholder="Enter roll number">
+
 
   <label>Mobile Number</label>
-  <input id="otherMobile"
-         type="tel"
-         placeholder="Enter mobile number">
+
+  <input
+    id="otherMobile"
+    type="tel"
+    inputmode="numeric"
+    maxlength="10"
+    placeholder="10-digit mobile number">
+
 
   <button onclick="sendOTP()">
     📱 Send OTP
@@ -340,34 +577,61 @@ select{
   <button class="secondary" onclick="goHome()">
     ← Back
   </button>
+
 </div>
 
 
 <!-- STAFF -->
 <div id="staff" class="card hidden">
+
   <h2>Staff Login</h2>
 
   <label>Staff ID</label>
-  <input id="staffId"
-         type="text"
-         placeholder="Enter staff ID">
+
+  <input
+    id="staffId"
+    type="text"
+    placeholder="Enter staff ID">
+
 
   <label>Mobile Number</label>
-  <input id="staffMobile"
-         type="tel"
-         placeholder="Enter mobile number">
+
+  <input
+    id="staffMobile"
+    type="tel"
+    inputmode="numeric"
+    maxlength="10"
+    placeholder="10-digit mobile number">
+
 
   <label>Department</label>
+
   <select id="staffDepartment">
-    <option value="">Select Department</option>
-    <option>Computer Science</option>
+
+    <option value="">
+      Select Department
+    </option>
+
+    <option>Civil Engineering</option>
+    <option>Computer Science & Engineering</option>
+    <option>Electrical & Electronics Engineering</option>
+    <option>Electronics & Communication Engineering</option>
+    <option>Electronics & Instrumentation Engineering</option>
     <option>Information Technology</option>
-    <option>Commerce</option>
-    <option>Management</option>
-    <option>English</option>
-    <option>Mathematics</option>
-    <option>Physics</option>
+    <option>Mechanical Engineering</option>
+    <option>Cyber Security</option>
+    <option>Artificial Intelligence & Data Science</option>
+    <option>Artificial Intelligence & Machine Learning</option>
+    <option>Agricultural Engineering</option>
+    <option>Biomedical Engineering</option>
+    <option>Food Technology</option>
+    <option>Biotechnology</option>
+    <option>MBA</option>
+    <option>MCA</option>
+    <option>M.E. Environmental Engineering</option>
+
   </select>
+
 
   <button onclick="sendOTP()">
     📱 Send OTP
@@ -376,22 +640,32 @@ select{
   <button class="secondary" onclick="goHome()">
     ← Back
   </button>
+
 </div>
 
 
 <!-- PRINCIPAL -->
 <div id="principal" class="card hidden">
+
   <h2>Principal Login</h2>
 
   <label>Principal ID</label>
-  <input id="principalId"
-         type="text"
-         placeholder="Enter Principal ID">
+
+  <input
+    id="principalId"
+    type="text"
+    placeholder="Enter Principal ID">
+
 
   <label>Mobile Number</label>
-  <input id="principalMobile"
-         type="tel"
-         placeholder="Enter mobile number">
+
+  <input
+    id="principalMobile"
+    type="tel"
+    inputmode="numeric"
+    maxlength="10"
+    placeholder="10-digit mobile number">
+
 
   <button onclick="sendOTP()">
     📱 Send OTP
@@ -400,30 +674,47 @@ select{
   <button class="secondary" onclick="goHome()">
     ← Back
   </button>
+
 </div>
 
 
 <!-- OTP -->
 <div id="otpBox" class="card hidden">
+
   <h2>OTP Verification</h2>
 
-  <p>
-    A test OTP has been generated.
+  <div class="info-message">
+
+    📱 <strong>SMS OTP</strong><br><br>
+
+    The production version will send the OTP
+    to the registered mobile number through an
+    SMS service.
+
+  </div>
+
+  <p class="small-note">
+    Development mode: use test OTP
+    <strong>123456</strong>.
   </p>
 
-  <p>
-    <strong>Test OTP: 123456</strong>
-  </p>
 
-  <label>Enter OTP</label>
-  <input id="otp"
-         type="text"
-         maxlength="6"
-         placeholder="Enter 6-digit OTP">
+  <label>
+    Enter 6-digit OTP
+  </label>
+
+  <input
+    id="otp"
+    type="text"
+    inputmode="numeric"
+    maxlength="6"
+    placeholder="Enter OTP">
+
 
   <button onclick="verifyOTP()">
     ✅ Verify OTP
   </button>
+
 </div>
 
 
@@ -473,6 +764,7 @@ select{
   </h2>
 
   <div class="calendar-card">
+
     <h3>June 2026</h3>
 
     <div class="event">
@@ -482,9 +774,12 @@ select{
     <div class="event">
       📝 15 June — Internal Assessment
     </div>
+
   </div>
 
+
   <div class="calendar-card">
+
     <h3>August 2026</h3>
 
     <div class="event">
@@ -494,27 +789,38 @@ select{
     <div class="event">
       📚 20 August — Academic Review
     </div>
+
   </div>
 
+
   <div class="calendar-card">
+
     <h3>September 2026</h3>
 
     <div class="event">
       👨‍🏫 5 September — Teachers' Day
     </div>
+
   </div>
 
+
   <div class="calendar-card">
+
     <h3>January 2027</h3>
 
     <div class="event">
       🇮🇳 26 January — Republic Day
     </div>
+
   </div>
 
-  <button class="back-button"
-          onclick="closeCalendar()">
+
+  <button
+    class="back-button"
+    onclick="closeCalendar()">
+
     ← Back to Dashboard
+
   </button>
 
 </div>
@@ -529,25 +835,94 @@ select{
     Select your department to view the sample timetable.
   </p>
 
-  <select id="timetableDepartment"
-          onchange="displayTimetable()">
+  <select
+    id="timetableDepartment"
+    onchange="displayTimetable()">
 
-    <option value="">Select Department</option>
-    <option value="Computer Science">Computer Science</option>
-    <option value="Information Technology">Information Technology</option>
-    <option value="Commerce">Commerce</option>
-    <option value="Management">Management</option>
-    <option value="English">English</option>
-    <option value="Mathematics">Mathematics</option>
-    <option value="Physics">Physics</option>
+    <option value="">
+      Select Department
+    </option>
+
+    <option value="Civil Engineering">
+      Civil Engineering
+    </option>
+
+    <option value="Computer Science & Engineering">
+      Computer Science & Engineering
+    </option>
+
+    <option value="Electrical & Electronics Engineering">
+      Electrical & Electronics Engineering
+    </option>
+
+    <option value="Electronics & Communication Engineering">
+      Electronics & Communication Engineering
+    </option>
+
+    <option value="Electronics & Instrumentation Engineering">
+      Electronics & Instrumentation Engineering
+    </option>
+
+    <option value="Information Technology">
+      Information Technology
+    </option>
+
+    <option value="Mechanical Engineering">
+      Mechanical Engineering
+    </option>
+
+    <option value="Cyber Security">
+      Cyber Security
+    </option>
+
+    <option value="Artificial Intelligence & Data Science">
+      Artificial Intelligence & Data Science
+    </option>
+
+    <option value="Artificial Intelligence & Machine Learning">
+      Artificial Intelligence & Machine Learning
+    </option>
+
+    <option value="Agricultural Engineering">
+      Agricultural Engineering
+    </option>
+
+    <option value="Biomedical Engineering">
+      Biomedical Engineering
+    </option>
+
+    <option value="Food Technology">
+      Food Technology
+    </option>
+
+    <option value="Biotechnology">
+      Biotechnology
+    </option>
+
+    <option value="MBA">
+      MBA
+    </option>
+
+    <option value="MCA">
+      MCA
+    </option>
+
+    <option value="M.E. Environmental Engineering">
+      M.E. Environmental Engineering
+    </option>
 
   </select>
 
+
   <div id="timetableResult"></div>
 
-  <button class="back-button"
-          onclick="closeTimetable()">
+
+  <button
+    class="back-button"
+    onclick="closeTimetable()">
+
     ← Back to Dashboard
+
   </button>
 
 </div>
@@ -559,32 +934,47 @@ select{
   <h2>📢 Notices & Events</h2>
 
   <div class="notice">
+
     <h3>Important Notice</h3>
+
     <p>
       Students are requested to check their department
       notice board regularly.
     </p>
+
   </div>
 
+
   <div class="notice">
+
     <h3>🎉 Upcoming Event</h3>
+
     <p>
       College cultural programme information will be
       announced soon.
     </p>
+
   </div>
 
+
   <div class="notice">
+
     <h3>📚 Academic Update</h3>
+
     <p>
       Students should follow the academic calendar
       for important dates.
     </p>
+
   </div>
 
-  <button class="back-button"
-          onclick="closeNotices()">
+
+  <button
+    class="back-button"
+    onclick="closeNotices()">
+
     ← Back to Dashboard
+
   </button>
 
 </div>
@@ -614,6 +1004,7 @@ select{
       Siruganur, Tamil Nadu 621105
     </p>
 
+
     <a
       class="map-button"
       href="https://www.google.com/maps/search/?api=1&query=XQWH%2B654%2C%20Trichy%20Chennai%20Trunk%20Road%2C%20Siruganur%2C%20Tamil%20Nadu%20621105"
@@ -624,16 +1015,23 @@ select{
 
     </a>
 
+
     <div class="message">
+
       📌 This button opens the college location
       directly in Google Maps.
+
     </div>
 
   </div>
 
-  <button class="back-button"
-          onclick="closeMap()">
+
+  <button
+    class="back-button"
+    onclick="closeMap()">
+
     ← Back to Dashboard
+
   </button>
 
 </div>
@@ -643,24 +1041,208 @@ select{
 
 <script>
 
-function hideAll(){
+/* ==============================
+   COURSE INFORMATION
+============================== */
 
-  document.getElementById("home").classList.add("hidden");
-  document.getElementById("studentOptions").classList.add("hidden");
-  document.getElementById("registration").classList.add("hidden");
-  document.getElementById("existingStudent").classList.add("hidden");
-  document.getElementById("otherCollege").classList.add("hidden");
-  document.getElementById("staff").classList.add("hidden");
-  document.getElementById("principal").classList.add("hidden");
-  document.getElementById("otpBox").classList.add("hidden");
-  document.getElementById("dashboard").classList.add("hidden");
-  document.getElementById("calendarBox").classList.add("hidden");
-  document.getElementById("timetableBox").classList.add("hidden");
-  document.getElementById("noticesBox").classList.add("hidden");
-  document.getElementById("mapBox").classList.add("hidden");
+const courseDurations = {
+
+  "Civil Engineering": 4,
+
+  "Computer Science & Engineering": 4,
+
+  "Electrical & Electronics Engineering": 4,
+
+  "Electronics & Communication Engineering": 4,
+
+  "Electronics & Instrumentation Engineering": 4,
+
+  "Information Technology": 4,
+
+  "Mechanical Engineering": 4,
+
+  "Cyber Security": 4,
+
+  "Artificial Intelligence & Data Science": 4,
+
+  "Artificial Intelligence & Machine Learning": 4,
+
+  "Agricultural Engineering": 4,
+
+  "Biomedical Engineering": 4,
+
+  "Food Technology": 4,
+
+  "Biotechnology": 4,
+
+  "MBA": 2,
+
+  "MCA": 2,
+
+  "M.E. Environmental Engineering": 2
+
+};
+
+
+/* ==============================
+   INITIALIZE JOINING YEARS
+============================== */
+
+function loadJoiningYears(){
+
+  const select =
+    document.getElementById("joiningYear");
+
+  if(!select){
+    return;
+  }
+
+  const currentYear =
+    new Date().getFullYear();
+
+  select.innerHTML =
+    '<option value="">Select Joining Year</option>';
+
+  for(
+    let year = 2023;
+    year <= currentYear;
+    year++
+  ){
+
+    const option =
+      document.createElement("option");
+
+    option.value = year;
+
+    option.textContent = year;
+
+    select.appendChild(option);
+
+  }
 
 }
 
+
+/* ==============================
+   COURSE DURATION
+============================== */
+
+function updateCourseDuration(){
+
+  const department =
+    document.getElementById("regDepartment").value;
+
+  const duration =
+    courseDurations[department];
+
+  const durationBox =
+    document.getElementById("courseDuration");
+
+  if(duration){
+
+    durationBox.value =
+      duration + " years";
+
+  }else{
+
+    durationBox.value = "";
+
+  }
+
+  calculateEndingYear();
+
+}
+
+
+/* ==============================
+   CALCULATE ENDING YEAR
+============================== */
+
+function calculateEndingYear(){
+
+  const joining =
+    document.getElementById("joiningYear").value;
+
+  const department =
+    document.getElementById("regDepartment").value;
+
+  const endingBox =
+    document.getElementById("endingYear");
+
+  if(
+    !joining ||
+    !courseDurations[department]
+  ){
+
+    endingBox.value = "";
+
+    return;
+
+  }
+
+  const duration =
+    courseDurations[department];
+
+  const endingYear =
+    Number(joining) + duration;
+
+  endingBox.value =
+    endingYear;
+
+}
+
+
+/* ==============================
+   HIDE ALL
+============================== */
+
+function hideAll(){
+
+  document.getElementById("home")
+    .classList.add("hidden");
+
+  document.getElementById("studentOptions")
+    .classList.add("hidden");
+
+  document.getElementById("registration")
+    .classList.add("hidden");
+
+  document.getElementById("existingStudent")
+    .classList.add("hidden");
+
+  document.getElementById("otherCollege")
+    .classList.add("hidden");
+
+  document.getElementById("staff")
+    .classList.add("hidden");
+
+  document.getElementById("principal")
+    .classList.add("hidden");
+
+  document.getElementById("otpBox")
+    .classList.add("hidden");
+
+  document.getElementById("dashboard")
+    .classList.add("hidden");
+
+  document.getElementById("calendarBox")
+    .classList.add("hidden");
+
+  document.getElementById("timetableBox")
+    .classList.add("hidden");
+
+  document.getElementById("noticesBox")
+    .classList.add("hidden");
+
+  document.getElementById("mapBox")
+    .classList.add("hidden");
+
+}
+
+
+/* ==============================
+   NAVIGATION
+============================== */
 
 function showStudentOptions(){
 
@@ -678,6 +1260,8 @@ function showRegistration(){
 
   document.getElementById("registration")
     .classList.remove("hidden");
+
+  loadJoiningYears();
 
 }
 
@@ -722,24 +1306,258 @@ function showPrincipal(){
 }
 
 
-function calculateEndingYear(){
+/* ==============================
+   VALIDATE ROLL NUMBER
+============================== */
 
-  const joining =
-    document.getElementById("joiningYear").value;
+function isValidRollNumber(roll){
 
-  if(joining){
-
-    document.getElementById("endingYear").value =
-      Number(joining) + 3;
-
-  }else{
-
-    document.getElementById("endingYear").value = "";
-
-  }
+  return /^8126[0-9]+$/.test(roll);
 
 }
 
+
+/* ==============================
+   VALIDATE MOBILE
+============================== */
+
+function isValidMobile(mobile){
+
+  return /^[0-9]{10}$/.test(mobile);
+
+}
+
+
+/* ==============================
+   REGISTRATION VALIDATION
+============================== */
+
+function validateAndSendRegistrationOTP(){
+
+  const name =
+    document.getElementById("regName")
+      .value.trim();
+
+  const roll =
+    document.getElementById("regRoll")
+      .value.trim();
+
+  const dob =
+    document.getElementById("regDob")
+      .value;
+
+  const department =
+    document.getElementById("regDepartment")
+      .value;
+
+  const joiningYear =
+    document.getElementById("joiningYear")
+      .value;
+
+  const studentType =
+    document.getElementById("studentType")
+      .value;
+
+  const studentMobile =
+    document.getElementById("studentMobile")
+      .value.trim();
+
+  const parentMobile =
+    document.getElementById("parentMobile")
+      .value.trim();
+
+
+  const message =
+    document.getElementById("registrationMessage");
+
+
+  message.className =
+    "hidden";
+
+
+  /* NAME */
+
+  if(!name){
+
+    showRegistrationError(
+      "Please enter the student's full name."
+    );
+
+    return;
+
+  }
+
+
+  /* ROLL */
+
+  if(!isValidRollNumber(roll)){
+
+    showRegistrationError(
+      "Invalid roll number. Your roll number must start with 8126 and contain digits after it."
+    );
+
+    return;
+
+  }
+
+
+  /* DOB */
+
+  if(!dob){
+
+    showRegistrationError(
+      "Please select your date of birth."
+    );
+
+    return;
+
+  }
+
+
+  /* DEPARTMENT */
+
+  if(!department){
+
+    showRegistrationError(
+      "Please select your department/course."
+    );
+
+    return;
+
+  }
+
+
+  /* JOINING YEAR */
+
+  if(!joiningYear){
+
+    showRegistrationError(
+      "Please select your joining year."
+    );
+
+    return;
+
+  }
+
+
+  /* STUDENT TYPE */
+
+  if(!studentType){
+
+    showRegistrationError(
+      "Please select Day Scholar or Hosteler."
+    );
+
+    return;
+
+  }
+
+
+  /* STUDENT MOBILE */
+
+  if(!isValidMobile(studentMobile)){
+
+    showRegistrationError(
+      "Student mobile number must contain exactly 10 digits."
+    );
+
+    return;
+
+  }
+
+
+  /* PARENT MOBILE */
+
+  if(!isValidMobile(parentMobile)){
+
+    showRegistrationError(
+      "Parent mobile number must contain exactly 10 digits."
+    );
+
+    return;
+
+  }
+
+
+  /* SAME MOBILE CHECK */
+
+  if(studentMobile === parentMobile){
+
+    showRegistrationError(
+      "Student mobile and parent mobile should normally be different."
+    );
+
+    return;
+
+  }
+
+
+  /* EVERYTHING VALID */
+
+  sendOTP();
+
+}
+
+
+function showRegistrationError(text){
+
+  const message =
+    document.getElementById("registrationMessage");
+
+  message.className =
+    "error-message";
+
+  message.innerText =
+    "❌ " + text;
+
+}
+
+
+/* ==============================
+   EXISTING STUDENT VALIDATION
+============================== */
+
+function validateExistingStudent(){
+
+  const roll =
+    document.getElementById("existingRoll")
+      .value.trim();
+
+  const mobile =
+    document.getElementById("existingMobile")
+      .value.trim();
+
+
+  if(!isValidRollNumber(roll)){
+
+    alert(
+      "Invalid roll number. It must start with 8126."
+    );
+
+    return;
+
+  }
+
+
+  if(!isValidMobile(mobile)){
+
+    alert(
+      "Mobile number must contain exactly 10 digits."
+    );
+
+    return;
+
+  }
+
+
+  sendOTP();
+
+}
+
+
+/* ==============================
+   OTP
+============================== */
 
 function sendOTP(){
 
@@ -754,7 +1572,20 @@ function sendOTP(){
 function verifyOTP(){
 
   const otp =
-    document.getElementById("otp").value;
+    document.getElementById("otp")
+      .value.trim();
+
+
+  if(!/^[0-9]{6}$/.test(otp)){
+
+    alert(
+      "Please enter a 6-digit OTP."
+    );
+
+    return;
+
+  }
+
 
   if(otp === "123456"){
 
@@ -763,14 +1594,24 @@ function verifyOTP(){
     document.getElementById("dashboard")
       .classList.remove("hidden");
 
+    alert(
+      "OTP verified successfully."
+    );
+
   }else{
 
-    alert("Incorrect OTP. Use test OTP 123456.");
+    alert(
+      "Incorrect OTP. Development test OTP is 123456."
+    );
 
   }
 
 }
 
+
+/* ==============================
+   CALENDAR
+============================== */
 
 function showCalendar(){
 
@@ -792,6 +1633,10 @@ function closeCalendar(){
 }
 
 
+/* ==============================
+   NOTICES
+============================== */
+
 function showNotices(){
 
   hideAll();
@@ -812,6 +1657,10 @@ function closeNotices(){
 }
 
 
+/* ==============================
+   MAP
+============================== */
+
 function showMap(){
 
   hideAll();
@@ -831,6 +1680,10 @@ function closeMap(){
 
 }
 
+
+/* ==============================
+   TIMETABLE
+============================== */
 
 function showTimetable(){
 
@@ -855,10 +1708,12 @@ function closeTimetable(){
 function displayTimetable(){
 
   const department =
-    document.getElementById("timetableDepartment").value;
+    document.getElementById("timetableDepartment")
+      .value;
 
   const result =
     document.getElementById("timetableResult");
+
 
   if(!department){
 
@@ -871,7 +1726,7 @@ function displayTimetable(){
 
   const timetable = {
 
-    "Computer Science":[
+    "Computer Science & Engineering":[
       ["9:00 - 10:00","Programming","Mathematics","DBMS","Operating Systems","Computer Networks"],
       ["10:00 - 11:00","Mathematics","Programming","Computer Networks","DBMS","English"],
       ["11:15 - 12:15","DBMS","Computer Networks","Programming","Mathematics","Operating Systems"],
@@ -885,61 +1740,38 @@ function displayTimetable(){
       ["11:15 - 12:15","Networking","Database","Programming","English","Web Technology"],
       ["12:15 - 1:15","English","Mathematics","English","Programming","Database"],
       ["2:00 - 3:00","Web Technology","Networking","Database","Programming","Mathematics"]
-    ],
-
-    "Commerce":[
-      ["9:00 - 10:00","Accounting","Business Studies","Economics","Commerce","English"],
-      ["10:00 - 11:00","Economics","Accounting","Commerce","Business Studies","Mathematics"],
-      ["11:15 - 12:15","Commerce","Economics","Accounting","English","Business Studies"],
-      ["12:15 - 1:15","English","Mathematics","English","Economics","Accounting"],
-      ["2:00 - 3:00","Business Studies","Commerce","Economics","Accounting","English"]
-    ],
-
-    "Management":[
-      ["9:00 - 10:00","Management","Marketing","Economics","HR Management","English"],
-      ["10:00 - 11:00","Marketing","Management","HR Management","Economics","Mathematics"],
-      ["11:15 - 12:15","Economics","HR Management","Marketing","English","Management"],
-      ["12:15 - 1:15","English","Mathematics","English","Marketing","Economics"],
-      ["2:00 - 3:00","HR Management","Management","Marketing","Economics","English"]
-    ],
-
-    "English":[
-      ["9:00 - 10:00","English Literature","Grammar","Poetry","Drama","Communication"],
-      ["10:00 - 11:00","Grammar","English Literature","Communication","Poetry","Drama"],
-      ["11:15 - 12:15","Poetry","Drama","English Literature","Grammar","Communication"],
-      ["12:15 - 1:15","Communication","English Literature","Grammar","Drama","Poetry"],
-      ["2:00 - 3:00","Drama","Poetry","Communication","English Literature","Grammar"]
-    ],
-
-    "Mathematics":[
-      ["9:00 - 10:00","Algebra","Calculus","Statistics","Geometry","English"],
-      ["10:00 - 11:00","Calculus","Algebra","Geometry","Statistics","Programming"],
-      ["11:15 - 12:15","Statistics","Geometry","Calculus","Algebra","English"],
-      ["12:15 - 1:15","English","Programming","English","Calculus","Statistics"],
-      ["2:00 - 3:00","Geometry","Statistics","Algebra","Programming","Calculus"]
-    ],
-
-    "Physics":[
-      ["9:00 - 10:00","Mechanics","Optics","Mathematics","Thermodynamics","English"],
-      ["10:00 - 11:00","Optics","Mechanics","Thermodynamics","Mathematics","Lab"],
-      ["11:15 - 12:15","Thermodynamics","Mathematics","Mechanics","English","Optics"],
-      ["12:15 - 1:15","English","Lab","English","Mechanics","Mathematics"],
-      ["2:00 - 3:00","Lab","Thermodynamics","Optics","Mathematics","Mechanics"]
     ]
 
   };
 
 
-  const days =
-    ["Monday","Tuesday","Wednesday","Thursday","Friday"];
+  const data =
+    timetable[department];
 
 
-  const data = timetable[department];
+  if(!data){
+
+    result.innerHTML = `
+      <div class="info-message">
+        📚 Official timetable for
+        <strong>${department}</strong>
+        will be added after the original college timetable
+        is provided.
+      </div>
+    `;
+
+    return;
+
+  }
 
 
   let html = `
+
     <div class="timetable-card">
-      <h3>${department} Department</h3>
+
+      <h3>
+        ${department} Department
+      </h3>
 
       <p>
         <strong>Sample timetable</strong>
@@ -948,33 +1780,53 @@ function displayTimetable(){
       <table class="timetable-table">
 
         <tr>
+
           <th>Time</th>
+
           <th>Monday</th>
+
           <th>Tuesday</th>
+
           <th>Wednesday</th>
+
           <th>Thursday</th>
+
           <th>Friday</th>
+
         </tr>
+
   `;
 
 
   data.forEach(row => {
 
     html += `
+
       <tr>
-        <td><strong>${row[0]}</strong></td>
+
+        <td>
+          <strong>${row[0]}</strong>
+        </td>
+
         <td>${row[1]}</td>
+
         <td>${row[2]}</td>
+
         <td>${row[3]}</td>
+
         <td>${row[4]}</td>
+
         <td>${row[5]}</td>
+
       </tr>
+
     `;
 
   });
 
 
   html += `
+
       </table>
 
       <p>
@@ -983,13 +1835,19 @@ function displayTimetable(){
       </p>
 
     </div>
+
   `;
 
 
-  result.innerHTML = html;
+  result.innerHTML =
+    html;
 
 }
 
+
+/* ==============================
+   MESSAGE
+============================== */
 
 function showMessage(text){
 
@@ -998,15 +1856,23 @@ function showMessage(text){
   document.getElementById("dashboard")
     .classList.remove("hidden");
 
+
   const message =
     document.getElementById("message");
 
-  message.innerText = text;
+
+  message.innerText =
+    text;
+
 
   message.classList.remove("hidden");
 
 }
 
+
+/* ==============================
+   HOME
+============================== */
 
 function goHome(){
 
@@ -1018,7 +1884,13 @@ function goHome(){
 }
 
 
+/* ==============================
+   STARTUP
+============================== */
+
+loadJoiningYears();
+
 </script>
 
 </body>
-</html>
+  </html>
