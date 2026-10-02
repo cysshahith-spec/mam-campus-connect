@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,14 +7,12 @@
 <meta name="theme-color" content="#123c69">
 <title>MAM Campus Connect</title>
 
-<!-- ================= FIREBASE ================= -->
-
+<!-- FIREBASE -->
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
 
 <style>
-
 *{
   box-sizing:border-box;
   margin:0;
@@ -39,27 +38,21 @@ button{
   display:none !important;
 }
 
-
-/* ================================================= */
-/* COLLEGE LOGO */
-/* ================================================= */
-
-.college-logo{
-  width:52px;
-  height:52px;
+.college-logo,
+.header-logo,
+.menu-logo,
+.welcome-logo,
+.dashboard-logo,
+.profile-logo,
+.footer-logo{
   object-fit:contain;
-  border-radius:10px;
   background:white;
-  padding:4px;
-  flex-shrink:0;
 }
 
 .header-logo{
   width:52px;
   height:52px;
-  object-fit:contain;
   border-radius:10px;
-  background:white;
   padding:4px;
   flex-shrink:0;
 }
@@ -67,9 +60,7 @@ button{
 .menu-logo{
   width:70px;
   height:70px;
-  object-fit:contain;
   border-radius:15px;
-  background:white;
   padding:5px;
   display:block;
   margin:0 auto 10px;
@@ -78,9 +69,7 @@ button{
 .welcome-logo{
   width:82px;
   height:82px;
-  object-fit:contain;
   border-radius:18px;
-  background:white;
   padding:7px;
   margin-bottom:16px;
 }
@@ -88,9 +77,7 @@ button{
 .dashboard-logo{
   width:58px;
   height:58px;
-  object-fit:contain;
   border-radius:13px;
-  background:white;
   padding:5px;
   flex-shrink:0;
 }
@@ -98,9 +85,7 @@ button{
 .profile-logo{
   width:65px;
   height:65px;
-  object-fit:contain;
   border-radius:15px;
-  background:white;
   padding:5px;
   flex-shrink:0;
 }
@@ -108,18 +93,11 @@ button{
 .footer-logo{
   width:38px;
   height:38px;
-  object-fit:contain;
   border-radius:8px;
-  background:white;
   padding:3px;
   vertical-align:middle;
   margin-right:6px;
 }
-
-
-/* ================================================= */
-/* HEADER */
-/* ================================================= */
 
 header{
   position:relative;
@@ -162,11 +140,6 @@ header p{
   border-radius:11px;
   font-size:31px;
 }
-
-
-/* ================================================= */
-/* SIDE MENU */
-/* ================================================= */
 
 .side-menu{
   position:fixed;
@@ -236,11 +209,6 @@ header p{
   display:block;
 }
 
-
-/* ================================================= */
-/* MAIN */
-/* ================================================= */
-
 main{
   max-width:900px;
   margin:auto;
@@ -261,11 +229,6 @@ section{
     transform:translateY(0);
   }
 }
-
-
-/* ================================================= */
-/* HOME */
-/* ================================================= */
 
 .welcome{
   background:linear-gradient(135deg,#123c69,#1769aa);
@@ -322,11 +285,6 @@ section{
   font-size:13px;
 }
 
-
-/* ================================================= */
-/* CARDS */
-/* ================================================= */
-
 .card{
   background:white;
   border-radius:18px;
@@ -344,11 +302,6 @@ section{
   color:#687386;
   line-height:1.5;
 }
-
-
-/* ================================================= */
-/* FORM */
-/* ================================================= */
 
 label{
   display:block;
@@ -386,6 +339,11 @@ textarea:focus{
   font-weight:bold;
 }
 
+.primary-btn:disabled{
+  opacity:.6;
+  cursor:not-allowed;
+}
+
 .secondary-btn{
   width:100%;
   border:1px solid #123c69;
@@ -405,11 +363,6 @@ textarea:focus{
   margin-bottom:13px;
   padding:5px 0;
 }
-
-
-/* ================================================= */
-/* STUDENT DASHBOARD */
-/* ================================================= */
 
 .student-top{
   background:linear-gradient(135deg,#123c69,#1769aa);
@@ -467,11 +420,6 @@ textarea:focus{
   font-size:13px;
 }
 
-
-/* ================================================= */
-/* STATS */
-/* ================================================= */
-
 .stats-grid{
   display:grid;
   grid-template-columns:repeat(2,1fr);
@@ -502,11 +450,6 @@ textarea:focus{
   font-weight:bold;
   margin-top:3px;
 }
-
-
-/* ================================================= */
-/* DASHBOARD */
-/* ================================================= */
 
 .dashboard-title{
   display:flex;
@@ -563,11 +506,6 @@ textarea:focus{
   line-height:1.4;
 }
 
-
-/* ================================================= */
-/* NOTICE */
-/* ================================================= */
-
 .notice-card{
   background:white;
   border-radius:17px;
@@ -587,11 +525,6 @@ textarea:focus{
   font-size:13px;
   color:#6d7787;
 }
-
-
-/* ================================================= */
-/* BOTTOM NAVIGATION */
-/* ================================================= */
 
 .bottom-nav{
   position:fixed;
@@ -630,11 +563,6 @@ textarea:focus{
   font-weight:bold;
 }
 
-
-/* ================================================= */
-/* INFORMATION */
-/* ================================================= */
-
 .info-box{
   background:#eef6ff;
   border-left:4px solid #1769aa;
@@ -654,27 +582,11 @@ textarea:focus{
   color:#624c16;
 }
 
-
-/* ================================================= */
-/* PROFILE */
-/* ================================================= */
-
 .profile-header{
   display:flex;
   align-items:center;
   gap:15px;
   margin-bottom:18px;
-}
-
-.large-profile{
-  width:65px;
-  height:65px;
-  border-radius:50%;
-  background:#e9f2fc;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:32px;
 }
 
 .profile-details{
@@ -698,11 +610,6 @@ textarea:focus{
 .profile-row strong{
   color:#24344b;
 }
-
-
-/* ================================================= */
-/* ATTENDANCE */
-/* ================================================= */
 
 .attendance-big{
   text-align:center;
@@ -739,11 +646,6 @@ textarea:focus{
   font-weight:bold;
 }
 
-
-/* ================================================= */
-/* FEES */
-/* ================================================= */
-
 .fee-status{
   background:#eaf8ef;
   color:#18733a;
@@ -752,11 +654,6 @@ textarea:focus{
   font-weight:bold;
   margin-top:15px;
 }
-
-
-/* ================================================= */
-/* TABLE */
-/* ================================================= */
 
 .table-wrap{
   overflow-x:auto;
@@ -780,11 +677,6 @@ th{
   color:white;
 }
 
-
-/* ================================================= */
-/* NOTICES */
-/* ================================================= */
-
 .notice-full{
   background:white;
   padding:17px;
@@ -805,11 +697,6 @@ th{
   margin-bottom:8px;
 }
 
-
-/* ================================================= */
-/* FOOTER */
-/* ================================================= */
-
 footer{
   text-align:center;
   padding:22px;
@@ -817,13 +704,27 @@ footer{
   font-size:12px;
 }
 
+.recaptcha-box{
+  margin-top:18px;
+  display:flex;
+  justify-content:center;
+  min-height:78px;
+}
 
-/* ================================================= */
-/* DESKTOP */
-/* ================================================= */
+.otp-help{
+  margin-top:10px;
+  font-size:12px;
+  color:#788293;
+  text-align:center;
+}
+
+.success-text{
+  color:#15803d;
+  font-weight:bold;
+  margin-top:12px;
+}
 
 @media(min-width:700px){
-
   .stats-grid{
     grid-template-columns:repeat(4,1fr);
   }
@@ -831,16 +732,9 @@ footer{
   .dashboard-grid{
     grid-template-columns:repeat(3,1fr);
   }
-
 }
 
-
-/* ================================================= */
-/* SMALL MOBILE */
-/* ================================================= */
-
 @media(max-width:360px){
-
   .dashboard-card{
     min-height:120px;
     padding:15px 12px;
@@ -854,110 +748,54 @@ footer{
     width:45px;
     height:45px;
   }
-
 }
-
 </style>
 </head>
 
 <body>
 
-
-<!-- ================================================= -->
-<!-- HEADER -->
-<!-- ================================================= -->
-
 <header>
-
-<button
-  type="button"
-  class="menu-button"
-  aria-label="Open menu"
-  onclick="openMenu()">
-  ☰
-</button>
+<button type="button" class="menu-button" aria-label="Open menu" onclick="openMenu()">☰</button>
 
 <div class="header-content">
-
-<img
-  src="mam-logo.jpg"
-  class="header-logo"
-  alt="MAM College Logo">
+<img src="mam-logo.jpg" class="header-logo" alt="MAM College Logo">
 
 <div>
-
 <h1>MAM Campus Connect</h1>
-
 <p>Your College Digital Campus</p>
-
 </div>
-
 </div>
-
 </header>
-
-
-<!-- ================================================= -->
-<!-- SIDE MENU -->
-<!-- ================================================= -->
 
 <div id="overlay" class="overlay" onclick="closeMenu()"></div>
 
 <nav id="sideMenu" class="side-menu">
 
 <div class="menu-brand">
-
-<img
-  src="mam-logo.jpg"
-  class="menu-logo"
-  alt="MAM College Logo">
-
+<img src="mam-logo.jpg" class="menu-logo" alt="MAM College Logo">
 <strong>MAM Campus Connect</strong>
-
 <span>College Digital Campus</span>
-
 </div>
 
 <h2>☰ Menu</h2>
 
-<button onclick="showSection('staffLogin');closeMenu();">
-👨‍🏫 Staff Login
-</button>
-
-<button onclick="showSection('principalLogin');closeMenu();">
-👨‍💼 Principal Login
-</button>
-
-<button onclick="showSection('customerCare');closeMenu();">
-📞 Customer Care
-</button>
-
-<button onclick="showSection('feedback');closeMenu();">
-💬 Feedback
-</button>
-
-<button onclick="goHome();">
-🏠 Home
-</button>
+<button onclick="showSection('staffLogin');closeMenu();">👨‍🏫 Staff Login</button>
+<button onclick="showSection('principalLogin');closeMenu();">👨‍💼 Principal Login</button>
+<button onclick="showSection('customerCare');closeMenu();">📞 Customer Care</button>
+<button onclick="showSection('feedback');closeMenu();">💬 Feedback</button>
+<button onclick="goHome();">🏠 Home</button>
 
 </nav>
 
-
 <main>
 
-
-<!-- ================================================= -->
 <!-- HOME -->
-<!-- ================================================= -->
 
 <section id="home">
 
 <div class="welcome">
 
-<img
-  src="mam-logo.jpg"
-  class="welcome-logo"
-  alt="MAM College Logo">
+<img src="mam-logo.jpg" class="welcome-logo" alt="MAM College Logo">
 
 <h2>Welcome to MAM Campus Connect 👋</h2>
 
@@ -968,117 +806,69 @@ Access important academic information from one place.
 
 </div>
 
-
 <div class="home-buttons">
 
-<button class="main-btn"
-onclick="showSection('studentOptions')">
-
+<button class="main-btn" onclick="showSection('studentOptions')">
 <span class="icon">🎓</span>
-
 <strong>Student</strong>
-
-<p>
-Login or register as a MAM student
-</p>
-
+<p>Login or register as a MAM student</p>
 </button>
 
-
-<button class="main-btn"
-onclick="showSection('otherCollege')">
-
+<button class="main-btn" onclick="showSection('otherCollege')">
 <span class="icon">👨‍🎓</span>
-
 <strong>Other College Student</strong>
-
-<p>
-Access visitor and student services
-</p>
-
+<p>Access visitor and student services</p>
 </button>
 
 </div>
-
 </section>
 
 
-<!-- ================================================= -->
 <!-- STUDENT OPTIONS -->
-<!-- ================================================= -->
 
 <section id="studentOptions" class="hidden">
 
-<button class="back-btn"
-onclick="goHome()">
-← Back
-</button>
+<button class="back-btn" onclick="goHome()">← Back</button>
 
 <div class="card">
 
 <h2>🎓 Student Options</h2>
-
 <p>Select an option below.</p>
 
-<button class="primary-btn"
-onclick="showSection('studentRegistration')">
+<button class="primary-btn" onclick="showSection('studentRegistration')">
 First-Time Student Registration
 </button>
 
-<button class="secondary-btn"
-onclick="showSection('studentLogin')">
+<button class="secondary-btn" onclick="showSection('studentLogin')">
 Existing Student Login
 </button>
 
 </div>
-
 </section>
 
 
-<!-- ================================================= -->
 <!-- REGISTRATION -->
-<!-- ================================================= -->
 
 <section id="studentRegistration" class="hidden">
 
-<button class="back-btn"
-onclick="showSection('studentOptions')">
-← Back
-</button>
+<button class="back-btn" onclick="showSection('studentOptions')">← Back</button>
 
 <div class="card">
 
 <h2>📝 Student Registration</h2>
 
 <label>Student Name</label>
-
-<input
-id="regName"
-type="text"
-placeholder="Enter full name">
-
+<input id="regName" type="text" placeholder="Enter full name">
 
 <label>Roll Number</label>
-
-<input
-id="regRoll"
-type="text"
-placeholder="Example: 8126123456">
-
+<input id="regRoll" type="text" placeholder="Example: 8126123456">
 
 <label>Date of Birth</label>
-
-<input
-id="regDob"
-type="date">
-
+<input id="regDob" type="date">
 
 <label>Department / Course</label>
-
 <select id="regCourse">
-
 <option value="">Select Course</option>
-
 <option>CSE</option>
 <option>CSE Cyber Security</option>
 <option>Artificial Intelligence and Data Science</option>
@@ -1091,188 +881,109 @@ type="date">
 <option>MBA</option>
 <option>MCA</option>
 <option>M.E. Environmental Engineering</option>
-
 </select>
-
 
 <label>Joining Year</label>
-
-<select id="regJoiningYear"></select>
-
+<select id="regJoiningYear" onchange="updateEndingYear()"></select>
 
 <label>Course Duration</label>
-
-<select
-id="regDuration"
-onchange="updateEndingYear()">
-
+<select id="regDuration" onchange="updateEndingYear()">
 <option value="">Select Duration</option>
-
 <option value="4">4 Years</option>
-
 <option value="2">2 Years</option>
-
 </select>
-
 
 <label>Expected Ending Year</label>
-
-<input
-id="regEndingYear"
-type="text"
-readonly>
-
+<input id="regEndingYear" type="text" readonly>
 
 <label>Student Type</label>
-
 <select id="regStudentType">
-
 <option value="">Select Type</option>
-
 <option>Day Scholar</option>
-
 <option>Hosteller</option>
-
 </select>
 
-
 <label>Student Mobile Number</label>
-
-<input
-id="regMobile"
-type="tel"
-maxlength="10"
-inputmode="numeric"
-placeholder="10 digit mobile number">
-
+<input id="regMobile" type="tel" maxlength="10" inputmode="numeric" placeholder="10 digit mobile number">
 
 <label>Parent Mobile Number</label>
+<input id="regParentMobile" type="tel" maxlength="10" inputmode="numeric" placeholder="10 digit mobile number">
 
-<input
-id="regParentMobile"
-type="tel"
-maxlength="10"
-inputmode="numeric"
-placeholder="10 digit mobile number">
-
-
-<button
-class="primary-btn"
-onclick="registerStudent()">
-
-Continue to OTP
-
+<button class="primary-btn" id="registerSendOtpBtn" onclick="registerStudent()">
+Send Real SMS OTP
 </button>
 
 <div id="regMessage"></div>
 
 </div>
-
 </section>
 
 
-<!-- ================================================= -->
 <!-- REGISTRATION OTP -->
-<!-- ================================================= -->
 
 <section id="studentOtp" class="hidden">
 
-<button
-class="back-btn"
-onclick="showSection('studentRegistration')">
-
-← Back
-
-</button>
+<button class="back-btn" onclick="showSection('studentRegistration')">← Back</button>
 
 <div class="card">
 
 <h2>🔐 Verify Mobile</h2>
 
-<p>Enter the development OTP.</p>
+<p id="registrationPhoneText">
+Firebase will send a verification code to your mobile number.
+</p>
 
-<div class="info-box">
-Development OTP: <strong>123456</strong>
-</div>
+<div id="registrationRecaptcha" class="recaptcha-box"></div>
 
-<label>OTP</label>
+<label>SMS OTP</label>
 
-<input
-id="regOtp"
-type="text"
-maxlength="6"
-inputmode="numeric"
-placeholder="Enter 6 digit OTP">
+<input id="regOtp" type="text" maxlength="6" inputmode="numeric" placeholder="Enter 6 digit OTP">
 
-<button
-class="primary-btn"
-onclick="verifyRegistrationOtp()">
-
+<button class="primary-btn" id="verifyRegistrationBtn" onclick="verifyRegistrationOtp()">
 Verify & Register
-
 </button>
+
+<button class="secondary-btn" onclick="resendRegistrationOtp()">
+Resend OTP
+</button>
+
+<div class="otp-help">
+The OTP is sent by Firebase to your registered mobile number.
+</div>
 
 <div id="otpMessage"></div>
 
 </div>
-
 </section>
 
 
-<!-- ================================================= -->
 <!-- STUDENT LOGIN -->
-<!-- ================================================= -->
 
 <section id="studentLogin" class="hidden">
 
-<button
-class="back-btn"
-onclick="showSection('studentOptions')">
-
-← Back
-
-</button>
+<button class="back-btn" onclick="showSection('studentOptions')">← Back</button>
 
 <div class="card">
 
 <h2>🔐 Existing Student Login</h2>
 
 <label>Roll Number</label>
-
-<input
-id="loginRoll"
-type="text"
-placeholder="Enter roll number">
-
+<input id="loginRoll" type="text" placeholder="Enter roll number">
 
 <label>Registered Mobile Number</label>
+<input id="loginMobile" type="tel" maxlength="10" inputmode="numeric" placeholder="Enter mobile number">
 
-<input
-id="loginMobile"
-type="tel"
-maxlength="10"
-inputmode="numeric"
-placeholder="Enter mobile number">
-
-
-<button
-class="primary-btn"
-onclick="studentLogin()">
-
-Continue
-
+<button class="primary-btn" id="loginSendOtpBtn" onclick="studentLogin()">
+Send Real SMS OTP
 </button>
 
 <div id="loginMessage"></div>
 
 </div>
-
 </section>
 
 
-<!-- ================================================= -->
 <!-- LOGIN OTP -->
-<!-- ================================================= -->
 
 <section id="loginOtp" class="hidden">
 
@@ -1280,37 +991,31 @@ Continue
 
 <h2>🔐 Student OTP</h2>
 
-<div class="info-box">
-Development OTP: <strong>123456</strong>
-</div>
+<p id="loginPhoneText">
+Firebase will send a verification code to your registered mobile number.
+</p>
 
-<label>OTP</label>
+<div id="loginRecaptcha" class="recaptcha-box"></div>
 
-<input
-id="loginOtpInput"
-type="text"
-maxlength="6"
-inputmode="numeric"
-placeholder="Enter OTP">
+<label>SMS OTP</label>
 
-<button
-class="primary-btn"
-onclick="verifyStudentLoginOtp()">
+<input id="loginOtpInput" type="text" maxlength="6" inputmode="numeric" placeholder="Enter OTP">
 
+<button class="primary-btn" id="verifyLoginBtn" onclick="verifyStudentLoginOtp()">
 Login
+</button>
 
+<button class="secondary-btn" onclick="resendLoginOtp()">
+Resend OTP
 </button>
 
 <div id="loginOtpMessage"></div>
 
 </div>
-
 </section>
 
 
-<!-- ================================================= -->
 <!-- STUDENT DASHBOARD -->
-<!-- ================================================= -->
 
 <section id="studentDashboard" class="hidden">
 
@@ -1320,351 +1025,158 @@ Login
 
 <div class="student-top-left">
 
-<img
-src="mam-logo.jpg"
-class="dashboard-logo"
-alt="MAM College Logo">
+<img src="mam-logo.jpg" class="dashboard-logo" alt="MAM College Logo">
 
 <div>
-
-<h2 id="studentWelcome">
-Welcome, Student 👋
-</h2>
-
-<p id="studentCourse">
-Student Portal
-</p>
-
+<h2 id="studentWelcome">Welcome, Student 👋</h2>
+<p id="studentCourse">Student Portal</p>
 </div>
 
 </div>
 
-
-<button
-class="profile-circle"
-onclick="showSection('studentProfile')">
-
-👤
-
-</button>
+<button class="profile-circle" onclick="showSection('studentProfile')">👤</button>
 
 </div>
 
-
-<button
-class="notification-btn"
-onclick="showSection('updates')">
-
+<button class="notification-btn" onclick="showSection('updates')">
 🔔 View latest notifications
-
 </button>
 
 </div>
 
-
-<!-- QUICK STATISTICS -->
 
 <div class="stats-grid">
 
 <div class="stat-card">
-
 <div class="stat-icon">📊</div>
-
-<div class="stat-title">
-Attendance
+<div class="stat-title">Attendance</div>
+<div class="stat-value">85%</div>
 </div>
-
-<div class="stat-value">
-85%
-</div>
-
-</div>
-
 
 <div class="stat-card">
-
 <div class="stat-icon">📝</div>
-
-<div class="stat-title">
-Internal Marks
+<div class="stat-title">Internal Marks</div>
+<div class="stat-value">78%</div>
 </div>
-
-<div class="stat-value">
-78%
-</div>
-
-</div>
-
 
 <div class="stat-card">
-
 <div class="stat-icon">💰</div>
-
-<div class="stat-title">
-Fees
+<div class="stat-title">Fees</div>
+<div class="stat-value">Paid</div>
 </div>
-
-<div class="stat-value">
-Paid
-</div>
-
-</div>
-
 
 <div class="stat-card">
-
 <div class="stat-icon">📚</div>
-
-<div class="stat-title">
-Semester
-</div>
-
-<div class="stat-value">
-Current
+<div class="stat-title">Semester</div>
+<div class="stat-value">Current</div>
 </div>
 
 </div>
 
-</div>
-
-
-<!-- QUICK NOTICE -->
 
 <div class="dashboard-title">
-
 <h3>Latest Notice</h3>
-
 <span>View all</span>
-
 </div>
 
-
-<div
-class="notice-card"
-onclick="showSection('updates')">
-
+<div class="notice-card" onclick="showSection('updates')">
 <strong>📢 College Announcement</strong>
-
-<p>
-Check the College Updates section for the latest
-academic announcements.
-</p>
-
+<p>Check the College Updates section for the latest academic announcements.</p>
 </div>
 
-
-<!-- MAIN FEATURES -->
 
 <div class="dashboard-title">
-
 <h3>Campus Services</h3>
-
 <span>Explore</span>
-
 </div>
-
 
 <div class="dashboard-grid">
 
-<button
-class="dashboard-card"
-onclick="showSection('studentProfile')">
-
+<button class="dashboard-card" onclick="showSection('studentProfile')">
 <div class="big-icon">👤</div>
-
 <h3>My Profile</h3>
-
-<p>
-View personal and academic information
-</p>
-
+<p>View personal and academic information</p>
 </button>
 
-
-<button
-class="dashboard-card"
-onclick="showSection('timetable')">
-
+<button class="dashboard-card" onclick="showSection('timetable')">
 <div class="big-icon">🕐</div>
-
 <h3>Timetable</h3>
-
-<p>
-Check today's class schedule
-</p>
-
+<p>Check today's class schedule</p>
 </button>
 
-
-<button
-class="dashboard-card"
-onclick="showSection('updates')">
-
+<button class="dashboard-card" onclick="showSection('updates')">
 <div class="big-icon">📢</div>
-
 <h3>Notices</h3>
-
-<p>
-College announcements and updates
-</p>
-
+<p>College announcements and updates</p>
 </button>
 
-
-<button
-class="dashboard-card"
-onclick="showSection('calendar')">
-
+<button class="dashboard-card" onclick="showSection('calendar')">
 <div class="big-icon">📅</div>
-
 <h3>Academic Calendar</h3>
-
-<p>
-Important academic dates
-</p>
-
+<p>Important academic dates</p>
 </button>
 
-
-<button
-class="dashboard-card"
-onclick="showSection('attendance')">
-
+<button class="dashboard-card" onclick="showSection('attendance')">
 <div class="big-icon">📊</div>
-
 <h3>Attendance</h3>
-
-<p>
-Subject-wise attendance
-</p>
-
+<p>Subject-wise attendance</p>
 </button>
 
-
-<button
-class="dashboard-card"
-onclick="showSection('results')">
-
+<button class="dashboard-card" onclick="showSection('results')">
 <div class="big-icon">📝</div>
-
 <h3>Results</h3>
-
-<p>
-Marks and examination results
-</p>
-
+<p>Marks and examination results</p>
 </button>
 
-
-<button
-class="dashboard-card"
-onclick="showSection('fees')">
-
+<button class="dashboard-card" onclick="showSection('fees')">
 <div class="big-icon">💰</div>
-
 <h3>Fees</h3>
-
-<p>
-Fee payment information
-</p>
-
+<p>Fee payment information</p>
 </button>
 
-
-<button
-class="dashboard-card"
-onclick="showSection('campusMap')">
-
+<button class="dashboard-card" onclick="showSection('campusMap')">
 <div class="big-icon">🗺️</div>
-
 <h3>Campus Map</h3>
-
-<p>
-Find important campus locations
-</p>
-
+<p>Find important campus locations</p>
 </button>
 
-
-<button
-class="dashboard-card"
-onclick="showSection('feedback')">
-
+<button class="dashboard-card" onclick="showSection('feedback')">
 <div class="big-icon">💬</div>
-
 <h3>Feedback</h3>
-
-<p>
-Share your feedback
-</p>
-
+<p>Share your feedback</p>
 </button>
 
-
-<button
-class="dashboard-card"
-onclick="aiAssistant()">
-
+<button class="dashboard-card" onclick="aiAssistant()">
 <div class="big-icon">🤖</div>
-
 <h3>AI Assistant</h3>
-
-<p>
-Get help with campus information
-</p>
-
+<p>Get help with campus information</p>
 </button>
 
 </div>
 
+<button class="secondary-btn" onclick="logoutStudent()">🚪 Logout</button>
 
-<button
-class="secondary-btn"
-onclick="logoutStudent()">
-
-🚪 Logout
-
-</button>
-
-
-<!-- BOTTOM NAVIGATION -->
 
 <div class="bottom-nav">
 
-<button
-class="active"
-onclick="showSection('studentDashboard')">
-
+<button class="active" onclick="showSection('studentDashboard')">
 <span>🏠</span>
 Home
-
 </button>
 
-
-<button
-onclick="showSection('timetable')">
-
+<button onclick="showSection('timetable')">
 <span>📚</span>
 Academics
-
 </button>
 
-
-<button
-onclick="showSection('updates')">
-
+<button onclick="showSection('updates')">
 <span>📢</span>
 Notices
-
 </button>
 
-
-<button
-onclick="showSection('studentProfile')">
-
+<button onclick="showSection('studentProfile')">
 <span>👤</span>
 Profile
-
 </button>
 
 </div>
@@ -1672,153 +1184,77 @@ Profile
 </section>
 
 
-<!-- ================================================= -->
 <!-- PROFILE -->
-<!-- ================================================= -->
 
 <section id="studentProfile" class="hidden">
 
-<button
-class="back-btn"
-onclick="showSection('studentDashboard')">
-
-← Dashboard
-
-</button>
-
+<button class="back-btn" onclick="showSection('studentDashboard')">← Dashboard</button>
 
 <div class="card">
 
 <div class="profile-header">
 
-<img
-src="mam-logo.jpg"
-class="profile-logo"
-alt="MAM College Logo">
+<img src="mam-logo.jpg" class="profile-logo" alt="MAM College Logo">
 
 <div>
-
 <h2>My Profile</h2>
-
-<p id="profileShortName">
-Student
-</p>
-
+<p id="profileShortName">Student</p>
 </div>
 
 </div>
-
 
 <div class="profile-details">
 
 <div class="profile-row">
-
 <small>Student Name</small>
-
-<strong id="profileName">
-Not available
-</strong>
-
+<strong id="profileName">Not available</strong>
 </div>
 
-
 <div class="profile-row">
-
 <small>Roll Number</small>
-
-<strong id="profileRoll">
-Not available
-</strong>
-
+<strong id="profileRoll">Not available</strong>
 </div>
 
-
 <div class="profile-row">
-
 <small>Date of Birth</small>
-
-<strong id="profileDob">
-Not available
-</strong>
-
+<strong id="profileDob">Not available</strong>
 </div>
 
-
 <div class="profile-row">
-
 <small>Course</small>
-
-<strong id="profileCourse">
-Not available
-</strong>
-
+<strong id="profileCourse">Not available</strong>
 </div>
 
-
 <div class="profile-row">
-
 <small>Joining Year</small>
-
-<strong id="profileJoining">
-Not available
-</strong>
-
+<strong id="profileJoining">Not available</strong>
 </div>
 
-
 <div class="profile-row">
-
 <small>Expected Ending Year</small>
-
-<strong id="profileEnding">
-Not available
-</strong>
-
+<strong id="profileEnding">Not available</strong>
 </div>
 
-
 <div class="profile-row">
-
 <small>Student Type</small>
-
-<strong id="profileType">
-Not available
-</strong>
-
+<strong id="profileType">Not available</strong>
 </div>
-
 
 <div class="profile-row">
-
 <small>Mobile</small>
-
-<strong id="profileMobile">
-Not available
-</strong>
-
+<strong id="profileMobile">Not available</strong>
 </div>
 
 </div>
-
 </div>
-
 </section>
 
 
-<!-- ================================================= -->
 <!-- ATTENDANCE -->
-<!-- ================================================= -->
 
 <section id="attendance" class="hidden">
 
-<button
-class="back-btn"
-onclick="showSection('studentDashboard')">
-
-← Dashboard
-
-</button>
-
+<button class="back-btn" onclick="showSection('studentDashboard')">← Dashboard</button>
 
 <div class="card">
 
@@ -1826,77 +1262,48 @@ onclick="showSection('studentDashboard')">
 
 <div class="attendance-big">
 
-<div class="attendance-circle">
-85%
-</div>
+<div class="attendance-circle">85%</div>
 
 <strong>Overall Attendance</strong>
 
-<p>
-Sample data for development
-</p>
+<p>Sample data for development</p>
 
 </div>
 
-
 <div class="subject-row">
-
 <span>Java Programming</span>
 <span class="present">90%</span>
-
 </div>
 
-
 <div class="subject-row">
-
 <span>Database Management</span>
 <span class="present">86%</span>
-
 </div>
 
-
 <div class="subject-row">
-
 <span>Operating Systems</span>
 <span class="present">82%</span>
-
 </div>
-
 
 <div class="subject-row">
-
 <span>Cyber Security</span>
 <span class="present">84%</span>
-
 </div>
-
 
 <div class="warning">
-
 Attendance shown here is sample data.
 It will be connected to the college database later.
-
 </div>
 
 </div>
-
 </section>
 
 
-<!-- ================================================= -->
 <!-- RESULTS -->
-<!-- ================================================= -->
 
 <section id="results" class="hidden">
 
-<button
-class="back-btn"
-onclick="showSection('studentDashboard')">
-
-← Dashboard
-
-</button>
-
+<button class="back-btn" onclick="showSection('studentDashboard')">← Dashboard</button>
 
 <div class="card">
 
@@ -1940,33 +1347,20 @@ onclick="showSection('studentDashboard')">
 
 </div>
 
-
 <div class="warning">
-
 These are sample marks for UI development.
 Real results must come from a secure college database.
-
 </div>
 
 </div>
-
 </section>
 
 
-<!-- ================================================= -->
 <!-- FEES -->
-<!-- ================================================= -->
 
 <section id="fees" class="hidden">
 
-<button
-class="back-btn"
-onclick="showSection('studentDashboard')">
-
-← Dashboard
-
-</button>
-
+<button class="back-btn" onclick="showSection('studentDashboard')">← Dashboard</button>
 
 <div class="card">
 
@@ -1976,56 +1370,34 @@ onclick="showSection('studentDashboard')">
 ✓ Fee status: Paid
 </div>
 
-
 <div class="profile-details">
 
 <div class="profile-row">
-
 <small>Academic Year</small>
-
 <strong>2026–2027</strong>
-
 </div>
-
 
 <div class="profile-row">
-
 <small>Payment Status</small>
-
 <strong>Paid</strong>
-
 </div>
 
 </div>
-
 
 <div class="warning">
-
 Fee information shown here is sample data.
-Real payment information should be connected to a secure
-college payment system.
-
+Real payment information should be connected to a secure college payment system.
 </div>
 
 </div>
-
 </section>
 
 
-<!-- ================================================= -->
 <!-- CALENDAR -->
-<!-- ================================================= -->
 
 <section id="calendar" class="hidden">
 
-<button
-class="back-btn"
-onclick="showSection('studentDashboard')">
-
-← Dashboard
-
-</button>
-
+<button class="back-btn" onclick="showSection('studentDashboard')">← Dashboard</button>
 
 <div class="card">
 
@@ -2063,26 +1435,15 @@ onclick="showSection('studentDashboard')">
 </table>
 
 </div>
-
 </div>
-
 </section>
 
 
-<!-- ================================================= -->
 <!-- TIMETABLE -->
-<!-- ================================================= -->
 
 <section id="timetable" class="hidden">
 
-<button
-class="back-btn"
-onclick="showSection('studentDashboard')">
-
-← Dashboard
-
-</button>
-
+<button class="back-btn" onclick="showSection('studentDashboard')">← Dashboard</button>
 
 <div class="card">
 
@@ -2091,7 +1452,6 @@ onclick="showSection('studentDashboard')">
 <div class="info-box">
 Current timetable shown is sample CSE data.
 </div>
-
 
 <div class="table-wrap">
 
@@ -2148,81 +1508,56 @@ Current timetable shown is sample CSE data.
 </table>
 
 </div>
-
 </div>
-
 </section>
 
 
-<!-- ================================================= -->
 <!-- NOTICES -->
-<!-- ================================================= -->
 
 <section id="updates" class="hidden">
 
-<button
-class="back-btn"
-onclick="showSection('studentDashboard')">
-
-← Dashboard
-
-</button>
-
+<button class="back-btn" onclick="showSection('studentDashboard')">← Dashboard</button>
 
 <div class="card">
 
 <h2>📢 College Notices</h2>
 
-<p>
-Latest announcements and important information.
-</p>
+<p>Latest announcements and important information.</p>
 
 </div>
-
 
 <div class="notice-full">
 
 <h3>📚 Academic Announcement</h3>
 
-<div class="notice-date">
-Development Notice
-</div>
+<div class="notice-date">Development Notice</div>
 
 <p>
-Students are requested to regularly check the
-academic timetable and college announcements.
+Students are requested to regularly check the academic timetable and college announcements.
 </p>
 
 </div>
-
 
 <div class="notice-full">
 
 <h3>🎓 Student Services</h3>
 
-<div class="notice-date">
-Development Notice
-</div>
+<div class="notice-date">Development Notice</div>
 
 <p>
-MAM Campus Connect is being developed to bring
-student services together in one platform.
+MAM Campus Connect is being developed to bring student services together in one platform.
 </p>
 
 </div>
-
 
 <div class="notice-full">
 
 <h3>🔔 Important</h3>
 
-<div class="notice-date">
-Development Notice
-</div>
+<div class="notice-date">Development Notice</div>
 
 <p>
-Live notices will be added when the application
-is connected to the college backend.
+Live notices will be added when the application is connected to the college backend.
 </p>
 
 </div>
@@ -2230,219 +1565,115 @@ is connected to the college backend.
 </section>
 
 
-<!-- ================================================= -->
 <!-- CAMPUS MAP -->
-<!-- ================================================= -->
 
 <section id="campusMap" class="hidden">
 
-<button
-class="back-btn"
-onclick="showSection('studentDashboard')">
-
-← Dashboard
-
-</button>
-
+<button class="back-btn" onclick="showSection('studentDashboard')">← Dashboard</button>
 
 <div class="card">
 
 <h2>🗺️ Campus Map</h2>
 
-<p>
-MAM College of Engineering and Technology
-</p>
-
+<p>MAM College of Engineering and Technology</p>
 
 <div class="info-box">
-
 XQWH+654, Trichy Chennai Trunk Road,
 Siruganur, Tamil Nadu 621105
-
 </div>
-
 
 <button
 class="primary-btn"
 onclick="window.open('https://www.google.com/maps/search/?api=1&query=MAM+College+of+Engineering+and+Technology+Siruganur','_blank')">
-
 📍 Open Google Maps
-
 </button>
 
 </div>
-
 </section>
 
 
-<!-- ================================================= -->
 <!-- OTHER COLLEGE -->
-<!-- ================================================= -->
 
 <section id="otherCollege" class="hidden">
 
-<button
-class="back-btn"
-onclick="goHome()">
-
-← Home
-
-</button>
-
+<button class="back-btn" onclick="goHome()">← Home</button>
 
 <div class="card">
 
 <h2>👨‍🎓 Other College Student</h2>
 
-
 <label>College Name</label>
-
-<input
-id="otherCollegeName"
-type="text"
-placeholder="Enter college name">
-
+<input id="otherCollegeName" type="text" placeholder="Enter college name">
 
 <label>Roll Number</label>
-
-<input
-id="otherRoll"
-type="text"
-placeholder="Enter roll number">
-
+<input id="otherRoll" type="text" placeholder="Enter roll number">
 
 <label>Mobile Number</label>
+<input id="otherMobile" type="tel" maxlength="10" inputmode="numeric" placeholder="10 digit mobile number">
 
-<input
-id="otherMobile"
-type="tel"
-maxlength="10"
-inputmode="numeric"
-placeholder="10 digit mobile number">
-
-
-<button
-class="primary-btn"
-onclick="otherCollegeLogin()">
-
-Continue
-
-</button>
-
+<button class="primary-btn" onclick="otherCollegeLogin()">Continue</button>
 
 <div id="otherMessage"></div>
 
 </div>
-
 </section>
 
 
-<!-- ================================================= -->
 <!-- STAFF LOGIN -->
-<!-- ================================================= -->
 
 <section id="staffLogin" class="hidden">
 
-<button
-class="back-btn"
-onclick="goHome()">
-
-← Home
-
-</button>
-
+<button class="back-btn" onclick="goHome()">← Home</button>
 
 <div class="card">
 
 <h2>👨‍🏫 Staff Login</h2>
 
-
 <label>Staff ID</label>
-
-<input
-id="staffId"
-type="text"
-placeholder="Enter staff ID">
-
+<input id="staffId" type="text" placeholder="Enter staff ID">
 
 <label>Department</label>
-
-<input
-id="staffDepartment"
-type="text"
-placeholder="Enter department">
-
+<input id="staffDepartment" type="text" placeholder="Enter department">
 
 <label>Mobile Number</label>
+<input id="staffMobile" type="tel" maxlength="10" inputmode="numeric" placeholder="10 digit mobile number">
 
-<input
-id="staffMobile"
-type="tel"
-maxlength="10"
-inputmode="numeric"
-placeholder="10 digit mobile number">
-
-
-<button
-class="primary-btn"
-onclick="staffLogin()">
-
-Continue to OTP
-
+<button class="primary-btn" onclick="staffLogin()">
+Continue
 </button>
-
 
 <div id="staffMessage"></div>
 
 </div>
-
 </section>
 
 
-<!-- ================================================= -->
 <!-- STAFF OTP -->
-<!-- ================================================= -->
 
 <section id="staffOtp" class="hidden">
 
 <div class="card">
 
-<h2>🔐 Staff OTP</h2>
+<h2>🔐 Staff Verification</h2>
 
 <div class="info-box">
-Development OTP: <strong>123456</strong>
+Staff authentication is currently in development.
 </div>
 
+<label>Development Verification Code</label>
+<input id="staffOtpInput" type="text" maxlength="6" inputmode="numeric" placeholder="Enter code">
 
-<label>OTP</label>
-
-<input
-id="staffOtpInput"
-type="text"
-maxlength="6"
-inputmode="numeric"
-placeholder="Enter OTP">
-
-
-<button
-class="primary-btn"
-onclick="verifyStaffOtp()">
-
+<button class="primary-btn" onclick="verifyStaffOtp()">
 Login
-
 </button>
-
 
 <div id="staffOtpMessage"></div>
 
 </div>
-
 </section>
 
 
-<!-- ================================================= -->
 <!-- STAFF DASHBOARD -->
-<!-- ================================================= -->
 
 <section id="staffDashboard" class="hidden">
 
@@ -2450,10 +1681,7 @@ Login
 
 <div class="student-top-left">
 
-<img
-src="mam-logo.jpg"
-class="dashboard-logo"
-alt="MAM College Logo">
+<img src="mam-logo.jpg" class="dashboard-logo" alt="MAM College Logo">
 
 <div>
 
@@ -2472,135 +1700,65 @@ Department:
 </div>
 
 </div>
-
 </div>
-
 
 <div class="dashboard-grid">
 
-
-<button
-class="dashboard-card"
-onclick="alert('Department students will be connected later.')">
-
+<button class="dashboard-card" onclick="alert('Department students will be connected later.')">
 <div class="big-icon">👨‍🎓</div>
-
 <h3>Students</h3>
-
-<p>
-View department students
-</p>
-
+<p>View department students</p>
 </button>
 
-
-<button
-class="dashboard-card"
-onclick="alert('Notice management will be connected later.')">
-
+<button class="dashboard-card" onclick="alert('Notice management will be connected later.')">
 <div class="big-icon">📢</div>
-
 <h3>Notices</h3>
-
-<p>
-Manage department notices
-</p>
-
+<p>Manage department notices</p>
 </button>
 
-
-<button
-class="dashboard-card"
-onclick="showSection('campusMap')">
-
+<button class="dashboard-card" onclick="showSection('campusMap')">
 <div class="big-icon">🗺️</div>
-
 <h3>Locations</h3>
-
-<p>
-View campus locations
-</p>
-
+<p>View campus locations</p>
 </button>
 
-
-<button
-class="dashboard-card"
-onclick="alert('Student chat will be connected later.')">
-
+<button class="dashboard-card" onclick="alert('Student chat will be connected later.')">
 <div class="big-icon">💬</div>
-
 <h3>Student Chat</h3>
-
-<p>
-Communicate with students
-</p>
-
+<p>Communicate with students</p>
 </button>
 
 </div>
 
-
-<button
-class="secondary-btn"
-onclick="goHome()">
-
-🚪 Logout
-
-</button>
+<button class="secondary-btn" onclick="goHome()">🚪 Logout</button>
 
 </section>
 
 
-<!-- ================================================= -->
 <!-- PRINCIPAL LOGIN -->
-<!-- ================================================= -->
 
 <section id="principalLogin" class="hidden">
 
-<button
-class="back-btn"
-onclick="goHome()">
-
-← Home
-
-</button>
-
+<button class="back-btn" onclick="goHome()">← Home</button>
 
 <div class="card">
 
 <h2>👨‍💼 Principal Login</h2>
 
-
 <label>Registered Mobile Number</label>
+<input id="principalMobile" type="tel" maxlength="10" inputmode="numeric" placeholder="Enter registered mobile">
 
-<input
-id="principalMobile"
-type="tel"
-maxlength="10"
-inputmode="numeric"
-placeholder="Enter registered mobile">
-
-
-<button
-class="primary-btn"
-onclick="principalSendOtp()">
-
+<button class="primary-btn" onclick="principalSendOtp()">
 Continue
-
 </button>
-
 
 <div id="principalMessage"></div>
 
 </div>
-
 </section>
 
 
-<!-- ================================================= -->
 <!-- PRINCIPAL OTP -->
-<!-- ================================================= -->
 
 <section id="principalOtp" class="hidden">
 
@@ -2609,39 +1767,23 @@ Continue
 <h2>🔐 Principal Verification</h2>
 
 <div class="info-box">
-Development OTP: <strong>123456</strong>
+Principal authentication is currently in development.
 </div>
 
+<label>Development Verification Code</label>
+<input id="principalOtpInput" type="text" maxlength="6" inputmode="numeric" placeholder="Enter code">
 
-<label>OTP</label>
-
-<input
-id="principalOtpInput"
-type="text"
-maxlength="6"
-inputmode="numeric"
-placeholder="Enter OTP">
-
-
-<button
-class="primary-btn"
-onclick="verifyPrincipalOtp()">
-
+<button class="primary-btn" onclick="verifyPrincipalOtp()">
 Verify
-
 </button>
-
 
 <div id="principalOtpMessage"></div>
 
 </div>
-
 </section>
 
 
-<!-- ================================================= -->
 <!-- PRINCIPAL DASHBOARD -->
-<!-- ================================================= -->
 
 <section id="principalDashboard" class="hidden">
 
@@ -2649,432 +1791,246 @@ Verify
 
 <div class="student-top-left">
 
-<img
-src="mam-logo.jpg"
-class="dashboard-logo"
-alt="MAM College Logo">
+<img src="mam-logo.jpg" class="dashboard-logo" alt="MAM College Logo">
 
 <div>
 
 <h2>👨‍💼 Principal Dashboard</h2>
 
-<p>
-College Management Panel
-</p>
+<p>College Management Panel</p>
 
 </div>
 
 </div>
-
 </div>
-
 
 <div class="dashboard-grid">
 
-
-<button
-class="dashboard-card"
-onclick="alert('Timetable management will be connected later.')">
-
+<button class="dashboard-card" onclick="alert('Timetable management will be connected later.')">
 <div class="big-icon">🕐</div>
-
 <h3>Timetable</h3>
-
-<p>
-Manage college timetable
-</p>
-
+<p>Manage college timetable</p>
 </button>
 
-
-<button
-class="dashboard-card"
-onclick="alert('Calendar management will be connected later.')">
-
+<button class="dashboard-card" onclick="alert('Calendar management will be connected later.')">
 <div class="big-icon">📅</div>
-
 <h3>Calendar</h3>
-
-<p>
-Manage academic calendar
-</p>
-
+<p>Manage academic calendar</p>
 </button>
 
-
-<button
-class="dashboard-card"
-onclick="alert('Staff management will be connected later.')">
-
+<button class="dashboard-card" onclick="alert('Staff management will be connected later.')">
 <div class="big-icon">👨‍🏫</div>
-
 <h3>Staff</h3>
-
-<p>
-Manage staff information
-</p>
-
+<p>Manage staff information</p>
 </button>
 
-
-<button
-class="dashboard-card"
-onclick="alert('Student information will be connected later.')">
-
+<button class="dashboard-card" onclick="alert('Student information will be connected later.')">
 <div class="big-icon">🎓</div>
-
 <h3>Students</h3>
-
-<p>
-View student information
-</p>
-
+<p>View student information</p>
 </button>
 
-
-<button
-class="dashboard-card"
-onclick="alert('College notices will be connected later.')">
-
+<button class="dashboard-card" onclick="alert('College notices will be connected later.')">
 <div class="big-icon">📢</div>
-
 <h3>Notices</h3>
-
-<p>
-Manage announcements
-</p>
-
+<p>Manage announcements</p>
 </button>
 
-
-<button
-class="dashboard-card"
-onclick="showSection('campusMap')">
-
+<button class="dashboard-card" onclick="showSection('campusMap')">
 <div class="big-icon">🏫</div>
-
 <h3>Functions</h3>
-
-<p>
-College functions
-</p>
-
+<p>College functions</p>
 </button>
 
 </div>
 
-
-<button
-class="secondary-btn"
-onclick="goHome()">
-
-🚪 Logout
-
-</button>
+<button class="secondary-btn" onclick="goHome()">🚪 Logout</button>
 
 </section>
 
 
-<!-- ================================================= -->
 <!-- CUSTOMER CARE -->
-<!-- ================================================= -->
 
 <section id="customerCare" class="hidden">
 
-<button
-class="back-btn"
-onclick="goHome()">
-
-← Home
-
-</button>
-
+<button class="back-btn" onclick="goHome()">← Home</button>
 
 <div class="card">
 
 <h2>📞 Customer Care</h2>
 
-<p>
-Contact college support for assistance.
-</p>
-
+<p>Contact college support for assistance.</p>
 
 <div class="warning">
-
-Replace the placeholder number before publishing
-the application.
-
+Replace the placeholder number before publishing the application.
 </div>
 
-
-<button
-class="primary-btn"
-onclick="window.location.href='tel:+919999999999'">
-
+<button class="primary-btn" onclick="window.location.href='tel:+919999999999'">
 📞 Call Customer Care
-
 </button>
 
 </div>
-
 </section>
 
 
-<!-- ================================================= -->
 <!-- FEEDBACK -->
-<!-- ================================================= -->
 
 <section id="feedback" class="hidden">
 
-<button
-class="back-btn"
-onclick="goHome()">
-
-← Home
-
-</button>
-
+<button class="back-btn" onclick="goHome()">← Home</button>
 
 <div class="card">
 
 <h2>💬 Feedback</h2>
 
-
 <label>Name</label>
-
-<input
-id="feedbackName"
-type="text"
-placeholder="Enter your name">
-
+<input id="feedbackName" type="text" placeholder="Enter your name">
 
 <label>Mobile Number</label>
-
-<input
-id="feedbackMobile"
-type="tel"
-maxlength="10"
-inputmode="numeric"
-placeholder="Enter mobile number">
-
+<input id="feedbackMobile" type="tel" maxlength="10" inputmode="numeric" placeholder="Enter mobile number">
 
 <label>Your Feedback</label>
+<textarea id="feedbackText" rows="5" placeholder="Write your feedback"></textarea>
 
-<textarea
-id="feedbackText"
-rows="5"
-placeholder="Write your feedback"></textarea>
-
-
-<button
-class="primary-btn"
-onclick="submitFeedback()">
-
+<button class="primary-btn" onclick="submitFeedback()">
 Submit Feedback
-
 </button>
-
 
 <div id="feedbackMessage"></div>
 
 </div>
-
 </section>
 
 </main>
 
-
-<!-- ================================================= -->
-<!-- FOOTER -->
-<!-- ================================================= -->
-
 <footer>
 
-<img
-src="mam-logo.jpg"
-class="footer-logo"
-alt="MAM Logo">
+<img src="mam-logo.jpg" class="footer-logo" alt="MAM Logo">
 
 MAM Campus Connect © 2026
 
 </footer>
 
 
-<!-- ================================================= -->
-<!-- JAVASCRIPT -->
-<!-- ================================================= -->
-
 <script>
 
-
-/* ================================================= */
-/* FIREBASE CONFIGURATION */
-/* ================================================= */
+/* =========================================================
+   FIREBASE CONFIGURATION
+========================================================= */
 
 const firebaseConfig = {
-
   apiKey:"AIzaSyDqBPMbGHSBOlvQlfwMsMObJrrZU5TvTsg",
-
   authDomain:"mam-campus-connect.firebaseapp.com",
-
   projectId:"mam-campus-connect",
-
   storageBucket:"mam-campus-connect.firebasestorage.app",
-
   messagingSenderId:"46200336704",
-
   appId:"1:46200336704:web:74808b2fa8d3ad62a44aa5"
-
 };
 
 
-/* ================================================= */
-/* FIREBASE INITIALIZATION */
-/* ================================================= */
+/* =========================================================
+   FIREBASE INITIALIZATION
+========================================================= */
 
 firebase.initializeApp(firebaseConfig);
 
-const auth=firebase.auth();
-
-const db=firebase.firestore();
-
-
-/* ================================================= */
-/* VARIABLES */
-/* ================================================= */
-
-let currentRole="";
-
-let currentStudent=null;
+const auth = firebase.auth();
+const db = firebase.firestore();
 
 
-/* ================================================= */
-/* MENU */
-/* ================================================= */
+/* =========================================================
+   VARIABLES
+========================================================= */
+
+let currentRole = "";
+let currentStudent = null;
+
+let registrationConfirmationResult = null;
+let loginConfirmationResult = null;
+
+let registrationRecaptchaVerifier = null;
+let loginRecaptchaVerifier = null;
+
+
+/* =========================================================
+   MENU
+========================================================= */
 
 function openMenu(){
-
-  document
-  .getElementById("sideMenu")
-  .classList.add("open");
-
-  document
-  .getElementById("overlay")
-  .classList.add("show");
-
+  document.getElementById("sideMenu").classList.add("open");
+  document.getElementById("overlay").classList.add("show");
 }
-
 
 function closeMenu(){
-
-  document
-  .getElementById("sideMenu")
-  .classList.remove("open");
-
-  document
-  .getElementById("overlay")
-  .classList.remove("show");
-
+  document.getElementById("sideMenu").classList.remove("open");
+  document.getElementById("overlay").classList.remove("show");
 }
 
 
-/* ================================================= */
-/* SECTIONS */
-/* ================================================= */
+/* =========================================================
+   SECTIONS
+========================================================= */
 
 function hideAll(){
-
-  document
-  .querySelectorAll("main section")
-  .forEach(section=>{
-
+  document.querySelectorAll("main section").forEach(section=>{
     section.classList.add("hidden");
-
   });
-
 }
-
 
 function showSection(id){
 
   hideAll();
 
-  const section=
-    document.getElementById(id);
+  const section=document.getElementById(id);
 
   if(section){
-
     section.classList.remove("hidden");
 
     window.scrollTo({
-
       top:0,
-
       behavior:"smooth"
-
     });
-
   }
 
   updateBottomNav(id);
-
 }
 
 
-/* ================================================= */
-/* BOTTOM NAVIGATION */
-/* ================================================= */
+/* =========================================================
+   BOTTOM NAV
+========================================================= */
 
 function updateBottomNav(id){
 
-  const nav=
-    document.querySelector(".bottom-nav");
+  const nav=document.querySelector(".bottom-nav");
 
   if(!nav) return;
 
-  nav
-  .querySelectorAll("button")
-  .forEach(button=>{
-
+  nav.querySelectorAll("button").forEach(button=>{
     button.classList.remove("active");
-
   });
 
-
   if(id==="studentDashboard"){
-
-    nav.children[0]
-    .classList.add("active");
-
+    nav.children[0].classList.add("active");
   }
 
   else if(id==="timetable"){
-
-    nav.children[1]
-    .classList.add("active");
-
+    nav.children[1].classList.add("active");
   }
 
   else if(id==="updates"){
-
-    nav.children[2]
-    .classList.add("active");
-
+    nav.children[2].classList.add("active");
   }
 
   else if(id==="studentProfile"){
-
-    nav.children[3]
-    .classList.add("active");
-
+    nav.children[3].classList.add("active");
   }
-
 }
 
 
-/* ================================================= */
-/* HOME */
-/* ================================================= */
+/* =========================================================
+   HOME
+========================================================= */
 
 function goHome(){
 
@@ -3082,152 +2038,191 @@ function goHome(){
 
   hideAll();
 
-  document
-  .getElementById("home")
-  .classList.remove("hidden");
+  document.getElementById("home").classList.remove("hidden");
 
   currentRole="";
-
 }
 
 
-/* ================================================= */
-/* JOINING YEARS */
-/* ================================================= */
+/* =========================================================
+   JOINING YEARS
+========================================================= */
 
 function loadJoiningYears(){
 
-  const select=
-    document.getElementById("regJoiningYear");
+  const select=document.getElementById("regJoiningYear");
 
   if(!select) return;
 
-  const currentYear=
-    new Date().getFullYear();
+  const currentYear=new Date().getFullYear();
 
-  select.innerHTML=
-    '<option value="">Select Joining Year</option>';
+  select.innerHTML='<option value="">Select Joining Year</option>';
 
-  for(
-    let year=2023;
-    year<=currentYear;
-    year++
-  ){
+  for(let year=2023;year<=currentYear;year++){
 
-    const option=
-      document.createElement("option");
+    const option=document.createElement("option");
 
     option.value=year;
-
     option.textContent=year;
 
     select.appendChild(option);
-
   }
-
 }
 
 
-/* ================================================= */
-/* ENDING YEAR */
-/* ================================================= */
+/* =========================================================
+   ENDING YEAR
+========================================================= */
 
 function updateEndingYear(){
 
-  const joining=
-    parseInt(
-      document
-      .getElementById("regJoiningYear")
-      .value
-    );
+  const joining=parseInt(
+    document.getElementById("regJoiningYear").value
+  );
 
-  const duration=
-    parseInt(
-      document
-      .getElementById("regDuration")
-      .value
-    );
+  const duration=parseInt(
+    document.getElementById("regDuration").value
+  );
 
-  const ending=
-    document
-    .getElementById("regEndingYear");
-
+  const ending=document.getElementById("regEndingYear");
 
   if(joining && duration){
-
-    ending.value=
-      joining+duration;
-
+    ending.value=joining+duration;
   }
-
   else{
-
     ending.value="";
-
   }
-
 }
 
 
-/* ================================================= */
-/* REGISTER STUDENT */
-/* ================================================= */
+/* =========================================================
+   PHONE NUMBER
+========================================================= */
 
-function registerStudent(){
+function indianPhone(number){
 
-  const name=
-    document
-    .getElementById("regName")
-    .value
-    .trim();
+  const cleaned=String(number).replace(/\D/g,"");
 
-  const roll=
-    document
-    .getElementById("regRoll")
-    .value
-    .trim();
+  return "+91"+cleaned;
+}
 
-  const dob=
-    document
-    .getElementById("regDob")
-    .value;
 
-  const course=
-    document
-    .getElementById("regCourse")
-    .value;
+/* =========================================================
+   RECAPTCHA CLEANUP
+========================================================= */
 
-  const joining=
-    document
-    .getElementById("regJoiningYear")
-    .value;
+function clearRegistrationRecaptcha(){
 
-  const duration=
-    document
-    .getElementById("regDuration")
-    .value;
+  try{
 
-  const type=
-    document
-    .getElementById("regStudentType")
-    .value;
+    if(registrationRecaptchaVerifier){
+      registrationRecaptchaVerifier.clear();
+    }
 
-  const mobile=
-    document
-    .getElementById("regMobile")
-    .value
-    .trim();
+  }
+  catch(error){
+    console.warn(error);
+  }
 
-  const parent=
-    document
-    .getElementById("regParentMobile")
-    .value
-    .trim();
+  registrationRecaptchaVerifier=null;
 
-  const message=
-    document
-    .getElementById("regMessage");
+  document.getElementById("registrationRecaptcha").innerHTML="";
+}
 
+
+function clearLoginRecaptcha(){
+
+  try{
+
+    if(loginRecaptchaVerifier){
+      loginRecaptchaVerifier.clear();
+    }
+
+  }
+  catch(error){
+    console.warn(error);
+  }
+
+  loginRecaptchaVerifier=null;
+
+  document.getElementById("loginRecaptcha").innerHTML="";
+}
+
+
+/* =========================================================
+   CREATE REGISTRATION RECAPTCHA
+========================================================= */
+
+function createRegistrationRecaptcha(){
+
+  clearRegistrationRecaptcha();
+
+  registrationRecaptchaVerifier =
+    new firebase.auth.RecaptchaVerifier(
+      "registrationRecaptcha",
+      {
+        size:"normal",
+        callback:function(){
+          console.log("Registration reCAPTCHA verified.");
+        },
+        "expired-callback":function(){
+          document.getElementById("otpMessage").innerHTML=
+            '<div class="warning">reCAPTCHA expired. Please verify it again.</div>';
+        }
+      },
+      auth
+    );
+
+  return registrationRecaptchaVerifier.render();
+}
+
+
+/* =========================================================
+   CREATE LOGIN RECAPTCHA
+========================================================= */
+
+function createLoginRecaptcha(){
+
+  clearLoginRecaptcha();
+
+  loginRecaptchaVerifier =
+    new firebase.auth.RecaptchaVerifier(
+      "loginRecaptcha",
+      {
+        size:"normal",
+        callback:function(){
+          console.log("Login reCAPTCHA verified.");
+        },
+        "expired-callback":function(){
+          document.getElementById("loginOtpMessage").innerHTML=
+            '<div class="warning">reCAPTCHA expired. Please verify it again.</div>';
+        }
+      },
+      auth
+    );
+
+  return loginRecaptchaVerifier.render();
+}
+
+
+/* =========================================================
+   REGISTER STUDENT
+========================================================= */
+
+async function registerStudent(){
+
+  const name=document.getElementById("regName").value.trim();
+  const roll=document.getElementById("regRoll").value.trim();
+  const dob=document.getElementById("regDob").value;
+  const course=document.getElementById("regCourse").value;
+  const joining=document.getElementById("regJoiningYear").value;
+  const duration=document.getElementById("regDuration").value;
+  const type=document.getElementById("regStudentType").value;
+  const mobile=document.getElementById("regMobile").value.trim();
+  const parent=document.getElementById("regParentMobile").value.trim();
+
+  const message=document.getElementById("regMessage");
+  const button=document.getElementById("registerSendOtpBtn");
 
   if(
     !name ||
@@ -3245,9 +2240,7 @@ function registerStudent(){
       '<div class="warning">Please fill all fields.</div>';
 
     return;
-
   }
-
 
   if(!/^8126[0-9]+$/.test(roll)){
 
@@ -3255,9 +2248,7 @@ function registerStudent(){
       '<div class="warning">Roll number must start with 8126.</div>';
 
     return;
-
   }
-
 
   if(
     !/^[0-9]{10}$/.test(mobile) ||
@@ -3268,9 +2259,7 @@ function registerStudent(){
       '<div class="warning">Mobile numbers must contain exactly 10 digits.</div>';
 
     return;
-
   }
-
 
   if(mobile===parent){
 
@@ -3278,162 +2267,74 @@ function registerStudent(){
       '<div class="warning">Student and parent mobile numbers must be different.</div>';
 
     return;
-
   }
 
-
-  currentStudent={
-
-    name:name,
-
-    roll:roll,
-
-    dob:dob,
-
-    course:course,
-
-    joining:joining,
-
-    duration:duration,
-
-    type:type,
-
-    mobile:mobile,
-
-    parent:parent,
-
-    endingYear:
-      parseInt(joining)+parseInt(duration)
-
-  };
-
-
-  message.innerHTML="";
-
-  showSection("studentOtp");
-
-}
-
-
-/* ================================================= */
-/* VERIFY REGISTRATION OTP */
-/* ================================================= */
-
-async function verifyRegistrationOtp(){
-
-  const otp=
-    document
-    .getElementById("regOtp")
-    .value
-    .trim();
-
-  const message=
-    document
-    .getElementById("otpMessage");
-
-
-  if(otp!=="123456"){
-
-    message.innerHTML=
-      '<div class="warning">Incorrect OTP. Use 123456 for development testing.</div>';
-
-    return;
-
-  }
-
-
-  if(!currentStudent){
-
-    message.innerHTML=
-      '<div class="warning">Registration information was lost. Please register again.</div>';
-
-    return;
-
-  }
-
+  button.disabled=true;
 
   message.innerHTML=
-    '<div class="info-box">Saving student information securely...</div>';
-
+    '<div class="info-box">Checking roll number...</div>';
 
   try{
 
-    const studentRef=
-      db
-      .collection("students")
-      .doc(currentStudent.roll);
+    const studentRef=db.collection("students").doc(roll);
 
-
-    const existing=
-      await studentRef.get();
-
+    const existing=await studentRef.get();
 
     if(existing.exists){
 
       message.innerHTML=
-        '<div class="warning">This roll number is already registered.</div>';
+        '<div class="warning">This roll number is already registered. Please use Existing Student Login.</div>';
+
+      button.disabled=false;
 
       return;
-
     }
 
 
-    await studentRef.set({
+    currentStudent={
 
-      name:currentStudent.name,
+      name:name,
+      roll:roll,
+      dob:dob,
+      course:course,
+      joining:joining,
+      duration:duration,
+      type:type,
+      mobile:mobile,
+      parent:parent,
+      endingYear:
+        parseInt(joining)+parseInt(duration)
 
-      roll:currentStudent.roll,
-
-      dob:currentStudent.dob,
-
-      course:currentStudent.course,
-
-      joining:currentStudent.joining,
-
-      duration:currentStudent.duration,
-
-      endingYear:currentStudent.endingYear,
-
-      type:currentStudent.type,
-
-      mobile:currentStudent.mobile,
-
-      parent:currentStudent.parent,
-
-      createdAt:
-        firebase
-        .firestore
-        .FieldValue
-        .serverTimestamp()
-
-    });
-
-
-    localStorage.setItem(
-
-      "mamStudent",
-
-      JSON.stringify(currentStudent)
-
-    );
-
-
-    currentRole="student";
+    };
 
 
     message.innerHTML=
-      '<div class="info-box">✓ Registration successful. Student data saved to Firebase.</div>';
+      '<div class="info-box">Preparing secure SMS verification...</div>';
+
+    await createRegistrationRecaptcha();
 
 
-    loadStudentProfile();
+    const phoneNumber=indianPhone(mobile);
+
+    document.getElementById("registrationPhoneText").textContent=
+      "Firebase will send a verification code to "+phoneNumber+".";
 
 
-    setTimeout(function(){
+    registrationConfirmationResult=
+      await auth.signInWithPhoneNumber(
+        phoneNumber,
+        registrationRecaptchaVerifier
+      );
 
-      showSection("studentDashboard");
 
-    },700);
+    message.innerHTML="";
 
+    document.getElementById("regOtp").value="";
+
+    document.getElementById("otpMessage").innerHTML=
+      '<div class="info-box">✓ SMS OTP sent successfully.</div>';
+
+    showSection("studentOtp");
 
   }
 
@@ -3442,36 +2343,214 @@ async function verifyRegistrationOtp(){
     console.error(error);
 
     message.innerHTML=
-      '<div class="warning">Firebase error: '+
-      escapeHtml(error.message)+
+      '<div class="warning">Unable to send OTP: '+
+      escapeHtml(firebaseErrorMessage(error))+
+      '</div>';
+
+    clearRegistrationRecaptcha();
+
+  }
+
+  finally{
+
+    button.disabled=false;
+
+  }
+}
+
+
+/* =========================================================
+   VERIFY REGISTRATION OTP
+========================================================= */
+
+async function verifyRegistrationOtp(){
+
+  const otp=document.getElementById("regOtp").value.trim();
+
+  const message=document.getElementById("otpMessage");
+
+  const button=document.getElementById("verifyRegistrationBtn");
+
+  if(!/^[0-9]{6}$/.test(otp)){
+
+    message.innerHTML=
+      '<div class="warning">Enter the 6 digit OTP received by SMS.</div>';
+
+    return;
+  }
+
+  if(!registrationConfirmationResult){
+
+    message.innerHTML=
+      '<div class="warning">OTP session expired. Please request a new OTP.</div>';
+
+    return;
+  }
+
+  if(!currentStudent){
+
+    message.innerHTML=
+      '<div class="warning">Registration information was lost. Please register again.</div>';
+
+    return;
+  }
+
+  button.disabled=true;
+
+  message.innerHTML=
+    '<div class="info-box">Verifying OTP...</div>';
+
+  try{
+
+    const result=
+      await registrationConfirmationResult.confirm(otp);
+
+    const firebaseUser=result.user;
+
+    const studentRef=
+      db.collection("students").doc(currentStudent.roll);
+
+    const existing=
+      await studentRef.get();
+
+    if(existing.exists){
+
+      message.innerHTML=
+        '<div class="warning">This roll number is already registered.</div>';
+
+      button.disabled=false;
+
+      return;
+    }
+
+
+    await studentRef.set({
+
+      name:currentStudent.name,
+      roll:currentStudent.roll,
+      dob:currentStudent.dob,
+      course:currentStudent.course,
+      joining:currentStudent.joining,
+      duration:currentStudent.duration,
+      endingYear:currentStudent.endingYear,
+      type:currentStudent.type,
+      mobile:currentStudent.mobile,
+      parent:currentStudent.parent,
+
+      phoneVerified:true,
+
+      firebaseUid:firebaseUser.uid,
+
+      createdAt:
+        firebase.firestore.FieldValue.serverTimestamp()
+
+    });
+
+
+    localStorage.setItem(
+      "mamStudent",
+      JSON.stringify(currentStudent)
+    );
+
+
+    currentRole="student";
+
+    message.innerHTML=
+      '<div class="info-box">✓ Mobile verified and registration completed successfully.</div>';
+
+    loadStudentProfile();
+
+
+    setTimeout(function(){
+
+      showSection("studentDashboard");
+
+    },800);
+
+  }
+
+  catch(error){
+
+    console.error(error);
+
+    message.innerHTML=
+      '<div class="warning">OTP verification failed: '+
+      escapeHtml(firebaseErrorMessage(error))+
       '</div>';
 
   }
 
+  finally{
+
+    button.disabled=false;
+
+  }
 }
 
 
-/* ================================================= */
-/* STUDENT LOGIN */
-/* ================================================= */
+/* =========================================================
+   RESEND REGISTRATION OTP
+========================================================= */
+
+async function resendRegistrationOtp(){
+
+  if(!currentStudent){
+
+    showSection("studentRegistration");
+
+    return;
+  }
+
+  const message=document.getElementById("otpMessage");
+
+  message.innerHTML=
+    '<div class="info-box">Preparing a new OTP...</div>';
+
+  try{
+
+    await createRegistrationRecaptcha();
+
+    const phoneNumber=indianPhone(currentStudent.mobile);
+
+    registrationConfirmationResult=
+      await auth.signInWithPhoneNumber(
+        phoneNumber,
+        registrationRecaptchaVerifier
+      );
+
+    message.innerHTML=
+      '<div class="info-box">✓ New OTP sent to '+phoneNumber+'.</div>';
+
+  }
+
+  catch(error){
+
+    console.error(error);
+
+    message.innerHTML=
+      '<div class="warning">Unable to resend OTP: '+
+      escapeHtml(firebaseErrorMessage(error))+
+      '</div>';
+
+    clearRegistrationRecaptcha();
+
+  }
+}
+
+
+/* =========================================================
+   STUDENT LOGIN
+========================================================= */
 
 async function studentLogin(){
 
-  const roll=
-    document
-    .getElementById("loginRoll")
-    .value
-    .trim();
+  const roll=document.getElementById("loginRoll").value.trim();
 
-  const mobile=
-    document
-    .getElementById("loginMobile")
-    .value
-    .trim();
+  const mobile=document.getElementById("loginMobile").value.trim();
 
-  const message=
-    document
-    .getElementById("loginMessage");
+  const message=document.getElementById("loginMessage");
+
+  const button=document.getElementById("loginSendOtpBtn");
 
 
   if(
@@ -3483,7 +2562,6 @@ async function studentLogin(){
       '<div class="warning">Enter a valid roll number.</div>';
 
     return;
-
   }
 
 
@@ -3493,9 +2571,10 @@ async function studentLogin(){
       '<div class="warning">Enter a valid 10 digit mobile number.</div>';
 
     return;
-
   }
 
+
+  button.disabled=true;
 
   message.innerHTML=
     '<div class="info-box">Checking student information...</div>';
@@ -3504,10 +2583,7 @@ async function studentLogin(){
   try{
 
     const studentRef=
-      db
-      .collection("students")
-      .doc(roll);
-
+      db.collection("students").doc(roll);
 
     const studentDoc=
       await studentRef.get();
@@ -3516,15 +2592,15 @@ async function studentLogin(){
     if(!studentDoc.exists){
 
       message.innerHTML=
-        '<div class="warning">Student record not found in Firebase. Please complete registration first.</div>';
+        '<div class="warning">Student record not found. Please complete registration first.</div>';
+
+      button.disabled=false;
 
       return;
-
     }
 
 
-    const student=
-      studentDoc.data();
+    const student=studentDoc.data();
 
 
     if(student.mobile!==mobile){
@@ -3532,21 +2608,35 @@ async function studentLogin(){
       message.innerHTML=
         '<div class="warning">Roll number or registered mobile number is incorrect.</div>';
 
-      return;
+      button.disabled=false;
 
+      return;
     }
 
 
     currentStudent=student;
 
 
-    localStorage.setItem(
+    await createLoginRecaptcha();
 
-      "mamStudent",
 
-      JSON.stringify(student)
+    const phoneNumber=indianPhone(mobile);
 
-    );
+    document.getElementById("loginPhoneText").textContent=
+      "Firebase will send a verification code to "+phoneNumber+".";
+
+
+    loginConfirmationResult=
+      await auth.signInWithPhoneNumber(
+        phoneNumber,
+        loginRecaptchaVerifier
+      );
+
+
+    document.getElementById("loginOtpInput").value="";
+
+    document.getElementById("loginOtpMessage").innerHTML=
+      '<div class="info-box">✓ SMS OTP sent successfully.</div>';
 
 
     message.innerHTML="";
@@ -3560,54 +2650,180 @@ async function studentLogin(){
     console.error(error);
 
     message.innerHTML=
-      '<div class="warning">Firebase error: '+
-      escapeHtml(error.message)+
+      '<div class="warning">Unable to send OTP: '+
+      escapeHtml(firebaseErrorMessage(error))+
+      '</div>';
+
+    clearLoginRecaptcha();
+
+  }
+
+  finally{
+
+    button.disabled=false;
+
+  }
+}
+
+
+/* =========================================================
+   VERIFY STUDENT LOGIN OTP
+========================================================= */
+
+async function verifyStudentLoginOtp(){
+
+  const otp=
+    document.getElementById("loginOtpInput").value.trim();
+
+  const message=
+    document.getElementById("loginOtpMessage");
+
+  const button=
+    document.getElementById("verifyLoginBtn");
+
+
+  if(!/^[0-9]{6}$/.test(otp)){
+
+    message.innerHTML=
+      '<div class="warning">Enter the 6 digit OTP received by SMS.</div>';
+
+    return;
+  }
+
+
+  if(!loginConfirmationResult){
+
+    message.innerHTML=
+      '<div class="warning">OTP session expired. Please request a new OTP.</div>';
+
+    return;
+  }
+
+
+  button.disabled=true;
+
+  message.innerHTML=
+    '<div class="info-box">Verifying OTP...</div>';
+
+
+  try{
+
+    const result=
+      await loginConfirmationResult.confirm(otp);
+
+    const firebaseUser=result.user;
+
+
+    if(!currentStudent){
+
+      throw new Error("Student information is unavailable.");
+    }
+
+
+    currentStudent.firebaseUid=firebaseUser.uid;
+
+
+    localStorage.setItem(
+      "mamStudent",
+      JSON.stringify(currentStudent)
+    );
+
+
+    currentRole="student";
+
+    loadStudentProfile();
+
+    message.innerHTML=
+      '<div class="success-text">✓ Login successful.</div>';
+
+
+    setTimeout(function(){
+
+      showSection("studentDashboard");
+
+    },500);
+
+  }
+
+  catch(error){
+
+    console.error(error);
+
+    message.innerHTML=
+      '<div class="warning">OTP verification failed: '+
+      escapeHtml(firebaseErrorMessage(error))+
       '</div>';
 
   }
 
+  finally{
+
+    button.disabled=false;
+
+  }
 }
 
 
-/* ================================================= */
-/* LOGIN OTP */
-/* ================================================= */
+/* =========================================================
+   RESEND LOGIN OTP
+========================================================= */
 
-function verifyStudentLoginOtp(){
+async function resendLoginOtp(){
 
-  const otp=
-    document
-    .getElementById("loginOtpInput")
-    .value
-    .trim();
+  if(!currentStudent){
 
-  const message=
-    document
-    .getElementById("loginOtpMessage");
-
-
-  if(otp!=="123456"){
-
-    message.innerHTML=
-      '<div class="warning">Incorrect OTP. Use 123456 for development testing.</div>';
+    showSection("studentLogin");
 
     return;
+  }
+
+  const message=
+    document.getElementById("loginOtpMessage");
+
+
+  message.innerHTML=
+    '<div class="info-box">Preparing a new OTP...</div>';
+
+
+  try{
+
+    await createLoginRecaptcha();
+
+
+    const phoneNumber=
+      indianPhone(currentStudent.mobile);
+
+
+    loginConfirmationResult=
+      await auth.signInWithPhoneNumber(
+        phoneNumber,
+        loginRecaptchaVerifier
+      );
+
+
+    message.innerHTML=
+      '<div class="info-box">✓ New OTP sent to '+phoneNumber+'.</div>';
 
   }
 
+  catch(error){
 
-  currentRole="student";
+    console.error(error);
 
-  loadStudentProfile();
+    message.innerHTML=
+      '<div class="warning">Unable to resend OTP: '+
+      escapeHtml(firebaseErrorMessage(error))+
+      '</div>';
 
-  showSection("studentDashboard");
+    clearLoginRecaptcha();
 
+  }
 }
 
 
-/* ================================================= */
-/* LOAD PROFILE */
-/* ================================================= */
+/* =========================================================
+   LOAD PROFILE
+========================================================= */
 
 function loadStudentProfile(){
 
@@ -3641,139 +2857,114 @@ function loadStudentProfile(){
   if(!currentStudent) return;
 
 
-  document
-  .getElementById("studentWelcome")
-  .textContent=
-    "Welcome, "+
-    currentStudent.name+
-    " 👋";
+  document.getElementById("studentWelcome").textContent=
+    "Welcome, "+currentStudent.name+" 👋";
 
 
-  document
-  .getElementById("studentCourse")
-  .textContent=
+  document.getElementById("studentCourse").textContent=
     currentStudent.course+
     " • Joining "+
     currentStudent.joining;
 
 
-  document
-  .getElementById("profileShortName")
-  .textContent=
+  document.getElementById("profileShortName").textContent=
     currentStudent.name;
 
 
-  document
-  .getElementById("profileName")
-  .textContent=
+  document.getElementById("profileName").textContent=
     currentStudent.name;
 
 
-  document
-  .getElementById("profileRoll")
-  .textContent=
+  document.getElementById("profileRoll").textContent=
     currentStudent.roll;
 
 
-  document
-  .getElementById("profileDob")
-  .textContent=
+  document.getElementById("profileDob").textContent=
     currentStudent.dob ||
     "Not available";
 
 
-  document
-  .getElementById("profileCourse")
-  .textContent=
+  document.getElementById("profileCourse").textContent=
     currentStudent.course;
 
 
-  document
-  .getElementById("profileJoining")
-  .textContent=
+  document.getElementById("profileJoining").textContent=
     currentStudent.joining;
 
 
-  document
-  .getElementById("profileEnding")
-  .textContent=
+  document.getElementById("profileEnding").textContent=
     currentStudent.endingYear;
 
 
-  document
-  .getElementById("profileType")
-  .textContent=
+  document.getElementById("profileType").textContent=
     currentStudent.type;
 
 
-  document
-  .getElementById("profileMobile")
-  .textContent=
+  document.getElementById("profileMobile").textContent=
     currentStudent.mobile;
 
 }
 
 
-/* ================================================= */
-/* LOGOUT */
-/* ================================================= */
+/* =========================================================
+   LOGOUT
+========================================================= */
 
-function logoutStudent(){
+async function logoutStudent(){
+
+  try{
+
+    await auth.signOut();
+
+  }
+
+  catch(error){
+
+    console.error(error);
+
+  }
+
 
   currentStudent=null;
 
   currentRole="";
 
+  registrationConfirmationResult=null;
+  loginConfirmationResult=null;
+
   localStorage.removeItem("mamStudent");
 
 
-  document
-  .getElementById("loginRoll")
-  .value="";
+  document.getElementById("loginRoll").value="";
+  document.getElementById("loginMobile").value="";
+  document.getElementById("loginOtpInput").value="";
 
 
-  document
-  .getElementById("loginMobile")
-  .value="";
-
-
-  document
-  .getElementById("loginOtpInput")
-  .value="";
+  clearRegistrationRecaptcha();
+  clearLoginRecaptcha();
 
 
   goHome();
-
 }
 
 
-/* ================================================= */
-/* OTHER COLLEGE */
-/* ================================================= */
+/* =========================================================
+   OTHER COLLEGE
+========================================================= */
 
 function otherCollegeLogin(){
 
   const college=
-    document
-    .getElementById("otherCollegeName")
-    .value
-    .trim();
+    document.getElementById("otherCollegeName").value.trim();
 
   const roll=
-    document
-    .getElementById("otherRoll")
-    .value
-    .trim();
+    document.getElementById("otherRoll").value.trim();
 
   const mobile=
-    document
-    .getElementById("otherMobile")
-    .value
-    .trim();
+    document.getElementById("otherMobile").value.trim();
 
   const message=
-    document
-    .getElementById("otherMessage");
+    document.getElementById("otherMessage");
 
 
   if(
@@ -3786,43 +2977,32 @@ function otherCollegeLogin(){
       '<div class="warning">Enter valid college, roll number and 10 digit mobile number.</div>';
 
     return;
-
   }
 
 
   message.innerHTML=
-    '<div class="info-box">Development OTP: <strong>123456</strong></div>';
+    '<div class="info-box">Visitor services are currently under development.</div>';
 
 }
 
 
-/* ================================================= */
-/* STAFF */
-/* ================================================= */
+/* =========================================================
+   STAFF
+========================================================= */
 
 function staffLogin(){
 
   const id=
-    document
-    .getElementById("staffId")
-    .value
-    .trim();
+    document.getElementById("staffId").value.trim();
 
   const department=
-    document
-    .getElementById("staffDepartment")
-    .value
-    .trim();
+    document.getElementById("staffDepartment").value.trim();
 
   const mobile=
-    document
-    .getElementById("staffMobile")
-    .value
-    .trim();
+    document.getElementById("staffMobile").value.trim();
 
   const message=
-    document
-    .getElementById("staffMessage");
+    document.getElementById("staffMessage");
 
 
   if(
@@ -3835,13 +3015,13 @@ function staffLogin(){
       '<div class="warning">Please enter valid staff details.</div>';
 
     return;
-
   }
 
 
   currentRole="staff";
 
-  message.innerHTML="";
+  message.innerHTML=
+    '<div class="info-box">Staff verification is currently in development.</div>';
 
   showSection("staffOtp");
 
@@ -3851,62 +3031,29 @@ function staffLogin(){
 function verifyStaffOtp(){
 
   const otp=
-    document
-    .getElementById("staffOtpInput")
-    .value
-    .trim();
+    document.getElementById("staffOtpInput").value.trim();
 
   const message=
-    document
-    .getElementById("staffOtpMessage");
+    document.getElementById("staffOtpMessage");
 
 
-  if(otp!=="123456"){
-
-    message.innerHTML=
-      '<div class="warning">Incorrect OTP. Use 123456.</div>';
-
-    return;
-
-  }
-
-
-  document
-  .getElementById("staffDisplayId")
-  .textContent=
-    document
-    .getElementById("staffId")
-    .value;
-
-
-  document
-  .getElementById("staffDisplayDepartment")
-  .textContent=
-    document
-    .getElementById("staffDepartment")
-    .value;
-
-
-  showSection("staffDashboard");
+  message.innerHTML=
+    '<div class="warning">Staff authentication must be connected to an approved staff account before production use.</div>';
 
 }
 
 
-/* ================================================= */
-/* PRINCIPAL */
-/* ================================================= */
+/* =========================================================
+   PRINCIPAL
+========================================================= */
 
 function principalSendOtp(){
 
   const mobile=
-    document
-    .getElementById("principalMobile")
-    .value
-    .trim();
+    document.getElementById("principalMobile").value.trim();
 
   const message=
-    document
-    .getElementById("principalMessage");
+    document.getElementById("principalMessage");
 
 
   if(!/^[0-9]{10}$/.test(mobile)){
@@ -3915,11 +3062,11 @@ function principalSendOtp(){
       '<div class="warning">Enter a valid 10 digit mobile number.</div>';
 
     return;
-
   }
 
 
-  message.innerHTML="";
+  message.innerHTML=
+    '<div class="info-box">Principal authentication is currently in development.</div>';
 
   showSection("principalOtp");
 
@@ -3928,59 +3075,33 @@ function principalSendOtp(){
 
 function verifyPrincipalOtp(){
 
-  const otp=
-    document
-    .getElementById("principalOtpInput")
-    .value
-    .trim();
-
   const message=
-    document
-    .getElementById("principalOtpMessage");
+    document.getElementById("principalOtpMessage");
 
 
-  if(otp!=="123456"){
-
-    message.innerHTML=
-      '<div class="warning">Incorrect OTP. Use 123456.</div>';
-
-    return;
-
-  }
-
-
-  showSection("principalDashboard");
+  message.innerHTML=
+    '<div class="warning">Principal authentication must be connected to an approved administrator account before production use.</div>';
 
 }
 
 
-/* ================================================= */
-/* FEEDBACK */
-/* ================================================= */
+/* =========================================================
+   FEEDBACK
+========================================================= */
 
-function submitFeedback(){
+async function submitFeedback(){
 
   const name=
-    document
-    .getElementById("feedbackName")
-    .value
-    .trim();
+    document.getElementById("feedbackName").value.trim();
 
   const mobile=
-    document
-    .getElementById("feedbackMobile")
-    .value
-    .trim();
+    document.getElementById("feedbackMobile").value.trim();
 
   const feedback=
-    document
-    .getElementById("feedbackText")
-    .value
-    .trim();
+    document.getElementById("feedbackText").value.trim();
 
   const message=
-    document
-    .getElementById("feedbackMessage");
+    document.getElementById("feedbackMessage");
 
 
   if(
@@ -3993,56 +3114,141 @@ function submitFeedback(){
       '<div class="warning">Please complete all feedback fields.</div>';
 
     return;
-
   }
 
 
-  message.innerHTML=
-    '<div class="info-box">Thank you! Your feedback has been recorded for development testing.</div>';
+  try{
+
+    await db.collection("feedback").add({
+
+      name:name,
+      mobile:mobile,
+      feedback:feedback,
+
+      createdAt:
+        firebase.firestore.FieldValue.serverTimestamp()
+
+    });
+
+
+    message.innerHTML=
+      '<div class="info-box">✓ Thank you! Your feedback has been submitted.</div>';
+
+
+    document.getElementById("feedbackName").value="";
+    document.getElementById("feedbackMobile").value="";
+    document.getElementById("feedbackText").value="";
+
+  }
+
+  catch(error){
+
+    console.error(error);
+
+    message.innerHTML=
+      '<div class="warning">Unable to submit feedback: '+
+      escapeHtml(firebaseErrorMessage(error))+
+      '</div>';
+
+  }
 
 }
 
 
-/* ================================================= */
-/* AI ASSISTANT */
-/* ================================================= */
+/* =========================================================
+   AI ASSISTANT
+========================================================= */
 
 function aiAssistant(){
 
   alert(
-
     "🤖 MAM Campus AI Assistant\n\n"+
     "The AI Assistant will be connected to a real AI system in a later step."
-
   );
 
 }
 
 
-/* ================================================= */
-/* SAFE ERROR TEXT */
-/* ================================================= */
+/* =========================================================
+   FIREBASE ERROR MESSAGE
+========================================================= */
+
+function firebaseErrorMessage(error){
+
+  if(!error) return "Unknown error.";
+
+  switch(error.code){
+
+    case "auth/invalid-phone-number":
+      return "The mobile number is invalid.";
+
+    case "auth/too-many-requests":
+      return "Too many attempts. Please wait and try again later.";
+
+    case "auth/quota-exceeded":
+      return "SMS quota has been exceeded. Please try again later.";
+
+    case "auth/captcha-check-failed":
+      return "reCAPTCHA verification failed. Please try again.";
+
+    case "auth/missing-phone-number":
+      return "Mobile number is missing.";
+
+    case "auth/invalid-verification-code":
+      return "The OTP is incorrect.";
+
+    case "auth/code-expired":
+      return "The OTP has expired. Please request a new OTP.";
+
+    case "auth/network-request-failed":
+      return "Network error. Check your internet connection.";
+
+    case "auth/billing-not-enabled":
+      return "Firebase billing must be enabled for this SMS authentication setup.";
+
+    default:
+      return error.message || "Firebase authentication error.";
+
+  }
+
+}
+
+
+/* =========================================================
+   SAFE HTML
+========================================================= */
 
 function escapeHtml(value){
 
   return String(value)
 
     .replace(/&/g,"&amp;")
-
     .replace(/</g,"&lt;")
-
     .replace(/>/g,"&gt;")
-
     .replace(/"/g,"&quot;")
-
     .replace(/'/g,"&#039;");
 
 }
 
 
-/* ================================================= */
-/* START */
-/* ================================================= */
+/* =========================================================
+   FIREBASE AUTH STATE
+========================================================= */
+
+auth.onAuthStateChanged(function(user){
+
+  console.log(
+    user
+      ? "Firebase authenticated user: "+user.uid
+      : "Firebase user signed out."
+  );
+
+});
+
+
+/* =========================================================
+   START
+========================================================= */
 
 loadJoiningYears();
 
@@ -4052,3 +3258,4 @@ goHome();
 
 </body>
 </html>
+```
