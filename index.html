@@ -1,3093 +1,3756 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#123c69">
 <title>MAM Campus Connect</title>
 
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
 <style>
-*{
-  box-sizing:border-box;
-  margin:0;
-  padding:0;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-body{
-  font-family:Arial,Helvetica,sans-serif;
-  background:#f4f7fb;
-  color:#172033;
-  min-height:100vh;
+html {
+    scroll-behavior: smooth;
 }
 
-button,input,select,textarea{
-  font:inherit;
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f5f7fb;
+    color: #1f2937;
 }
 
-button{
-  cursor:pointer;
-}
-
-.hidden{
-  display:none !important;
-}
-
-/* LOGO */
-
-.college-logo,
-.header-logo,
-.menu-logo,
-.welcome-logo,
-.dashboard-logo,
-.profile-logo,
-.footer-logo{
-  object-fit:contain;
-  background:white;
-}
-
-.header-logo{
-  width:52px;
-  height:52px;
-  border-radius:10px;
-  padding:4px;
-}
-
-.menu-logo{
-  width:70px;
-  height:70px;
-  border-radius:15px;
-  padding:5px;
-  display:block;
-  margin:0 auto 10px;
-}
-
-.welcome-logo{
-  width:82px;
-  height:82px;
-  border-radius:18px;
-  padding:7px;
-  margin-bottom:16px;
-}
-
-.dashboard-logo{
-  width:58px;
-  height:58px;
-  border-radius:13px;
-  padding:5px;
-}
-
-.profile-logo{
-  width:65px;
-  height:65px;
-  border-radius:15px;
-  padding:5px;
-}
-
-.footer-logo{
-  width:38px;
-  height:38px;
-  border-radius:8px;
-  padding:3px;
-  vertical-align:middle;
-  margin-right:6px;
-}
-
-/* HEADER */
-
-header{
-  position:relative;
-  min-height:78px;
-  padding:12px 18px 12px 75px;
-  background:#123c69;
-  color:white;
-  box-shadow:0 3px 14px rgba(0,0,0,.18);
-}
-
-.header-content{
-  display:flex;
-  align-items:center;
-  gap:12px;
-}
-
-header h1{
-  font-size:22px;
-  margin-bottom:5px;
-}
-
-header p{
-  font-size:12px;
-  opacity:.9;
-}
-
-.menu-button{
-  position:absolute;
-  left:8px;
-  top:8px;
-  width:52px;
-  height:52px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  z-index:2000;
-  background:#123c69;
-  color:white;
-  border:1px solid rgba(255,255,255,.4);
-  border-radius:11px;
-  font-size:31px;
-}
-
-/* SIDE MENU */
-
-.side-menu{
-  position:fixed;
-  left:-290px;
-  top:0;
-  width:280px;
-  height:100%;
-  background:white;
-  z-index:3000;
-  box-shadow:4px 0 20px rgba(0,0,0,.25);
-  transition:.3s ease;
-  padding-top:22px;
-  overflow-y:auto;
-}
-
-.side-menu.open{
-  left:0;
-}
-
-.menu-brand{
-  text-align:center;
-  padding:0 20px 18px;
-  border-bottom:1px solid #e4e8ee;
-}
-
-.menu-brand strong{
-  display:block;
-  color:#123c69;
-  font-size:18px;
-}
-
-.menu-brand span{
-  display:block;
-  color:#7a8493;
-  font-size:11px;
-  margin-top:4px;
-}
-
-.side-menu h2{
-  color:#123c69;
-  padding:18px 20px;
-}
-
-.side-menu button{
-  width:100%;
-  border:none;
-  background:white;
-  text-align:left;
-  padding:17px 20px;
-  font-size:16px;
-  color:#172033;
-}
-
-.side-menu button:hover{
-  background:#eef5ff;
-}
-
-.overlay{
-  position:fixed;
-  inset:0;
-  background:rgba(0,0,0,.48);
-  z-index:2500;
-  display:none;
-}
-
-.overlay.show{
-  display:block;
-}
-
-/* MAIN */
-
-main{
-  max-width:900px;
-  margin:auto;
-  padding:18px 14px 90px;
-}
-
-section{
-  animation:fadeIn .3s ease;
-}
-
-@keyframes fadeIn{
-  from{
-    opacity:0;
-    transform:translateY(8px);
-  }
-  to{
-    opacity:1;
-    transform:translateY(0);
-  }
-}
-
-/* HOME */
-
-.welcome{
-  background:linear-gradient(135deg,#123c69,#1769aa);
-  color:white;
-  border-radius:22px;
-  padding:30px 22px;
-  margin-bottom:20px;
-  box-shadow:0 8px 22px rgba(18,60,105,.22);
-}
-
-.welcome h2{
-  font-size:26px;
-  margin-bottom:9px;
-}
-
-.welcome p{
-  line-height:1.6;
-  opacity:.94;
-}
-
-.home-buttons{
-  display:grid;
-  gap:14px;
-}
-
-.main-btn{
-  border:none;
-  border-radius:18px;
-  padding:20px;
-  background:white;
-  color:#123c69;
-  box-shadow:0 4px 16px rgba(0,0,0,.08);
-  text-align:left;
-  transition:.2s;
-}
-
-.main-btn:hover{
-  transform:translateY(-3px);
-}
-
-.main-btn .icon{
-  display:block;
-  font-size:32px;
-  margin-bottom:8px;
-}
-
-.main-btn strong{
-  font-size:18px;
-}
-
-.main-btn p{
-  margin-top:5px;
-  color:#6c7686;
-  font-size:13px;
-}
-
-/* CARDS */
-
-.card{
-  background:white;
-  border-radius:18px;
-  padding:21px;
-  margin-bottom:17px;
-  box-shadow:0 4px 16px rgba(0,0,0,.07);
-}
-
-.card h2{
-  color:#123c69;
-  margin-bottom:8px;
-}
-
-.card p{
-  color:#687386;
-  line-height:1.5;
-}
-
-/* FORM */
-
-label{
-  display:block;
-  margin-top:15px;
-  margin-bottom:6px;
-  font-weight:bold;
-  color:#26364d;
-}
-
+button,
 input,
 select,
-textarea{
-  width:100%;
-  padding:13px;
-  border:1px solid #ccd5e2;
-  border-radius:10px;
-  background:white;
-  outline:none;
+textarea {
+    font: inherit;
 }
 
-input:focus,
-select:focus,
-textarea:focus{
-  border-color:#1769aa;
+button {
+    cursor: pointer;
 }
 
-.primary-btn{
-  width:100%;
-  border:none;
-  border-radius:11px;
-  padding:14px;
-  margin-top:18px;
-  background:#123c69;
-  color:white;
-  font-weight:bold;
+.hidden {
+    display: none !important;
 }
 
-.secondary-btn{
-  width:100%;
-  border:1px solid #123c69;
-  border-radius:11px;
-  padding:13px;
-  margin-top:10px;
-  background:white;
-  color:#123c69;
-  font-weight:bold;
+.loading-screen {
+    position: fixed;
+    inset: 0;
+    background: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
 }
 
-.back-btn{
-  border:none;
-  background:transparent;
-  color:#123c69;
-  font-weight:bold;
-  margin-bottom:13px;
-  padding:5px 0;
+.loading-content {
+    text-align: center;
 }
 
-/* DASHBOARD */
-
-.student-top{
-  background:linear-gradient(135deg,#123c69,#1769aa);
-  color:white;
-  border-radius:23px;
-  padding:20px;
-  box-shadow:0 8px 22px rgba(18,60,105,.22);
-  margin-bottom:16px;
+.spinner {
+    width: 45px;
+    height: 45px;
+    border: 4px solid #e5e7eb;
+    border-top-color: #2563eb;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin: 0 auto 15px;
 }
 
-.student-top-row{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:12px;
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
 }
 
-.student-top-left{
-  display:flex;
-  align-items:center;
-  gap:12px;
+.auth-page {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 25px;
+    background: linear-gradient(135deg, #eef4ff, #f8fbff);
 }
 
-.student-top h2{
-  font-size:23px;
-  margin-bottom:5px;
+.auth-container {
+    width: 100%;
+    max-width: 1050px;
+    background: #ffffff;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 15px 45px rgba(15, 23, 42, 0.12);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
 }
 
-.student-top p{
-  font-size:13px;
-  opacity:.9;
+.auth-left {
+    background: linear-gradient(135deg, #1d4ed8, #2563eb, #3b82f6);
+    color: white;
+    padding: 55px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
-.profile-circle{
-  width:53px;
-  height:53px;
-  border-radius:50%;
-  background:rgba(255,255,255,.2);
-  border:1px solid rgba(255,255,255,.45);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:26px;
-  flex-shrink:0;
+.auth-left h1 {
+    font-size: 42px;
+    margin-bottom: 18px;
 }
 
-.notification-btn{
-  margin-top:15px;
-  border:none;
-  border-radius:11px;
-  padding:10px 14px;
-  background:rgba(255,255,255,.16);
-  color:white;
-  font-size:13px;
+.auth-left p {
+    font-size: 17px;
+    line-height: 1.7;
+    opacity: 0.95;
 }
 
-/* STATS */
-
-.stats-grid{
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:11px;
-  margin-bottom:19px;
+.auth-features {
+    margin-top: 30px;
 }
 
-.stat-card{
-  background:white;
-  border-radius:17px;
-  padding:16px;
-  box-shadow:0 4px 14px rgba(0,0,0,.07);
+.auth-feature {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 16px;
+    align-items: flex-start;
 }
 
-.stat-icon{
-  font-size:25px;
-  margin-bottom:8px;
+.auth-feature-icon {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.18);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
 }
 
-.stat-title{
-  color:#6d7787;
-  font-size:12px;
+.auth-right {
+    padding: 45px;
+    max-height: 90vh;
+    overflow-y: auto;
 }
 
-.stat-value{
-  color:#123c69;
-  font-size:20px;
-  font-weight:bold;
-  margin-top:3px;
+.auth-header {
+    margin-bottom: 25px;
 }
 
-/* DASHBOARD GRID */
-
-.dashboard-title{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  margin:18px 2px 11px;
+.auth-header h2 {
+    font-size: 30px;
+    margin-bottom: 8px;
+    color: #111827;
 }
 
-.dashboard-title h3{
-  color:#172033;
-  font-size:18px;
+.auth-header p {
+    color: #6b7280;
 }
 
-.dashboard-title span{
-  color:#7a8493;
-  font-size:12px;
+.auth-tabs {
+    display: flex;
+    background: #f3f4f6;
+    border-radius: 10px;
+    padding: 4px;
+    margin-bottom: 25px;
 }
 
-.dashboard-grid{
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:12px;
+.auth-tab {
+    flex: 1;
+    padding: 11px;
+    border: none;
+    border-radius: 8px;
+    background: transparent;
+    color: #6b7280;
+    font-weight: 600;
 }
 
-.dashboard-card{
-  border:none;
-  background:white;
-  border-radius:18px;
-  padding:18px 15px;
-  min-height:128px;
-  text-align:left;
-  box-shadow:0 4px 15px rgba(0,0,0,.07);
-  transition:.2s;
+.auth-tab.active {
+    background: #ffffff;
+    color: #2563eb;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.08);
 }
 
-.dashboard-card:active{
-  transform:scale(.97);
+.form-group {
+    margin-bottom: 17px;
 }
 
-.dashboard-card .big-icon{
-  font-size:31px;
-  margin-bottom:11px;
+.form-group label {
+    display: block;
+    margin-bottom: 7px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #374151;
 }
 
-.dashboard-card h3{
-  color:#123c69;
-  font-size:15px;
-  margin-bottom:5px;
+.form-control {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid #d1d5db;
+    border-radius: 9px;
+    outline: none;
+    transition: 0.2s;
+    background: #ffffff;
 }
 
-.dashboard-card p{
-  color:#737d8c;
-  font-size:11px;
-  line-height:1.4;
+.form-control:focus {
+    border-color: #2563eb;
+    box-shadow: 0 0 0 3px rgba(37,99,235,0.1);
 }
 
-/* NOTICE */
-
-.notice-card{
-  background:white;
-  border-radius:17px;
-  padding:17px;
-  margin-top:12px;
-  box-shadow:0 4px 14px rgba(0,0,0,.07);
-  border-left:4px solid #1769aa;
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
 }
 
-.notice-card strong{
-  color:#123c69;
-  display:block;
-  margin-bottom:5px;
+.btn {
+    border: none;
+    border-radius: 9px;
+    padding: 12px 18px;
+    font-weight: 600;
+    transition: 0.2s;
 }
 
-.notice-card p{
-  font-size:13px;
-  color:#6d7787;
+.btn-primary {
+    background: #2563eb;
+    color: #ffffff;
 }
 
-/* BOTTOM NAV */
-
-.bottom-nav{
-  position:fixed;
-  left:50%;
-  transform:translateX(-50%);
-  bottom:0;
-  width:100%;
-  max-width:900px;
-  height:68px;
-  background:rgba(255,255,255,.97);
-  border-top:1px solid #e1e5eb;
-  box-shadow:0 -4px 18px rgba(0,0,0,.08);
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  z-index:1500;
+.btn-primary:hover {
+    background: #1d4ed8;
 }
 
-.bottom-nav button{
-  border:none;
-  background:transparent;
-  color:#788293;
-  font-size:10px;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
-  gap:4px;
+.btn-secondary {
+    background: #eef2ff;
+    color: #3730a3;
 }
 
-.bottom-nav button span{
-  font-size:22px;
+.btn-secondary:hover {
+    background: #e0e7ff;
 }
 
-.bottom-nav button.active{
-  color:#123c69;
-  font-weight:bold;
+.btn-success {
+    background: #16a34a;
+    color: #ffffff;
 }
 
-/* INFORMATION */
-
-.info-box{
-  background:#eef6ff;
-  border-left:4px solid #1769aa;
-  padding:14px;
-  border-radius:8px;
-  margin-top:15px;
-  color:#34445b;
-  line-height:1.5;
+.btn-danger {
+    background: #dc2626;
+    color: #ffffff;
 }
 
-.warning{
-  background:#fff7e6;
-  border-left:4px solid #e1a000;
-  padding:14px;
-  border-radius:8px;
-  margin-top:15px;
-  color:#624c16;
+.btn-full {
+    width: 100%;
 }
 
-/* PROFILE */
-
-.profile-header{
-  display:flex;
-  align-items:center;
-  gap:15px;
-  margin-bottom:18px;
+.alert {
+    padding: 12px 14px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    font-size: 14px;
 }
 
-.profile-details{
-  display:grid;
-  gap:10px;
-  margin-top:15px;
+.alert-success {
+    background: #ecfdf5;
+    color: #166534;
+    border: 1px solid #bbf7d0;
 }
 
-.profile-row{
-  background:#f7f9fc;
-  padding:13px;
-  border-radius:10px;
+.alert-error {
+    background: #fef2f2;
+    color: #991b1b;
+    border: 1px solid #fecaca;
 }
 
-.profile-row small{
-  display:block;
-  color:#7b8492;
-  margin-bottom:4px;
+.alert-info {
+    background: #eff6ff;
+    color: #1e40af;
+    border: 1px solid #bfdbfe;
 }
 
-.profile-row strong{
-  color:#24344b;
+.password-help {
+    margin-top: 6px;
+    color: #6b7280;
+    font-size: 12px;
 }
 
-/* ATTENDANCE */
-
-.attendance-big{
-  text-align:center;
-  padding:20px;
+.recaptcha-wrap {
+    margin: 15px 0;
 }
 
-.attendance-circle{
-  width:130px;
-  height:130px;
-  border-radius:50%;
-  border:10px solid #1769aa;
-  margin:0 auto 15px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:28px;
-  font-weight:bold;
-  color:#123c69;
+.otp-box {
+    border: 1px solid #bfdbfe;
+    background: #eff6ff;
+    padding: 16px;
+    border-radius: 10px;
+    margin: 15px 0;
 }
 
-.subject-row{
-  display:flex;
-  justify-content:space-between;
-  padding:13px 0;
-  border-bottom:1px solid #e5e9ef;
+.otp-box h4 {
+    color: #1e40af;
+    margin-bottom: 6px;
 }
 
-.subject-row:last-child{
-  border-bottom:none;
+.otp-box p {
+    font-size: 13px;
+    color: #4b5563;
+    line-height: 1.5;
+    margin-bottom: 12px;
 }
 
-.present{
-  color:#15803d;
-  font-weight:bold;
+.otp-actions {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
 }
 
-/* FEES */
-
-.fee-status{
-  background:#eaf8ef;
-  color:#18733a;
-  padding:15px;
-  border-radius:12px;
-  font-weight:bold;
-  margin-top:15px;
+#regOtp {
+    letter-spacing: 6px;
+    font-size: 20px;
+    font-weight: 700;
+    text-align: center;
 }
 
-/* TABLE */
-
-.table-wrap{
-  overflow-x:auto;
+.otp-status {
+    margin-top: 8px;
+    font-size: 13px;
+    font-weight: 600;
 }
 
-table{
-  width:100%;
-  border-collapse:collapse;
-  margin-top:15px;
-  min-width:500px;
+.otp-verified {
+    color: #15803d;
 }
 
-th,td{
-  border:1px solid #dce2ea;
-  padding:10px;
-  text-align:left;
+.otp-pending {
+    color: #92400e;
 }
 
-th{
-  background:#123c69;
-  color:white;
+.dashboard {
+    min-height: 100vh;
+    display: flex;
+    background: #f3f6fb;
 }
 
-/* NOTICES */
-
-.notice-full{
-  background:white;
-  padding:17px;
-  border-radius:16px;
-  margin-bottom:12px;
-  box-shadow:0 4px 14px rgba(0,0,0,.07);
+.sidebar {
+    width: 250px;
+    background: #111827;
+    color: #ffffff;
+    min-height: 100vh;
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    overflow-y: auto;
 }
 
-.notice-full h3{
-  color:#123c69;
-  font-size:16px;
-  margin-bottom:7px;
+.sidebar-brand {
+    padding: 25px 20px;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
 }
 
-.notice-date{
-  color:#8992a0;
-  font-size:11px;
-  margin-bottom:8px;
+.sidebar-brand h2 {
+    font-size: 20px;
 }
 
-/* FOOTER */
-
-footer{
-  text-align:center;
-  padding:22px;
-  color:#7b8494;
-  font-size:12px;
+.sidebar-brand span {
+    display: block;
+    margin-top: 5px;
+    font-size: 12px;
+    color: #9ca3af;
 }
 
-/* DESKTOP */
-
-@media(min-width:700px){
-
-  .stats-grid{
-    grid-template-columns:repeat(4,1fr);
-  }
-
-  .dashboard-grid{
-    grid-template-columns:repeat(3,1fr);
-  }
-
+.sidebar-menu {
+    padding: 15px 10px;
 }
 
-/* SMALL MOBILE */
+.sidebar-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 13px;
+    margin-bottom: 5px;
+    border-radius: 8px;
+    color: #d1d5db;
+    text-decoration: none;
+    cursor: pointer;
+    transition: 0.2s;
+}
 
-@media(max-width:360px){
+.sidebar-item:hover,
+.sidebar-item.active {
+    background: #1f2937;
+    color: #ffffff;
+}
 
-  .dashboard-card{
-    min-height:120px;
-    padding:15px 12px;
-  }
+.sidebar-item.active {
+    border-left: 3px solid #60a5fa;
+}
 
-  .student-top h2{
-    font-size:20px;
-  }
+.main-content {
+    margin-left: 250px;
+    width: calc(100% - 250px);
+    min-height: 100vh;
+}
 
-  .header-logo{
-    width:45px;
-    height:45px;
-  }
+.topbar {
+    height: 72px;
+    background: #ffffff;
+    border-bottom: 1px solid #e5e7eb;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 28px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
 
+.topbar-title h1 {
+    font-size: 22px;
+    color: #111827;
+}
+
+.topbar-title p {
+    font-size: 12px;
+    color: #6b7280;
+    margin-top: 3px;
+}
+
+.user-area {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.user-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #2563eb;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+}
+
+.user-info {
+    text-align: right;
+}
+
+.user-info strong {
+    display: block;
+    font-size: 14px;
+}
+
+.user-info span {
+    display: block;
+    color: #6b7280;
+    font-size: 11px;
+}
+
+.content-area {
+    padding: 28px;
+}
+
+.section {
+    display: none;
+}
+
+.section.active {
+    display: block;
+}
+
+.page-heading {
+    margin-bottom: 22px;
+}
+
+.page-heading h2 {
+    font-size: 27px;
+    color: #111827;
+}
+
+.page-heading p {
+    color: #6b7280;
+    margin-top: 5px;
+}
+
+.welcome-card {
+    background: linear-gradient(135deg, #1d4ed8, #3b82f6);
+    color: #ffffff;
+    border-radius: 16px;
+    padding: 28px;
+    margin-bottom: 22px;
+}
+
+.welcome-card h2 {
+    font-size: 25px;
+    margin-bottom: 8px;
+}
+
+.welcome-card p {
+    opacity: 0.92;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+    margin-bottom: 22px;
+}
+
+.stat-card {
+    background: #ffffff;
+    border-radius: 13px;
+    padding: 20px;
+    box-shadow: 0 4px 15px rgba(15,23,42,0.05);
+}
+
+.stat-card .stat-icon {
+    width: 42px;
+    height: 42px;
+    border-radius: 10px;
+    background: #eff6ff;
+    color: #2563eb;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 13px;
+}
+
+.stat-card h3 {
+    font-size: 24px;
+    color: #111827;
+}
+
+.stat-card p {
+    font-size: 13px;
+    color: #6b7280;
+    margin-top: 4px;
+}
+
+.card {
+    background: #ffffff;
+    border-radius: 13px;
+    box-shadow: 0 4px 15px rgba(15,23,42,0.05);
+    padding: 22px;
+    margin-bottom: 20px;
+}
+
+.card-title {
+    font-size: 18px;
+    color: #111827;
+    margin-bottom: 15px;
+}
+
+.info-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.info-item {
+    padding: 13px;
+    background: #f9fafb;
+    border-radius: 8px;
+}
+
+.info-item small {
+    display: block;
+    color: #6b7280;
+    margin-bottom: 4px;
+}
+
+.info-item strong {
+    color: #111827;
+}
+
+.notice-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.notice-item {
+    padding: 15px;
+    border: 1px solid #e5e7eb;
+    border-radius: 9px;
+}
+
+.notice-item h4 {
+    margin-bottom: 5px;
+    color: #111827;
+}
+
+.notice-item p {
+    color: #6b7280;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.event-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+}
+
+.event-card {
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+    padding: 17px;
+}
+
+.event-date {
+    font-size: 12px;
+    color: #2563eb;
+    font-weight: 700;
+    margin-bottom: 7px;
+}
+
+.event-card h4 {
+    margin-bottom: 6px;
+}
+
+.event-card p {
+    font-size: 13px;
+    color: #6b7280;
+    line-height: 1.5;
+}
+
+.profile-header {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    margin-bottom: 20px;
+}
+
+.profile-avatar {
+    width: 75px;
+    height: 75px;
+    border-radius: 50%;
+    background: #dbeafe;
+    color: #1d4ed8;
+    font-size: 25px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.profile-header h3 {
+    font-size: 21px;
+}
+
+.profile-header p {
+    color: #6b7280;
+    margin-top: 3px;
+}
+
+.help-box {
+    background: #eff6ff;
+    border: 1px solid #bfdbfe;
+    padding: 18px;
+    border-radius: 10px;
+    line-height: 1.6;
+    color: #1e3a8a;
+}
+
+.logout-btn {
+    margin: 15px 10px;
+    width: calc(100% - 20px);
+}
+
+@media (max-width: 900px) {
+    .auth-container {
+        grid-template-columns: 1fr;
+    }
+
+    .auth-left {
+        display: none;
+    }
+
+    .sidebar {
+        width: 220px;
+    }
+
+    .main-content {
+        margin-left: 220px;
+        width: calc(100% - 220px);
+    }
+
+    .stats-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 650px) {
+    .auth-page {
+        padding: 10px;
+    }
+
+    .auth-right {
+        padding: 25px 18px;
+    }
+
+    .form-row,
+    .info-grid,
+    .event-grid,
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .sidebar {
+        width: 70px;
+    }
+
+    .sidebar-brand h2,
+    .sidebar-brand span,
+    .sidebar-item span,
+    .logout-btn span {
+        display: none;
+    }
+
+    .sidebar-item {
+        justify-content: center;
+    }
+
+    .main-content {
+        margin-left: 70px;
+        width: calc(100% - 70px);
+    }
+
+    .topbar {
+        padding: 0 15px;
+    }
+
+    .user-info {
+        display: none;
+    }
+
+    .content-area {
+        padding: 15px;
+    }
 }
 </style>
-
 </head>
 
 <body>
 
-<header>
-
-<button
-type="button"
-class="menu-button"
-aria-label="Open menu"
-onclick="openMenu()">☰</button>
-
-<div class="header-content">
-
-<img
-src="mam logo 1.png"
-class="header-logo"
-alt="MAM College Logo">
-
-<div>
-<h1>MAM Campus Connect</h1>
-<p>Your College Digital Campus</p>
-</div>
-
-</div>
-</header>
-
-<div id="overlay" class="overlay" onclick="closeMenu()"></div>
-
-<nav id="sideMenu" class="side-menu">
-
-<div class="menu-brand">
-
-<img
-src="mam logo 1.png"
-class="menu-logo"
-alt="MAM College Logo">
-
-<strong>MAM Campus Connect</strong>
-<span>College Digital Campus</span>
-
-</div>
-
-<h2>☰ Menu</h2>
-
-<button onclick="showSection('staffLogin');closeMenu();">
-👨‍🏫 Staff Login
-</button>
-
-<button onclick="showSection('principalLogin');closeMenu();">
-👨‍💼 Principal Login
-</button>
-
-<button onclick="showSection('customerCare');closeMenu();">
-📞 Customer Care
-</button>
-
-<button onclick="showSection('feedback');closeMenu();">
-💬 Feedback
-</button>
-
-<button onclick="goHome();">
-🏠 Home
-</button>
-
-</nav>
-
-<main>
-
-<!-- HOME -->
-
-<section id="home">
-
-<div class="welcome">
-
-<img
-src="mam logo 1.png"
-class="welcome-logo"
-alt="MAM College Logo">
-
-<h2>Welcome to MAM Campus Connect 👋</h2>
-
-<p>
-Your digital campus for students, staff and college services.
-Access important academic information from one place.
-</p>
-
-</div>
-
-<div class="home-buttons">
-
-<button class="main-btn"
-onclick="showSection('studentOptions')">
-
-<span class="icon">🎓</span>
-
-<strong>Student</strong>
-
-<p>Login or register as a MAM student</p>
-
-</button>
-
-<button class="main-btn"
-onclick="showSection('otherCollege')">
-
-<span class="icon">👨‍🎓</span>
-
-<strong>Other College Student</strong>
-
-<p>Access visitor and student services</p>
-
-</button>
-
-</div>
-
-</section>
-
-<!-- STUDENT OPTIONS -->
-
-<section id="studentOptions" class="hidden">
-
-<button class="back-btn" onclick="goHome()">← Back</button>
-
-<div class="card">
-
-<h2>🎓 Student Options</h2>
-<p>Select an option below.</p>
-
-<button class="primary-btn"
-onclick="showSection('studentRegistration')">
-First-Time Student Registration
-</button>
-
-<button class="secondary-btn"
-onclick="showSection('studentLogin')">
-Existing Student Login
-</button>
-
-</div>
-</section>
-
-<!-- REGISTRATION -->
-
-<section id="studentRegistration" class="hidden">
-
-<button class="back-btn"
-onclick="showSection('studentOptions')">
-← Back
-</button>
-
-<div class="card">
-
-<h2>📝 Student Registration</h2>
-
-<label>Student Name</label>
-<input
-id="regName"
-type="text"
-placeholder="Enter full name">
-
-<label>Roll Number</label>
-<input
-id="regRoll"
-type="text"
-placeholder="Example: 8126123456">
-
-<label>Date of Birth</label>
-<input
-id="regDob"
-type="date">
-
-<label>Department / Course</label>
-
-<select id="regCourse">
-<option value="">Select Course</option>
-<option>CSE</option>
-<option>CSE Cyber Security</option>
-<option>Artificial Intelligence and Data Science</option>
-<option>Artificial Intelligence and Machine Learning</option>
-<option>Information Technology</option>
-<option>Electronics and Communication Engineering</option>
-<option>Electrical and Electronics Engineering</option>
-<option>Mechanical Engineering</option>
-<option>Civil Engineering</option>
-<option>MBA</option>
-<option>MCA</option>
-<option>M.E. Environmental Engineering</option>
-</select>
-
-<label>Joining Year</label>
-<select id="regJoiningYear"></select>
-
-<label>Course Duration</label>
-
-<select id="regDuration" onchange="updateEndingYear()">
-<option value="">Select Duration</option>
-<option value="4">4 Years</option>
-<option value="2">2 Years</option>
-</select>
-
-<label>Expected Ending Year</label>
-<input
-id="regEndingYear"
-type="text"
-readonly>
-
-<label>Student Type</label>
-
-<select id="regStudentType">
-<option value="">Select Type</option>
-<option>Day Scholar</option>
-<option>Hosteller</option>
-</select>
-
-<label>Student Mobile Number</label>
-
-<input
-id="regMobile"
-type="tel"
-maxlength="10"
-inputmode="numeric"
-placeholder="10 digit mobile number">
-
-<label>Parent Mobile Number</label>
-
-<input
-id="regParentMobile"
-type="tel"
-maxlength="10"
-inputmode="numeric"
-placeholder="10 digit mobile number">
-
-<label>Email Address</label>
-
-<input
-id="regEmail"
-type="email"
-placeholder="Enter your email address">
-
-<label>Password</label>
-
-<input
-id="regPassword"
-type="password"
-placeholder="Create a password">
-
-<label>Confirm Password</label>
-
-<input
-id="regConfirmPassword"
-type="password"
-placeholder="Re-enter your password">
-
-<button
-class="primary-btn"
-onclick="registerStudent()">
-Create Student Account
-</button>
-
-<div id="regMessage"></div>
-
-</div>
-</section>
-
-<!-- STUDENT LOGIN -->
-
-<section id="studentLogin" class="hidden">
-
-<button class="back-btn"
-onclick="showSection('studentOptions')">
-← Back
-</button>
-
-<div class="card">
-
-<h2>🔐 Existing Student Login</h2>
-
-<label>Roll Number</label>
-
-<input
-id="loginRoll"
-type="text"
-placeholder="Enter roll number">
-
-<label>Registered Email Address</label>
-
-<input
-id="loginEmail"
-type="email"
-placeholder="Enter registered email">
-
-<label>Password</label>
-
-<input
-id="loginPassword"
-type="password"
-placeholder="Enter your password">
-
-<button
-class="primary-btn"
-onclick="studentLogin()">
-Login
-</button>
-
-<div id="loginMessage"></div>
-
-</div>
-</section>
-
-<!-- STUDENT DASHBOARD -->
-
-<section id="studentDashboard" class="hidden">
-
-<div class="student-top">
-
-<div class="student-top-row">
-
-<div class="student-top-left">
-
-<img
-src="mam logo 1.png"
-class="dashboard-logo"
-alt="MAM College Logo">
-
-<div>
-
-<h2 id="studentWelcome">
-Welcome, Student 👋
-</h2>
-
-<p id="studentCourse">
-Student Portal
-</p>
-
-</div>
-</div>
-
-<button
-class="profile-circle"
-onclick="showSection('studentProfile')">
-👤
-</button>
-
-</div>
-
-<button
-class="notification-btn"
-onclick="showSection('updates')">
-🔔 View latest notifications
-</button>
-
-</div>
+<div id="loadingScreen" class="loading-screen">
+    <div class="loading-content">
+        <div class="spinner"></div>
+        <p>Loading MAM Campus Connect...</p>
+    </div>
+</div>
+
+<div id="authPage" class="auth-page hidden">
+    <div class="auth-container">
+
+        <div class="auth-left">
+            <h1>MAM Campus Connect</h1>
+            <p>
+                A smart and simple digital campus platform for students
+                to access their college information and stay connected.
+            </p>
+
+            <div class="auth-features">
+
+                <div class="auth-feature">
+                    <div class="auth-feature-icon">✓</div>
+                    <div>
+                        <strong>Student Portal</strong>
+                        <p>Access your profile, announcements and campus events.</p>
+                    </div>
+                </div>
+
+                <div class="auth-feature">
+                    <div class="auth-feature-icon">✓</div>
+                    <div>
+                        <strong>Email OTP Verification</strong>
+                        <p>Secure registration using a six-digit email OTP.</p>
+                    </div>
+                </div>
+
+                <div class="auth-feature">
+                    <div class="auth-feature-icon">✓</div>
+                    <div>
+                        <strong>Firebase Authentication</strong>
+                        <p>Secure email and password based student login.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="auth-right">
+
+            <div class="auth-header">
+                <h2>Welcome Back</h2>
+                <p>Sign in or create your student account.</p>
+            </div>
+
+            <div class="auth-tabs">
+                <button
+                    type="button"
+                    id="loginTab"
+                    class="auth-tab active"
+                    onclick="switchAuthMode('login')">
+                    Student Login
+                </button>
+
+                <button
+                    type="button"
+                    id="registerTab"
+                    class="auth-tab"
+                    onclick="switchAuthMode('register')">
+                    Student Registration
+                </button>
+            </div>
+
+            <div id="authAlert"></div>
+
+            <form id="loginForm" onsubmit="loginStudent(event)">
+
+                <div class="form-group">
+                    <label for="loginEmail">Email Address</label>
+                    <input
+                        type="email"
+                        id="loginEmail"
+                        class="form-control"
+                        placeholder="Enter your email"
+                        required>
+                </div>
+
+                <div class="form-group">
+                    <label for="loginPassword">Password</label>
+                    <input
+                        type="password"
+                        id="loginPassword"
+                        class="form-control"
+                        placeholder="Enter your password"
+                        required>
+                </div>
+
+                <button
+                    type="submit"
+                    class="btn btn-primary btn-full">
+                    Login
+                </button>
+
+            </form>
+
+            <form
+                id="registerForm"
+                class="hidden"
+                onsubmit="registerStudent(event)">
+
+                <div class="form-row">
+
+                    <div class="form-group">
+                        <label for="regName">Student Name</label>
+                        <input
+                            type="text"
+                            id="regName"
+                            class="form-control"
+                            placeholder="Full name"
+                            required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="regRoll">Roll Number</label>
+                        <input
+                            type="text"
+                            id="regRoll"
+                            class="form-control"
+                            placeholder="Roll number"
+                            required>
+                    </div>
+
+                </div>
+
+                <div class="form-group">
+                    <label for="regDepartment">Department</label>
+
+                    <select
+                        id="regDepartment"
+                        class="form-control"
+                        required>
+
+                        <option value="">Select department</option>
+                        <option value="CSE">Computer Science and Engineering</option>
+                        <option value="ECE">Electronics and Communication Engineering</option>
+                        <option value="EEE">Electrical and Electronics Engineering</option>
+                        <option value="MECH">Mechanical Engineering</option>
+                        <option value="CIVIL">Civil Engineering</option>
+                        <option value="AIDS">Artificial Intelligence and Data Science</option>
+                        <option value="IT">Information Technology</option>
+
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="regEmail">Email Address</label>
+
+                    <input
+                        type="email"
+                        id="regEmail"
+                        class="form-control"
+                        placeholder="Enter your email"
+                        required>
+
+                    <div class="password-help">
+                        OTP will be sent to this email address.
+                    </div>
+                </div>
+
+                <div class="form-row">
+
+                    <div class="form-group">
+                        <label for="regPassword">Password</label>
+
+                        <input
+                            type="password"
+                            id="regPassword"
+                            class="form-control"
+                            placeholder="Create password"
+                            required>
+
+                        <div class="password-help">
+                            Minimum 6 characters.
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="regConfirmPassword">Confirm Password</label>
+
+                        <input
+                            type="password"
+                            id="regConfirmPassword"
+                            class="form-control"
+                            placeholder="Confirm password"
+                            required>
+                    </div>
+
+                </div>
+
+                <div class="recaptcha-wrap">
+
+                    <div
+                        class="g-recaptcha"
+                        data-sitekey="YOUR_RECAPTCHA_SITE_KEY"
+                        id="registrationRecaptcha">
+                    </div>
+
+                </div>
+
+                <div class="otp-box">
+
+                    <h4>Email OTP Verification</h4>
+
+                    <p>
+                        First send a six-digit OTP to your email.
+                        Enter the OTP below and verify it before creating
+                        your student account.
+                    </p>
+
+                    <div class="otp-actions">
+
+                        <button
+                            type="button"
+                            class="btn btn-secondary"
+                            id="sendOtpBtn"
+                            onclick="sendRegistrationOtp()">
+                            Send Email OTP
+                        </button>
+
+                        <span
+                            id="otpTimer"
+                            class="otp-status otp-pending">
+                        </span>
+
+                    </div>
+
+                    <div
+                        id="otpInputArea"
+                        class="hidden"
+                        style="margin-top:12px;">
+
+                        <div class="form-group">
+
+                            <label for="regOtp">
+                                Enter 6-Digit OTP
+                            </label>
+
+                            <input
+                                type="text"
+                                id="regOtp"
+                                class="form-control"
+                                maxlength="6"
+                                inputmode="numeric"
+                                autocomplete="one-time-code"
+                                placeholder="000000">
+
+                        </div>
+
+                        <button
+                            type="button"
+                            class="btn btn-primary"
+                            id="verifyOtpBtn"
+                            onclick="verifyRegistrationOtp()">
+                            Verify OTP
+                        </button>
+
+                    </div>
+
+                    <div
+                        id="otpStatus"
+                        class="otp-status">
+                    </div>
+
+                </div>
+
+                <button
+                    type="submit"
+                    id="createAccountBtn"
+                    class="btn btn-success btn-full">
+                    Create Student Account
+                </button>
+
+            </form>
+
+        </div>
+    </div>
+</div>
+
+
+<div id="studentDashboard" class="dashboard hidden">
+
+    <aside class="sidebar">
+
+        <div class="sidebar-brand">
+            <h2>MAM Campus</h2>
+            <span>Campus Connect</span>
+        </div>
+
+        <div class="sidebar-menu">
+
+            <div
+                class="sidebar-item active"
+                onclick="showStudentSection('overview', this)">
+                <span>🏠</span>
+                <span>Overview</span>
+            </div>
+
+            <div
+                class="sidebar-item"
+                onclick="showStudentSection('profile', this)">
+                <span>👤</span>
+                <span>My Profile</span>
+            </div>
 
-<div class="stats-grid">
+            <div
+                class="sidebar-item"
+                onclick="showStudentSection('announcements', this)">
+                <span>📢</span>
+                <span>Announcements</span>
+            </div>
 
-<div class="stat-card">
-<div class="stat-icon">📊</div>
-<div class="stat-title">Attendance</div>
-<div class="stat-value">85%</div>
-</div>
-
-<div class="stat-card">
-<div class="stat-icon">📝</div>
-<div class="stat-title">Internal Marks</div>
-<div class="stat-value">78%</div>
-</div>
-
-<div class="stat-card">
-<div class="stat-icon">💰</div>
-<div class="stat-title">Fees</div>
-<div class="stat-value">Paid</div>
-</div>
-
-<div class="stat-card">
-<div class="stat-icon">📚</div>
-<div class="stat-title">Semester</div>
-<div class="stat-value">Current</div>
-</div>
-
-</div>
-
-<div class="dashboard-title">
-<h3>Latest Notice</h3>
-<span>View all</span>
-</div>
-
-<div class="notice-card"
-onclick="showSection('updates')">
-
-<strong>📢 College Announcement</strong>
-
-<p>
-Check the College Updates section for the latest
-academic announcements.
-</p>
-
-</div>
-
-<div class="dashboard-title">
-<h3>Campus Services</h3>
-<span>Explore</span>
-</div>
-
-<div class="dashboard-grid">
-
-<button class="dashboard-card"
-onclick="showSection('studentProfile')">
-
-<div class="big-icon">👤</div>
-<h3>My Profile</h3>
-<p>View personal and academic information</p>
+            <div
+                class="sidebar-item"
+                onclick="showStudentSection('notices', this)">
+                <span>📄</span>
+                <span>Notices</span>
+            </div>
 
-</button>
+            <div
+                class="sidebar-item"
+                onclick="showStudentSection('events', this)">
+                <span>📅</span>
+                <span>Events</span>
+            </div>
 
-<button class="dashboard-card"
-onclick="showSection('timetable')">
+            <div
+                class="sidebar-item"
+                onclick="showStudentSection('help', this)">
+                <span>❓</span>
+                <span>Help</span>
+            </div>
 
-<div class="big-icon">🕐</div>
-<h3>Timetable</h3>
-<p>Check today's class schedule</p>
+        </div>
 
-</button>
+        <button
+            class="btn btn-danger logout-btn"
+            onclick="logoutStudent()">
+            <span>Logout</span>
+            <span>↪</span>
+        </button>
 
-<button class="dashboard-card"
-onclick="showSection('updates')">
+    </aside>
 
-<div class="big-icon">📢</div>
-<h3>Notices</h3>
-<p>College announcements and updates</p>
 
-</button>
+    <main class="main-content">
 
-<button class="dashboard-card"
-onclick="showSection('calendar')">
+        <header class="topbar">
 
-<div class="big-icon">📅</div>
-<h3>Academic Calendar</h3>
-<p>Important academic dates</p>
+            <div class="topbar-title">
+                <h1 id="topbarTitle">Student Dashboard</h1>
+                <p>MAM Campus Connect</p>
+            </div>
 
-</button>
+            <div class="user-area">
 
-<button class="dashboard-card"
-onclick="showSection('campusMap')">
+                <div class="user-info">
+                    <strong id="topbarStudentName">Student</strong>
+                    <span id="topbarStudentEmail">student@email.com</span>
+                </div>
 
-<div class="big-icon">🗺️</div>
-<h3>Campus Map</h3>
-<p>Find important campus locations</p>
+                <div
+                    class="user-avatar"
+                    id="topbarAvatar">
+                    S
+                </div>
 
-</button>
+            </div>
 
-<button class="dashboard-card"
-onclick="showSection('feedback')">
+        </header>
 
-<div class="big-icon">💬</div>
-<h3>Feedback</h3>
-<p>Share your feedback</p>
 
-</button>
+        <div class="content-area">
 
-<button class="dashboard-card"
-onclick="aiAssistant()">
-
-<div class="big-icon">🤖</div>
-<h3>AI Assistant</h3>
-<p>Get help with campus information</p>
-
-</button>
-
-</div>
-
-<button
-class="secondary-btn"
-onclick="logoutStudent()">
-🚪 Logout
-</button>
-
-<div class="bottom-nav">
-
-<button class="active"
-onclick="showSection('studentDashboard')">
-<span>🏠</span>
-Home
-</button>
-
-<button
-onclick="showSection('timetable')">
-<span>📚</span>
-Academics
-</button>
-
-<button
-onclick="showSection('updates')">
-<span>📢</span>
-Notices
-</button>
-
-<button
-onclick="showSection('studentProfile')">
-<span>👤</span>
-Profile
-</button>
-
-</div>
-
-</section>
-
-<!-- PROFILE -->
-
-<section id="studentProfile" class="hidden">
-
-<button
-class="back-btn"
-onclick="showSection('studentDashboard')">
-← Dashboard
-</button>
-
-<div class="card">
-
-<div class="profile-header">
-
-<img
-src="mam logo 1.png"
-class="profile-logo"
-alt="MAM College Logo">
-
-<div>
-<h2>My Profile</h2>
-<p id="profileShortName">Student</p>
-</div>
-
-</div>
-
-<div class="profile-details">
-
-<div class="profile-row">
-<small>Student Name</small>
-<strong id="profileName">Not available</strong>
-</div>
+            <!-- OVERVIEW -->
 
-<div class="profile-row">
-<small>Roll Number</small>
-<strong id="profileRoll">Not available</strong>
-</div>
+            <section
+                id="student-overview"
+                class="section active">
 
-<div class="profile-row">
-<small>Date of Birth</small>
-<strong id="profileDob">Not available</strong>
-</div>
+                <div class="welcome-card">
 
-<div class="profile-row">
-<small>Course</small>
-<strong id="profileCourse">Not available</strong>
-</div>
+                    <h2>
+                        Welcome,
+                        <span id="welcomeStudentName">
+                            Student
+                        </span>
+                        👋
+                    </h2>
 
-<div class="profile-row">
-<small>Joining Year</small>
-<strong id="profileJoining">Not available</strong>
-</div>
+                    <p>
+                        Welcome to your MAM Campus Connect student portal.
+                        Manage your profile and stay updated with campus
+                        announcements and events.
+                    </p>
 
-<div class="profile-row">
-<small>Expected Ending Year</small>
-<strong id="profileEnding">Not available</strong>
-</div>
+                </div>
 
-<div class="profile-row">
-<small>Student Type</small>
-<strong id="profileType">Not available</strong>
-</div>
 
-<div class="profile-row">
-<small>Mobile</small>
-<strong id="profileMobile">Not available</strong>
-</div>
+                <div class="stats-grid">
 
-<div class="profile-row">
-<small>Email</small>
-<strong id="profileEmail">Not available</strong>
-</div>
+                    <div class="stat-card">
 
-</div>
-</div>
-</section>
+                        <div class="stat-icon">
+                            📚
+                        </div>
 
-<!-- CALENDAR -->
+                        <h3 id="statDepartment">
+                            -
+                        </h3>
 
-<section id="calendar" class="hidden">
+                        <p>
+                            Department
+                        </p>
 
-<button class="back-btn"
-onclick="showSection('studentDashboard')">
-← Dashboard
-</button>
+                    </div>
 
-<div class="card">
 
-<h2>📅 Academic Calendar</h2>
+                    <div class="stat-card">
 
-<div class="table-wrap">
+                        <div class="stat-icon">
+                            🎓
+                        </div>
 
-<table>
+                        <h3 id="statRoll">
+                            -
+                        </h3>
 
-<tr>
-<th>Date</th>
-<th>Event</th>
-</tr>
+                        <p>
+                            Roll Number
+                        </p>
 
-<tr>
-<td>15 June 2026</td>
-<td>Academic Session</td>
-</tr>
+                    </div>
 
-<tr>
-<td>15 August 2026</td>
-<td>Independence Day</td>
-</tr>
 
-<tr>
-<td>5 September 2026</td>
-<td>Teachers' Day</td>
-</tr>
+                    <div class="stat-card">
 
-<tr>
-<td>26 January 2027</td>
-<td>Republic Day</td>
-</tr>
+                        <div class="stat-icon">
+                            ✉️
+                        </div>
 
-</table>
+                        <h3>
+                            Verified
+                        </h3>
 
-</div>
-</div>
-</section>
+                        <p>
+                            Email Status
+                        </p>
 
-<!-- TIMETABLE -->
+                    </div>
 
-<section id="timetable" class="hidden">
+                </div>
 
-<button class="back-btn"
-onclick="showSection('studentDashboard')">
-← Dashboard
-</button>
 
-<div class="card">
+                <div class="card">
 
-<h2>🕐 Timetable</h2>
+                    <div class="card-title">
+                        Latest Announcements
+                    </div>
 
-<div class="info-box">
-Current timetable shown is sample CSE data.
-</div>
+                    <div class="notice-list">
 
-<div class="table-wrap">
-
-<table>
-
-<tr>
-<th>Day</th>
-<th>9:00</th>
-<th>10:00</th>
-<th>11:00</th>
-<th>1:30</th>
-</tr>
-
-<tr>
-<td>Monday</td>
-<td>Java</td>
-<td>DBMS</td>
-<td>Cyber Security</td>
-<td>Lab</td>
-</tr>
-
-<tr>
-<td>Tuesday</td>
-<td>OS</td>
-<td>Java</td>
-<td>Maths</td>
-<td>Lab</td>
-</tr>
-
-<tr>
-<td>Wednesday</td>
-<td>DBMS</td>
-<td>OS</td>
-<td>Cyber Security</td>
-<td>English</td>
-</tr>
-
-<tr>
-<td>Thursday</td>
-<td>Maths</td>
-<td>Java</td>
-<td>DBMS</td>
-<td>Lab</td>
-</tr>
-
-<tr>
-<td>Friday</td>
-<td>Cyber Security</td>
-<td>OS</td>
-<td>Java</td>
-<td>Sports</td>
-</tr>
-
-</table>
+                        <div class="notice-item">
 
-</div>
-</div>
-</section>
+                            <h4>
+                                Welcome to MAM Campus Connect
+                            </h4>
 
-<!-- NOTICES -->
+                            <p>
+                                Your student portal is ready.
+                                Use the navigation menu to view your
+                                profile, announcements, notices and events.
+                            </p>
 
-<section id="updates" class="hidden">
+                        </div>
 
-<button class="back-btn"
-onclick="showSection('studentDashboard')">
-← Dashboard
-</button>
 
-<div class="card">
+                        <div class="notice-item">
 
-<h2>📢 College Notices</h2>
+                            <h4>
+                                Keep Your Profile Updated
+                            </h4>
 
-<p>
-Latest announcements and important information.
-</p>
+                            <p>
+                                Make sure your student information is
+                                correct and up to date.
+                            </p>
 
-</div>
+                        </div>
 
-<div class="notice-full">
+                    </div>
 
-<h3>📚 Academic Announcement</h3>
+                </div>
 
-<div class="notice-date">
-Development Notice
-</div>
+            </section>
 
-<p>
-Students are requested to regularly check the
-academic timetable and college announcements.
-</p>
 
-</div>
+            <!-- PROFILE -->
 
-<div class="notice-full">
+            <section
+                id="student-profile"
+                class="section">
 
-<h3>🎓 Student Services</h3>
+                <div class="page-heading">
 
-<div class="notice-date">
-Development Notice
-</div>
+                    <h2>
+                        My Profile
+                    </h2>
 
-<p>
-MAM Campus Connect is being developed to bring
-student services together in one platform.
-</p>
+                    <p>
+                        View your registered student information.
+                    </p>
 
-</div>
+                </div>
 
-<div class="notice-full">
 
-<h3>🔔 Important</h3>
+                <div class="card">
 
-<div class="notice-date">
-Development Notice
-</div>
+                    <div class="profile-header">
 
-<p>
-Live notices will be added when the application
-is connected to the college backend.
-</p>
+                        <div
+                            class="profile-avatar"
+                            id="profileAvatar">
+                            S
+                        </div>
 
-</div>
+                        <div>
 
-</section>
+                            <h3 id="profileName">
+                                Student
+                            </h3>
 
-<!-- CAMPUS MAP -->
+                            <p id="profileEmail">
+                                student@email.com
+                            </p>
 
-<section id="campusMap" class="hidden">
+                        </div>
 
-<button class="back-btn"
-onclick="showSection('studentDashboard')">
-← Dashboard
-</button>
+                    </div>
 
-<div class="card">
 
-<h2>🗺️ Campus Map</h2>
+                    <div class="info-grid">
 
-<p>
-MAM College of Engineering and Technology
-</p>
+                        <div class="info-item">
 
-<div class="info-box">
-XQWH+654, Trichy Chennai Trunk Road,
-Siruganur, Tamil Nadu 621105
-</div>
+                            <small>
+                                Student Name
+                            </small>
 
-<button
-class="primary-btn"
-onclick="window.open('https://www.google.com/maps/search/?api=1&query=MAM+College+of+Engineering+and+Technology+Siruganur','_blank')">
-📍 Open Google Maps
-</button>
+                            <strong id="profileStudentName">
+                                -
+                            </strong>
 
-</div>
-</section>
+                        </div>
 
-<!-- OTHER COLLEGE -->
 
-<section id="otherCollege" class="hidden">
+                        <div class="info-item">
 
-<button class="back-btn"
-onclick="goHome()">
-← Home
-</button>
+                            <small>
+                                Roll Number
+                            </small>
 
-<div class="card">
+                            <strong id="profileRoll">
+                                -
+                            </strong>
 
-<h2>👨‍🎓 Other College Student</h2>
+                        </div>
 
-<label>College Name</label>
 
-<input
-id="otherCollegeName"
-type="text"
-placeholder="Enter college name">
+                        <div class="info-item">
 
-<label>Roll Number</label>
+                            <small>
+                                Department
+                            </small>
 
-<input
-id="otherRoll"
-type="text"
-placeholder="Enter roll number">
+                            <strong id="profileDepartment">
+                                -
+                            </strong>
 
-<label>Mobile Number</label>
+                        </div>
 
-<input
-id="otherMobile"
-type="tel"
-maxlength="10"
-inputmode="numeric"
-placeholder="10 digit mobile number">
 
-<button
-class="primary-btn"
-onclick="otherCollegeLogin()">
-Continue
-</button>
+                        <div class="info-item">
 
-<div id="otherMessage"></div>
+                            <small>
+                                Email Address
+                            </small>
 
-</div>
-</section>
+                            <strong id="profileEmailAddress">
+                                -
+                            </strong>
 
-<!-- STAFF LOGIN -->
+                        </div>
 
-<section id="staffLogin" class="hidden">
 
-<button class="back-btn"
-onclick="goHome()">
-← Home
-</button>
+                        <div class="info-item">
 
-<div class="card">
+                            <small>
+                                Account Status
+                            </small>
 
-<h2>👨‍🏫 Staff Login</h2>
+                            <strong>
+                                Active
+                            </strong>
 
-<label>Staff ID</label>
+                        </div>
 
-<input
-id="staffId"
-type="text"
-placeholder="Enter staff ID">
 
-<label>Department</label>
+                        <div class="info-item">
 
-<input
-id="staffDepartment"
-type="text"
-placeholder="Enter department">
+                            <small>
+                                Email Verification
+                            </small>
 
-<label>Mobile Number</label>
+                            <strong>
+                                Verified by OTP
+                            </strong>
 
-<input
-id="staffMobile"
-type="tel"
-maxlength="10"
-inputmode="numeric"
-placeholder="10 digit mobile number">
+                        </div>
 
-<button
-class="primary-btn"
-onclick="staffLogin()">
-Continue
-</button>
+                    </div>
 
-<div id="staffMessage"></div>
+                </div>
 
-</div>
-</section>
+            </section>
 
-<!-- STAFF DASHBOARD -->
 
-<section id="staffDashboard" class="hidden">
+            <!-- ANNOUNCEMENTS -->
 
-<div class="student-top">
+            <section
+                id="student-announcements"
+                class="section">
 
-<div class="student-top-left">
+                <div class="page-heading">
 
-<img
-src="mam logo 1.png"
-class="dashboard-logo"
-alt="MAM College Logo">
+                    <h2>
+                        Announcements
+                    </h2>
 
-<div>
+                    <p>
+                        Important campus announcements.
+                    </p>
 
-<h2>👨‍🏫 Staff Dashboard</h2>
+                </div>
 
-<p>
-Staff ID:
-<strong id="staffDisplayId"></strong>
-</p>
 
-<p>
-Department:
-<strong id="staffDisplayDepartment"></strong>
-</p>
+                <div class="card">
 
-</div>
+                    <div class="notice-list">
 
-</div>
-</div>
+                        <div class="notice-item">
 
-<div class="dashboard-grid">
+                            <h4>
+                                Campus Connect Portal
+                            </h4>
 
-<button
-class="dashboard-card"
-onclick="alert('Department students will be connected later.')">
+                            <p>
+                                Students can use this portal to access
+                                important campus information.
+                            </p>
 
-<div class="big-icon">👨‍🎓</div>
-<h3>Students</h3>
-<p>View department students</p>
+                        </div>
 
-</button>
 
-<button
-class="dashboard-card"
-onclick="alert('Notice management will be connected later.')">
+                        <div class="notice-item">
 
-<div class="big-icon">📢</div>
-<h3>Notices</h3>
-<p>Manage department notices</p>
+                            <h4>
+                                Student Registration
+                            </h4>
 
-</button>
+                            <p>
+                                New students must complete email OTP
+                                verification during registration.
+                            </p>
 
-<button
-class="dashboard-card"
-onclick="showSection('campusMap')">
+                        </div>
 
-<div class="big-icon">🗺️</div>
-<h3>Locations</h3>
-<p>View campus locations</p>
 
-</button>
+                        <div class="notice-item">
 
-<button
-class="dashboard-card"
-onclick="alert('Student chat will be connected later.')">
+                            <h4>
+                                Important Updates
+                            </h4>
 
-<div class="big-icon">💬</div>
-<h3>Student Chat</h3>
-<p>Communicate with students</p>
+                            <p>
+                                Check the announcements section regularly
+                                for new college updates.
+                            </p>
 
-</button>
+                        </div>
 
-</div>
+                    </div>
 
-<button
-class="secondary-btn"
-onclick="goHome()">
-🚪 Logout
-</button>
+                </div>
 
-</section>
+            </section>
 
-<!-- PRINCIPAL LOGIN -->
 
-<section id="principalLogin" class="hidden">
+            <!-- NOTICES -->
 
-<button class="back-btn"
-onclick="goHome()">
-← Home
-</button>
+            <section
+                id="student-notices"
+                class="section">
 
-<div class="card">
+                <div class="page-heading">
 
-<h2>👨‍💼 Principal Login</h2>
+                    <h2>
+                        Notices
+                    </h2>
 
-<label>Registered Mobile Number</label>
+                    <p>
+                        College notices and information.
+                    </p>
 
-<input
-id="principalMobile"
-type="tel"
-maxlength="10"
-inputmode="numeric"
-placeholder="Enter registered mobile">
+                </div>
 
-<button
-class="primary-btn"
-onclick="principalSendOtp()">
-Continue
-</button>
 
-<div id="principalMessage"></div>
+                <div class="card">
 
-</div>
-</section>
+                    <div class="notice-list">
 
-<!-- PRINCIPAL OTP -->
+                        <div class="notice-item">
 
-<section id="principalOtp" class="hidden">
+                            <h4>
+                                Academic Notice
+                            </h4>
 
-<div class="card">
+                            <p>
+                                Students are requested to regularly check
+                                the college communication channels.
+                            </p>
 
-<h2>🔐 Principal Verification</h2>
+                        </div>
 
-<label>OTP</label>
 
-<input
-id="principalOtpInput"
-type="text"
-maxlength="6"
-inputmode="numeric"
-placeholder="Enter OTP">
+                        <div class="notice-item">
 
-<button
-class="primary-btn"
-onclick="verifyPrincipalOtp()">
-Verify
-</button>
+                            <h4>
+                                Department Notice
+                            </h4>
 
-<div id="principalOtpMessage"></div>
+                            <p>
+                                Contact your department office for
+                                department-specific information.
+                            </p>
 
-</div>
-</section>
+                        </div>
 
-<!-- PRINCIPAL DASHBOARD -->
+                    </div>
 
-<section id="principalDashboard" class="hidden">
+                </div>
 
-<div class="student-top">
+            </section>
 
-<div class="student-top-left">
 
-<img
-src="mam logo 1.png"
-class="dashboard-logo"
-alt="MAM College Logo">
+            <!-- EVENTS -->
 
-<div>
+            <section
+                id="student-events"
+                class="section">
 
-<h2>👨‍💼 Principal Dashboard</h2>
+                <div class="page-heading">
 
-<p>College Management Panel</p>
+                    <h2>
+                        Campus Events
+                    </h2>
 
-</div>
+                    <p>
+                        Upcoming college activities and events.
+                    </p>
 
-</div>
-</div>
+                </div>
 
-<div class="dashboard-grid">
 
-<button
-class="dashboard-card"
-onclick="alert('Timetable management will be connected later.')">
+                <div class="event-grid">
 
-<div class="big-icon">🕐</div>
-<h3>Timetable</h3>
-<p>Manage college timetable</p>
+                    <div class="event-card">
 
-</button>
+                        <div class="event-date">
+                            CAMPUS EVENT
+                        </div>
 
-<button
-class="dashboard-card"
-onclick="alert('Calendar management will be connected later.')">
+                        <h4>
+                            Student Orientation
+                        </h4>
 
-<div class="big-icon">📅</div>
-<h3>Calendar</h3>
-<p>Manage academic calendar</p>
+                        <p>
+                            Orientation activities for students
+                            and campus introduction.
+                        </p>
 
-</button>
+                    </div>
 
-<button
-class="dashboard-card"
-onclick="alert('Staff management will be connected later.')">
 
-<div class="big-icon">👨‍🏫</div>
-<h3>Staff</h3>
-<p>Manage staff information</p>
+                    <div class="event-card">
 
-</button>
+                        <div class="event-date">
+                            ACADEMIC
+                        </div>
 
-<button
-class="dashboard-card"
-onclick="alert('Student information will be connected later.')">
+                        <h4>
+                            Department Activity
+                        </h4>
 
-<div class="big-icon">🎓</div>
-<h3>Students</h3>
-<p>View student information</p>
+                        <p>
+                            Participate in department-level
+                            academic activities.
+                        </p>
 
-</button>
+                    </div>
 
-<button
-class="dashboard-card"
-onclick="alert('College notices will be connected later.')">
 
-<div class="big-icon">📢</div>
-<h3>Notices</h3>
-<p>Manage announcements</p>
+                    <div class="event-card">
 
-</button>
+                        <div class="event-date">
+                            STUDENT LIFE
+                        </div>
 
-<button
-class="dashboard-card"
-onclick="showSection('campusMap')">
+                        <h4>
+                            Campus Club Activity
+                        </h4>
 
-<div class="big-icon">🏫</div>
-<h3>Functions</h3>
-<p>College functions</p>
+                        <p>
+                            Explore student clubs and participate
+                            in campus activities.
+                        </p>
 
-</button>
+                    </div>
 
-</div>
 
-<button
-class="secondary-btn"
-onclick="goHome()">
-🚪 Logout
-</button>
+                    <div class="event-card">
 
-</section>
+                        <div class="event-date">
+                            GENERAL
+                        </div>
 
-<!-- CUSTOMER CARE -->
+                        <h4>
+                            College Programme
+                        </h4>
 
-<section id="customerCare" class="hidden">
+                        <p>
+                            More information will be announced
+                            through the student portal.
+                        </p>
 
-<button class="back-btn"
-onclick="goHome()">
-← Home
-</button>
+                    </div>
 
-<div class="card">
+                </div>
 
-<h2>📞 Customer Care</h2>
+            </section>
 
-<p>Contact college support for assistance.</p>
 
-<div class="warning">
-Replace the placeholder number before publishing the application.
-</div>
+            <!-- HELP -->
 
-<button
-class="primary-btn"
-onclick="window.location.href='tel:+919999999999'">
-📞 Call Customer Care
-</button>
+            <section
+                id="student-help"
+                class="section">
 
-</div>
-</section>
+                <div class="page-heading">
 
-<!-- FEEDBACK -->
+                    <h2>
+                        Help & Support
+                    </h2>
 
-<section id="feedback" class="hidden">
+                    <p>
+                        Need assistance with the student portal?
+                    </p>
 
-<button class="back-btn"
-onclick="goHome()">
-← Home
-</button>
+                </div>
 
-<div class="card">
 
-<h2>💬 Feedback</h2>
+                <div class="card">
 
-<label>Name</label>
+                    <div class="help-box">
 
-<input
-id="feedbackName"
-type="text"
-placeholder="Enter your name">
+                        <strong>
+                            Student Support
+                        </strong>
 
-<label>Mobile Number</label>
+                        <p>
+                            If you have any problem with your account,
+                            registration or student information, contact
+                            your college administration or department
+                            office.
+                        </p>
 
-<input
-id="feedbackMobile"
-type="tel"
-maxlength="10"
-inputmode="numeric"
-placeholder="Enter mobile number">
+                    </div>
 
-<label>Your Feedback</label>
+                </div>
 
-<textarea
-id="feedbackText"
-rows="5"
-placeholder="Write your feedback"></textarea>
+            </section>
 
-<button
-class="primary-btn"
-onclick="submitFeedback()">
-Submit Feedback
-</button>
+        </div>
 
-<div id="feedbackMessage"></div>
+    </main>
 
 </div>
-</section>
-
-</main>
-
-<footer>
-
-<img
-src="mam logo 1.png"
-class="footer-logo"
-alt="MAM Logo">
-
-MAM Campus Connect © 2026
-
-</footer>
 
-<!-- ================================================= -->
-<!-- FIREBASE + JAVASCRIPT -->
-<!-- ================================================= -->
 
 <script type="module">
 
-import { initializeApp }
-from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-
-import {
-  getAuth,
-  createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,
-  onAuthStateChanged,
-  signOut
-}
-from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
-
-import {
-  getFirestore,
-  doc,
-  getDoc,
-  setDoc,
-  serverTimestamp
-}
-from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
-
-
-/* ================================================= */
-/* FIREBASE CONFIG */
-/* ================================================= */
+/* =========================================================
+   FIREBASE CONFIGURATION
+   ========================================================= */
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDqBPMbGHSBOlvQlfwMsMObJrrZU5TvTsg",
-  authDomain: "mam-campus-connect.firebaseapp.com",
-  projectId: "mam-campus-connect",
-  storageBucket: "mam-campus-connect.firebasestorage.app",
-  messagingSenderId: "46200336704",
-  appId: "1:46200336704:web:74808b2fa8d3ad62a44aa5"
+    apiKey: "AIzaSyDqBPMbGHSBOlvQlfwMsMObJrrZU5TvTsg",
+    authDomain: "mam-campus-connect.firebaseapp.com",
+    projectId: "mam-campus-connect",
+    storageBucket: "mam-campus-connect.firebasestorage.app",
+    messagingSenderId: "46200336704",
+    appId: "1:46200336704:web:74808b2fa8d3ad62a44aa5"
 };
 
 
-/* ================================================= */
-/* INITIALIZE FIREBASE */
-/* ================================================= */
+/* =========================================================
+   INITIALIZE FIREBASE
+   ========================================================= */
 
-const app = initializeApp(firebaseConfig);
+if (!firebase.apps.length) {
+    firebase.initializeApp(firebaseConfig);
+}
 
-const auth = getAuth(app);
-
-const db = getFirestore(app);
-
-
-/* ================================================= */
-/* VARIABLES */
-/* ================================================= */
-
-let currentStudent = null;
+const auth = firebase.auth();
+const db = firebase.firestore();
 
 
-/* ================================================= */
-/* MENU */
-/* ================================================= */
+/* =========================================================
+   EMAILJS CONFIGURATION
+   =========================================================
 
-window.openMenu = function(){
+   These are the ONLY EmailJS values that need to be
+   replaced later if you want actual email delivery.
 
-  document
-  .getElementById("sideMenu")
-  .classList.add("open");
+   The rest of the code does not need to be changed.
+   ========================================================= */
 
-  document
-  .getElementById("overlay")
-  .classList.add("show");
-
-};
+const EMAILJS_PUBLIC_KEY = "YOUR_EMAILJS_PUBLIC_KEY";
+const EMAILJS_SERVICE_ID = "YOUR_EMAILJS_SERVICE_ID";
+const EMAILJS_TEMPLATE_ID = "YOUR_EMAILJS_TEMPLATE_ID";
 
 
-window.closeMenu = function(){
+/* =========================================================
+   RECAPTCHA CONFIGURATION
+   ========================================================= */
 
-  document
-  .getElementById("sideMenu")
-  .classList.remove("open");
-
-  document
-  .getElementById("overlay")
-  .classList.remove("show");
-
-};
+const RECAPTCHA_SITE_KEY = "YOUR_RECAPTCHA_SITE_KEY";
 
 
-/* ================================================= */
-/* SECTIONS */
-/* ================================================= */
+/* =========================================================
+   GLOBAL OTP VARIABLES
+   ========================================================= */
 
-function hideAll(){
+let registrationOtp = null;
+let registrationOtpEmail = "";
+let registrationOtpExpiresAt = 0;
+let registrationOtpAttempts = 0;
+let registrationOtpVerified = false;
+let registrationOtpTimer = null;
+let registrationOtpResendAvailableAt = 0;
 
-  document
-  .querySelectorAll("main section")
-  .forEach(section=>{
-    section.classList.add("hidden");
-  });
 
+/* =========================================================
+   UTILITY FUNCTIONS
+   ========================================================= */
+
+function showLoading() {
+
+    const loadingScreen =
+        document.getElementById("loadingScreen");
+
+    if (loadingScreen) {
+        loadingScreen.classList.remove("hidden");
+    }
 }
 
 
-window.showSection = function(id){
+function hideLoading() {
 
-  hideAll();
+    const loadingScreen =
+        document.getElementById("loadingScreen");
 
-  const section =
-    document.getElementById(id);
+    if (loadingScreen) {
+        loadingScreen.classList.add("hidden");
+    }
+}
 
-  if(section){
 
-    section.classList.remove("hidden");
+function showAuthPage() {
 
-    window.scrollTo({
-      top:0,
-      behavior:"smooth"
+    document
+        .getElementById("authPage")
+        .classList.remove("hidden");
+
+    document
+        .getElementById("studentDashboard")
+        .classList.add("hidden");
+}
+
+
+function showStudentDashboard() {
+
+    document
+        .getElementById("authPage")
+        .classList.add("hidden");
+
+    document
+        .getElementById("studentDashboard")
+        .classList.remove("hidden");
+}
+
+
+function showAlert(message, type = "error") {
+
+    const container =
+        document.getElementById("authAlert");
+
+    if (!container) return;
+
+    container.innerHTML = `
+        <div class="alert alert-${type}">
+            ${message}
+        </div>
+    `;
+
+    setTimeout(() => {
+
+        if (container) {
+            container.innerHTML = "";
+        }
+
+    }, 6000);
+}
+
+
+function generateOtp() {
+
+    if (window.crypto && window.crypto.getRandomValues) {
+
+        const array =
+            new Uint32Array(1);
+
+        window.crypto.getRandomValues(array);
+
+        return String(
+            100000 + (array[0] % 900000)
+        );
+
+    }
+
+    return String(
+        Math.floor(
+            100000 +
+            Math.random() * 900000
+        )
+    );
+}
+
+
+function isValidEmail(email) {
+
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(
+        email.trim()
+    );
+}
+
+
+function isValidPassword(password) {
+
+    return password.length >= 6;
+}
+
+
+/* =========================================================
+   EMAILJS CONFIG CHECK
+   ========================================================= */
+
+function isEmailJSConfigured() {
+
+    return (
+        EMAILJS_PUBLIC_KEY !==
+            "YOUR_EMAILJS_PUBLIC_KEY" &&
+        EMAILJS_SERVICE_ID !==
+            "YOUR_EMAILJS_SERVICE_ID" &&
+        EMAILJS_TEMPLATE_ID !==
+            "YOUR_EMAILJS_TEMPLATE_ID"
+    );
+}
+
+
+/* =========================================================
+   INITIALIZE EMAILJS
+   ========================================================= */
+
+if (
+    typeof emailjs !== "undefined" &&
+    isEmailJSConfigured()
+) {
+
+    emailjs.init({
+        publicKey: EMAILJS_PUBLIC_KEY
     });
 
-  }
-
-  updateBottomNav(id);
-
-};
-
-
-function updateBottomNav(id){
-
-  const nav =
-    document.querySelector(".bottom-nav");
-
-  if(!nav) return;
-
-  nav
-  .querySelectorAll("button")
-  .forEach(button=>{
-    button.classList.remove("active");
-  });
-
-  if(id==="studentDashboard"){
-    nav.children[0].classList.add("active");
-  }
-
-  else if(id==="timetable"){
-    nav.children[1].classList.add("active");
-  }
-
-  else if(id==="updates"){
-    nav.children[2].classList.add("active");
-  }
-
-  else if(id==="studentProfile"){
-    nav.children[3].classList.add("active");
-  }
-
 }
 
 
-/* ================================================= */
-/* HOME */
-/* ================================================= */
+/* =========================================================
+   REGISTRATION RECAPTCHA
+   ========================================================= */
 
-window.goHome = function(){
+function isRegistrationRecaptchaComplete() {
 
-  closeMenu();
+    const siteKey =
+        RECAPTCHA_SITE_KEY;
 
-  hideAll();
+    /*
+       During initial setup, if the placeholder has not
+       been replaced, allow the project to continue.
 
-  document
-  .getElementById("home")
-  .classList.remove("hidden");
+       Once a real reCAPTCHA site key is supplied,
+       reCAPTCHA must be completed.
+    */
 
-};
+    if (
+        !siteKey ||
+        siteKey === "YOUR_RECAPTCHA_SITE_KEY"
+    ) {
+        return true;
+    }
 
+    if (
+        typeof grecaptcha === "undefined"
+    ) {
+        return false;
+    }
 
-/* ================================================= */
-/* JOINING YEARS */
-/* ================================================= */
+    try {
 
-function loadJoiningYears(){
+        const response =
+            grecaptcha.getResponse();
 
-  const select =
-    document.getElementById("regJoiningYear");
+        return Boolean(response);
 
-  if(!select) return;
+    } catch (error) {
 
-  const currentYear =
-    new Date().getFullYear();
+        return false;
 
-  select.innerHTML =
-    '<option value="">Select Joining Year</option>';
-
-  for(
-    let year=2023;
-    year<=currentYear;
-    year++
-  ){
-
-    const option =
-      document.createElement("option");
-
-    option.value=year;
-    option.textContent=year;
-
-    select.appendChild(option);
-
-  }
-
+    }
 }
 
 
-function updateEndingYear(){
+/* =========================================================
+   AUTH MODE
+   ========================================================= */
 
-  const joining =
-    parseInt(
-      document
-      .getElementById("regJoiningYear")
-      .value
-    );
+function switchAuthMode(mode) {
 
-  const duration =
-    parseInt(
-      document
-      .getElementById("regDuration")
-      .value
-    );
+    const loginForm =
+        document.getElementById("loginForm");
 
-  const ending =
-    document.getElementById("regEndingYear");
+    const registerForm =
+        document.getElementById("registerForm");
 
-  if(joining && duration){
+    const loginTab =
+        document.getElementById("loginTab");
 
-    ending.value =
-      joining + duration;
+    const registerTab =
+        document.getElementById("registerTab");
 
-  }
+    if (mode === "login") {
 
-  else{
+        loginForm.classList.remove("hidden");
+        registerForm.classList.add("hidden");
 
-    ending.value="";
+        loginTab.classList.add("active");
+        registerTab.classList.remove("active");
 
-  }
+    } else {
 
-}
+        loginForm.classList.add("hidden");
+        registerForm.classList.remove("hidden");
 
-window.updateEndingYear = updateEndingYear;
-
-
-/* ================================================= */
-/* REGISTRATION */
-/* ================================================= */
-
-window.registerStudent = async function(){
-
-  const name =
-    document.getElementById("regName").value.trim();
-
-  const roll =
-    document.getElementById("regRoll").value.trim();
-
-  const dob =
-    document.getElementById("regDob").value;
-
-  const course =
-    document.getElementById("regCourse").value;
-
-  const joining =
-    document.getElementById("regJoiningYear").value;
-
-  const duration =
-    document.getElementById("regDuration").value;
-
-  const type =
-    document.getElementById("regStudentType").value;
-
-  const mobile =
-    document.getElementById("regMobile").value.trim();
-
-  const parent =
-    document.getElementById("regParentMobile").value.trim();
-
-  const email =
-    document.getElementById("regEmail").value.trim();
-
-  const password =
-    document.getElementById("regPassword").value;
-
-  const confirmPassword =
-    document.getElementById("regConfirmPassword").value;
-
-  const message =
-    document.getElementById("regMessage");
-
-
-  if(
-    !name ||
-    !roll ||
-    !dob ||
-    !course ||
-    !joining ||
-    !duration ||
-    !type ||
-    !mobile ||
-    !parent ||
-    !email ||
-    !password ||
-    !confirmPassword
-  ){
-
-    message.innerHTML =
-      '<div class="warning">Please fill all fields.</div>';
-
-    return;
-
-  }
-
-
-  if(!/^8126[0-9]+$/.test(roll)){
-
-    message.innerHTML =
-      '<div class="warning">Roll number must start with 8126.</div>';
-
-    return;
-
-  }
-
-
-  if(
-    !/^[0-9]{10}$/.test(mobile) ||
-    !/^[0-9]{10}$/.test(parent)
-  ){
-
-    message.innerHTML =
-      '<div class="warning">Mobile numbers must contain exactly 10 digits.</div>';
-
-    return;
-
-  }
-
-
-  if(mobile===parent){
-
-    message.innerHTML =
-      '<div class="warning">Student and parent mobile numbers must be different.</div>';
-
-    return;
-
-  }
-
-
-  if(password.length<6){
-
-    message.innerHTML =
-      '<div class="warning">Password must contain at least 6 characters.</div>';
-
-    return;
-
-  }
-
-
-  if(password!==confirmPassword){
-
-    message.innerHTML =
-      '<div class="warning">Passwords do not match.</div>';
-
-    return;
-
-  }
-
-
-  message.innerHTML =
-    '<div class="info-box">Checking student record...</div>';
-
-
-  try{
-
-    const studentRef =
-      doc(db,"students",roll);
-
-    const existing =
-      await getDoc(studentRef);
-
-
-    if(existing.exists()){
-
-      message.innerHTML =
-        '<div class="warning">This roll number is already registered.</div>';
-
-      return;
+        loginTab.classList.remove("active");
+        registerTab.classList.add("active");
 
     }
 
-
-    message.innerHTML =
-      '<div class="info-box">Creating your Firebase account...</div>';
-
-
-    const userCredential =
-      await createUserWithEmailAndPassword(
-        auth,
-        email,
-        password
-      );
-
-
-    const user =
-      userCredential.user;
-
-
-    currentStudent = {
-
-      uid:user.uid,
-      name:name,
-      roll:roll,
-      dob:dob,
-      course:course,
-      joining:joining,
-      duration:duration,
-      endingYear:
-        parseInt(joining)+parseInt(duration),
-      type:type,
-      mobile:mobile,
-      parent:parent,
-      email:email
-
-    };
-
-
-    await setDoc(
-      studentRef,
-      {
-        uid:user.uid,
-        name:name,
-        roll:roll,
-        dob:dob,
-        course:course,
-        joining:joining,
-        duration:duration,
-        endingYear:
-          parseInt(joining)+parseInt(duration),
-        type:type,
-        mobile:mobile,
-        parent:parent,
-        email:email,
-        createdAt:serverTimestamp()
-      }
-    );
-
-
-    localStorage.setItem(
-      "mamStudent",
-      JSON.stringify(currentStudent)
-    );
-
-
-    loadStudentProfile();
-
-
-    message.innerHTML =
-      '<div class="info-box">✓ Registration successful. Your student account has been created.</div>';
-
-
-    setTimeout(()=>{
-      showSection("studentDashboard");
-    },800);
-
-
-  }
-
-  catch(error){
-
-    console.error(error);
-
-    let errorMessage =
-      error.message;
-
-
-    if(error.code==="auth/email-already-in-use"){
-
-      errorMessage =
-        "This email address is already registered.";
-
-    }
-
-    else if(error.code==="auth/invalid-email"){
-
-      errorMessage =
-        "Please enter a valid email address.";
-
-    }
-
-    else if(error.code==="auth/weak-password"){
-
-      errorMessage =
-        "Password is too weak. Use at least 6 characters.";
-
-    }
-
-
-    message.innerHTML =
-      '<div class="warning">Unable to create account: '+
-      escapeHtml(errorMessage)+
-      '</div>';
-
-  }
-
-};
-
-
-/* ================================================= */
-/* STUDENT LOGIN */
-/* ================================================= */
-
-window.studentLogin = async function(){
-
-  const roll =
-    document
-    .getElementById("loginRoll")
-    .value
-    .trim();
-
-  const email =
-    document
-    .getElementById("loginEmail")
-    .value
-    .trim();
-
-  const password =
-    document
-    .getElementById("loginPassword")
-    .value;
-
-  const message =
-    document.getElementById("loginMessage");
-
-
-  if(!roll){
-
-    message.innerHTML =
-      '<div class="warning">Enter your roll number.</div>';
-
-    return;
-
-  }
-
-
-  if(!email){
-
-    message.innerHTML =
-      '<div class="warning">Enter your registered email address.</div>';
-
-    return;
-
-  }
-
-
-  if(!password){
-
-    message.innerHTML =
-      '<div class="warning">Enter your password.</div>';
-
-    return;
-
-  }
-
-
-  try{
-
-    message.innerHTML =
-      '<div class="info-box">Checking student information...</div>';
-
-
-    const studentRef =
-      doc(db,"students",roll);
-
-    const studentDoc =
-      await getDoc(studentRef);
-
-
-    if(!studentDoc.exists()){
-
-      message.innerHTML =
-        '<div class="warning">Student record not found. Please register first.</div>';
-
-      return;
-
-    }
-
-
-    const student =
-      studentDoc.data();
-
-
-    if(
-      !student.email ||
-      student.email.toLowerCase() !== email.toLowerCase()
-    ){
-
-      message.innerHTML =
-        '<div class="warning">Roll number or registered email is incorrect.</div>';
-
-      return;
-
-    }
-
-
-    message.innerHTML =
-      '<div class="info-box">Signing in...</div>';
-
-
-    const userCredential =
-      await signInWithEmailAndPassword(
-        auth,
-        email,
-        password
-      );
-
-
-    const user =
-      userCredential.user;
-
-
-    currentStudent = {
-
-      uid:user.uid,
-      name:student.name,
-      roll:student.roll,
-      dob:student.dob,
-      course:student.course,
-      joining:student.joining,
-      duration:student.duration,
-      endingYear:student.endingYear,
-      type:student.type,
-      mobile:student.mobile,
-      parent:student.parent,
-      email:student.email
-
-    };
-
-
-    localStorage.setItem(
-      "mamStudent",
-      JSON.stringify(currentStudent)
-    );
-
-
-    loadStudentProfile();
-
-    showSection("studentDashboard");
-
-  }
-
-  catch(error){
-
-    console.error(error);
-
-    let errorMessage =
-      error.message;
-
-
-    if(
-      error.code==="auth/invalid-credential" ||
-      error.code==="auth/invalid-login-credentials"
-    ){
-
-      errorMessage =
-        "Incorrect email or password.";
-
-    }
-
-    else if(error.code==="auth/user-not-found"){
-
-      errorMessage =
-        "No Firebase account exists with this email.";
-
-    }
-
-    else if(error.code==="auth/wrong-password"){
-
-      errorMessage =
-        "Incorrect password.";
-
-    }
-
-    else if(error.code==="auth/invalid-email"){
-
-      errorMessage =
-        "Please enter a valid email address.";
-
-    }
-
-
-    message.innerHTML =
-      '<div class="warning">Login failed: '+
-      escapeHtml(errorMessage)+
-      '</div>';
-
-  }
-
-};
-
-
-/* ================================================= */
-/* LOAD PROFILE */
-/* ================================================= */
-
-function loadStudentProfile(){
-
-  if(!currentStudent){
-
-    const saved =
-      localStorage.getItem("mamStudent");
-
-    if(saved){
-
-      try{
-
-        currentStudent =
-          JSON.parse(saved);
-
-      }
-
-      catch(error){
-
-        currentStudent=null;
-
-      }
-
-    }
-
-  }
-
-
-  if(!currentStudent) return;
-
-
-  document
-  .getElementById("studentWelcome")
-  .textContent =
-    "Welcome, "+
-    currentStudent.name+
-    " 👋";
-
-
-  document
-  .getElementById("studentCourse")
-  .textContent =
-    currentStudent.course+
-    " • Joining "+
-    currentStudent.joining;
-
-
-  document
-  .getElementById("profileShortName")
-  .textContent =
-    currentStudent.name;
-
-
-  document
-  .getElementById("profileName")
-  .textContent =
-    currentStudent.name;
-
-
-  document
-  .getElementById("profileRoll")
-  .textContent =
-    currentStudent.roll;
-
-
-  document
-  .getElementById("profileDob")
-  .textContent =
-    currentStudent.dob ||
-    "Not available";
-
-
-  document
-  .getElementById("profileCourse")
-  .textContent =
-    currentStudent.course;
-
-
-  document
-  .getElementById("profileJoining")
-  .textContent =
-    currentStudent.joining;
-
-
-  document
-  .getElementById("profileEnding")
-  .textContent =
-    currentStudent.endingYear;
-
-
-  document
-  .getElementById("profileType")
-  .textContent =
-    currentStudent.type;
-
-
-  document
-  .getElementById("profileMobile")
-  .textContent =
-    currentStudent.mobile;
-
-
-  document
-  .getElementById("profileEmail")
-  .textContent =
-    currentStudent.email ||
-    "Not available";
-
+    document.getElementById("authAlert").innerHTML = "";
 }
 
 
-/* ================================================= */
-/* LOGOUT */
-/* ================================================= */
+/* =========================================================
+   AUTH STATE
+   ========================================================= */
 
-window.logoutStudent = async function(){
+auth.onAuthStateChanged(async (user) => {
 
-  try{
+    if (user) {
 
-    await signOut(auth);
+        console.log(
+            "Firebase user signed in:",
+            user.email
+        );
 
-  }
-
-  catch(error){
-
-    console.error(error);
-
-  }
-
-
-  currentStudent=null;
-
-  localStorage.removeItem("mamStudent");
-
-  goHome();
-
-};
-
-
-/* ================================================= */
-/* OTHER COLLEGE */
-/* ================================================= */
-
-window.otherCollegeLogin = function(){
-
-  const college =
-    document
-    .getElementById("otherCollegeName")
-    .value
-    .trim();
-
-  const roll =
-    document
-    .getElementById("otherRoll")
-    .value
-    .trim();
-
-  const mobile =
-    document
-    .getElementById("otherMobile")
-    .value
-    .trim();
-
-  const message =
-    document.getElementById("otherMessage");
-
-
-  if(
-    !college ||
-    !roll ||
-    !/^[0-9]{10}$/.test(mobile)
-  ){
-
-    message.innerHTML =
-      '<div class="warning">Enter valid college, roll number and 10 digit mobile number.</div>';
-
-    return;
-
-  }
-
-
-  message.innerHTML =
-    '<div class="info-box">Other college student service will be connected later.</div>';
-
-};
-
-
-/* ================================================= */
-/* STAFF */
-/* ================================================= */
-
-window.staffLogin = function(){
-
-  const id =
-    document
-    .getElementById("staffId")
-    .value
-    .trim();
-
-  const department =
-    document
-    .getElementById("staffDepartment")
-    .value
-    .trim();
-
-  const mobile =
-    document
-    .getElementById("staffMobile")
-    .value
-    .trim();
-
-  const message =
-    document.getElementById("staffMessage");
-
-
-  if(
-    !id ||
-    !department ||
-    !/^[0-9]{10}$/.test(mobile)
-  ){
-
-    message.innerHTML =
-      '<div class="warning">Please enter valid staff details.</div>';
-
-    return;
-
-  }
-
-
-  document
-  .getElementById("staffDisplayId")
-  .textContent=id;
-
-
-  document
-  .getElementById("staffDisplayDepartment")
-  .textContent=department;
-
-
-  message.innerHTML =
-    '<div class="info-box">Staff login will be connected to Firebase authentication later.</div>';
-
-};
-
-
-/* ================================================= */
-/* PRINCIPAL */
-/* ================================================= */
-
-window.principalSendOtp = function(){
-
-  const mobile =
-    document
-    .getElementById("principalMobile")
-    .value
-    .trim();
-
-  const message =
-    document.getElementById("principalMessage");
-
-
-  if(!/^[0-9]{10}$/.test(mobile)){
-
-    message.innerHTML =
-      '<div class="warning">Enter a valid 10 digit mobile number.</div>';
-
-    return;
-
-  }
-
-
-  message.innerHTML =
-    '<div class="info-box">Principal authentication will be connected to Firebase later.</div>';
-
-};
-
-
-/* ================================================= */
-/* PRINCIPAL OTP */
-/* ================================================= */
-
-window.verifyPrincipalOtp = function(){
-
-  const message =
-    document.getElementById("principalOtpMessage");
-
-  message.innerHTML =
-    '<div class="info-box">Principal authentication is not connected yet.</div>';
-
-};
-
-
-/* ================================================= */
-/* FEEDBACK */
-/* ================================================= */
-
-window.submitFeedback = function(){
-
-  const name =
-    document
-    .getElementById("feedbackName")
-    .value
-    .trim();
-
-  const mobile =
-    document
-    .getElementById("feedbackMobile")
-    .value
-    .trim();
-
-  const feedback =
-    document
-    .getElementById("feedbackText")
-    .value
-    .trim();
-
-  const message =
-    document.getElementById("feedbackMessage");
-
-
-  if(
-    !name ||
-    !/^[0-9]{10}$/.test(mobile) ||
-    !feedback
-  ){
-
-    message.innerHTML =
-      '<div class="warning">Please complete all feedback fields.</div>';
-
-    return;
-
-  }
-
-
-  message.innerHTML =
-    '<div class="info-box">Thank you! Your feedback has been recorded for development testing.</div>';
-
-};
-
-
-/* ================================================= */
-/* AI ASSISTANT */
-/* ================================================= */
-
-window.aiAssistant = function(){
-
-  alert(
-    "🤖 MAM Campus AI Assistant\n\n"+
-    "The AI Assistant will be connected to a real AI system in a later step."
-  );
-
-};
-
-
-/* ================================================= */
-/* SAFE ERROR TEXT */
-/* ================================================= */
-
-function escapeHtml(value){
-
-  return String(value)
-    .replace(/&/g,"&amp;")
-    .replace(/</g,"&lt;")
-    .replace(/>/g,"&gt;")
-    .replace(/"/g,"&quot;")
-    .replace(/'/g,"&#039;");
-
-}
-
-
-/* ================================================= */
-/* AUTH STATE */
-/* ================================================= */
-
-onAuthStateChanged(auth,(user)=>{
-
-  if(user){
-
-    console.log("Firebase email authentication active.");
-
-  }
+    }
 
 });
 
 
-/* ================================================= */
-/* START */
-/* ================================================= */
+/* =========================================================
+   MAKE FUNCTIONS AVAILABLE TO HTML
+   ========================================================= */
 
-loadJoiningYears();
+window.switchAuthMode = switchAuthMode;
+window.showAuthPage = showAuthPage;
+window.showStudentDashboard = showStudentDashboard;
+window.isRegistrationRecaptchaComplete =
+    isRegistrationRecaptchaComplete;
 
-goHome();
+</script>
+
+
+<script type="module">
+
+/* =========================================================
+   REGISTRATION VALIDATION
+   ========================================================= */
+
+function validateRegistrationFields() {
+
+    const name =
+        document.getElementById("regName").value.trim();
+
+    const roll =
+        document.getElementById("regRoll").value.trim();
+
+    const department =
+        document.getElementById("regDepartment").value;
+
+    const email =
+        document.getElementById("regEmail").value.trim();
+
+    const password =
+        document.getElementById("regPassword").value;
+
+    const confirmPassword =
+        document.getElementById("regConfirmPassword").value;
+
+
+    if (!name) {
+
+        showAlert(
+            "Please enter your full name.",
+            "error"
+        );
+
+        return false;
+    }
+
+
+    if (!roll) {
+
+        showAlert(
+            "Please enter your roll number.",
+            "error"
+        );
+
+        return false;
+    }
+
+
+    if (!department) {
+
+        showAlert(
+            "Please select your department.",
+            "error"
+        );
+
+        return false;
+    }
+
+
+    if (!isValidEmail(email)) {
+
+        showAlert(
+            "Please enter a valid email address.",
+            "error"
+        );
+
+        return false;
+    }
+
+
+    if (!isValidPassword(password)) {
+
+        showAlert(
+            "Password must contain at least 6 characters.",
+            "error"
+        );
+
+        return false;
+    }
+
+
+    if (password !== confirmPassword) {
+
+        showAlert(
+            "Passwords do not match.",
+            "error"
+        );
+
+        return false;
+    }
+
+
+    return true;
+}
+
+
+/* =========================================================
+   SEND REGISTRATION OTP
+   ========================================================= */
+
+async function sendRegistrationOtp() {
+
+    if (!validateRegistrationFields()) {
+        return;
+    }
+
+
+    if (!isRegistrationRecaptchaComplete()) {
+
+        showAlert(
+            "Please complete the reCAPTCHA verification.",
+            "error"
+        );
+
+        return;
+    }
+
+
+    const email =
+        document.getElementById("regEmail")
+            .value
+            .trim()
+            .toLowerCase();
+
+
+    const name =
+        document.getElementById("regName")
+            .value
+            .trim();
+
+
+    if (!isEmailJSConfigured()) {
+
+        showAlert(
+            "Email OTP is not configured yet. Add your EmailJS Public Key, Service ID and Template ID in the code.",
+            "error"
+        );
+
+        return;
+    }
+
+
+    const now =
+        Date.now();
+
+
+    if (
+        registrationOtpResendAvailableAt > now
+    ) {
+
+        const remaining =
+            Math.ceil(
+                (
+                    registrationOtpResendAvailableAt -
+                    now
+                ) / 1000
+            );
+
+        showAlert(
+            `Please wait ${remaining} seconds before requesting another OTP.`,
+            "info"
+        );
+
+        return;
+    }
+
+
+    const sendButton =
+        document.getElementById("sendOtpBtn");
+
+    sendButton.disabled = true;
+    sendButton.textContent = "Sending...";
+
+
+    try {
+
+        /*
+           Check whether the roll number is already
+           registered before sending the OTP.
+        */
+
+        const roll =
+            document.getElementById("regRoll")
+                .value
+                .trim()
+                .toUpperCase();
+
+
+        const existing =
+            await db
+                .collection("students")
+                .where("rollNumber", "==", roll)
+                .limit(1)
+                .get();
+
+
+        if (!existing.empty) {
+
+            showAlert(
+                "This roll number is already registered.",
+                "error"
+            );
+
+            sendButton.disabled = false;
+            sendButton.textContent = "Send Email OTP";
+
+            return;
+        }
+
+
+        registrationOtp =
+            generateOtp();
+
+        registrationOtpEmail =
+            email;
+
+        registrationOtpExpiresAt =
+            Date.now() +
+            (5 * 60 * 1000);
+
+        registrationOtpAttempts = 0;
+
+        registrationOtpVerified = false;
+
+        registrationOtpResendAvailableAt =
+            Date.now() +
+            (60 * 1000);
+
+
+        const templateParams = {
+
+            to_email: email,
+
+            student_name: name,
+
+            otp_code: registrationOtp,
+
+            expiry_minutes: "5"
+
+        };
+
+
+        await emailjs.send(
+            EMAILJS_SERVICE_ID,
+            EMAILJS_TEMPLATE_ID,
+            templateParams
+        );
+
+
+        document
+            .getElementById("otpInputArea")
+            .classList.remove("hidden");
+
+
+        document
+            .getElementById("otpStatus")
+            .innerHTML =
+            `<span class="otp-pending">
+                OTP sent to ${email}
+            </span>`;
+
+
+        showAlert(
+            "OTP sent successfully to your email.",
+            "success"
+        );
+
+
+        startOtpTimer();
+
+
+    } catch (error) {
+
+        console.error(
+            "Email OTP error:",
+            error
+        );
+
+
+        registrationOtp = null;
+        registrationOtpEmail = "";
+        registrationOtpExpiresAt = 0;
+
+
+        showAlert(
+            "Unable to send OTP. Please check your EmailJS configuration and try again.",
+            "error"
+        );
+
+    } finally {
+
+        sendButton.disabled = false;
+        sendButton.textContent =
+            "Send Email OTP";
+
+    }
+
+}
+
+
+/* =========================================================
+   OTP TIMER
+   ========================================================= */
+
+function startOtpTimer() {
+
+    clearInterval(
+        registrationOtpTimer
+    );
+
+
+    const timerElement =
+        document.getElementById("otpTimer");
+
+
+    registrationOtpTimer =
+        setInterval(() => {
+
+            const remaining =
+                registrationOtpExpiresAt -
+                Date.now();
+
+
+            if (remaining <= 0) {
+
+                clearInterval(
+                    registrationOtpTimer
+                );
+
+                timerElement.textContent =
+                    "OTP expired";
+
+                registrationOtp = null;
+
+                registrationOtpExpiresAt =
+                    0;
+
+                return;
+            }
+
+
+            const seconds =
+                Math.ceil(
+                    remaining / 1000
+                );
+
+
+            const minutes =
+                Math.floor(
+                    seconds / 60
+                );
+
+
+            const secs =
+                seconds % 60;
+
+
+            timerElement.textContent =
+                `Expires in ${minutes}:${String(secs).padStart(2, "0")}`;
+
+        }, 1000);
+
+}
+
+
+/* =========================================================
+   VERIFY REGISTRATION OTP
+   ========================================================= */
+
+async function verifyRegistrationOtp() {
+
+    const enteredOtp =
+        document.getElementById("regOtp")
+            .value
+            .trim();
+
+
+    const email =
+        document.getElementById("regEmail")
+            .value
+            .trim()
+            .toLowerCase();
+
+
+    if (!registrationOtp) {
+
+        showAlert(
+            "Please request a new OTP.",
+            "error"
+        );
+
+        return;
+    }
+
+
+    if (
+        Date.now() >
+        registrationOtpExpiresAt
+    ) {
+
+        showAlert(
+            "The OTP has expired. Please request a new OTP.",
+            "error"
+        );
+
+        registrationOtp = null;
+
+        return;
+    }
+
+
+    if (
+        registrationOtpAttempts >= 5
+    ) {
+
+        showAlert(
+            "Too many incorrect OTP attempts. Please request a new OTP.",
+            "error"
+        );
+
+        registrationOtp = null;
+
+        return;
+    }
+
+
+    if (
+        email !== registrationOtpEmail
+    ) {
+
+        showAlert(
+            "The email address has changed. Please request a new OTP.",
+            "error"
+        );
+
+        resetRegistrationOtp();
+
+        return;
+    }
+
+
+    if (
+        !/^\d{6}$/.test(enteredOtp)
+    ) {
+
+        showAlert(
+            "Please enter a valid 6-digit OTP.",
+            "error"
+        );
+
+        return;
+    }
+
+
+    registrationOtpAttempts++;
+
+
+    if (
+        enteredOtp !== registrationOtp
+    ) {
+
+        const remaining =
+            5 -
+            registrationOtpAttempts;
+
+
+        showAlert(
+            `Incorrect OTP. ${remaining} attempt(s) remaining.`,
+            "error"
+        );
+
+        return;
+    }
+
+
+    registrationOtpVerified =
+        true;
+
+
+    document
+        .getElementById("otpStatus")
+        .innerHTML =
+        `<span class="otp-verified">
+            ✓ Email OTP verified successfully
+        </span>`;
+
+
+    document
+        .getElementById("otpTimer")
+        .textContent =
+        "Verified";
+
+
+    document
+        .getElementById("verifyOtpBtn")
+        .disabled = true;
+
+
+    document
+        .getElementById("sendOtpBtn")
+        .disabled = true;
+
+
+    showAlert(
+        "Email verified successfully. You can now create your student account.",
+        "success"
+    );
+
+
+    clearInterval(
+        registrationOtpTimer
+    );
+
+}
+
+
+/* =========================================================
+   RESET OTP
+   ========================================================= */
+
+function resetRegistrationOtp() {
+
+    registrationOtp = null;
+
+    registrationOtpEmail = "";
+
+    registrationOtpExpiresAt = 0;
+
+    registrationOtpAttempts = 0;
+
+    registrationOtpVerified = false;
+
+    registrationOtpResendAvailableAt = 0;
+
+
+    clearInterval(
+        registrationOtpTimer
+    );
+
+
+    const timer =
+        document.getElementById("otpTimer");
+
+    if (timer) {
+        timer.textContent = "";
+    }
+
+
+    const status =
+        document.getElementById("otpStatus");
+
+    if (status) {
+        status.innerHTML = "";
+    }
+
+
+    const otpInput =
+        document.getElementById("regOtp");
+
+    if (otpInput) {
+        otpInput.value = "";
+    }
+
+
+    const verifyButton =
+        document.getElementById("verifyOtpBtn");
+
+    if (verifyButton) {
+        verifyButton.disabled = false;
+    }
+
+
+    const sendButton =
+        document.getElementById("sendOtpBtn");
+
+    if (sendButton) {
+        sendButton.disabled = false;
+    }
+
+}
+
+
+/* =========================================================
+   EMAIL CHANGE INVALIDATES OTP
+   ========================================================= */
+
+document
+    .getElementById("regEmail")
+    .addEventListener(
+        "input",
+        function () {
+
+            const currentEmail =
+                this.value
+                    .trim()
+                    .toLowerCase();
+
+
+            if (
+                registrationOtpEmail &&
+                currentEmail !==
+                registrationOtpEmail
+            ) {
+
+                resetRegistrationOtp();
+
+                document
+                    .getElementById("otpInputArea")
+                    .classList.add("hidden");
+
+            }
+
+        }
+    );
+
+
+/* =========================================================
+   OTP INPUT SANITIZATION
+   ========================================================= */
+
+document
+    .getElementById("regOtp")
+    .addEventListener(
+        "input",
+        function () {
+
+            this.value =
+                this.value
+                    .replace(/\D/g, "")
+                    .slice(0, 6);
+
+        }
+    );
+
+
+/* =========================================================
+   EXPOSE FUNCTIONS
+   ========================================================= */
+
+window.sendRegistrationOtp =
+    sendRegistrationOtp;
+
+window.verifyRegistrationOtp =
+    verifyRegistrationOtp;
+
+window.resetRegistrationOtp =
+    resetRegistrationOtp;
+
+</script>
+
+
+<script type="module">
+
+/* =========================================================
+   CHECK ROLL NUMBER
+   ========================================================= */
+
+async function isRollNumberAlreadyRegistered(
+    rollNumber
+) {
+
+    const normalizedRoll =
+        rollNumber
+            .trim()
+            .toUpperCase();
+
+
+    const snapshot =
+        await db
+            .collection("students")
+            .where(
+                "rollNumber",
+                "==",
+                normalizedRoll
+            )
+            .limit(1)
+            .get();
+
+
+    return !snapshot.empty;
+}
+
+
+/* =========================================================
+   STUDENT REGISTRATION
+   ========================================================= */
+
+async function registerStudent(event) {
+
+    event.preventDefault();
+
+
+    if (
+        !validateRegistrationFields()
+    ) {
+        return;
+    }
+
+
+    if (
+        !isRegistrationRecaptchaComplete()
+    ) {
+
+        showAlert(
+            "Please complete the reCAPTCHA verification.",
+            "error"
+        );
+
+        return;
+    }
+
+
+    if (
+        !registrationOtpVerified
+    ) {
+
+        showAlert(
+            "Please verify the Email OTP before creating your account.",
+            "error"
+        );
+
+        return;
+    }
+
+
+    const name =
+        document.getElementById("regName")
+            .value
+            .trim();
+
+
+    const roll =
+        document.getElementById("regRoll")
+            .value
+            .trim()
+            .toUpperCase();
+
+
+    const department =
+        document.getElementById("regDepartment")
+            .value;
+
+
+    const email =
+        document.getElementById("regEmail")
+            .value
+            .trim()
+            .toLowerCase();
+
+
+    const password =
+        document.getElementById("regPassword")
+            .value;
+
+
+    if (
+        email !== registrationOtpEmail
+    ) {
+
+        showAlert(
+            "The verified email does not match the registration email.",
+            "error"
+        );
+
+        return;
+    }
+
+
+    const createButton =
+        document.getElementById(
+            "createAccountBtn"
+        );
+
+
+    createButton.disabled = true;
+    createButton.textContent =
+        "Creating Account...";
+
+
+    try {
+
+        const alreadyRegistered =
+            await isRollNumberAlreadyRegistered(
+                roll
+            );
+
+
+        if (alreadyRegistered) {
+
+            showAlert(
+                "This roll number is already registered.",
+                "error"
+            );
+
+            return;
+        }
+
+
+        const userCredential =
+            await auth
+                .createUserWithEmailAndPassword(
+                    email,
+                    password
+                );
+
+
+        const user =
+            userCredential.user;
+
+
+        await db
+            .collection("students")
+            .doc(user.uid)
+            .set({
+
+                uid: user.uid,
+
+                name: name,
+
+                rollNumber: roll,
+
+                department: department,
+
+                email: email,
+
+                emailVerifiedByOtp: true,
+
+                createdAt:
+                    firebase.firestore
+                        .FieldValue
+                        .serverTimestamp()
+
+            });
+
+
+        registrationOtpVerified =
+            false;
+
+
+        registrationOtp = null;
+
+
+        clearRegistrationForm();
+
+
+        showAlert(
+            "Student account created successfully.",
+            "success"
+        );
+
+
+        showStudentDashboard();
+
+
+        loadStudentProfile(
+            user,
+            {
+                name,
+                rollNumber: roll,
+                department,
+                email
+            }
+        );
+
+
+    } catch (error) {
+
+        console.error(
+            "Registration error:",
+            error
+        );
+
+
+        let message =
+            "Unable to create your account.";
+
+
+        if (
+            error.code ===
+            "auth/email-already-in-use"
+        ) {
+
+            message =
+                "This email address is already registered.";
+
+        } else if (
+            error.code ===
+            "auth/invalid-email"
+        ) {
+
+            message =
+                "The email address is invalid.";
+
+        } else if (
+            error.code ===
+            "auth/weak-password"
+        ) {
+
+            message =
+                "Password is too weak.";
+
+        } else if (
+            error.code ===
+            "auth/operation-not-allowed"
+        ) {
+
+            message =
+                "Email/Password authentication is not enabled in Firebase.";
+
+        }
+
+
+        showAlert(
+            message,
+            "error"
+        );
+
+    } finally {
+
+        createButton.disabled = false;
+
+        createButton.textContent =
+            "Create Student Account";
+
+    }
+
+}
+
+
+/* =========================================================
+   CLEAR REGISTRATION FORM
+   ========================================================= */
+
+function clearRegistrationForm() {
+
+    document
+        .getElementById("registerForm")
+        .reset();
+
+
+    resetRegistrationOtp();
+
+
+    document
+        .getElementById("otpInputArea")
+        .classList.add("hidden");
+
+
+    try {
+
+        if (
+            typeof grecaptcha !==
+            "undefined"
+        ) {
+
+            grecaptcha.reset();
+
+        }
+
+    } catch (error) {
+
+        console.log(
+            "reCAPTCHA reset skipped."
+        );
+
+    }
+
+}
+
+
+/* =========================================================
+   STUDENT LOGIN
+   ========================================================= */
+
+async function loginStudent(event) {
+
+    event.preventDefault();
+
+
+    const email =
+        document.getElementById(
+            "loginEmail"
+        )
+        .value
+        .trim()
+        .toLowerCase();
+
+
+    const password =
+        document.getElementById(
+            "loginPassword"
+        )
+        .value;
+
+
+    if (!isValidEmail(email)) {
+
+        showAlert(
+            "Please enter a valid email address.",
+            "error"
+        );
+
+        return;
+    }
+
+
+    if (!password) {
+
+        showAlert(
+            "Please enter your password.",
+            "error"
+        );
+
+        return;
+    }
+
+
+    showLoading();
+
+
+    try {
+
+        const credential =
+            await auth
+                .signInWithEmailAndPassword(
+                    email,
+                    password
+                );
+
+
+        const user =
+            credential.user;
+
+
+        const studentDoc =
+            await db
+                .collection("students")
+                .doc(user.uid)
+                .get();
+
+
+        if (!studentDoc.exists) {
+
+            await auth.signOut();
+
+            throw new Error(
+                "Student profile not found."
+            );
+
+        }
+
+
+        const data =
+            studentDoc.data();
+
+
+        showStudentDashboard();
+
+
+        loadStudentProfile(
+            user,
+            data
+        );
+
+
+    } catch (error) {
+
+        console.error(
+            "Login error:",
+            error
+        );
+
+
+        let message =
+            "Login failed.";
+
+
+        if (
+            error.code ===
+            "auth/user-not-found"
+        ) {
+
+            message =
+                "No account found with this email.";
+
+        } else if (
+            error.code ===
+            "auth/wrong-password"
+        ) {
+
+            message =
+                "Incorrect password.";
+
+        } else if (
+            error.code ===
+            "auth/invalid-credential"
+        ) {
+
+            message =
+                "Invalid email or password.";
+
+        } else if (
+            error.message ===
+            "Student profile not found."
+        ) {
+
+            message =
+                "Student profile was not found in the database.";
+
+        }
+
+
+        showAlert(
+            message,
+            "error"
+        );
+
+    } finally {
+
+        hideLoading();
+
+    }
+
+}
+
+
+/* =========================================================
+   LOGOUT
+   ========================================================= */
+
+async function logoutStudent() {
+
+    try {
+
+        await auth.signOut();
+
+        showAuthPage();
+
+        switchAuthMode("login");
+
+        document
+            .getElementById("loginForm")
+            .reset();
+
+        showAlert(
+            "You have been logged out successfully.",
+            "success"
+        );
+
+    } catch (error) {
+
+        console.error(
+            "Logout error:",
+            error
+        );
+
+    }
+
+}
+
+
+/* =========================================================
+   EXPOSE FUNCTIONS
+   ========================================================= */
+
+window.registerStudent =
+    registerStudent;
+
+window.loginStudent =
+    loginStudent;
+
+window.logoutStudent =
+    logoutStudent;
+
+window.clearRegistrationForm =
+    clearRegistrationForm;
+
+window.isRollNumberAlreadyRegistered =
+    isRollNumberAlreadyRegistered;
+
+</script>
+<script type="module">
+
+/* =========================================================
+   STUDENT DASHBOARD
+   ========================================================= */
+
+function loadStudentProfile(user, data = {}) {
+
+    if (!user) {
+        return;
+    }
+
+
+    const name =
+        data.name ||
+        user.displayName ||
+        "Student";
+
+
+    const email =
+        data.email ||
+        user.email ||
+        "";
+
+
+    const rollNumber =
+        data.rollNumber ||
+        "-";
+
+
+    const department =
+        data.department ||
+        "-";
+
+
+    /* -----------------------------------------------------
+       TOP BAR
+       ----------------------------------------------------- */
+
+    const topbarName =
+        document.getElementById(
+            "topbarStudentName"
+        );
+
+    if (topbarName) {
+        topbarName.textContent = name;
+    }
+
+
+    const topbarEmail =
+        document.getElementById(
+            "topbarStudentEmail"
+        );
+
+    if (topbarEmail) {
+        topbarEmail.textContent = email;
+    }
+
+
+    const avatar =
+        document.getElementById(
+            "topbarAvatar"
+        );
+
+    if (avatar) {
+
+        avatar.textContent =
+            name
+                .charAt(0)
+                .toUpperCase();
+
+    }
+
+
+    /* -----------------------------------------------------
+       WELCOME MESSAGE
+       ----------------------------------------------------- */
+
+    const welcomeName =
+        document.getElementById(
+            "welcomeStudentName"
+        );
+
+    if (welcomeName) {
+        welcomeName.textContent = name;
+    }
+
+
+    /* -----------------------------------------------------
+       OVERVIEW STATISTICS
+       ----------------------------------------------------- */
+
+    const statDepartment =
+        document.getElementById(
+            "statDepartment"
+        );
+
+    if (statDepartment) {
+        statDepartment.textContent =
+            department;
+    }
+
+
+    const statRoll =
+        document.getElementById(
+            "statRoll"
+        );
+
+    if (statRoll) {
+        statRoll.textContent =
+            rollNumber;
+    }
+
+
+    /* -----------------------------------------------------
+       PROFILE
+       ----------------------------------------------------- */
+
+    const profileAvatar =
+        document.getElementById(
+            "profileAvatar"
+        );
+
+    if (profileAvatar) {
+
+        profileAvatar.textContent =
+            name
+                .charAt(0)
+                .toUpperCase();
+
+    }
+
+
+    const profileName =
+        document.getElementById(
+            "profileName"
+        );
+
+    if (profileName) {
+        profileName.textContent =
+            name;
+    }
+
+
+    const profileEmail =
+        document.getElementById(
+            "profileEmail"
+        );
+
+    if (profileEmail) {
+        profileEmail.textContent =
+            email;
+    }
+
+
+    const profileStudentName =
+        document.getElementById(
+            "profileStudentName"
+        );
+
+    if (profileStudentName) {
+        profileStudentName.textContent =
+            name;
+    }
+
+
+    const profileRoll =
+        document.getElementById(
+            "profileRoll"
+        );
+
+    if (profileRoll) {
+        profileRoll.textContent =
+            rollNumber;
+    }
+
+
+    const profileDepartment =
+        document.getElementById(
+            "profileDepartment"
+        );
+
+    if (profileDepartment) {
+        profileDepartment.textContent =
+            department;
+    }
+
+
+    const profileEmailAddress =
+        document.getElementById(
+            "profileEmailAddress"
+        );
+
+    if (profileEmailAddress) {
+        profileEmailAddress.textContent =
+            email;
+    }
+
+}
+
+
+/* =========================================================
+   STUDENT SECTION NAVIGATION
+   ========================================================= */
+
+function showStudentSection(
+    sectionName,
+    clickedItem
+) {
+
+    const sections =
+        document.querySelectorAll(
+            "#studentDashboard .section"
+        );
+
+
+    sections.forEach(
+        section => {
+
+            section.classList.remove(
+                "active"
+            );
+
+        }
+    );
+
+
+    const selectedSection =
+        document.getElementById(
+            `student-${sectionName}`
+        );
+
+
+    if (selectedSection) {
+
+        selectedSection.classList.add(
+            "active"
+        );
+
+    }
+
+
+    const menuItems =
+        document.querySelectorAll(
+            ".sidebar-item"
+        );
+
+
+    menuItems.forEach(
+        item => {
+
+            item.classList.remove(
+                "active"
+            );
+
+        }
+    );
+
+
+    if (clickedItem) {
+
+        clickedItem.classList.add(
+            "active"
+        );
+
+    }
+
+
+    const titles = {
+
+        overview:
+            "Student Dashboard",
+
+        profile:
+            "My Profile",
+
+        announcements:
+            "Announcements",
+
+        notices:
+            "Notices",
+
+        events:
+            "Campus Events",
+
+        help:
+            "Help & Support"
+
+    };
+
+
+    const title =
+        document.getElementById(
+            "topbarTitle"
+        );
+
+
+    if (title) {
+
+        title.textContent =
+            titles[sectionName] ||
+            "Student Dashboard";
+
+    }
+
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+
+}
+
+
+/* =========================================================
+   AUTH STATE LISTENER
+   ========================================================= */
+
+auth.onAuthStateChanged(
+    async (user) => {
+
+        try {
+
+            if (!user) {
+
+                hideLoading();
+
+                showAuthPage();
+
+                return;
+
+            }
+
+
+            /*
+               Check whether the signed-in Firebase
+               account has a student document.
+            */
+
+            const studentDoc =
+                await db
+                    .collection("students")
+                    .doc(user.uid)
+                    .get();
+
+
+            if (!studentDoc.exists) {
+
+                /*
+                   If there is no student profile,
+                   keep the user on the login page.
+                */
+
+                await auth.signOut();
+
+                hideLoading();
+
+                showAuthPage();
+
+                return;
+
+            }
+
+
+            const data =
+                studentDoc.data();
+
+
+            showStudentDashboard();
+
+
+            loadStudentProfile(
+                user,
+                data
+            );
+
+
+        } catch (error) {
+
+            console.error(
+                "Authentication state error:",
+                error
+            );
+
+
+            showAuthPage();
+
+        } finally {
+
+            hideLoading();
+
+        }
+
+    }
+);
+
+
+/* =========================================================
+   PAGE INITIALIZATION
+   ========================================================= */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    () => {
+
+        /*
+           Start with the login tab.
+        */
+
+        switchAuthMode(
+            "login"
+        );
+
+
+        /*
+           Hide loading screen after
+           the page is ready.
+        */
+
+        setTimeout(
+            () => {
+
+                hideLoading();
+
+            },
+            500
+        );
+
+    }
+);
+
+
+/* =========================================================
+   OTP ENTER KEY SUPPORT
+   ========================================================= */
+
+const otpInput =
+    document.getElementById(
+        "regOtp"
+    );
+
+
+if (otpInput) {
+
+    otpInput.addEventListener(
+        "keydown",
+        (event) => {
+
+            if (
+                event.key === "Enter"
+            ) {
+
+                event.preventDefault();
+
+                verifyRegistrationOtp();
+
+            }
+
+        }
+    );
+
+}
+
+
+/* =========================================================
+   LOGIN ENTER KEY SUPPORT
+   ========================================================= */
+
+const loginEmail =
+    document.getElementById(
+        "loginEmail"
+    );
+
+
+const loginPassword =
+    document.getElementById(
+        "loginPassword"
+    );
+
+
+if (loginEmail) {
+
+    loginEmail.addEventListener(
+        "keydown",
+        (event) => {
+
+            if (
+                event.key === "Enter"
+            ) {
+
+                event.preventDefault();
+
+                document
+                    .getElementById(
+                        "loginForm"
+                    )
+                    .requestSubmit();
+
+            }
+
+        }
+    );
+
+}
+
+
+if (loginPassword) {
+
+    loginPassword.addEventListener(
+        "keydown",
+        (event) => {
+
+            if (
+                event.key === "Enter"
+            ) {
+
+                event.preventDefault();
+
+                document
+                    .getElementById(
+                        "loginForm"
+                    )
+                    .requestSubmit();
+
+            }
+
+        }
+    );
+
+}
+
+
+/* =========================================================
+   EXPOSE DASHBOARD FUNCTIONS
+   ========================================================= */
+
+window.loadStudentProfile =
+    loadStudentProfile;
+
+
+window.showStudentSection =
+    showStudentSection;
+
+
+/* =========================================================
+   CLEANUP
+   ========================================================= */
+
+window.addEventListener(
+    "beforeunload",
+    () => {
+
+        if (
+            registrationOtpTimer
+        ) {
+
+            clearInterval(
+                registrationOtpTimer
+            );
+
+        }
+
+    }
+);
+
+
+/* =========================================================
+   FINAL GLOBAL FUNCTION REFERENCES
+   ========================================================= */
+
+window.showStudentDashboard =
+    showStudentDashboard;
+
+window.showAuthPage =
+    showAuthPage;
+
+window.switchAuthMode =
+    switchAuthMode;
+
+window.loginStudent =
+    loginStudent;
+
+window.registerStudent =
+    registerStudent;
+
+window.logoutStudent =
+    logoutStudent;
+
+window.sendRegistrationOtp =
+    sendRegistrationOtp;
+
+window.verifyRegistrationOtp =
+    verifyRegistrationOtp;
 
 </script>
 
