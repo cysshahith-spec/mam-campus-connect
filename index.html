@@ -728,20 +728,6 @@ footer{
   font-size:12px;
 }
 
-/* OTP */
-
-#recaptcha-container{
-  margin-top:15px;
-}
-
-.otp-box{
-  text-align:center;
-}
-
-.otp-box h2{
-  margin-bottom:10px;
-}
-
 /* DESKTOP */
 
 @media(min-width:700px){
@@ -815,7 +801,8 @@ src="mam logo 1.png"
 class="menu-logo"
 alt="MAM College Logo">
 
-<strong>MAM Campus Connect</strong> <span>College Digital Campus</span>
+<strong>MAM Campus Connect</strong>
+<span>College Digital Campus</span>
 
 </div>
 
@@ -906,11 +893,13 @@ onclick="showSection('otherCollege')">
 
 <button class="primary-btn"
 onclick="showSection('studentRegistration')">
-First-Time Student Registration </button>
+First-Time Student Registration
+</button>
 
 <button class="secondary-btn"
 onclick="showSection('studentLogin')">
-Existing Student Login </button>
+Existing Student Login
+</button>
 
 </div>
 </section>
@@ -921,17 +910,29 @@ Existing Student Login </button>
 
 <button class="back-btn"
 onclick="showSection('studentOptions')">
-← Back </button>
+← Back
+</button>
 
 <div class="card">
 
 <h2>📝 Student Registration</h2>
 
-<label>Student Name</label> <input id="regName" type="text" placeholder="Enter full name">
+<label>Student Name</label>
+<input
+id="regName"
+type="text"
+placeholder="Enter full name">
 
-<label>Roll Number</label> <input id="regRoll" type="text" placeholder="Example: 8126123456">
+<label>Roll Number</label>
+<input
+id="regRoll"
+type="text"
+placeholder="Example: 8126123456">
 
-<label>Date of Birth</label> <input id="regDob" type="date">
+<label>Date of Birth</label>
+<input
+id="regDob"
+type="date">
 
 <label>Department / Course</label>
 
@@ -951,7 +952,8 @@ onclick="showSection('studentOptions')">
 <option>M.E. Environmental Engineering</option>
 </select>
 
-<label>Joining Year</label> <select id="regJoiningYear"></select>
+<label>Joining Year</label>
+<select id="regJoiningYear"></select>
 
 <label>Course Duration</label>
 
@@ -961,7 +963,11 @@ onclick="showSection('studentOptions')">
 <option value="2">2 Years</option>
 </select>
 
-<label>Expected Ending Year</label> <input id="regEndingYear" type="text" readonly>
+<label>Expected Ending Year</label>
+<input
+id="regEndingYear"
+type="text"
+readonly>
 
 <label>Student Type</label>
 
@@ -971,63 +977,52 @@ onclick="showSection('studentOptions')">
 <option>Hosteller</option>
 </select>
 
-<label>Student Mobile Number</label> <input
+<label>Student Mobile Number</label>
+
+<input
 id="regMobile"
 type="tel"
 maxlength="10"
 inputmode="numeric"
 placeholder="10 digit mobile number">
 
-<label>Parent Mobile Number</label> <input
+<label>Parent Mobile Number</label>
+
+<input
 id="regParentMobile"
 type="tel"
 maxlength="10"
 inputmode="numeric"
 placeholder="10 digit mobile number">
 
-<div id="recaptcha-registration"></div>
+<label>Email Address</label>
+
+<input
+id="regEmail"
+type="email"
+placeholder="Enter your email address">
+
+<label>Password</label>
+
+<input
+id="regPassword"
+type="password"
+placeholder="Create a password">
+
+<label>Confirm Password</label>
+
+<input
+id="regConfirmPassword"
+type="password"
+placeholder="Re-enter your password">
 
 <button
 class="primary-btn"
 onclick="registerStudent()">
-Send OTP </button>
+Create Student Account
+</button>
 
 <div id="regMessage"></div>
-
-</div>
-</section>
-
-<!-- REGISTRATION OTP -->
-
-<section id="studentOtp" class="hidden">
-
-<button class="back-btn"
-onclick="showSection('studentRegistration')">
-← Back </button>
-
-<div class="card otp-box">
-
-<h2>🔐 Verify Mobile</h2>
-
-<p>
-A verification code has been sent to your mobile number.
-</p>
-
-<label>OTP</label>
-
-<input
-id="regOtp"
-type="text"
-maxlength="6"
-inputmode="numeric"
-placeholder="Enter 6 digit OTP">
-
-<button
-class="primary-btn"
-onclick="verifyRegistrationOtp()">
-Verify & Register </button>
-
-<div id="otpMessage"></div>
 
 </div>
 </section>
@@ -1038,58 +1033,41 @@ Verify & Register </button>
 
 <button class="back-btn"
 onclick="showSection('studentOptions')">
-← Back </button>
+← Back
+</button>
 
 <div class="card">
 
 <h2>🔐 Existing Student Login</h2>
 
-<label>Roll Number</label> <input id="loginRoll" type="text" placeholder="Enter roll number">
+<label>Roll Number</label>
 
-<label>Registered Mobile Number</label> <input
-id="loginMobile"
-type="tel"
-maxlength="10"
-inputmode="numeric"
-placeholder="Enter mobile number">
+<input
+id="loginRoll"
+type="text"
+placeholder="Enter roll number">
 
-<div id="recaptcha-login"></div>
+<label>Registered Email Address</label>
+
+<input
+id="loginEmail"
+type="email"
+placeholder="Enter registered email">
+
+<label>Password</label>
+
+<input
+id="loginPassword"
+type="password"
+placeholder="Enter your password">
 
 <button
 class="primary-btn"
 onclick="studentLogin()">
-Send OTP </button>
+Login
+</button>
 
 <div id="loginMessage"></div>
-
-</div>
-</section>
-
-<!-- LOGIN OTP -->
-
-<section id="loginOtp" class="hidden">
-
-<div class="card otp-box">
-
-<h2>🔐 Student OTP</h2>
-
-<p>Enter the OTP sent to your registered mobile.</p>
-
-<label>OTP</label>
-
-<input
-id="loginOtpInput"
-type="text"
-maxlength="6"
-inputmode="numeric"
-placeholder="Enter OTP">
-
-<button
-class="primary-btn"
-onclick="verifyStudentLoginOtp()">
-Login </button>
-
-<div id="loginOtpMessage"></div>
 
 </div>
 </section>
@@ -1125,14 +1103,16 @@ Student Portal
 <button
 class="profile-circle"
 onclick="showSection('studentProfile')">
-👤 </button>
+👤
+</button>
 
 </div>
 
 <button
 class="notification-btn"
 onclick="showSection('updates')">
-🔔 View latest notifications </button>
+🔔 View latest notifications
+</button>
 
 </div>
 
@@ -1194,6 +1174,7 @@ onclick="showSection('studentProfile')">
 <div class="big-icon">👤</div>
 <h3>My Profile</h3>
 <p>View personal and academic information</p>
+
 </button>
 
 <button class="dashboard-card"
@@ -1202,6 +1183,7 @@ onclick="showSection('timetable')">
 <div class="big-icon">🕐</div>
 <h3>Timetable</h3>
 <p>Check today's class schedule</p>
+
 </button>
 
 <button class="dashboard-card"
@@ -1210,6 +1192,7 @@ onclick="showSection('updates')">
 <div class="big-icon">📢</div>
 <h3>Notices</h3>
 <p>College announcements and updates</p>
+
 </button>
 
 <button class="dashboard-card"
@@ -1218,30 +1201,7 @@ onclick="showSection('calendar')">
 <div class="big-icon">📅</div>
 <h3>Academic Calendar</h3>
 <p>Important academic dates</p>
-</button>
 
-<button class="dashboard-card"
-onclick="showSection('attendance')">
-
-<div class="big-icon">📊</div>
-<h3>Attendance</h3>
-<p>Subject-wise attendance</p>
-</button>
-
-<button class="dashboard-card"
-onclick="showSection('results')">
-
-<div class="big-icon">📝</div>
-<h3>Results</h3>
-<p>Marks and examination results</p>
-</button>
-
-<button class="dashboard-card"
-onclick="showSection('fees')">
-
-<div class="big-icon">💰</div>
-<h3>Fees</h3>
-<p>Fee payment information</p>
 </button>
 
 <button class="dashboard-card"
@@ -1250,6 +1210,7 @@ onclick="showSection('campusMap')">
 <div class="big-icon">🗺️</div>
 <h3>Campus Map</h3>
 <p>Find important campus locations</p>
+
 </button>
 
 <button class="dashboard-card"
@@ -1258,6 +1219,7 @@ onclick="showSection('feedback')">
 <div class="big-icon">💬</div>
 <h3>Feedback</h3>
 <p>Share your feedback</p>
+
 </button>
 
 <button class="dashboard-card"
@@ -1266,6 +1228,7 @@ onclick="aiAssistant()">
 <div class="big-icon">🤖</div>
 <h3>AI Assistant</h3>
 <p>Get help with campus information</p>
+
 </button>
 
 </div>
@@ -1273,25 +1236,34 @@ onclick="aiAssistant()">
 <button
 class="secondary-btn"
 onclick="logoutStudent()">
-🚪 Logout </button>
+🚪 Logout
+</button>
 
 <div class="bottom-nav">
 
 <button class="active"
-onclick="showSection('studentDashboard')"> <span>🏠</span>
-Home </button>
+onclick="showSection('studentDashboard')">
+<span>🏠</span>
+Home
+</button>
 
 <button
-onclick="showSection('timetable')"> <span>📚</span>
-Academics </button>
+onclick="showSection('timetable')">
+<span>📚</span>
+Academics
+</button>
 
 <button
-onclick="showSection('updates')"> <span>📢</span>
-Notices </button>
+onclick="showSection('updates')">
+<span>📢</span>
+Notices
+</button>
 
 <button
-onclick="showSection('studentProfile')"> <span>👤</span>
-Profile </button>
+onclick="showSection('studentProfile')">
+<span>👤</span>
+Profile
+</button>
 
 </div>
 
@@ -1304,7 +1276,8 @@ Profile </button>
 <button
 class="back-btn"
 onclick="showSection('studentDashboard')">
-← Dashboard </button>
+← Dashboard
+</button>
 
 <div class="card">
 
@@ -1364,156 +1337,12 @@ alt="MAM College Logo">
 <strong id="profileMobile">Not available</strong>
 </div>
 
-</div>
-</div>
-</section>
-
-<!-- ATTENDANCE -->
-
-<section id="attendance" class="hidden">
-
-<button class="back-btn"
-onclick="showSection('studentDashboard')">
-← Dashboard </button>
-
-<div class="card">
-
-<h2>📊 Attendance</h2>
-
-<div class="attendance-big">
-
-<div class="attendance-circle">
-85%
-</div>
-
-<strong>Overall Attendance</strong>
-
-<p>Sample data for development</p>
-
-</div>
-
-<div class="subject-row">
-<span>Java Programming</span>
-<span class="present">90%</span>
-</div>
-
-<div class="subject-row">
-<span>Database Management</span>
-<span class="present">86%</span>
-</div>
-
-<div class="subject-row">
-<span>Operating Systems</span>
-<span class="present">82%</span>
-</div>
-
-<div class="subject-row">
-<span>Cyber Security</span>
-<span class="present">84%</span>
-</div>
-
-<div class="warning">
-Attendance shown here is sample data.
-It will be connected to the college database later.
-</div>
-
-</div>
-</section>
-
-<!-- RESULTS -->
-
-<section id="results" class="hidden">
-
-<button class="back-btn"
-onclick="showSection('studentDashboard')">
-← Dashboard </button>
-
-<div class="card">
-
-<h2>📝 Results</h2>
-
-<div class="table-wrap">
-
-<table>
-
-<tr>
-<th>Subject</th>
-<th>Internal</th>
-<th>Grade</th>
-</tr>
-
-<tr>
-<td>Java Programming</td>
-<td>82</td>
-<td>A</td>
-</tr>
-
-<tr>
-<td>DBMS</td>
-<td>76</td>
-<td>B+</td>
-</tr>
-
-<tr>
-<td>Operating Systems</td>
-<td>80</td>
-<td>A</td>
-</tr>
-
-<tr>
-<td>Cyber Security</td>
-<td>85</td>
-<td>A+</td>
-</tr>
-
-</table>
-
-</div>
-
-<div class="warning">
-These are sample marks for UI development.
-Real results must come from a secure college database.
-</div>
-
-</div>
-</section>
-
-<!-- FEES -->
-
-<section id="fees" class="hidden">
-
-<button class="back-btn"
-onclick="showSection('studentDashboard')">
-← Dashboard </button>
-
-<div class="card">
-
-<h2>💰 Fee Status</h2>
-
-<div class="fee-status">
-✓ Fee status: Paid
-</div>
-
-<div class="profile-details">
-
 <div class="profile-row">
-<small>Academic Year</small>
-<strong>2026–2027</strong>
-</div>
-
-<div class="profile-row">
-<small>Payment Status</small>
-<strong>Paid</strong>
+<small>Email</small>
+<strong id="profileEmail">Not available</strong>
 </div>
 
 </div>
-
-<div class="warning">
-Fee information shown here is sample data.
-Real payment information should be connected to a secure
-college payment system.
-</div>
-
 </div>
 </section>
 
@@ -1523,7 +1352,8 @@ college payment system.
 
 <button class="back-btn"
 onclick="showSection('studentDashboard')">
-← Dashboard </button>
+← Dashboard
+</button>
 
 <div class="card">
 
@@ -1570,7 +1400,8 @@ onclick="showSection('studentDashboard')">
 
 <button class="back-btn"
 onclick="showSection('studentDashboard')">
-← Dashboard </button>
+← Dashboard
+</button>
 
 <div class="card">
 
@@ -1644,7 +1475,8 @@ Current timetable shown is sample CSE data.
 
 <button class="back-btn"
 onclick="showSection('studentDashboard')">
-← Dashboard </button>
+← Dashboard
+</button>
 
 <div class="card">
 
@@ -1709,7 +1541,8 @@ is connected to the college backend.
 
 <button class="back-btn"
 onclick="showSection('studentDashboard')">
-← Dashboard </button>
+← Dashboard
+</button>
 
 <div class="card">
 
@@ -1727,7 +1560,8 @@ Siruganur, Tamil Nadu 621105
 <button
 class="primary-btn"
 onclick="window.open('https://www.google.com/maps/search/?api=1&query=MAM+College+of+Engineering+and+Technology+Siruganur','_blank')">
-📍 Open Google Maps </button>
+📍 Open Google Maps
+</button>
 
 </div>
 </section>
@@ -1738,23 +1572,30 @@ onclick="window.open('https://www.google.com/maps/search/?api=1&query=MAM+Colleg
 
 <button class="back-btn"
 onclick="goHome()">
-← Home </button>
+← Home
+</button>
 
 <div class="card">
 
 <h2>👨‍🎓 Other College Student</h2>
 
-<label>College Name</label> <input
+<label>College Name</label>
+
+<input
 id="otherCollegeName"
 type="text"
 placeholder="Enter college name">
 
-<label>Roll Number</label> <input
+<label>Roll Number</label>
+
+<input
 id="otherRoll"
 type="text"
 placeholder="Enter roll number">
 
-<label>Mobile Number</label> <input
+<label>Mobile Number</label>
+
+<input
 id="otherMobile"
 type="tel"
 maxlength="10"
@@ -1764,7 +1605,8 @@ placeholder="10 digit mobile number">
 <button
 class="primary-btn"
 onclick="otherCollegeLogin()">
-Continue </button>
+Continue
+</button>
 
 <div id="otherMessage"></div>
 
@@ -1777,17 +1619,30 @@ Continue </button>
 
 <button class="back-btn"
 onclick="goHome()">
-← Home </button>
+← Home
+</button>
 
 <div class="card">
 
 <h2>👨‍🏫 Staff Login</h2>
 
-<label>Staff ID</label> <input id="staffId" type="text" placeholder="Enter staff ID">
+<label>Staff ID</label>
 
-<label>Department</label> <input id="staffDepartment" type="text" placeholder="Enter department">
+<input
+id="staffId"
+type="text"
+placeholder="Enter staff ID">
 
-<label>Mobile Number</label> <input
+<label>Department</label>
+
+<input
+id="staffDepartment"
+type="text"
+placeholder="Enter department">
+
+<label>Mobile Number</label>
+
+<input
 id="staffMobile"
 type="tel"
 maxlength="10"
@@ -1797,7 +1652,8 @@ placeholder="10 digit mobile number">
 <button
 class="primary-btn"
 onclick="staffLogin()">
-Continue </button>
+Continue
+</button>
 
 <div id="staffMessage"></div>
 
@@ -1845,6 +1701,7 @@ onclick="alert('Department students will be connected later.')">
 <div class="big-icon">👨‍🎓</div>
 <h3>Students</h3>
 <p>View department students</p>
+
 </button>
 
 <button
@@ -1854,6 +1711,7 @@ onclick="alert('Notice management will be connected later.')">
 <div class="big-icon">📢</div>
 <h3>Notices</h3>
 <p>Manage department notices</p>
+
 </button>
 
 <button
@@ -1863,6 +1721,7 @@ onclick="showSection('campusMap')">
 <div class="big-icon">🗺️</div>
 <h3>Locations</h3>
 <p>View campus locations</p>
+
 </button>
 
 <button
@@ -1872,6 +1731,7 @@ onclick="alert('Student chat will be connected later.')">
 <div class="big-icon">💬</div>
 <h3>Student Chat</h3>
 <p>Communicate with students</p>
+
 </button>
 
 </div>
@@ -1879,7 +1739,8 @@ onclick="alert('Student chat will be connected later.')">
 <button
 class="secondary-btn"
 onclick="goHome()">
-🚪 Logout </button>
+🚪 Logout
+</button>
 
 </section>
 
@@ -1889,7 +1750,8 @@ onclick="goHome()">
 
 <button class="back-btn"
 onclick="goHome()">
-← Home </button>
+← Home
+</button>
 
 <div class="card">
 
@@ -1907,7 +1769,8 @@ placeholder="Enter registered mobile">
 <button
 class="primary-btn"
 onclick="principalSendOtp()">
-Continue </button>
+Continue
+</button>
 
 <div id="principalMessage"></div>
 
@@ -1934,7 +1797,8 @@ placeholder="Enter OTP">
 <button
 class="primary-btn"
 onclick="verifyPrincipalOtp()">
-Verify </button>
+Verify
+</button>
 
 <div id="principalOtpMessage"></div>
 
@@ -1974,6 +1838,7 @@ onclick="alert('Timetable management will be connected later.')">
 <div class="big-icon">🕐</div>
 <h3>Timetable</h3>
 <p>Manage college timetable</p>
+
 </button>
 
 <button
@@ -1983,6 +1848,7 @@ onclick="alert('Calendar management will be connected later.')">
 <div class="big-icon">📅</div>
 <h3>Calendar</h3>
 <p>Manage academic calendar</p>
+
 </button>
 
 <button
@@ -1992,6 +1858,7 @@ onclick="alert('Staff management will be connected later.')">
 <div class="big-icon">👨‍🏫</div>
 <h3>Staff</h3>
 <p>Manage staff information</p>
+
 </button>
 
 <button
@@ -2001,6 +1868,7 @@ onclick="alert('Student information will be connected later.')">
 <div class="big-icon">🎓</div>
 <h3>Students</h3>
 <p>View student information</p>
+
 </button>
 
 <button
@@ -2010,6 +1878,7 @@ onclick="alert('College notices will be connected later.')">
 <div class="big-icon">📢</div>
 <h3>Notices</h3>
 <p>Manage announcements</p>
+
 </button>
 
 <button
@@ -2019,6 +1888,7 @@ onclick="showSection('campusMap')">
 <div class="big-icon">🏫</div>
 <h3>Functions</h3>
 <p>College functions</p>
+
 </button>
 
 </div>
@@ -2026,7 +1896,8 @@ onclick="showSection('campusMap')">
 <button
 class="secondary-btn"
 onclick="goHome()">
-🚪 Logout </button>
+🚪 Logout
+</button>
 
 </section>
 
@@ -2036,7 +1907,8 @@ onclick="goHome()">
 
 <button class="back-btn"
 onclick="goHome()">
-← Home </button>
+← Home
+</button>
 
 <div class="card">
 
@@ -2051,7 +1923,8 @@ Replace the placeholder number before publishing the application.
 <button
 class="primary-btn"
 onclick="window.location.href='tel:+919999999999'">
-📞 Call Customer Care </button>
+📞 Call Customer Care
+</button>
 
 </div>
 </section>
@@ -2062,15 +1935,23 @@ onclick="window.location.href='tel:+919999999999'">
 
 <button class="back-btn"
 onclick="goHome()">
-← Home </button>
+← Home
+</button>
 
 <div class="card">
 
 <h2>💬 Feedback</h2>
 
-<label>Name</label> <input id="feedbackName" type="text" placeholder="Enter your name">
+<label>Name</label>
 
-<label>Mobile Number</label> <input
+<input
+id="feedbackName"
+type="text"
+placeholder="Enter your name">
+
+<label>Mobile Number</label>
+
+<input
 id="feedbackMobile"
 type="tel"
 maxlength="10"
@@ -2087,7 +1968,8 @@ placeholder="Write your feedback"></textarea>
 <button
 class="primary-btn"
 onclick="submitFeedback()">
-Submit Feedback </button>
+Submit Feedback
+</button>
 
 <div id="feedbackMessage"></div>
 
@@ -2108,9 +1990,7 @@ MAM Campus Connect © 2026
 </footer>
 
 <!-- ================================================= -->
-
 <!-- FIREBASE + JAVASCRIPT -->
-
 <!-- ================================================= -->
 
 <script type="module">
@@ -2120,8 +2000,8 @@ from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 
 import {
   getAuth,
-  RecaptchaVerifier,
-  signInWithPhoneNumber,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
   onAuthStateChanged,
   signOut
 }
@@ -2129,7 +2009,6 @@ from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
 
 import {
   getFirestore,
-  collection,
   doc,
   getDoc,
   setDoc,
@@ -2139,7 +2018,7 @@ from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
 
 /* ================================================= */
-/* FIREBASE CONFIG FROM YOUR FIREBASE CONSOLE */
+/* FIREBASE CONFIG */
 /* ================================================= */
 
 const firebaseConfig = {
@@ -2168,14 +2047,6 @@ const db = getFirestore(app);
 /* ================================================= */
 
 let currentStudent = null;
-
-let registrationConfirmation = null;
-
-let loginConfirmation = null;
-
-let registrationRecaptcha = null;
-
-let loginRecaptcha = null;
 
 
 /* ================================================= */
@@ -2369,73 +2240,6 @@ window.updateEndingYear = updateEndingYear;
 
 
 /* ================================================= */
-/* PHONE FORMAT */
-/* ================================================= */
-
-function toIndianPhone(mobile){
-
-  return "+91" + mobile;
-
-}
-
-
-/* ================================================= */
-/* REGISTRATION RECAPTCHA */
-/* ================================================= */
-
-function setupRegistrationRecaptcha(){
-
-  if(registrationRecaptcha){
-    return;
-  }
-
-  registrationRecaptcha =
-    new RecaptchaVerifier(
-      auth,
-      "recaptcha-registration",
-      {
-        size:"normal",
-        callback:function(){
-          console.log("Registration reCAPTCHA completed.");
-        },
-        "expired-callback":function(){
-          console.log("Registration reCAPTCHA expired.");
-        }
-      }
-    );
-
-}
-
-
-/* ================================================= */
-/* LOGIN RECAPTCHA */
-/* ================================================= */
-
-function setupLoginRecaptcha(){
-
-  if(loginRecaptcha){
-    return;
-  }
-
-  loginRecaptcha =
-    new RecaptchaVerifier(
-      auth,
-      "recaptcha-login",
-      {
-        size:"normal",
-        callback:function(){
-          console.log("Login reCAPTCHA completed.");
-        },
-        "expired-callback":function(){
-          console.log("Login reCAPTCHA expired.");
-        }
-      }
-    );
-
-}
-
-
-/* ================================================= */
 /* REGISTRATION */
 /* ================================================= */
 
@@ -2468,6 +2272,15 @@ window.registerStudent = async function(){
   const parent =
     document.getElementById("regParentMobile").value.trim();
 
+  const email =
+    document.getElementById("regEmail").value.trim();
+
+  const password =
+    document.getElementById("regPassword").value;
+
+  const confirmPassword =
+    document.getElementById("regConfirmPassword").value;
+
   const message =
     document.getElementById("regMessage");
 
@@ -2481,7 +2294,10 @@ window.registerStudent = async function(){
     !duration ||
     !type ||
     !mobile ||
-    !parent
+    !parent ||
+    !email ||
+    !password ||
+    !confirmPassword
   ){
 
     message.innerHTML =
@@ -2525,6 +2341,26 @@ window.registerStudent = async function(){
   }
 
 
+  if(password.length<6){
+
+    message.innerHTML =
+      '<div class="warning">Password must contain at least 6 characters.</div>';
+
+    return;
+
+  }
+
+
+  if(password!==confirmPassword){
+
+    message.innerHTML =
+      '<div class="warning">Passwords do not match.</div>';
+
+    return;
+
+  }
+
+
   message.innerHTML =
     '<div class="info-box">Checking student record...</div>';
 
@@ -2548,8 +2384,25 @@ window.registerStudent = async function(){
     }
 
 
+    message.innerHTML =
+      '<div class="info-box">Creating your Firebase account...</div>';
+
+
+    const userCredential =
+      await createUserWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+
+
+    const user =
+      userCredential.user;
+
+
     currentStudent = {
 
+      uid:user.uid,
       name:name,
       roll:roll,
       dob:dob,
@@ -2560,113 +2413,28 @@ window.registerStudent = async function(){
         parseInt(joining)+parseInt(duration),
       type:type,
       mobile:mobile,
-      parent:parent
+      parent:parent,
+      email:email
 
     };
-
-
-    setupRegistrationRecaptcha();
-
-
-    message.innerHTML =
-      '<div class="info-box">Sending OTP to +91 '+mobile+'...</div>';
-
-
-    registrationConfirmation =
-      await signInWithPhoneNumber(
-        auth,
-        toIndianPhone(mobile),
-        registrationRecaptcha
-      );
-
-
-    message.innerHTML="";
-
-    showSection("studentOtp");
-
-
-  }
-
-  catch(error){
-
-    console.error(error);
-
-    message.innerHTML =
-      '<div class="warning">Unable to send OTP: '+
-      escapeHtml(error.message)+
-      '</div>';
-
-  }
-
-};
-
-
-/* ================================================= */
-/* VERIFY REGISTRATION OTP */
-/* ================================================= */
-
-window.verifyRegistrationOtp = async function(){
-
-  const otp =
-    document
-    .getElementById("regOtp")
-    .value
-    .trim();
-
-  const message =
-    document.getElementById("otpMessage");
-
-
-  if(!/^[0-9]{6}$/.test(otp)){
-
-    message.innerHTML =
-      '<div class="warning">Enter the 6 digit OTP.</div>';
-
-    return;
-
-  }
-
-
-  if(!registrationConfirmation){
-
-    message.innerHTML =
-      '<div class="warning">OTP session expired. Please request a new OTP.</div>';
-
-    return;
-
-  }
-
-
-  try{
-
-    message.innerHTML =
-      '<div class="info-box">Verifying OTP...</div>';
-
-
-    await registrationConfirmation.confirm(otp);
-
-
-    const studentRef =
-      doc(
-        db,
-        "students",
-        currentStudent.roll
-      );
 
 
     await setDoc(
       studentRef,
       {
-        name:currentStudent.name,
-        roll:currentStudent.roll,
-        dob:currentStudent.dob,
-        course:currentStudent.course,
-        joining:currentStudent.joining,
-        duration:currentStudent.duration,
-        endingYear:currentStudent.endingYear,
-        type:currentStudent.type,
-        mobile:currentStudent.mobile,
-        parent:currentStudent.parent,
+        uid:user.uid,
+        name:name,
+        roll:roll,
+        dob:dob,
+        course:course,
+        joining:joining,
+        duration:duration,
+        endingYear:
+          parseInt(joining)+parseInt(duration),
+        type:type,
+        mobile:mobile,
+        parent:parent,
+        email:email,
         createdAt:serverTimestamp()
       }
     );
@@ -2682,7 +2450,7 @@ window.verifyRegistrationOtp = async function(){
 
 
     message.innerHTML =
-      '<div class="info-box">✓ Registration successful.</div>';
+      '<div class="info-box">✓ Registration successful. Your student account has been created.</div>';
 
 
     setTimeout(()=>{
@@ -2696,9 +2464,35 @@ window.verifyRegistrationOtp = async function(){
 
     console.error(error);
 
+    let errorMessage =
+      error.message;
+
+
+    if(error.code==="auth/email-already-in-use"){
+
+      errorMessage =
+        "This email address is already registered.";
+
+    }
+
+    else if(error.code==="auth/invalid-email"){
+
+      errorMessage =
+        "Please enter a valid email address.";
+
+    }
+
+    else if(error.code==="auth/weak-password"){
+
+      errorMessage =
+        "Password is too weak. Use at least 6 characters.";
+
+    }
+
+
     message.innerHTML =
-      '<div class="warning">'+
-      escapeHtml(error.message)+
+      '<div class="warning">Unable to create account: '+
+      escapeHtml(errorMessage)+
       '</div>';
 
   }
@@ -2718,11 +2512,16 @@ window.studentLogin = async function(){
     .value
     .trim();
 
-  const mobile =
+  const email =
     document
-    .getElementById("loginMobile")
+    .getElementById("loginEmail")
     .value
     .trim();
+
+  const password =
+    document
+    .getElementById("loginPassword")
+    .value;
 
   const message =
     document.getElementById("loginMessage");
@@ -2738,10 +2537,20 @@ window.studentLogin = async function(){
   }
 
 
-  if(!/^[0-9]{10}$/.test(mobile)){
+  if(!email){
 
     message.innerHTML =
-      '<div class="warning">Enter a valid 10 digit mobile number.</div>';
+      '<div class="warning">Enter your registered email address.</div>';
+
+    return;
+
+  }
+
+
+  if(!password){
+
+    message.innerHTML =
+      '<div class="warning">Enter your password.</div>';
 
     return;
 
@@ -2775,98 +2584,51 @@ window.studentLogin = async function(){
       studentDoc.data();
 
 
-    if(student.mobile!==mobile){
+    if(
+      !student.email ||
+      student.email.toLowerCase() !== email.toLowerCase()
+    ){
 
       message.innerHTML =
-        '<div class="warning">Roll number or registered mobile number is incorrect.</div>';
+        '<div class="warning">Roll number or registered email is incorrect.</div>';
 
       return;
 
     }
 
 
-    currentStudent = student;
-
-
-    setupLoginRecaptcha();
-
-
     message.innerHTML =
-      '<div class="info-box">Sending OTP to +91 '+mobile+'...</div>';
+      '<div class="info-box">Signing in...</div>';
 
 
-    loginConfirmation =
-      await signInWithPhoneNumber(
+    const userCredential =
+      await signInWithEmailAndPassword(
         auth,
-        toIndianPhone(mobile),
-        loginRecaptcha
+        email,
+        password
       );
 
 
-    message.innerHTML="";
-
-    showSection("loginOtp");
-
-  }
-
-  catch(error){
-
-    console.error(error);
-
-    message.innerHTML =
-      '<div class="warning">Unable to send OTP: '+
-      escapeHtml(error.message)+
-      '</div>';
-
-  }
-
-};
+    const user =
+      userCredential.user;
 
 
-/* ================================================= */
-/* VERIFY LOGIN OTP */
-/* ================================================= */
+    currentStudent = {
 
-window.verifyStudentLoginOtp = async function(){
+      uid:user.uid,
+      name:student.name,
+      roll:student.roll,
+      dob:student.dob,
+      course:student.course,
+      joining:student.joining,
+      duration:student.duration,
+      endingYear:student.endingYear,
+      type:student.type,
+      mobile:student.mobile,
+      parent:student.parent,
+      email:student.email
 
-  const otp =
-    document
-    .getElementById("loginOtpInput")
-    .value
-    .trim();
-
-  const message =
-    document
-    .getElementById("loginOtpMessage");
-
-
-  if(!/^[0-9]{6}$/.test(otp)){
-
-    message.innerHTML =
-      '<div class="warning">Enter the 6 digit OTP.</div>';
-
-    return;
-
-  }
-
-
-  if(!loginConfirmation){
-
-    message.innerHTML =
-      '<div class="warning">OTP session expired. Please request OTP again.</div>';
-
-    return;
-
-  }
-
-
-  try{
-
-    message.innerHTML =
-      '<div class="info-box">Verifying OTP...</div>';
-
-
-    await loginConfirmation.confirm(otp);
+    };
 
 
     localStorage.setItem(
@@ -2885,9 +2647,45 @@ window.verifyStudentLoginOtp = async function(){
 
     console.error(error);
 
+    let errorMessage =
+      error.message;
+
+
+    if(
+      error.code==="auth/invalid-credential" ||
+      error.code==="auth/invalid-login-credentials"
+    ){
+
+      errorMessage =
+        "Incorrect email or password.";
+
+    }
+
+    else if(error.code==="auth/user-not-found"){
+
+      errorMessage =
+        "No Firebase account exists with this email.";
+
+    }
+
+    else if(error.code==="auth/wrong-password"){
+
+      errorMessage =
+        "Incorrect password.";
+
+    }
+
+    else if(error.code==="auth/invalid-email"){
+
+      errorMessage =
+        "Please enter a valid email address.";
+
+    }
+
+
     message.innerHTML =
-      '<div class="warning">'+
-      escapeHtml(error.message)+
+      '<div class="warning">Login failed: '+
+      escapeHtml(errorMessage)+
       '</div>';
 
   }
@@ -2909,11 +2707,16 @@ function loadStudentProfile(){
     if(saved){
 
       try{
+
         currentStudent =
           JSON.parse(saved);
+
       }
+
       catch(error){
+
         currentStudent=null;
+
       }
 
     }
@@ -2994,6 +2797,13 @@ function loadStudentProfile(){
   .textContent =
     currentStudent.mobile;
 
+
+  document
+  .getElementById("profileEmail")
+  .textContent =
+    currentStudent.email ||
+    "Not available";
+
 }
 
 
@@ -3004,11 +2814,17 @@ function loadStudentProfile(){
 window.logoutStudent = async function(){
 
   try{
+
     await signOut(auth);
+
   }
+
   catch(error){
+
     console.error(error);
+
   }
+
 
   currentStudent=null;
 
@@ -3258,7 +3074,7 @@ onAuthStateChanged(auth,(user)=>{
 
   if(user){
 
-    console.log("Firebase authentication active.");
+    console.log("Firebase email authentication active.");
 
   }
 
