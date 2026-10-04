@@ -1,12 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
-<meta name="theme-color" content="#123c69">
+
+<meta
+  name="viewport"
+  content="width=device-width,initial-scale=1.0"
+>
+
+<meta
+  name="theme-color"
+  content="#123c69"
+>
+
 <title>MAM Campus Connect</title>
 
+
 <style>
+
+/* =====================================================
+   GLOBAL
+   ===================================================== */
+
 *{
   box-sizing:border-box;
   margin:0;
@@ -51,6 +68,11 @@ button{
 .hidden{
   display:none!important;
 }
+
+
+/* =====================================================
+   HEADER
+   ===================================================== */
 
 header{
   position:relative;
@@ -104,6 +126,11 @@ header p{
   font-size:29px;
   z-index:2000;
 }
+
+
+/* =====================================================
+   SIDE MENU
+   ===================================================== */
 
 .side-menu{
   position:fixed;
@@ -187,6 +214,11 @@ header p{
   display:block;
 }
 
+
+/* =====================================================
+   MAIN
+   ===================================================== */
+
 main{
   max-width:950px;
   margin:auto;
@@ -198,23 +230,40 @@ section{
 }
 
 @keyframes fadeIn{
+
   from{
     opacity:0;
     transform:translateY(7px);
   }
+
   to{
     opacity:1;
     transform:translateY(0);
   }
+
 }
 
+
+/* =====================================================
+   WELCOME
+   ===================================================== */
+
 .welcome{
-  background:linear-gradient(135deg,var(--blue),var(--blue2));
+  background:
+    linear-gradient(
+      135deg,
+      var(--blue),
+      var(--blue2)
+    );
+
   color:white;
   border-radius:22px;
   padding:30px 22px;
   margin-bottom:20px;
-  box-shadow:0 8px 22px rgba(18,60,105,.22);
+
+  box-shadow:
+    0 8px 22px
+    rgba(18,60,105,.22);
 }
 
 .welcome-logo{
@@ -223,11 +272,14 @@ section{
   border-radius:18px;
   background:white;
   color:var(--blue);
+
   display:flex;
   align-items:center;
   justify-content:center;
+
   font-size:27px;
   font-weight:900;
+
   margin-bottom:15px;
 }
 
@@ -250,9 +302,14 @@ section{
   border:none;
   border-radius:18px;
   padding:20px;
+
   background:white;
   color:var(--blue);
-  box-shadow:0 4px 16px rgba(0,0,0,.08);
+
+  box-shadow:
+    0 4px 16px
+    rgba(0,0,0,.08);
+
   text-align:left;
 }
 
@@ -272,12 +329,20 @@ section{
   font-size:13px;
 }
 
+
+/* =====================================================
+   CARDS
+   ===================================================== */
+
 .card{
   background:white;
   border-radius:18px;
   padding:21px;
   margin-bottom:17px;
-  box-shadow:0 4px 16px rgba(0,0,0,.07);
+
+  box-shadow:
+    0 4px 16px
+    rgba(0,0,0,.07);
 }
 
 .card h2{
@@ -295,6 +360,11 @@ section{
   line-height:1.5;
 }
 
+
+/* =====================================================
+   FORM
+   ===================================================== */
+
 label{
   display:block;
   margin-top:15px;
@@ -308,7 +378,11 @@ select,
 textarea{
   width:100%;
   padding:13px;
-  border:1px solid #ccd5e2;
+
+  border:
+    1px solid
+    #ccd5e2;
+
   border-radius:10px;
   background:white;
   outline:none;
@@ -318,8 +392,21 @@ input:focus,
 select:focus,
 textarea:focus{
   border-color:var(--blue2);
-  box-shadow:0 0 0 2px rgba(23,105,170,.08);
+
+  box-shadow:
+    0 0 0 2px
+    rgba(23,105,170,.08);
 }
+
+textarea{
+  resize:vertical;
+  min-height:120px;
+}
+
+
+/* =====================================================
+   BUTTONS
+   ===================================================== */
 
 .primary-btn,
 .secondary-btn,
@@ -342,7 +429,10 @@ textarea:focus{
 }
 
 .secondary-btn{
-  border:1px solid var(--blue);
+  border:
+    1px solid
+    var(--blue);
+
   background:white;
   color:var(--blue);
 }
@@ -361,6 +451,11 @@ textarea:focus{
   margin-bottom:13px;
   padding:5px 0;
 }
+
+
+/* =====================================================
+   MESSAGE BOXES
+   ===================================================== */
 
 .info-box{
   background:#eef6ff;
@@ -402,6 +497,11 @@ textarea:focus{
   line-height:1.5;
 }
 
+
+/* =====================================================
+   OTP
+   ===================================================== */
+
 .otp-box{
   background:#f7faff;
   border:1px solid #d9e5f4;
@@ -417,12 +517,40 @@ textarea:focus{
   font-weight:bold;
 }
 
+.otp-email{
+  color:var(--blue);
+  font-weight:bold;
+  word-break:break-word;
+}
+
+.otp-timer{
+  text-align:center;
+  margin-top:12px;
+  color:var(--muted);
+  font-size:13px;
+}
+
+
+/* =====================================================
+   STUDENT DASHBOARD
+   ===================================================== */
+
 .student-top{
-  background:linear-gradient(135deg,var(--blue),var(--blue2));
+  background:
+    linear-gradient(
+      135deg,
+      var(--blue),
+      var(--blue2)
+    );
+
   color:white;
   border-radius:23px;
   padding:20px;
-  box-shadow:0 8px 22px rgba(18,60,105,.22);
+
+  box-shadow:
+    0 8px 22px
+    rgba(18,60,105,.22);
+
   margin-bottom:16px;
 }
 
@@ -445,9 +573,11 @@ textarea:focus{
   border-radius:13px;
   background:white;
   color:var(--blue);
+
   display:flex;
   align-items:center;
   justify-content:center;
+
   font-weight:900;
 }
 
@@ -465,12 +595,20 @@ textarea:focus{
   width:53px;
   height:53px;
   border-radius:50%;
-  background:rgba(255,255,255,.2);
-  border:1px solid rgba(255,255,255,.45);
+
+  background:
+    rgba(255,255,255,.2);
+
+  border:
+    1px solid
+    rgba(255,255,255,.45);
+
   color:white;
+
   display:flex;
   align-items:center;
   justify-content:center;
+
   font-size:25px;
   flex-shrink:0;
 }
@@ -480,13 +618,23 @@ textarea:focus{
   border:none;
   border-radius:11px;
   padding:10px 14px;
-  background:rgba(255,255,255,.16);
+
+  background:
+    rgba(255,255,255,.16);
+
   color:white;
 }
 
+
+/* =====================================================
+   STAT CARDS
+   ===================================================== */
+
 .stats-grid{
   display:grid;
-  grid-template-columns:repeat(2,1fr);
+  grid-template-columns:
+    repeat(2,1fr);
+
   gap:11px;
   margin-bottom:19px;
 }
@@ -495,7 +643,10 @@ textarea:focus{
   background:white;
   border-radius:17px;
   padding:16px;
-  box-shadow:0 4px 14px rgba(0,0,0,.07);
+
+  box-shadow:
+    0 4px 14px
+    rgba(0,0,0,.07);
 }
 
 .stat-icon{
@@ -515,11 +666,19 @@ textarea:focus{
   margin-top:3px;
 }
 
+
+/* =====================================================
+   DASHBOARD CARDS
+   ===================================================== */
+
 .dashboard-title{
   display:flex;
   justify-content:space-between;
   align-items:center;
-  margin:18px 2px 11px;
+
+  margin:
+    18px 2px
+    11px;
 }
 
 .dashboard-title h3{
@@ -534,18 +693,29 @@ textarea:focus{
 
 .dashboard-grid{
   display:grid;
-  grid-template-columns:repeat(2,1fr);
+  grid-template-columns:
+    repeat(2,1fr);
+
   gap:12px;
 }
 
 .dashboard-card{
   border:none;
   background:white;
+
   border-radius:18px;
   padding:18px 15px;
+
   min-height:128px;
+
   text-align:left;
-  box-shadow:0 4px 15px rgba(0,0,0,.07);
+
+  box-shadow:
+    0 4px 15px
+    rgba(0,0,0,.07);
+
+  transition:
+    transform .15s ease;
 }
 
 .dashboard-card:hover{
@@ -569,13 +739,21 @@ textarea:focus{
   line-height:1.4;
 }
 
+
+/* =====================================================
+   NOTICES
+   ===================================================== */
+
 .notice-card,
 .notice-full{
   background:white;
   border-radius:17px;
   padding:17px;
   margin-top:12px;
-  box-shadow:0 4px 14px rgba(0,0,0,.07);
+
+  box-shadow:
+    0 4px 14px
+    rgba(0,0,0,.07);
 }
 
 .notice-card{
@@ -593,6 +771,11 @@ textarea:focus{
   margin:7px 0;
 }
 
+
+/* =====================================================
+   PROFILE
+   ===================================================== */
+
 .profile-header{
   display:flex;
   align-items:center;
@@ -604,11 +787,14 @@ textarea:focus{
   width:65px;
   height:65px;
   border-radius:15px;
+
   background:var(--blue);
   color:white;
+
   display:flex;
   align-items:center;
   justify-content:center;
+
   font-weight:bold;
 }
 
@@ -634,6 +820,11 @@ textarea:focus{
   color:#24344b;
 }
 
+
+/* =====================================================
+   TABLE
+   ===================================================== */
+
 .table-wrap{
   overflow-x:auto;
 }
@@ -647,7 +838,10 @@ table{
 
 th,
 td{
-  border:1px solid #dce2ea;
+  border:
+    1px solid
+    #dce2ea;
+
   padding:10px;
   text-align:left;
 }
@@ -657,19 +851,38 @@ th{
   color:white;
 }
 
+
+/* =====================================================
+   BOTTOM NAVIGATION
+   ===================================================== */
+
 .bottom-nav{
   position:fixed;
   left:50%;
   transform:translateX(-50%);
+
   bottom:0;
+
   width:100%;
   max-width:950px;
+
   height:68px;
-  background:rgba(255,255,255,.97);
-  border-top:1px solid #e1e5eb;
-  box-shadow:0 -4px 18px rgba(0,0,0,.08);
+
+  background:
+    rgba(255,255,255,.97);
+
+  border-top:
+    1px solid
+    #e1e5eb;
+
+  box-shadow:
+    0 -4px 18px
+    rgba(0,0,0,.08);
+
   display:grid;
-  grid-template-columns:repeat(4,1fr);
+  grid-template-columns:
+    repeat(4,1fr);
+
   z-index:1500;
 }
 
@@ -677,11 +890,14 @@ th{
   border:none;
   background:transparent;
   color:#788293;
+
   font-size:10px;
+
   display:flex;
   flex-direction:column;
   align-items:center;
   justify-content:center;
+
   gap:4px;
 }
 
@@ -694,6 +910,11 @@ th{
   font-weight:bold;
 }
 
+
+/* =====================================================
+   OTHER
+   ===================================================== */
+
 footer{
   text-align:center;
   padding:22px;
@@ -703,14 +924,20 @@ footer{
 
 .action-grid{
   display:grid;
-  grid-template-columns:repeat(2,1fr);
+  grid-template-columns:
+    repeat(2,1fr);
+
   gap:10px;
 }
 
 .action-grid button{
-  border:1px solid var(--border);
+  border:
+    1px solid
+    var(--border);
+
   background:white;
   padding:13px;
+
   border-radius:10px;
   color:var(--blue);
   font-weight:bold;
@@ -720,8 +947,10 @@ footer{
   display:inline-block;
   padding:5px 9px;
   border-radius:20px;
+
   background:#eef6ff;
   color:var(--blue);
+
   font-size:11px;
   font-weight:bold;
 }
@@ -731,21 +960,32 @@ footer{
   pointer-events:none;
 }
 
+
+/* =====================================================
+   RESPONSIVE
+   ===================================================== */
+
 @media(min-width:700px){
+
   .stats-grid{
-    grid-template-columns:repeat(4,1fr);
+    grid-template-columns:
+      repeat(4,1fr);
   }
 
   .dashboard-grid{
-    grid-template-columns:repeat(3,1fr);
+    grid-template-columns:
+      repeat(3,1fr);
   }
 
   .home-buttons{
-    grid-template-columns:repeat(2,1fr);
+    grid-template-columns:
+      repeat(2,1fr);
   }
+
 }
 
 @media(max-width:500px){
+
   .student-top-row{
     align-items:flex-start;
   }
@@ -755,101 +995,215 @@ footer{
   }
 
   .dashboard-grid{
-    grid-template-columns:repeat(2,1fr);
+    grid-template-columns:
+      repeat(2,1fr);
   }
 
   .action-grid{
     grid-template-columns:1fr;
   }
+
 }
+
 </style>
+
 </head>
+
 
 <body>
 
+
+<!-- =====================================================
+     HEADER
+     ===================================================== -->
+
 <header>
-  <button class="menu-button" type="button" onclick="openMenu()">☰</button>
+
+  <button
+    class="menu-button"
+    type="button"
+    onclick="openMenu()">
+
+    ☰
+
+  </button>
+
 
   <div class="header-content">
-    <div class="logo">MAM</div>
-    <div>
-      <h1>MAM Campus Connect</h1>
-      <p>Your College Digital Campus</p>
+
+    <div class="logo">
+      MAM
     </div>
+
+    <div>
+
+      <h1>
+        MAM Campus Connect
+      </h1>
+
+      <p>
+        Your College Digital Campus
+      </p>
+
+    </div>
+
   </div>
+
 </header>
 
-<div id="overlay" class="overlay" onclick="closeMenu()"></div>
 
-<nav id="sideMenu" class="side-menu">
+<!-- =====================================================
+     SIDE MENU
+     ===================================================== -->
+
+<div
+  id="overlay"
+  class="overlay"
+  onclick="closeMenu()">
+</div>
+
+
+<nav
+  id="sideMenu"
+  class="side-menu">
+
 
   <div class="menu-brand">
-    <div class="menu-logo">MAM</div>
-    <strong>MAM Campus Connect</strong>
-    <span>College Digital Campus</span>
+
+    <div class="menu-logo">
+      MAM
+    </div>
+
+    <strong>
+      MAM Campus Connect
+    </strong>
+
+    <span>
+      College Digital Campus
+    </span>
+
   </div>
 
-  <h2>☰ Menu</h2>
 
-  <button onclick="showSection('staffLogin');closeMenu();">
+  <h2>
+    ☰ Menu
+  </h2>
+
+
+  <button
+    type="button"
+    onclick="showSection('staffLogin');closeMenu();">
+
     👨‍🏫 Staff Login
+
   </button>
 
-  <button onclick="showSection('principalLogin');closeMenu();">
+
+  <button
+    type="button"
+    onclick="showSection('principalLogin');closeMenu();">
+
     👨‍💼 Principal Login
+
   </button>
 
-  <button onclick="showSection('customerCare');closeMenu();">
+
+  <button
+    type="button"
+    onclick="showSection('customerCare');closeMenu();">
+
     📞 Customer Care
+
   </button>
 
-  <button onclick="showSection('feedback');closeMenu();">
+
+  <button
+    type="button"
+    onclick="showSection('feedback');closeMenu();">
+
     💬 Feedback
+
   </button>
 
-  <button onclick="goHome()">
+
+  <button
+    type="button"
+    onclick="goHome();closeMenu();">
+
     🏠 Home
+
   </button>
+
 
 </nav>
 
+
 <main>
 
-<!-- HOME -->
+
+<!-- =====================================================
+     HOME
+     ===================================================== -->
+
 <section id="home">
 
   <div class="welcome">
-    <div class="welcome-logo">MAM</div>
 
-    <h2>Welcome to MAM Campus Connect 👋</h2>
+    <div class="welcome-logo">
+      MAM
+    </div>
+
+
+    <h2>
+      Welcome to MAM Campus Connect 👋
+    </h2>
+
 
     <p>
-      Your digital campus for students, staff and college services.
-      Access important academic information from one place.
+      Your digital campus for students, staff and college
+      services. Access important academic information from
+      one place.
     </p>
+
   </div>
+
 
   <div class="home-buttons">
 
-    <button class="main-btn"
-            onclick="showSection('studentOptions')">
 
-      <span class="icon">🎓</span>
+    <button
+      class="main-btn"
+      type="button"
+      onclick="showSection('studentOptions')">
 
-      <strong>Student</strong>
+      <span class="icon">
+        🎓
+      </span>
+
+      <strong>
+        Student
+      </strong>
 
       <p>
-        Register, verify your email, login and access your student dashboard.
+        Register, verify your email, login and access your
+        student dashboard.
       </p>
 
     </button>
 
-    <button class="main-btn"
-            onclick="showSection('otherCollege')">
 
-      <span class="icon">👨‍🎓</span>
+    <button
+      class="main-btn"
+      type="button"
+      onclick="showSection('otherCollege')">
 
-      <strong>Other College Student</strong>
+      <span class="icon">
+        👨‍🎓
+      </span>
+
+      <strong>
+        Other College Student
+      </strong>
 
       <p>
         Access visitor and student services.
@@ -857,33 +1211,59 @@ footer{
 
     </button>
 
+
   </div>
 
 </section>
 
 
-<!-- STUDENT OPTIONS -->
-<section id="studentOptions" class="hidden">
+<!-- =====================================================
+     STUDENT OPTIONS
+     ===================================================== -->
 
-  <button class="back-btn"
-          onclick="goHome()">
+<section
+  id="studentOptions"
+  class="hidden">
+
+
+  <button
+    class="back-btn"
+    type="button"
+    onclick="goHome()">
+
     ← Back
+
   </button>
+
 
   <div class="card">
 
-    <h2>🎓 Student Options</h2>
+    <h2>
+      🎓 Student Options
+    </h2>
 
-    <p>Select an option below.</p>
+    <p>
+      Select an option below.
+    </p>
 
-    <button class="primary-btn"
-            onclick="showSection('studentRegistration')">
+
+    <button
+      class="primary-btn"
+      type="button"
+      onclick="showSection('studentRegistration')">
+
       First-Time Student Registration
+
     </button>
 
-    <button class="secondary-btn"
-            onclick="showSection('studentLogin')">
+
+    <button
+      class="secondary-btn"
+      type="button"
+      onclick="showSection('studentLogin')">
+
       Existing Student Login
+
     </button>
 
   </div>
@@ -891,23 +1271,39 @@ footer{
 </section>
 
 
-<!-- REGISTRATION -->
-<section id="studentRegistration" class="hidden">
+<!-- =====================================================
+     STUDENT REGISTRATION
+     ===================================================== -->
 
-  <button class="back-btn"
-          onclick="showSection('studentOptions')">
+<section
+  id="studentRegistration"
+  class="hidden">
+
+
+  <button
+    class="back-btn"
+    type="button"
+    onclick="showSection('studentOptions')">
+
     ← Back
+
   </button>
+
 
   <div class="card">
 
-    <h2>📝 Student Registration</h2>
+    <h2>
+      📝 Student Registration
+    </h2>
 
     <p>
       Create your MAM Campus Connect student account.
     </p>
 
-    <label>Student Name</label>
+
+    <label for="regName">
+      Student Name
+    </label>
 
     <input
       id="regName"
@@ -916,7 +1312,9 @@ footer{
       placeholder="Enter full name">
 
 
-    <label>Roll Number</label>
+    <label for="regRoll">
+      Roll Number
+    </label>
 
     <input
       id="regRoll"
@@ -925,68 +1323,117 @@ footer{
       placeholder="Example: 8126123456">
 
 
-    <label>Date of Birth</label>
+    <label for="regDob">
+      Date of Birth
+    </label>
 
     <input
       id="regDob"
       type="date">
 
 
-    <label>Department / Course</label>
+    <label for="regCourse">
+      Department / Course
+    </label>
 
     <select id="regCourse">
 
-      <option value="">Select Course</option>
+      <option value="">
+        Select Course
+      </option>
 
-      <option>CSE</option>
+      <option>
+        CSE
+      </option>
 
-      <option>CSE Cyber Security</option>
+      <option>
+        CSE Cyber Security
+      </option>
 
-      <option>Artificial Intelligence and Data Science</option>
+      <option>
+        Artificial Intelligence and Data Science
+      </option>
 
-      <option>Artificial Intelligence and Machine Learning</option>
+      <option>
+        Artificial Intelligence and Machine Learning
+      </option>
 
-      <option>Information Technology</option>
+      <option>
+        Information Technology
+      </option>
 
-      <option>Electronics and Communication Engineering</option>
+      <option>
+        Electronics and Communication Engineering
+      </option>
 
-      <option>Electrical and Electronics Engineering</option>
+      <option>
+        Electrical and Electronics Engineering
+      </option>
 
-      <option>Mechanical Engineering</option>
+      <option>
+        Mechanical Engineering
+      </option>
 
-      <option>Civil Engineering</option>
+      <option>
+        Civil Engineering
+      </option>
 
-      <option>MBA</option>
+      <option>
+        MBA
+      </option>
 
-      <option>MCA</option>
+      <option>
+        MCA
+      </option>
 
-      <option>M.E. Environmental Engineering</option>
+      <option>
+        M.E. Environmental Engineering
+      </option>
 
     </select>
 
 
-    <label>Joining Year</label>
+    <label for="regJoiningYear">
+      Joining Year
+    </label>
 
-    <select id="regJoiningYear"
-            onchange="updateEndingYear()">
-    </select>
+    <select
+      id="regJoiningYear"
+      onchange="updateEndingYear()">
 
-
-    <label>Course Duration</label>
-
-    <select id="regDuration"
-            onchange="updateEndingYear()">
-
-      <option value="">Select Duration</option>
-
-      <option value="4">4 Years</option>
-
-      <option value="3">3 Years</option>
+      <option value="">
+        Select Joining Year
+      </option>
 
     </select>
 
 
-    <label>Expected Ending Year</label>
+    <label for="regDuration">
+      Course Duration
+    </label>
+
+    <select
+      id="regDuration"
+      onchange="updateEndingYear()">
+
+      <option value="">
+        Select Duration
+      </option>
+
+      <option value="4">
+        4 Years
+      </option>
+
+      <option value="3">
+        3 Years
+      </option>
+
+    </select>
+
+
+    <label for="regEndingYear">
+      Expected Ending Year
+    </label>
 
     <input
       id="regEndingYear"
@@ -995,38 +1442,54 @@ footer{
       placeholder="Automatically calculated">
 
 
-    <label>Student Type</label>
+    <label for="regStudentType">
+      Student Type
+    </label>
 
     <select id="regStudentType">
 
-      <option value="">Select Type</option>
+      <option value="">
+        Select Type
+      </option>
 
-      <option>Day Scholar</option>
+      <option>
+        Day Scholar
+      </option>
 
-      <option>Hosteller</option>
+      <option>
+        Hosteller
+      </option>
 
     </select>
 
 
-    <label>Student Mobile Number</label>
+    <label for="regMobile">
+      Student Mobile Number
+    </label>
 
     <input
       id="regMobile"
       type="tel"
       maxlength="10"
+      inputmode="numeric"
       placeholder="10 digit mobile number">
 
 
-    <label>Parent Mobile Number</label>
+    <label for="regParentMobile">
+      Parent Mobile Number
+    </label>
 
     <input
       id="regParentMobile"
       type="tel"
       maxlength="10"
+      inputmode="numeric"
       placeholder="10 digit parent mobile number">
 
 
-    <label>Email Address</label>
+    <label for="regEmail">
+      Email Address
+    </label>
 
     <input
       id="regEmail"
@@ -1035,7 +1498,9 @@ footer{
       placeholder="Enter email address">
 
 
-    <label>Password</label>
+    <label for="regPassword">
+      Password
+    </label>
 
     <input
       id="regPassword"
@@ -1044,7 +1509,9 @@ footer{
       placeholder="Minimum 6 characters">
 
 
-    <label>Confirm Password</label>
+    <label for="regConfirmPassword">
+      Confirm Password
+    </label>
 
     <input
       id="regConfirmPassword"
@@ -1059,77 +1526,137 @@ footer{
       type="button"
       onclick="startEmailVerification()">
 
-      Send Email OTP
+      📧 Send Email OTP
 
     </button>
 
 
-    <div id="otpArea" class="otp-box hidden">
+    <!-- OTP AREA -->
 
-      <h3>📧 Verify Email</h3>
+    <div
+      id="otpArea"
+      class="otp-box hidden">
+
+
+      <h3>
+        📧 Verify Email
+      </h3>
+
 
       <p>
-        Enter the 6-digit OTP sent to your email address.
+        Enter the 6-digit OTP sent to:
       </p>
 
-      <label>OTP</label>
+
+      <p
+        id="otpEmailDisplay"
+        class="otp-email">
+      </p>
+
+
+      <label for="otpInput">
+        OTP
+      </label>
+
 
       <input
-        id="regOtp"
+        id="otpInput"
         class="otp-input"
         type="text"
         inputmode="numeric"
         maxlength="6"
+        autocomplete="one-time-code"
         placeholder="000000">
+
 
       <button
         class="primary-btn"
         type="button"
-        onclick="verifyRegistrationOtp()">
+        onclick="verifyEmailOtp()">
 
         Verify OTP
 
       </button>
 
+
       <button
         id="resendOtpButton"
         class="secondary-btn"
         type="button"
-        onclick="resendRegistrationOtp()">
+        onclick="resendEmailOtp()">
 
-        Resend OTP
+        🔄 Resend OTP
 
       </button>
 
-      <div id="otpTimer"></div>
+
+      <div
+        id="otpTimer"
+        class="otp-timer">
+      </div>
+
+
+      <div id="otpMessage">
+      </div>
+
 
     </div>
 
 
-    <div id="regMessage"></div>
+    <div id="regMessage">
+    </div>
+
 
   </div>
 
 </section>
 
 
-<!-- STUDENT LOGIN -->
-<section id="studentLogin" class="hidden">
+<!-- =====================================================
+     STUDENT LOGIN
+     ===================================================== -->
 
-  <button class="back-btn"
-          onclick="showSection('studentOptions')">
+<section
+  id="studentLogin"
+  class="hidden">
+
+
+  <button
+    class="back-btn"
+    type="button"
+    onclick="showSection('studentOptions')">
+
     ← Back
+
   </button>
+
 
   <div class="card">
 
-    <h2>🔐 Student Login</h2>
+    <h2>
+      🔐 Student Login
+    </h2>
 
     <p>
-      Login using your registered email and password.
+      Login using your registered roll number,
+      email and password.
     </p>
 
-    <label>Email Address</label>
+
+    <label for="loginRoll">
+      Roll Number
+    </label>
+
+    <input
+      id="loginRoll"
+      type="text"
+      maxlength="10"
+      placeholder="Enter roll number">
+
+
+    <label for="loginEmail">
+      Email Address
+    </label>
 
     <input
       id="loginEmail"
@@ -1138,7 +1665,9 @@ footer{
       placeholder="Enter registered email">
 
 
-    <label>Password</label>
+    <label for="loginPassword">
+      Password
+    </label>
 
     <input
       id="loginPassword"
@@ -1148,6 +1677,7 @@ footer{
 
 
     <button
+      id="loginButton"
       class="primary-btn"
       type="button"
       onclick="studentLogin()">
@@ -1156,25 +1686,37 @@ footer{
 
     </button>
 
-    <div id="loginMessage"></div>
+
+    <div id="loginMessage">
+    </div>
 
   </div>
 
 </section>
 
 
-<!-- STUDENT DASHBOARD -->
-<section id="studentDashboard" class="hidden">
+<!-- =====================================================
+     STUDENT DASHBOARD
+     ===================================================== -->
+
+<section
+  id="studentDashboard"
+  class="hidden">
+
 
   <div class="student-top">
 
+
     <div class="student-top-row">
 
+
       <div class="student-top-left">
+
 
         <div class="dashboard-logo">
           MAM
         </div>
+
 
         <div>
 
@@ -1188,7 +1730,9 @@ footer{
 
         </div>
 
+
       </div>
+
 
       <button
         class="profile-circle"
@@ -1199,7 +1743,9 @@ footer{
 
       </button>
 
+
     </div>
+
 
     <button
       class="notification-btn"
@@ -1210,14 +1756,18 @@ footer{
 
     </button>
 
+
   </div>
 
 
   <div class="stats-grid">
 
+
     <div class="stat-card">
 
-      <div class="stat-icon">🎓</div>
+      <div class="stat-icon">
+        🎓
+      </div>
 
       <div class="stat-title">
         Course
@@ -1226,9 +1776,7 @@ footer{
       <div
         id="dashboardCourse"
         class="stat-value">
-
         —
-
       </div>
 
     </div>
@@ -1236,7 +1784,9 @@ footer{
 
     <div class="stat-card">
 
-      <div class="stat-icon">📅</div>
+      <div class="stat-icon">
+        📅
+      </div>
 
       <div class="stat-title">
         Joining Year
@@ -1245,9 +1795,7 @@ footer{
       <div
         id="dashboardJoining"
         class="stat-value">
-
         —
-
       </div>
 
     </div>
@@ -1255,7 +1803,9 @@ footer{
 
     <div class="stat-card">
 
-      <div class="stat-icon">⏳</div>
+      <div class="stat-icon">
+        ⏳
+      </div>
 
       <div class="stat-title">
         Duration
@@ -1264,9 +1814,7 @@ footer{
       <div
         id="dashboardDuration"
         class="stat-value">
-
         —
-
       </div>
 
     </div>
@@ -1274,7 +1822,9 @@ footer{
 
     <div class="stat-card">
 
-      <div class="stat-icon">📚</div>
+      <div class="stat-icon">
+        📚
+      </div>
 
       <div class="stat-title">
         Student Type
@@ -1283,34 +1833,43 @@ footer{
       <div
         id="dashboardType"
         class="stat-value">
-
         —
-
       </div>
 
     </div>
+
 
   </div>
 
 
   <div class="dashboard-title">
 
-    <h3>Campus Services</h3>
+    <h3>
+      Campus Services
+    </h3>
 
-    <span>Quick Access</span>
+    <span>
+      Quick Access
+    </span>
 
   </div>
 
 
   <div class="dashboard-grid">
 
+
     <button
       class="dashboard-card"
+      type="button"
       onclick="showSection('studentProfile')">
 
-      <div class="big-icon">👤</div>
+      <div class="big-icon">
+        👤
+      </div>
 
-      <h3>My Profile</h3>
+      <h3>
+        My Profile
+      </h3>
 
       <p>
         View your personal and academic details.
@@ -1321,11 +1880,16 @@ footer{
 
     <button
       class="dashboard-card"
+      type="button"
       onclick="showSection('studentNotices')">
 
-      <div class="big-icon">📢</div>
+      <div class="big-icon">
+        📢
+      </div>
 
-      <h3>Notices</h3>
+      <h3>
+        Notices
+      </h3>
 
       <p>
         View important college announcements.
@@ -1336,11 +1900,16 @@ footer{
 
     <button
       class="dashboard-card"
+      type="button"
       onclick="showSection('studentTimetable')">
 
-      <div class="big-icon">🗓️</div>
+      <div class="big-icon">
+        🗓️
+      </div>
 
-      <h3>Timetable</h3>
+      <h3>
+        Timetable
+      </h3>
 
       <p>
         Check your class timetable.
@@ -1351,11 +1920,16 @@ footer{
 
     <button
       class="dashboard-card"
+      type="button"
       onclick="showSection('campusMap')">
 
-      <div class="big-icon">🗺️</div>
+      <div class="big-icon">
+        🗺️
+      </div>
 
-      <h3>Campus Map</h3>
+      <h3>
+        Campus Map
+      </h3>
 
       <p>
         Explore important campus locations.
@@ -1366,11 +1940,16 @@ footer{
 
     <button
       class="dashboard-card"
+      type="button"
       onclick="showSection('feedback')">
 
-      <div class="big-icon">💬</div>
+      <div class="big-icon">
+        💬
+      </div>
 
-      <h3>Feedback</h3>
+      <h3>
+        Feedback
+      </h3>
 
       <p>
         Send your feedback to the college.
@@ -1381,17 +1960,23 @@ footer{
 
     <button
       class="dashboard-card"
+      type="button"
       onclick="showSection('aiAssistantSection')">
 
-      <div class="big-icon">🤖</div>
+      <div class="big-icon">
+        🤖
+      </div>
 
-      <h3>Campus Assistant</h3>
+      <h3>
+        Campus Assistant
+      </h3>
 
       <p>
         Ask basic questions about the campus.
       </p>
 
     </button>
+
 
   </div>
 
@@ -1405,20 +1990,31 @@ footer{
 
   </button>
 
+
 </section>
 
 
-<!-- STUDENT PROFILE -->
-<section id="studentProfile" class="hidden">
+<!-- =====================================================
+     STUDENT PROFILE
+     ===================================================== -->
 
-  <button class="back-btn"
-          onclick="showSection('studentDashboard')">
+<section
+  id="studentProfile"
+  class="hidden">
+
+
+  <button
+    class="back-btn"
+    type="button"
+    onclick="showSection('studentDashboard')">
 
     ← Dashboard
 
   </button>
 
+
   <div class="card">
+
 
     <div class="profile-header">
 
@@ -1426,9 +2022,12 @@ footer{
         MAM
       </div>
 
+
       <div>
 
-        <h2>My Profile</h2>
+        <h2>
+          My Profile
+        </h2>
 
         <p>
           Student information
@@ -1441,9 +2040,12 @@ footer{
 
     <div class="profile-details">
 
+
       <div class="profile-row">
 
-        <small>Name</small>
+        <small>
+          Name
+        </small>
 
         <strong id="profileName">
           —
@@ -1454,7 +2056,9 @@ footer{
 
       <div class="profile-row">
 
-        <small>Roll Number</small>
+        <small>
+          Roll Number
+        </small>
 
         <strong id="profileRoll">
           —
@@ -1465,7 +2069,9 @@ footer{
 
       <div class="profile-row">
 
-        <small>Date of Birth</small>
+        <small>
+          Date of Birth
+        </small>
 
         <strong id="profileDob">
           —
@@ -1476,7 +2082,9 @@ footer{
 
       <div class="profile-row">
 
-        <small>Course</small>
+        <small>
+          Course
+        </small>
 
         <strong id="profileCourse">
           —
@@ -1487,7 +2095,9 @@ footer{
 
       <div class="profile-row">
 
-        <small>Joining Year</small>
+        <small>
+          Joining Year
+        </small>
 
         <strong id="profileJoining">
           —
@@ -1498,7 +2108,9 @@ footer{
 
       <div class="profile-row">
 
-        <small>Course Duration</small>
+        <small>
+          Course Duration
+        </small>
 
         <strong id="profileDuration">
           —
@@ -1509,7 +2121,9 @@ footer{
 
       <div class="profile-row">
 
-        <small>Expected Ending Year</small>
+        <small>
+          Expected Ending Year
+        </small>
 
         <strong id="profileEndingYear">
           —
@@ -1520,7 +2134,9 @@ footer{
 
       <div class="profile-row">
 
-        <small>Student Type</small>
+        <small>
+          Student Type
+        </small>
 
         <strong id="profileType">
           —
@@ -1531,7 +2147,9 @@ footer{
 
       <div class="profile-row">
 
-        <small>Mobile Number</small>
+        <small>
+          Mobile Number
+        </small>
 
         <strong id="profileMobile">
           —
@@ -1542,7 +2160,9 @@ footer{
 
       <div class="profile-row">
 
-        <small>Parent Mobile</small>
+        <small>
+          Parent Mobile
+        </small>
 
         <strong id="profileParent">
           —
@@ -1553,7 +2173,9 @@ footer{
 
       <div class="profile-row">
 
-        <small>Email</small>
+        <small>
+          Email
+        </small>
 
         <strong id="profileEmail">
           —
@@ -1561,6 +2183,93 @@ footer{
 
       </div>
 
+
+    </div>
+
+  </div>
+
+</section>
+<!-- =====================================================
+     STUDENT NOTICES
+     ===================================================== -->
+
+<section
+  id="studentNotices"
+  class="hidden">
+
+
+  <button
+    class="back-btn"
+    type="button"
+    onclick="showSection('studentDashboard')">
+
+    ← Dashboard
+
+  </button>
+
+
+  <div class="card">
+
+    <h2>
+      📢 College Notices
+    </h2>
+
+    <p>
+      Important announcements and updates.
+    </p>
+
+
+    <div class="notice-card">
+
+      <strong>
+        Academic Notice
+      </strong>
+
+      <div class="notice-date">
+        MAM Campus Connect
+      </div>
+
+      <p>
+        Students are advised to regularly check the
+        college notice board for academic updates.
+      </p>
+
+    </div>
+
+
+    <div class="notice-card">
+
+      <strong>
+        Examination Updates
+      </strong>
+
+      <div class="notice-date">
+        Academic Section
+      </div>
+
+      <p>
+        Examination schedules and related announcements
+        will be published through the college.
+      </p>
+
+    </div>
+
+
+    <div class="notice-card">
+
+      <strong>
+        Campus Announcement
+      </strong>
+
+      <div class="notice-date">
+        MAM Campus Connect
+      </div>
+
+      <p>
+        Students can use the Campus Connect portal to
+        access available student services.
+      </p>
+
     </div>
 
   </div>
@@ -1568,93 +2277,33 @@ footer{
 </section>
 
 
-<!-- NOTICES -->
-<section id="studentNotices" class="hidden">
+<!-- =====================================================
+     TIMETABLE
+     ===================================================== -->
+
+<section
+  id="studentTimetable"
+  class="hidden">
+
 
   <button
     class="back-btn"
+    type="button"
     onclick="showSection('studentDashboard')">
 
     ← Dashboard
 
   </button>
 
-  <div class="card">
-
-    <h2>📢 College Notices</h2>
-
-    <p>
-      Important announcements and campus updates.
-    </p>
-
-  </div>
-
-
-  <div class="notice-full">
-
-    <h3>📚 Academic Update</h3>
-
-    <div class="notice-date">
-      MAM Campus Connect
-    </div>
-
-    <p>
-      Students are advised to regularly check the campus portal
-      for academic announcements and department updates.
-    </p>
-
-  </div>
-
-
-  <div class="notice-full">
-
-    <h3>📝 Student Information</h3>
-
-    <div class="notice-date">
-      MAM Campus Connect
-    </div>
-
-    <p>
-      Keep your registered email address and mobile number updated.
-    </p>
-
-  </div>
-
-
-  <div class="notice-full">
-
-    <h3>🔔 Portal Notification</h3>
-
-    <div class="notice-date">
-      MAM Campus Connect
-    </div>
-
-    <p>
-      Important notifications will be displayed here.
-    </p>
-
-  </div>
-
-</section>
-
-
-<!-- TIMETABLE -->
-<section id="studentTimetable" class="hidden">
-
-  <button
-    class="back-btn"
-    onclick="showSection('studentDashboard')">
-
-    ← Dashboard
-
-  </button>
 
   <div class="card">
 
-    <h2>🗓️ Class Timetable</h2>
+    <h2>
+      🗓️ Class Timetable
+    </h2>
 
     <p>
-      Sample timetable for the student portal.
+      Sample weekly timetable.
     </p>
 
 
@@ -1666,101 +2315,178 @@ footer{
 
           <tr>
 
-            <th>Day</th>
+            <th>
+              Day
+            </th>
 
-            <th>9:00 - 10:00</th>
+            <th>
+              9:00
+            </th>
 
-            <th>10:00 - 11:00</th>
+            <th>
+              10:00
+            </th>
 
-            <th>11:15 - 12:15</th>
+            <th>
+              11:00
+            </th>
 
-            <th>1:15 - 2:15</th>
+            <th>
+              1:30
+            </th>
 
-            <th>2:15 - 3:15</th>
+            <th>
+              2:30
+            </th>
 
           </tr>
 
         </thead>
 
+
         <tbody>
 
           <tr>
 
-            <td>Monday</td>
+            <td>
+              Monday
+            </td>
 
-            <td>Subject 1</td>
+            <td>
+              Subject 1
+            </td>
 
-            <td>Subject 2</td>
+            <td>
+              Subject 2
+            </td>
 
-            <td>Subject 3</td>
+            <td>
+              Subject 3
+            </td>
 
-            <td>Lab</td>
+            <td>
+              Lab
+            </td>
 
-            <td>Lab</td>
-
-          </tr>
-
-          <tr>
-
-            <td>Tuesday</td>
-
-            <td>Subject 2</td>
-
-            <td>Subject 3</td>
-
-            <td>Subject 4</td>
-
-            <td>Subject 1</td>
-
-            <td>Library</td>
+            <td>
+              Subject 4
+            </td>
 
           </tr>
 
+
           <tr>
 
-            <td>Wednesday</td>
+            <td>
+              Tuesday
+            </td>
 
-            <td>Subject 3</td>
+            <td>
+              Subject 2
+            </td>
 
-            <td>Subject 4</td>
+            <td>
+              Subject 3
+            </td>
 
-            <td>Subject 1</td>
+            <td>
+              Subject 4
+            </td>
 
-            <td>Lab</td>
+            <td>
+              Lab
+            </td>
 
-            <td>Lab</td>
+            <td>
+              Subject 1
+            </td>
 
           </tr>
 
+
           <tr>
 
-            <td>Thursday</td>
+            <td>
+              Wednesday
+            </td>
 
-            <td>Subject 4</td>
+            <td>
+              Subject 3
+            </td>
 
-            <td>Subject 1</td>
+            <td>
+              Subject 4
+            </td>
 
-            <td>Subject 2</td>
+            <td>
+              Subject 1
+            </td>
 
-            <td>Subject 3</td>
+            <td>
+              Subject 2
+            </td>
 
-            <td>Sports</td>
+            <td>
+              Lab
+            </td>
 
           </tr>
 
+
           <tr>
 
-            <td>Friday</td>
+            <td>
+              Thursday
+            </td>
 
-            <td>Subject 1</td>
+            <td>
+              Subject 4
+            </td>
 
-            <td>Subject 2</td>
+            <td>
+              Subject 1
+            </td>
 
-            <td>Subject 3</td>
+            <td>
+              Subject 2
+            </td>
 
-            <td>Subject 4</td>
+            <td>
+              Lab
+            </td>
 
-            <td>Activity</td>
+            <td>
+              Subject 3
+            </td>
+
+          </tr>
+
+
+          <tr>
+
+            <td>
+              Friday
+            </td>
+
+            <td>
+              Subject 1
+            </td>
+
+            <td>
+              Subject 3
+            </td>
+
+            <td>
+              Subject 4
+            </td>
+
+            <td>
+              Subject 2
+            </td>
+
+            <td>
+              Activity
+            </td>
 
           </tr>
 
@@ -1775,241 +2501,1241 @@ footer{
 </section>
 
 
-<!-- CAMPUS MAP -->
-<section id="campusMap" class="hidden">
+<!-- =====================================================
+     CAMPUS MAP
+     ===================================================== -->
+
+<section
+  id="campusMap"
+  class="hidden">
+
 
   <button
     class="back-btn"
+    type="button"
     onclick="showSection('studentDashboard')">
 
     ← Dashboard
 
   </button>
 
+
   <div class="card">
 
-    <h2>🗺️ Campus Map</h2>
+    <h2>
+      🗺️ Campus Map
+    </h2>
 
     <p>
       Important campus locations.
     </p>
 
-    <div class="action-grid">
 
-      <button>
-        🏫 Main Block
-      </button>
+    <div class="dashboard-grid">
 
-      <button>
-        📚 Library
-      </button>
 
-      <button>
-        🧪 Laboratories
-      </button>
+      <div class="dashboard-card">
 
-      <button>
-        🍴 Canteen
-      </button>
+        <div class="big-icon">
+          🏫
+        </div>
 
-      <button>
-        🏟️ Sports Ground
-      </button>
+        <h3>
+          Main Block
+        </h3>
 
-      <button>
-        🅿️ Parking
-      </button>
+        <p>
+          Main administrative and academic block.
+        </p>
 
-    </div>
+      </div>
 
-    <div class="info-box">
 
-      Campus map information can be expanded with
-      an actual interactive map later.
+      <div class="dashboard-card">
+
+        <div class="big-icon">
+          📚
+        </div>
+
+        <h3>
+          Library
+        </h3>
+
+        <p>
+          Central library and study facilities.
+        </p>
+
+      </div>
+
+
+      <div class="dashboard-card">
+
+        <div class="big-icon">
+          🧪
+        </div>
+
+        <h3>
+          Laboratories
+        </h3>
+
+        <p>
+          Department laboratories and practical facilities.
+        </p>
+
+      </div>
+
+
+      <div class="dashboard-card">
+
+        <div class="big-icon">
+          🏟️
+        </div>
+
+        <h3>
+          Sports Ground
+        </h3>
+
+        <p>
+          Sports and outdoor activity area.
+        </p>
+
+      </div>
+
+
+      <div class="dashboard-card">
+
+        <div class="big-icon">
+          🍴
+        </div>
+
+        <h3>
+          Canteen
+        </h3>
+
+        <p>
+          Student food and refreshment area.
+        </p>
+
+      </div>
+
+
+      <div class="dashboard-card">
+
+        <div class="big-icon">
+          🚌
+        </div>
+
+        <h3>
+          Transport
+        </h3>
+
+        <p>
+          College transportation information.
+        </p>
+
+      </div>
+
 
     </div>
 
   </div>
 
 </section>
-  if(!["3","4"].includes(duration)){
-
-    throw new Error(
-      "Course duration must be 3 Years or 4 Years."
-    );
-
-  }
 
 
-  const calculatedEnding =
-    parseInt(joining) +
-    parseInt(duration);
+<!-- =====================================================
+     OTHER COLLEGE STUDENT
+     ===================================================== -->
+
+<section
+  id="otherCollege"
+  class="hidden">
 
 
-  if(
-    parseInt(endingYear)!==
-    calculatedEnding
-  ){
+  <button
+    class="back-btn"
+    type="button"
+    onclick="goHome()">
 
-    throw new Error(
-      "Expected ending year is incorrect."
-    );
+    ← Home
 
-  }
+  </button>
 
 
-  return {
-    name,
-    roll,
-    dob,
-    course,
-    joining,
-    duration,
-    endingYear,
-    type,
-    mobile,
-    parent,
-    email,
-    password,
-    confirmPassword
-  };
+  <div class="card">
 
-}
+    <h2>
+      👨‍🎓 Other College Student
+    </h2>
+
+    <p>
+      Enter your details to access available campus
+      services.
+    </p>
+
+
+    <label for="otherCollegeName">
+      Name
+    </label>
+
+    <input
+      id="otherCollegeName"
+      type="text"
+      placeholder="Enter your name">
+
+
+    <label for="otherCollegeNameOfCollege">
+      College Name
+    </label>
+
+    <input
+      id="otherCollegeNameOfCollege"
+      type="text"
+      placeholder="Enter college name">
+
+
+    <label for="otherCollegeEmail">
+      Email
+    </label>
+
+    <input
+      id="otherCollegeEmail"
+      type="email"
+      placeholder="Enter email">
+
+
+    <label for="otherCollegePurpose">
+      Purpose of Visit
+    </label>
+
+    <select id="otherCollegePurpose">
+
+      <option value="">
+        Select purpose
+      </option>
+
+      <option>
+        Academic Visit
+      </option>
+
+      <option>
+        Event
+      </option>
+
+      <option>
+        Seminar
+      </option>
+
+      <option>
+        Workshop
+      </option>
+
+      <option>
+        Other
+      </option>
+
+    </select>
+
+
+    <button
+      class="primary-btn"
+      type="button"
+      onclick="otherCollegeLogin()">
+
+      Continue
+
+    </button>
+
+
+    <div id="otherCollegeMessage">
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =====================================================
+     STAFF LOGIN
+     ===================================================== -->
+
+<section
+  id="staffLogin"
+  class="hidden">
+
+
+  <button
+    class="back-btn"
+    type="button"
+    onclick="goHome()">
+
+    ← Home
+
+  </button>
+
+
+  <div class="card">
+
+    <h2>
+      👨‍🏫 Staff Login
+    </h2>
+
+    <p>
+      Staff members can use their college credentials.
+    </p>
+
+
+    <label for="staffEmail">
+      Staff Email
+    </label>
+
+    <input
+      id="staffEmail"
+      type="email"
+      placeholder="Enter staff email">
+
+
+    <label for="staffPassword">
+      Password
+    </label>
+
+    <input
+      id="staffPassword"
+      type="password"
+      placeholder="Enter password">
+
+
+    <button
+      class="primary-btn"
+      type="button"
+      onclick="staffLogin()">
+
+      Staff Login
+
+    </button>
+
+
+    <div id="staffMessage">
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =====================================================
+     STAFF DASHBOARD
+     ===================================================== -->
+
+<section
+  id="staffDashboard"
+  class="hidden">
+
+
+  <div class="student-top">
+
+    <div class="student-top-row">
+
+      <div class="student-top-left">
+
+        <div class="dashboard-logo">
+          MAM
+        </div>
+
+        <div>
+
+          <h2>
+            Staff Dashboard
+          </h2>
+
+          <p>
+            MAM Campus Connect
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <div class="dashboard-grid">
+
+
+    <button
+      class="dashboard-card"
+      type="button"
+      onclick="showSection('studentNotices')">
+
+      <div class="big-icon">
+        📢
+      </div>
+
+      <h3>
+        Notices
+      </h3>
+
+      <p>
+        View current campus notices.
+      </p>
+
+    </button>
+
+
+    <button
+      class="dashboard-card"
+      type="button"
+      onclick="showSection('feedback')">
+
+      <div class="big-icon">
+        💬
+      </div>
+
+      <h3>
+        Feedback
+      </h3>
+
+      <p>
+        Review feedback services.
+      </p>
+
+    </button>
+
+
+    <button
+      class="dashboard-card"
+      type="button"
+      onclick="showSection('campusMap')">
+
+      <div class="big-icon">
+        🗺️
+      </div>
+
+      <h3>
+        Campus Map
+      </h3>
+
+      <p>
+        View campus locations.
+      </p>
+
+    </button>
+
+
+  </div>
+
+
+  <button
+    class="danger-btn"
+    type="button"
+    onclick="goHome()">
+
+    Logout
+
+  </button>
+
+</section>
+
+
+<!-- =====================================================
+     PRINCIPAL LOGIN
+     ===================================================== -->
+
+<section
+  id="principalLogin"
+  class="hidden">
+
+
+  <button
+    class="back-btn"
+    type="button"
+    onclick="goHome()">
+
+    ← Home
+
+  </button>
+
+
+  <div class="card">
+
+    <h2>
+      👨‍💼 Principal Login
+    </h2>
+
+    <p>
+      Authorized college administration access.
+    </p>
+
+
+    <label for="principalEmail">
+      Email
+    </label>
+
+    <input
+      id="principalEmail"
+      type="email"
+      placeholder="Enter principal email">
+
+
+    <label for="principalPassword">
+      Password
+    </label>
+
+    <input
+      id="principalPassword"
+      type="password"
+      placeholder="Enter password">
+
+
+    <button
+      class="primary-btn"
+      type="button"
+      onclick="principalLogin()">
+
+      Principal Login
+
+    </button>
+
+
+    <div id="principalMessage">
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =====================================================
+     PRINCIPAL DASHBOARD
+     ===================================================== -->
+
+<section
+  id="principalDashboard"
+  class="hidden">
+
+
+  <div class="student-top">
+
+    <div class="student-top-row">
+
+      <div class="student-top-left">
+
+        <div class="dashboard-logo">
+          MAM
+        </div>
+
+        <div>
+
+          <h2>
+            Principal Dashboard
+          </h2>
+
+          <p>
+            MAM Campus Connect
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <div class="stats-grid">
+
+    <div class="stat-card">
+
+      <div class="stat-icon">
+        🎓
+      </div>
+
+      <div class="stat-title">
+        Student Portal
+      </div>
+
+      <div class="stat-value">
+        Active
+      </div>
+
+    </div>
+
+
+    <div class="stat-card">
+
+      <div class="stat-icon">
+        📢
+      </div>
+
+      <div class="stat-title">
+        Notices
+      </div>
+
+      <div class="stat-value">
+        Ready
+      </div>
+
+    </div>
+
+
+    <div class="stat-card">
+
+      <div class="stat-icon">
+        💬
+      </div>
+
+      <div class="stat-title">
+        Feedback
+      </div>
+
+      <div class="stat-value">
+        Open
+      </div>
+
+    </div>
+
+
+    <div class="stat-card">
+
+      <div class="stat-icon">
+        🏫
+      </div>
+
+      <div class="stat-title">
+        Campus
+      </div>
+
+      <div class="stat-value">
+        Online
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <div class="dashboard-grid">
+
+
+    <button
+      class="dashboard-card"
+      type="button"
+      onclick="showSection('studentNotices')">
+
+      <div class="big-icon">
+        📢
+      </div>
+
+      <h3>
+        Notices
+      </h3>
+
+      <p>
+        View campus announcements.
+      </p>
+
+    </button>
+
+
+    <button
+      class="dashboard-card"
+      type="button"
+      onclick="showSection('feedback')">
+
+      <div class="big-icon">
+        💬
+      </div>
+
+      <h3>
+        Feedback
+      </h3>
+
+      <p>
+        Access feedback information.
+      </p>
+
+    </button>
+
+
+    <button
+      class="dashboard-card"
+      type="button"
+      onclick="showSection('campusMap')">
+
+      <div class="big-icon">
+        🗺️
+      </div>
+
+      <h3>
+        Campus
+      </h3>
+
+      <p>
+        View campus information.
+      </p>
+
+    </button>
+
+
+  </div>
+
+
+  <button
+    class="danger-btn"
+    type="button"
+    onclick="goHome()">
+
+    Logout
+
+  </button>
+
+</section>
+
+
+<!-- =====================================================
+     CUSTOMER CARE
+     ===================================================== -->
+
+<section
+  id="customerCare"
+  class="hidden">
+
+
+  <button
+    class="back-btn"
+    type="button"
+    onclick="goHome()">
+
+    ← Home
+
+  </button>
+
+
+  <div class="card">
+
+    <h2>
+      📞 Customer Care
+    </h2>
+
+    <p>
+      For portal-related support, contact the college
+      administration through the official contact channels.
+    </p>
+
+
+    <div class="info-box">
+
+      <strong>
+        MAM Campus Connect Support
+      </strong>
+
+      <br><br>
+
+      Please provide your student name, roll number and
+      a clear description of the issue when contacting
+      support.
+
+    </div>
+
+
+    <div class="action-grid">
+
+      <button
+        type="button"
+        onclick="showSection('feedback')">
+
+        💬 Send Feedback
+
+      </button>
+
+
+      <button
+        type="button"
+        onclick="showSection('home')">
+
+        🏠 Home
+
+      </button>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =====================================================
+     FEEDBACK
+     ===================================================== -->
+
+<section
+  id="feedback"
+  class="hidden">
+
+
+  <button
+    class="back-btn"
+    type="button"
+    onclick="goHomeOrDashboard()">
+
+    ← Back
+
+  </button>
+
+
+  <div class="card">
+
+    <h2>
+      💬 Feedback
+    </h2>
+
+    <p>
+      Share your feedback about MAM Campus Connect.
+    </p>
+
+
+    <label for="feedbackName">
+      Name
+    </label>
+
+    <input
+      id="feedbackName"
+      type="text"
+      placeholder="Enter your name">
+
+
+    <label for="feedbackEmail">
+      Email
+    </label>
+
+    <input
+      id="feedbackEmail"
+      type="email"
+      placeholder="Enter email">
+
+
+    <label for="feedbackType">
+      Feedback Type
+    </label>
+
+    <select id="feedbackType">
+
+      <option value="">
+        Select type
+      </option>
+
+      <option>
+        Suggestion
+      </option>
+
+      <option>
+        Complaint
+      </option>
+
+      <option>
+        Appreciation
+      </option>
+
+      <option>
+        Technical Issue
+      </option>
+
+    </select>
+
+
+    <label for="feedbackText">
+      Message
+    </label>
+
+    <textarea
+      id="feedbackText"
+      placeholder="Write your feedback">
+    </textarea>
+
+
+    <button
+      class="primary-btn"
+      type="button"
+      onclick="submitFeedback()">
+
+      Submit Feedback
+
+    </button>
+
+
+    <div id="feedbackMessage">
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =====================================================
+     AI ASSISTANT
+     ===================================================== -->
+
+<section
+  id="aiAssistantSection"
+  class="hidden">
+
+
+  <button
+    class="back-btn"
+    type="button"
+    onclick="showSection('studentDashboard')">
+
+    ← Dashboard
+
+  </button>
+
+
+  <div class="card">
+
+    <h2>
+      🤖 Campus Assistant
+    </h2>
+
+    <p>
+      Ask a basic question about the campus portal.
+    </p>
+
+
+    <label for="aiQuestion">
+      Your Question
+    </label>
+
+    <textarea
+      id="aiQuestion"
+      placeholder="Example: How do I login?">
+    </textarea>
+
+
+    <button
+      class="primary-btn"
+      type="button"
+      onclick="answerCampusQuestion()">
+
+      Ask Assistant
+
+    </button>
+
+
+    <div
+      id="aiAnswer"
+      class="info-box hidden">
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =====================================================
+     FOOTER
+     ===================================================== -->
+
+<footer>
+
+  <strong>
+    MAM Campus Connect
+  </strong>
+
+  <br>
+
+  College Digital Campus Portal
+
+  <br><br>
+
+  © 2026 MAM Campus Connect
+
+</footer>
+
+
+<!-- =====================================================
+     BOTTOM NAVIGATION
+     ===================================================== -->
+
+<nav
+  id="bottomNav"
+  class="bottom-nav">
+
+
+  <button
+    id="navHome"
+    type="button"
+    onclick="goHome()">
+
+    <span>
+      🏠
+    </span>
+
+    Home
+
+  </button>
+
+
+  <button
+    id="navDashboard"
+    type="button"
+    onclick="openDashboardFromNav()">
+
+    <span>
+      🎓
+    </span>
+
+    Dashboard
+
+  </button>
+
+
+  <button
+    id="navNotices"
+    type="button"
+    onclick="showSection('studentNotices')">
+
+    <span>
+      📢
+    </span>
+
+    Notices
+
+  </button>
+
+
+  <button
+    id="navProfile"
+    type="button"
+    onclick="showSection('studentProfile')">
+
+    <span>
+      👤
+    </span>
+
+    Profile
+
+  </button>
+
+
+</nav>
+
+
+<!-- =====================================================
+     EMAILJS
+     ===================================================== -->
+
+<script
+  src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+</script>
+
+
+<!-- =====================================================
+     FIREBASE + APPLICATION JAVASCRIPT
+     ===================================================== -->
+
+<script type="module">
 
 
 /* =====================================================
-   SEND EMAIL OTP
+   FIREBASE IMPORTS
    ===================================================== */
 
-window.startEmailVerification=
-async function(){
+import {
+  initializeApp
+}
+from
+  "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 
-  const message =
-    document.getElementById(
-      "regMessage"
+
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  signOut,
+  onAuthStateChanged
+}
+from
+  "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+
+
+import {
+  getFirestore,
+  doc,
+  getDoc,
+  setDoc,
+  serverTimestamp
+}
+from
+  "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+
+/* =====================================================
+   FIREBASE CONFIG
+   ===================================================== */
+
+const firebaseConfig = {
+
+  apiKey:
+    "AIzaSyDqBPMgBHSOVbloQlfwMsMObJrrZU5TvTsg",
+
+  authDomain:
+    "mam-campus-connect.firebaseapp.com",
+
+  projectId:
+    "mam-campus-connect",
+
+  storageBucket:
+    "mam-campus-connect.firebasestorage.app",
+
+  messagingSenderId:
+    "46200336704",
+
+  appId:
+    "1:46200336704:web:74808b2fa8d3ad62a44aa5"
+
+};
+
+
+/* =====================================================
+   FIREBASE INITIALIZATION
+   ===================================================== */
+
+const app =
+  initializeApp(firebaseConfig);
+
+
+const auth =
+  getAuth(app);
+
+
+const db =
+  getFirestore(app);
+
+
+/* =====================================================
+   EMAILJS CONFIG
+   ===================================================== */
+
+const EMAILJS_PUBLIC_KEY =
+  "4g9ts3uWl9kEYKf64";
+
+
+const EMAILJS_SERVICE_ID =
+  "service_7koib1z";
+
+
+const EMAILJS_TEMPLATE_ID =
+  "template_76vmygh";
+
+
+/* =====================================================
+   EMAILJS INITIALIZATION
+   ===================================================== */
+
+emailjs.init({
+
+  publicKey:
+    EMAILJS_PUBLIC_KEY
+
+});
+
+
+/* =====================================================
+   GLOBAL VARIABLES
+   ===================================================== */
+
+let registrationData = null;
+
+let currentOtp = null;
+
+let otpExpiresAt = 0;
+
+let otpAttempts = 0;
+
+let otpTimerInterval = null;
+
+let resendAvailableAt = 0;
+
+let currentStudent = null;
+
+
+/* =====================================================
+   SECTION NAVIGATION
+   ===================================================== */
+
+window.showSection = function(sectionId){
+
+  const sections =
+    document.querySelectorAll(
+      "main > section"
     );
 
 
-  const button =
-    document.getElementById(
-      "sendOtpButton"
-    );
+  sections.forEach(section => {
+
+    section.classList.add("hidden");
+
+  });
 
 
-  try{
-
-    const data =
-      getRegistrationData();
+  const target =
+    document.getElementById(sectionId);
 
 
-    button.disabled=true;
+  if(target){
 
-    button.textContent=
-      "⏳ Checking student...";
+    target.classList.remove("hidden");
 
+    window.scrollTo({
 
-    const studentRef =
-      doc(
-        db,
-        "students",
-        data.roll
-      );
+      top:0,
 
+      behavior:"smooth"
 
-    const existing =
-      await getDoc(studentRef);
+    });
+
+  }
 
 
-    if(existing.exists()){
+  updateBottomNavigation(sectionId);
 
-      throw new Error(
-        "This roll number is already registered."
-      );
-
-    }
+};
 
 
-    message.innerHTML=
-      '<div class="info-box">Loading EmailJS...</div>';
+window.goHome = function(){
+
+  showSection("home");
+
+};
 
 
-    await loadEmailJS();
+window.goHomeOrDashboard = function(){
+
+  if(currentStudent){
+
+    showSection("studentDashboard");
+
+  }else{
+
+    showSection("home");
+
+  }
+
+};
 
 
-    const code =
-      generateOtp();
+window.openDashboardFromNav = function(){
 
+  if(currentStudent){
 
-    otpData={
-      code:code,
-      email:data.email.toLowerCase(),
-      expiresAt:Date.now()+(5*60*1000),
-      attempts:0,
-      verified:false
-    };
+    showSection("studentDashboard");
 
+  }else{
 
-    message.innerHTML=
-      '<div class="info-box">Sending OTP to your email...</div>';
-
-
-    await emailjs.send(
-      EMAILJS_SERVICE_ID,
-      EMAILJS_TEMPLATE_ID,
-      {
-        to_email:data.email,
-        student_name:data.name,
-        otp_code:code,
-        expiry_minutes:"5"
-      }
-    );
-
-
-    document
-      .getElementById("otpArea")
-      .classList.remove("hidden");
-
-
-    document
-      .getElementById("otpEmailDisplay")
-      .textContent=data.email;
-
-
-    document
-      .getElementById("otpInput")
-      .value="";
-
-
-    message.innerHTML=
-      '<div class="success-box">✓ OTP sent successfully. Check your email inbox and spam folder.</div>';
-
-
-    startResendTimer();
-
-
-  }catch(error){
-
-    console.error(
-      "OTP ERROR:",
-      error
-    );
-
-
-    message.innerHTML=
-      '<div class="error-box">'+
-      escapeHtml(
-        error?.message ||
-        "Unable to send OTP."
-      )+
-      '</div>';
-
-
-  }finally{
-
-    button.disabled=false;
-
-    button.textContent=
-      "📧 Send Email OTP";
+    showSection("studentOptions");
 
   }
 
@@ -2017,57 +3743,675 @@ async function(){
 
 
 /* =====================================================
-   RESEND TIMER
+   MENU
    ===================================================== */
 
-function startResendTimer(){
+window.openMenu = function(){
 
-  const button =
+  document
+    .getElementById("sideMenu")
+    .classList.add("open");
+
+
+  document
+    .getElementById("overlay")
+    .classList.add("show");
+
+};
+
+
+window.closeMenu = function(){
+
+  document
+    .getElementById("sideMenu")
+    .classList.remove("open");
+
+
+  document
+    .getElementById("overlay")
+    .classList.remove("show");
+
+};
+
+
+/* =====================================================
+   BOTTOM NAV
+   ===================================================== */
+
+function updateBottomNavigation(sectionId){
+
+  document
+    .querySelectorAll(".bottom-nav button")
+    .forEach(button => {
+
+      button.classList.remove("active");
+
+    });
+
+
+  if(sectionId === "home"){
+
+    document
+      .getElementById("navHome")
+      ?.classList.add("active");
+
+  }
+
+
+  if(sectionId === "studentDashboard"){
+
+    document
+      .getElementById("navDashboard")
+      ?.classList.add("active");
+
+  }
+
+
+  if(sectionId === "studentNotices"){
+
+    document
+      .getElementById("navNotices")
+      ?.classList.add("active");
+
+  }
+
+
+  if(sectionId === "studentProfile"){
+
+    document
+      .getElementById("navProfile")
+      ?.classList.add("active");
+
+  }
+
+}
+
+
+/* =====================================================
+   JOINING YEARS
+   ===================================================== */
+
+window.loadJoiningYears = function(){
+
+  const select =
     document.getElementById(
-      "resendOtpButton"
+      "regJoiningYear"
     );
 
 
-  let seconds=30;
+  if(!select) return;
 
 
-  button.disabled=true;
-
-  button.textContent=
-    "🔄 Resend OTP ("+
-    seconds+
-    "s)";
+  const currentYear =
+    new Date().getFullYear();
 
 
-  clearInterval(resendTimer);
+  select.innerHTML =
+    `<option value="">Select Joining Year</option>`;
 
 
-  resendTimer=
-    setInterval(()=>{
+  for(
+    let year = currentYear - 5;
+    year <= currentYear + 2;
+    year++
+  ){
 
-      seconds--;
+    const option =
+      document.createElement("option");
 
 
-      if(seconds<=0){
+    option.value = year;
 
-        clearInterval(resendTimer);
+    option.textContent = year;
 
-        button.disabled=false;
+    select.appendChild(option);
 
-        button.textContent=
-          "🔄 Resend OTP";
+  }
 
-        return;
+};
+
+
+/* =====================================================
+   ENDING YEAR
+   ===================================================== */
+
+window.updateEndingYear = function(){
+
+  const joining =
+    document.getElementById(
+      "regJoiningYear"
+    ).value;
+
+
+  const duration =
+    document.getElementById(
+      "regDuration"
+    ).value;
+
+
+  const ending =
+    document.getElementById(
+      "regEndingYear"
+    );
+
+
+  if(
+    joining &&
+    ["3","4"].includes(duration)
+  ){
+
+    ending.value =
+      Number(joining) +
+      Number(duration);
+
+  }else{
+
+    ending.value = "";
+
+  }
+
+};
+
+
+/* =====================================================
+   HTML ESCAPE
+   ===================================================== */
+
+function escapeHtml(value){
+
+  return String(value ?? "")
+
+    .replaceAll("&","&amp;")
+    .replaceAll("<","&lt;")
+    .replaceAll(">","&gt;")
+    .replaceAll('"',"&quot;")
+    .replaceAll("'","&#039;");
+
+}
+
+
+/* =====================================================
+   MESSAGE HELPERS
+   ===================================================== */
+
+function showMessage(
+  elementId,
+  message,
+  type = "info"
+){
+
+  const element =
+    document.getElementById(
+      elementId
+    );
+
+
+  if(!element) return;
+
+
+  const className =
+    type === "success"
+      ? "success-box"
+      : type === "error"
+        ? "error-box"
+        : type === "warning"
+          ? "warning"
+          : "info-box";
+
+
+  element.innerHTML =
+    `<div class="${className}">
+       ${escapeHtml(message)}
+     </div>`;
+
+}
+
+
+/* =====================================================
+   VALIDATE REGISTRATION
+   ===================================================== */
+
+function getRegistrationData(){
+
+  const name =
+    document.getElementById("regName").value.trim();
+
+
+  const roll =
+    document.getElementById("regRoll").value.trim();
+
+
+  const dob =
+    document.getElementById("regDob").value;
+
+
+  const course =
+    document.getElementById("regCourse").value;
+
+
+  const joiningYear =
+    document.getElementById("regJoiningYear").value;
+
+
+  const duration =
+    document.getElementById("regDuration").value;
+
+
+  const studentType =
+    document.getElementById("regStudentType").value;
+
+
+  const mobile =
+    document.getElementById("regMobile").value.trim();
+
+
+  const parentMobile =
+    document.getElementById("regParentMobile").value.trim();
+
+
+  const email =
+    document.getElementById("regEmail").value.trim();
+
+
+  const password =
+    document.getElementById("regPassword").value;
+
+
+  const confirmPassword =
+    document.getElementById(
+      "regConfirmPassword"
+    ).value;
+
+
+  if(!name){
+
+    throw new Error(
+      "Please enter the student name."
+    );
+
+  }
+
+
+  if(!roll){
+
+    throw new Error(
+      "Please enter the roll number."
+    );
+
+  }
+
+
+  if(!dob){
+
+    throw new Error(
+      "Please select the date of birth."
+    );
+
+  }
+
+
+  if(!course){
+
+    throw new Error(
+      "Please select the course."
+    );
+
+  }
+
+
+  if(!joiningYear){
+
+    throw new Error(
+      "Please select the joining year."
+    );
+
+  }
+
+
+  if(!["3","4"].includes(duration)){
+
+    throw new Error(
+      "Please select a 3-year or 4-year course duration."
+    );
+
+  }
+
+
+  if(!studentType){
+
+    throw new Error(
+      "Please select the student type."
+    );
+
+  }
+
+
+  if(!/^[0-9]{10}$/.test(mobile)){
+
+    throw new Error(
+      "Please enter a valid 10-digit student mobile number."
+    );
+
+  }
+
+
+  if(!/^[0-9]{10}$/.test(parentMobile)){
+
+    throw new Error(
+      "Please enter a valid 10-digit parent mobile number."
+    );
+
+  }
+
+
+  if(!email){
+
+    throw new Error(
+      "Please enter your email address."
+    );
+
+  }
+
+
+  if(password.length < 6){
+
+    throw new Error(
+      "Password must contain at least 6 characters."
+    );
+
+  }
+
+
+  if(password !== confirmPassword){
+
+    throw new Error(
+      "Passwords do not match."
+    );
+
+  }
+
+
+  return {
+
+    name,
+    roll,
+    dob,
+    course,
+    joiningYear:
+      Number(joiningYear),
+
+    duration:
+      Number(duration),
+
+    endingYear:
+      Number(joiningYear) +
+      Number(duration),
+
+    studentType,
+    mobile,
+    parentMobile,
+    email,
+    password
+
+  };
+
+}
+
+
+/* =====================================================
+   GENERATE OTP
+   ===================================================== */
+
+function generateOtp(){
+
+  return String(
+    Math.floor(
+      100000 +
+      Math.random() * 900000
+    )
+  );
+
+}
+
+
+/* =====================================================
+   SEND OTP
+   ===================================================== */
+
+async function sendOtpEmail(){
+
+  const code =
+    generateOtp();
+
+
+  currentOtp =
+    code;
+
+
+  otpExpiresAt =
+    Date.now() +
+    5 * 60 * 1000;
+
+
+  otpAttempts = 0;
+
+
+  await emailjs.send(
+
+    EMAILJS_SERVICE_ID,
+
+    EMAILJS_TEMPLATE_ID,
+
+    {
+
+      to_email:
+        registrationData.email,
+
+      student_name:
+        registrationData.name,
+
+      otp_code:
+        code,
+
+      expiry_minutes:
+        "5",
+
+      from_name:
+        "MAM Campus Connect",
+
+      reply_to:
+        registrationData.email
+
+    }
+
+  );
+
+
+  startOtpTimer();
+
+}
+
+
+/* =====================================================
+   START EMAIL VERIFICATION
+   ===================================================== */
+
+window.startEmailVerification =
+  async function(){
+
+    try{
+
+      registrationData =
+        getRegistrationData();
+
+
+      showMessage(
+        "regMessage",
+        "Checking registration details..."
+      );
+
+
+      const studentRef =
+        doc(
+          db,
+          "students",
+          registrationData.roll
+        );
+
+
+      const studentSnapshot =
+        await getDoc(studentRef);
+
+
+      if(studentSnapshot.exists()){
+
+        throw new Error(
+          "This roll number is already registered."
+        );
 
       }
 
 
-      button.textContent=
-        "🔄 Resend OTP ("+
-        seconds+
-        "s)";
+      showMessage(
+        "regMessage",
+        "Sending OTP to your email..."
+      );
 
-    },1000);
+
+      await sendOtpEmail();
+
+
+      document
+        .getElementById("otpArea")
+        .classList.remove("hidden");
+
+
+      document
+        .getElementById("otpEmailDisplay")
+        .textContent =
+          registrationData.email;
+
+
+      document
+        .getElementById("otpInput")
+        .value = "";
+
+
+      showMessage(
+        "regMessage",
+        "OTP sent successfully. Check your email.",
+        "success"
+      );
+
+
+      document
+        .getElementById("otpInput")
+        .focus();
+
+
+    }catch(error){
+
+      console.error(
+        "OTP ERROR:",
+        error
+      );
+
+
+      showMessage(
+        "regMessage",
+        error.message ||
+        "Unable to send OTP.",
+        "error"
+      );
+
+    }
+
+  };
+
+
+/* =====================================================
+   OTP TIMER
+   ===================================================== */
+
+function startOtpTimer(){
+
+  clearInterval(
+    otpTimerInterval
+  );
+
+
+  updateOtpTimer();
+
+
+  otpTimerInterval =
+    setInterval(
+
+      updateOtpTimer,
+
+      1000
+
+    );
+
+}
+
+
+function updateOtpTimer(){
+
+  const remaining =
+    Math.max(
+      0,
+      otpExpiresAt -
+      Date.now()
+    );
+
+
+  const seconds =
+    Math.ceil(
+      remaining / 1000
+    );
+
+
+  const timer =
+    document.getElementById(
+      "otpTimer"
+    );
+
+
+  if(!timer) return;
+
+
+  if(seconds <= 0){
+
+    clearInterval(
+      otpTimerInterval
+    );
+
+
+    timer.textContent =
+      "OTP expired. Please resend a new OTP.";
+
+    return;
+
+  }
+
+
+  const minutes =
+    Math.floor(
+      seconds / 60
+    );
+
+
+  const sec =
+    String(
+      seconds % 60
+    ).padStart(
+      2,
+      "0"
+    );
+
+
+  timer.textContent =
+    `OTP expires in ${minutes}:${sec}`;
 
 }
 
@@ -2076,482 +4420,650 @@ function startResendTimer(){
    RESEND OTP
    ===================================================== */
 
-window.resendEmailOtp=
-async function(){
+window.resendEmailOtp =
+  async function(){
 
-  const otpMessage =
-    document.getElementById(
-      "otpMessage"
-    );
+    try{
 
+      if(!registrationData){
 
-  try{
+        throw new Error(
+          "Please start registration first."
+        );
 
-    const data =
-      getRegistrationData();
-
-
-    await loadEmailJS();
-
-
-    const code =
-      generateOtp();
-
-
-    otpData={
-      code:code,
-      email:data.email.toLowerCase(),
-      expiresAt:Date.now()+(5*60*1000),
-      attempts:0,
-      verified:false
-    };
-
-
-    await emailjs.send(
-      EMAILJS_SERVICE_ID,
-      EMAILJS_TEMPLATE_ID,
-      {
-        to_email:data.email,
-        student_name:data.name,
-        otp_code:code,
-        expiry_minutes:"5"
       }
-    );
 
 
-    otpMessage.innerHTML=
-      '<div class="success-box">✓ New OTP sent.</div>';
+      if(
+        Date.now() <
+        resendAvailableAt
+      ){
+
+        const wait =
+          Math.ceil(
+            (
+              resendAvailableAt -
+              Date.now()
+            ) / 1000
+          );
 
 
-    startResendTimer();
+        showMessage(
+          "otpMessage",
+          `Please wait ${wait} seconds before requesting another OTP.`,
+          "warning"
+        );
 
 
-  }catch(error){
+        return;
 
-    console.error(error);
+      }
 
 
-    otpMessage.innerHTML=
-      '<div class="error-box">'+
-      escapeHtml(
-        error?.message ||
-        "Unable to resend OTP."
-      )+
-      '</div>';
+      resendAvailableAt =
+        Date.now() +
+        30000;
 
-  }
 
-};
+      await sendOtpEmail();
+
+
+      showMessage(
+        "otpMessage",
+        "A new OTP has been sent to your email.",
+        "success"
+      );
+
+
+    }catch(error){
+
+      console.error(
+        error
+      );
+
+
+      showMessage(
+        "otpMessage",
+        error.message ||
+        "Unable to resend OTP.",
+        "error"
+      );
+
+    }
+
+  };
 
 
 /* =====================================================
    VERIFY OTP
    ===================================================== */
 
-window.verifyEmailOtp=
-async function(){
+window.verifyEmailOtp =
+  async function(){
 
-  const otpMessage =
-    document.getElementById(
-      "otpMessage"
-    );
+    try{
 
-
-  const entered =
-    document
-      .getElementById("otpInput")
-      .value
-      .trim();
+      const enteredOtp =
+        document
+          .getElementById("otpInput")
+          .value
+          .trim();
 
 
-  if(!otpData.code){
+      if(!registrationData){
 
-    otpMessage.innerHTML=
-      '<div class="warning">Please request an OTP first.</div>';
+        throw new Error(
+          "Registration information is missing."
+        );
 
-    return;
-
-  }
-
-
-  if(Date.now()>otpData.expiresAt){
-
-    otpMessage.innerHTML=
-      '<div class="warning">This OTP has expired. Please request a new OTP.</div>';
-
-    return;
-
-  }
+      }
 
 
-  if(otpData.attempts>=5){
+      if(
+        Date.now() >
+        otpExpiresAt
+      ){
 
-    otpMessage.innerHTML=
-      '<div class="error-box">Maximum OTP attempts reached. Please request a new OTP.</div>';
+        throw new Error(
+          "This OTP has expired. Please request a new OTP."
+        );
 
-    return;
-
-  }
-
-
-  if(!/^[0-9]{6}$/.test(entered)){
-
-    otpMessage.innerHTML=
-      '<div class="warning">Enter the 6-digit OTP.</div>';
-
-    return;
-
-  }
+      }
 
 
-  otpData.attempts++;
+      if(!/^[0-9]{6}$/.test(enteredOtp)){
+
+        throw new Error(
+          "Please enter the 6-digit OTP."
+        );
+
+      }
 
 
-  if(entered!==otpData.code){
+      otpAttempts++;
 
-    const remaining =
-      Math.max(
-        0,
-        5-otpData.attempts
+
+      if(otpAttempts > 5){
+
+        throw new Error(
+          "Too many incorrect attempts. Please resend the OTP."
+        );
+
+      }
+
+
+      if(enteredOtp !== currentOtp){
+
+        throw new Error(
+          `Incorrect OTP. Attempt ${otpAttempts} of 5.`
+        );
+
+      }
+
+
+      showMessage(
+        "otpMessage",
+        "Email verified. Creating your account...",
+        "success"
       );
 
 
-    otpMessage.innerHTML=
-      '<div class="error-box">Incorrect OTP. Attempts remaining: '+
-      remaining+
-      '</div>';
-
-    return;
-
-  }
+      await createStudentAccount();
 
 
-  otpData.verified=true;
+    }catch(error){
+
+      console.error(
+        "VERIFY OTP ERROR:",
+        error
+      );
 
 
-  otpMessage.innerHTML=
-    '<div class="success-box">✓ Email verified. Creating your student account...</div>';
-
-
-  await createStudentAccount();
-
-};
-
-
-/* =====================================================
-   CREATE FIREBASE ACCOUNT
-   ===================================================== */
-
-async function createStudentAccount(){
-
-  const message =
-    document.getElementById(
-      "regMessage"
-    );
-
-
-  try{
-
-    const data =
-      getRegistrationData();
-
-
-    if(
-      !otpData.verified ||
-      otpData.email!==data.email.toLowerCase()
-    ){
-
-      throw new Error(
-        "Email verification is required."
+      showMessage(
+        "otpMessage",
+        error.message ||
+        "OTP verification failed.",
+        "error"
       );
 
     }
 
-
-    const endingYear =
-      parseInt(data.joining)+
-      parseInt(data.duration);
+  };
 
 
-    const credential =
+/* =====================================================
+   CREATE STUDENT ACCOUNT
+   ===================================================== */
+
+async function createStudentAccount(){
+
+  if(!registrationData){
+
+    throw new Error(
+      "Registration data is missing."
+    );
+
+  }
+
+
+  try{
+
+    const userCredential =
       await createUserWithEmailAndPassword(
+
         auth,
-        data.email,
-        data.password
+
+        registrationData.email,
+
+        registrationData.password
+
       );
 
 
     const user =
-      credential.user;
+      userCredential.user;
 
 
-    currentStudent={
+    const studentRecord = {
 
-      uid:user.uid,
+      uid:
+        user.uid,
 
-      name:data.name,
+      name:
+        registrationData.name,
 
-      roll:data.roll,
+      roll:
+        registrationData.roll,
 
-      dob:data.dob,
+      dob:
+        registrationData.dob,
 
-      course:data.course,
+      course:
+        registrationData.course,
 
-      joining:data.joining,
+      joiningYear:
+        registrationData.joiningYear,
 
-      duration:data.duration,
+      duration:
+        registrationData.duration,
 
-      endingYear:endingYear,
+      endingYear:
+        registrationData.endingYear,
 
-      type:data.type,
+      studentType:
+        registrationData.studentType,
 
-      mobile:data.mobile,
+      mobile:
+        registrationData.mobile,
 
-      parent:data.parent,
+      parentMobile:
+        registrationData.parentMobile,
 
-      email:data.email
+      email:
+        registrationData.email,
+
+      emailVerifiedThroughOtp:
+        true,
+
+      createdAt:
+        serverTimestamp()
 
     };
-
-
-    const studentRef =
-      doc(
-        db,
-        "students",
-        data.roll
-      );
 
 
     await setDoc(
-      studentRef,
-      {
 
-        uid:user.uid,
+      doc(
+        db,
+        "students",
+        registrationData.roll
+      ),
 
-        name:data.name,
+      studentRecord
 
-        roll:data.roll,
-
-        dob:data.dob,
-
-        course:data.course,
-
-        joining:data.joining,
-
-        duration:data.duration,
-
-        endingYear:endingYear,
-
-        type:data.type,
-
-        mobile:data.mobile,
-
-        parent:data.parent,
-
-        email:data.email,
-
-        emailVerified:true,
-
-        createdAt:serverTimestamp()
-
-      }
     );
+
+
+    currentStudent =
+      studentRecord;
 
 
     localStorage.setItem(
+
       "mamStudent",
-      JSON.stringify(currentStudent)
+
+      JSON.stringify(
+        studentRecord
+      )
+
     );
 
 
-    loadStudentProfile();
+    showMessage(
+      "otpMessage",
+      "Registration completed successfully!",
+      "success"
+    );
 
 
-    message.innerHTML=
-      '<div class="success-box">✓ Registration successful. Your account has been created.</div>';
+    setTimeout(
+      () => {
 
+        loadStudentProfile(
+          studentRecord
+        );
 
-    otpData={
-      code:null,
-      email:null,
-      expiresAt:0,
-      attempts:0,
-      verified:false
-    };
+        showSection(
+          "studentDashboard"
+        );
 
-
-    setTimeout(()=>{
-
-      document
-        .getElementById("otpArea")
-        .classList.add("hidden");
-
-
-      showSection(
-        "studentDashboard"
-      );
-
-    },1000);
+      },
+      800
+    );
 
 
   }catch(error){
 
     console.error(
-      "REGISTRATION ERROR:",
+      "ACCOUNT CREATION ERROR:",
       error
     );
 
 
-    let msg=
-      error?.message ||
-      "Unable to create account.";
+    let message =
+      "Unable to create the account.";
 
 
     if(
-      error?.code===
+      error.code ===
       "auth/email-already-in-use"
     ){
 
-      msg=
-        "This email address is already registered.";
+      message =
+        "This email is already registered. Please use the Student Login.";
 
     }
 
 
     if(
-      error?.code===
+      error.code ===
       "auth/invalid-email"
     ){
 
-      msg=
-        "Please enter a valid email address.";
+      message =
+        "The email address is invalid.";
 
     }
 
 
     if(
-      error?.code===
+      error.code ===
       "auth/weak-password"
     ){
 
-      msg=
-        "Password must contain at least 6 characters.";
+      message =
+        "The password is too weak.";
 
     }
 
 
-    message.innerHTML=
-      '<div class="error-box">'+
-      escapeHtml(msg)+
-      '</div>';
+    if(
+      error.code ===
+      "auth/api-key-not-valid"
+    ){
 
+      message =
+        "Firebase API key is not being accepted. Check the Firebase/Google Cloud API key configuration.";
+
+    }
+
+
+    throw new Error(
+      message
+    );
 
   }
 
 }
-
-
-/* =====================================================
+  /* =====================================================
    LOAD STUDENT PROFILE
    ===================================================== */
 
 function loadStudentProfile(){
 
-  if(!currentStudent) return;
+  if(!currentStudent){
+
+    const saved =
+      localStorage.getItem("mamStudent");
+
+    if(saved){
+
+      try{
+
+        currentStudent =
+          JSON.parse(saved);
+
+      }
+
+      catch(error){
+
+        currentStudent = null;
+
+      }
+
+    }
+
+  }
+
+
+  if(!currentStudent){
+
+    return;
+
+  }
 
 
   const student =
     currentStudent;
 
 
-  document.getElementById(
-    "studentWelcome"
-  ).textContent=
-    "Welcome, "+
-    student.name+
-    " 👋";
+  /* =================================================
+     STUDENT DASHBOARD
+  ================================================= */
+
+  const welcome =
+    document.getElementById(
+      "studentWelcome"
+    );
+
+  if(welcome){
+
+    welcome.textContent =
+      "Welcome, " +
+      student.name +
+      " 👋";
+
+  }
 
 
-  document.getElementById(
-    "studentCourse"
-  ).textContent=
-    student.course+
-    " • "+
-    student.duration+
-    " Year Program";
+  const studentCourse =
+    document.getElementById(
+      "studentCourse"
+    );
+
+  if(studentCourse){
+
+    studentCourse.textContent =
+      student.course +
+      " • Joining " +
+      student.joining;
+
+  }
 
 
-  document.getElementById(
-    "profileShortName"
-  ).textContent=
-    student.name;
+  /* =================================================
+     PROFILE SHORT NAME
+  ================================================= */
+
+  const profileShortName =
+    document.getElementById(
+      "profileShortName"
+    );
+
+  if(profileShortName){
+
+    profileShortName.textContent =
+      student.name;
+
+  }
 
 
-  document.getElementById(
-    "profileName"
-  ).textContent=
-    student.name;
+  /* =================================================
+     PROFILE NAME
+  ================================================= */
+
+  const profileName =
+    document.getElementById(
+      "profileName"
+    );
+
+  if(profileName){
+
+    profileName.textContent =
+      student.name;
+
+  }
 
 
-  document.getElementById(
-    "profileRoll"
-  ).textContent=
-    student.roll;
+  /* =================================================
+     PROFILE ROLL
+  ================================================= */
+
+  const profileRoll =
+    document.getElementById(
+      "profileRoll"
+    );
+
+  if(profileRoll){
+
+    profileRoll.textContent =
+      student.roll;
+
+  }
 
 
-  document.getElementById(
-    "profileDob"
-  ).textContent=
-    student.dob;
+  /* =================================================
+     PROFILE DOB
+  ================================================= */
+
+  const profileDob =
+    document.getElementById(
+      "profileDob"
+    );
+
+  if(profileDob){
+
+    profileDob.textContent =
+      student.dob;
+
+  }
 
 
-  document.getElementById(
-    "profileCourse"
-  ).textContent=
-    student.course;
+  /* =================================================
+     PROFILE COURSE
+  ================================================= */
+
+  const profileCourse =
+    document.getElementById(
+      "profileCourse"
+    );
+
+  if(profileCourse){
+
+    profileCourse.textContent =
+      student.course;
+
+  }
 
 
-  document.getElementById(
-    "profileJoining"
-  ).textContent=
-    student.joining;
+  /* =================================================
+     PROFILE JOINING YEAR
+  ================================================= */
+
+  const profileJoining =
+    document.getElementById(
+      "profileJoining"
+    );
+
+  if(profileJoining){
+
+    profileJoining.textContent =
+      student.joining;
+
+  }
 
 
-  document.getElementById(
-    "profileDuration"
-  ).textContent=
-    student.duration+
-    " Years";
+  /* =================================================
+     PROFILE DURATION
+  ================================================= */
+
+  const profileDuration =
+    document.getElementById(
+      "profileDuration"
+    );
+
+  if(profileDuration){
+
+    profileDuration.textContent =
+      student.duration +
+      " Years";
+
+  }
 
 
-  document.getElementById(
-    "profileEnding"
-  ).textContent=
-    student.endingYear;
+  /* =================================================
+     PROFILE ENDING YEAR
+  ================================================= */
+
+  const profileEnding =
+    document.getElementById(
+      "profileEnding"
+    );
+
+  if(profileEnding){
+
+    profileEnding.textContent =
+      student.endingYear;
+
+  }
 
 
-  document.getElementById(
-    "profileType"
-  ).textContent=
-    student.type;
+  /* =================================================
+     PROFILE STUDENT TYPE
+  ================================================= */
+
+  const profileType =
+    document.getElementById(
+      "profileType"
+    );
+
+  if(profileType){
+
+    profileType.textContent =
+      student.type;
+
+  }
 
 
-  document.getElementById(
-    "profileMobile"
-  ).textContent=
-    student.mobile;
+  /* =================================================
+     PROFILE MOBILE
+  ================================================= */
+
+  const profileMobile =
+    document.getElementById(
+      "profileMobile"
+    );
+
+  if(profileMobile){
+
+    profileMobile.textContent =
+      student.mobile;
+
+  }
 
 
-  document.getElementById(
-    "profileParent"
-  ).textContent=
-    student.parent;
+  /* =================================================
+     PROFILE PARENT MOBILE
+  ================================================= */
+
+  const profileParent =
+    document.getElementById(
+      "profileParent"
+    );
+
+  if(profileParent){
+
+    profileParent.textContent =
+      student.parent;
+
+  }
 
 
-  document.getElementById(
-    "profileEmail"
-  ).textContent=
-    student.email;
+  /* =================================================
+     PROFILE EMAIL
+  ================================================= */
+
+  const profileEmail =
+    document.getElementById(
+      "profileEmail"
+    );
+
+  if(profileEmail){
+
+    profileEmail.textContent =
+      student.email;
+
+  }
 
 }
 
@@ -2560,26 +5072,32 @@ function loadStudentProfile(){
    STUDENT LOGIN
    ===================================================== */
 
-window.studentLogin=
+window.studentLogin =
 async function(){
 
   const roll =
     document
-      .getElementById("loginRoll")
+      .getElementById(
+        "loginRoll"
+      )
       .value
       .trim();
 
 
   const email =
     document
-      .getElementById("loginEmail")
+      .getElementById(
+        "loginEmail"
+      )
       .value
       .trim();
 
 
   const password =
     document
-      .getElementById("loginPassword")
+      .getElementById(
+        "loginPassword"
+      )
       .value;
 
 
@@ -2595,9 +5113,13 @@ async function(){
     );
 
 
+  /* =================================================
+     VALIDATION
+  ================================================= */
+
   if(!roll){
 
-    message.innerHTML=
+    message.innerHTML =
       '<div class="warning">Enter your roll number.</div>';
 
     return;
@@ -2607,7 +5129,7 @@ async function(){
 
   if(!email){
 
-    message.innerHTML=
+    message.innerHTML =
       '<div class="warning">Enter your registered email.</div>';
 
     return;
@@ -2617,7 +5139,7 @@ async function(){
 
   if(!password){
 
-    message.innerHTML=
+    message.innerHTML =
       '<div class="warning">Enter your password.</div>';
 
     return;
@@ -2627,11 +5149,19 @@ async function(){
 
   try{
 
-    button.disabled=true;
+    button.disabled = true;
 
-    button.textContent=
+    button.textContent =
       "⏳ Logging in...";
 
+
+    message.innerHTML =
+      '<div class="info-box">Checking student information...</div>';
+
+
+    /* =================================================
+       GET STUDENT FROM FIRESTORE
+    ================================================= */
 
     const studentRef =
       doc(
@@ -2642,7 +5172,9 @@ async function(){
 
 
     const studentDoc =
-      await getDoc(studentRef);
+      await getDoc(
+        studentRef
+      );
 
 
     if(!studentDoc.exists()){
@@ -2658,6 +5190,10 @@ async function(){
       studentDoc.data();
 
 
+    /* =================================================
+       CHECK EMAIL
+    ================================================= */
+
     if(
       !student.email ||
       student.email.toLowerCase() !==
@@ -2671,6 +5207,10 @@ async function(){
     }
 
 
+    /* =================================================
+       FIREBASE LOGIN
+    ================================================= */
+
     const credential =
       await signInWithEmailAndPassword(
         auth,
@@ -2683,100 +5223,169 @@ async function(){
       credential.user;
 
 
-    currentStudent={
+    /* =================================================
+       SAVE CURRENT STUDENT
+    ================================================= */
 
-      uid:user.uid,
+    currentStudent = {
 
-      name:student.name,
+      uid:
+        user.uid,
 
-      roll:student.roll,
+      name:
+        student.name,
 
-      dob:student.dob,
+      roll:
+        student.roll || roll,
 
-      course:student.course,
+      dob:
+        student.dob,
 
-      joining:student.joining,
+      course:
+        student.course,
 
-      duration:student.duration,
+      joining:
+        student.joining,
 
-      endingYear:student.endingYear,
+      duration:
+        student.duration,
 
-      type:student.type,
+      endingYear:
+        student.endingYear,
 
-      mobile:student.mobile,
+      type:
+        student.type,
 
-      parent:student.parent,
+      mobile:
+        student.mobile,
 
-      email:student.email
+      parent:
+        student.parent,
+
+      email:
+        student.email
 
     };
 
 
     localStorage.setItem(
       "mamStudent",
-      JSON.stringify(currentStudent)
+      JSON.stringify(
+        currentStudent
+      )
     );
 
+
+    /* =================================================
+       LOAD PROFILE
+    ================================================= */
 
     loadStudentProfile();
 
 
-    message.innerHTML=
+    message.innerHTML =
       '<div class="success-box">✓ Login successful.</div>';
 
 
-    setTimeout(()=>{
+    setTimeout(
+      function(){
 
-      showSection(
-        "studentDashboard"
-      );
+        showSection(
+          "studentDashboard"
+        );
 
-    },500);
-
-
-  }catch(error){
-
-    console.error(error);
+      },
+      500
+    );
 
 
-    let msg=
+  }
+
+  catch(error){
+
+    console.error(
+      "LOGIN ERROR:",
+      error
+    );
+
+
+    let msg =
       error?.message ||
       "Unable to login.";
 
 
+    /* =================================================
+       FIREBASE ERROR MESSAGES
+    ================================================= */
+
     if(
-      error?.code===
+      error?.code ===
       "auth/invalid-credential"
     ){
 
-      msg=
+      msg =
         "Incorrect email or password.";
 
     }
 
 
     if(
-      error?.code===
+      error?.code ===
       "auth/user-not-found"
     ){
 
-      msg=
+      msg =
         "Student account was not found.";
 
     }
 
 
-    message.innerHTML=
-      '<div class="error-box">'+
-      escapeHtml(msg)+
+    if(
+      error?.code ===
+      "auth/wrong-password"
+    ){
+
+      msg =
+        "Incorrect password.";
+
+    }
+
+
+    if(
+      error?.code ===
+      "auth/invalid-email"
+    ){
+
+      msg =
+        "Please enter a valid email address.";
+
+    }
+
+
+    if(
+      error?.code ===
+      "auth/api-key-not-valid"
+    ){
+
+      msg =
+        "Firebase API key is not valid. Check the Firebase Web App configuration and Google Cloud API key restrictions.";
+
+    }
+
+
+    message.innerHTML =
+      '<div class="error-box">' +
+      escapeHtml(msg) +
       '</div>';
 
+  }
 
-  }finally{
 
-    button.disabled=false;
+  finally{
 
-    button.textContent=
+    button.disabled = false;
+
+    button.textContent =
       "Login";
 
   }
@@ -2785,24 +5394,33 @@ async function(){
 
 
 /* =====================================================
-   LOGOUT
+   STUDENT LOGOUT
    ===================================================== */
 
-window.logoutStudent=
+window.logoutStudent =
 async function(){
 
   try{
 
-    await signOut(auth);
+    await signOut(
+      auth
+    );
 
-  }catch(error){
+  }
 
-    console.error(error);
+  catch(error){
+
+    console.error(
+      "Logout error:",
+      error
+    );
 
   }
 
 
-  currentStudent=null;
+  currentStudent =
+    null;
+
 
   localStorage.removeItem(
     "mamStudent"
@@ -2815,12 +5433,22 @@ async function(){
 
 
 /* =====================================================
-   AUTH STATE
+   COMPATIBILITY ALIAS
+   ===================================================== */
+
+window.studentLogout =
+window.logoutStudent;
+
+
+/* =====================================================
+   FIREBASE AUTH STATE
    ===================================================== */
 
 onAuthStateChanged(
+
   auth,
-  async user=>{
+
+  async function(user){
 
     if(!user){
 
@@ -2834,19 +5462,25 @@ onAuthStateChanged(
         "mamStudent"
       );
 
+
     if(saved){
 
       try{
 
         currentStudent =
-          JSON.parse(saved);
+          JSON.parse(
+            saved
+          );
+
 
         loadStudentProfile();
 
-      }catch(error){
+      }
+
+      catch(error){
 
         console.error(
-          "Saved student data error:",
+          "Unable to restore student:",
           error
         );
 
@@ -2855,116 +5489,174 @@ onAuthStateChanged(
     }
 
   }
+
 );
-        /* =====================================================
-   LOGOUT
+
+
+/* =====================================================
+   RESTORE STUDENT
    ===================================================== */
 
-window.logoutStudent =
-async function(){
+async function restoreStudent(){
 
-  try{
+  const saved =
+    localStorage.getItem(
+      "mamStudent"
+    );
 
-    await signOut(auth);
 
-  }catch(error){
+  if(!saved){
 
-    console.error(error);
+    return;
 
   }
 
 
-  currentStudent=null;
+  try{
 
-  localStorage.removeItem(
-    "mamStudent"
-  );
-
-
-  goHome();
-
-};
+    currentStudent =
+      JSON.parse(
+        saved
+      );
 
 
-/* =====================================================
-   AUTH STATE
-   ===================================================== */
-
-onAuthStateChanged(
-  auth,
-  async user=>{
-
-    if(!user){
+    if(!currentStudent){
 
       return;
 
     }
 
 
-    const saved =
-    localStorage.getItem(
-      "mamStudent"
-    );
+    /*
+      Try to refresh the student's information
+      from Firestore.
+    */
 
-
-    if(saved){
+    if(currentStudent.roll){
 
       try{
 
-        currentStudent =
-        JSON.parse(saved);
+        const studentRef =
+          doc(
+            db,
+            "students",
+            currentStudent.roll
+          );
 
-        loadStudentProfile();
 
-      }catch(error){
+        const studentDoc =
+          await getDoc(
+            studentRef
+          );
 
-        console.error(error);
+
+        if(studentDoc.exists()){
+
+          const data =
+            studentDoc.data();
+
+
+          currentStudent = {
+
+            ...data,
+
+            uid:
+              currentStudent.uid ||
+              data.uid,
+
+            roll:
+              data.roll ||
+              currentStudent.roll
+
+          };
+
+
+          localStorage.setItem(
+            "mamStudent",
+            JSON.stringify(
+              currentStudent
+            )
+          );
+
+        }
+
+      }
+
+      catch(error){
+
+        console.warn(
+          "Could not refresh student data:",
+          error
+        );
 
       }
 
     }
 
+
+    loadStudentProfile();
+
   }
-);
+
+  catch(error){
+
+    console.error(
+      "Restore student error:",
+      error
+    );
+
+
+    localStorage.removeItem(
+      "mamStudent"
+    );
+
+
+    currentStudent =
+      null;
+
+  }
+
+}
 
 
 /* =====================================================
-   OTHER COLLEGE
+   OTHER COLLEGE LOGIN
    ===================================================== */
 
-window.otherCollegeLogin=function(){
+window.otherCollegeLogin =
+function(){
 
   const college =
-  document
-    .getElementById(
-      "otherCollegeName"
-    )
-    .value
-    .trim();
+    document
+      .getElementById(
+        "otherCollegeName"
+      )
+      .value
+      .trim();
 
 
   const roll =
-  document
-    .getElementById(
-      "otherRoll"
-    )
-    .value
-    .trim();
+    document
+      .getElementById(
+        "otherRoll"
+      )
+      .value
+      .trim();
 
 
   const mobile =
-  document
-    .getElementById(
-      "otherMobile"
-    )
-    .value
-    .trim();
+    document
+      .getElementById(
+        "otherMobile"
+      )
+      .value
+      .trim();
 
 
   const message =
-  document.getElementById(
-    "otherMessage"
-  );
+    document.getElementById(
+      "otherMessage"
+    );
 
 
   if(
@@ -2973,26 +5665,30 @@ window.otherCollegeLogin=function(){
     !mobile
   ){
 
-    message.innerHTML=
-    '<div class="warning">Please fill all fields.</div>';
+    message.innerHTML =
+      '<div class="warning">Please fill all fields.</div>';
 
     return;
 
   }
 
 
-  if(!/^[0-9]{10}$/.test(mobile)){
+  if(
+    !/^[0-9]{10}$/.test(
+      mobile
+    )
+  ){
 
-    message.innerHTML=
-    '<div class="warning">Enter a valid 10-digit mobile number.</div>';
+    message.innerHTML =
+      '<div class="warning">Enter a valid 10-digit mobile number.</div>';
 
     return;
 
   }
 
 
-  message.innerHTML=
-  '<div class="success-box">✓ Details accepted. Welcome to MAM Campus Connect.</div>';
+  message.innerHTML =
+    '<div class="success-box">✓ Details accepted. Welcome to MAM Campus Connect.</div>';
 
 };
 
@@ -3001,32 +5697,39 @@ window.otherCollegeLogin=function(){
    STAFF LOGIN
    ===================================================== */
 
-window.staffLogin=function(){
+window.staffLogin =
+function(){
 
   const id =
-  document
-    .getElementById("staffId")
-    .value
-    .trim();
+    document
+      .getElementById(
+        "staffId"
+      )
+      .value
+      .trim();
 
 
   const department =
-  document
-    .getElementById("staffDepartment")
-    .value
-    .trim();
+    document
+      .getElementById(
+        "staffDepartment"
+      )
+      .value
+      .trim();
 
 
   const password =
-  document
-    .getElementById("staffPassword")
-    .value;
+    document
+      .getElementById(
+        "staffPassword"
+      )
+      .value;
 
 
   const message =
-  document.getElementById(
-    "staffMessage"
-  );
+    document.getElementById(
+      "staffMessage"
+    );
 
 
   /*
@@ -3041,32 +5744,51 @@ window.staffLogin=function(){
 
 
   if(
-    id==="staff" &&
-    password==="staff123" &&
+    id === "staff" &&
+    password === "staff123" &&
     department
   ){
 
-    document.getElementById(
-      "staffDisplayId"
-    ).textContent=id;
-
-
-    document.getElementById(
-      "staffDisplayDepartment"
-    ).textContent=department;
-
-
-    message.innerHTML=
-    '<div class="success-box">✓ Staff login successful.</div>';
-
-
-    setTimeout(()=>{
-
-      showSection(
-        "staffDashboard"
+    const displayId =
+      document.getElementById(
+        "staffDisplayId"
       );
 
-    },500);
+    if(displayId){
+
+      displayId.textContent =
+        id;
+
+    }
+
+
+    const displayDepartment =
+      document.getElementById(
+        "staffDisplayDepartment"
+      );
+
+    if(displayDepartment){
+
+      displayDepartment.textContent =
+        department;
+
+    }
+
+
+    message.innerHTML =
+      '<div class="success-box">✓ Staff login successful.</div>';
+
+
+    setTimeout(
+      function(){
+
+        showSection(
+          "staffDashboard"
+        );
+
+      },
+      500
+    );
 
 
     return;
@@ -3074,8 +5796,8 @@ window.staffLogin=function(){
   }
 
 
-  message.innerHTML=
-  '<div class="error-box">Invalid staff credentials. Demo ID: staff / Password: staff123</div>';
+  message.innerHTML =
+    '<div class="error-box">Invalid staff credentials. Demo ID: staff / Password: staff123</div>';
 
 };
 
@@ -3084,25 +5806,30 @@ window.staffLogin=function(){
    PRINCIPAL LOGIN
    ===================================================== */
 
-window.principalLogin=function(){
+window.principalLogin =
+function(){
 
   const id =
-  document
-    .getElementById("principalId")
-    .value
-    .trim();
+    document
+      .getElementById(
+        "principalId"
+      )
+      .value
+      .trim();
 
 
   const password =
-  document
-    .getElementById("principalPassword")
-    .value;
+    document
+      .getElementById(
+        "principalPassword"
+      )
+      .value;
 
 
   const message =
-  document.getElementById(
-    "principalMessage"
-  );
+    document.getElementById(
+      "principalMessage"
+    );
 
 
   /*
@@ -3117,21 +5844,24 @@ window.principalLogin=function(){
 
 
   if(
-    id==="principal" &&
-    password==="principal123"
+    id === "principal" &&
+    password === "principal123"
   ){
 
-    message.innerHTML=
-    '<div class="success-box">✓ Principal login successful.</div>';
+    message.innerHTML =
+      '<div class="success-box">✓ Principal login successful.</div>';
 
 
-    setTimeout(()=>{
+    setTimeout(
+      function(){
 
-      showSection(
-        "principalDashboard"
-      );
+        showSection(
+          "principalDashboard"
+        );
 
-    },500);
+      },
+      500
+    );
 
 
     return;
@@ -3139,8 +5869,8 @@ window.principalLogin=function(){
   }
 
 
-  message.innerHTML=
-  '<div class="error-box">Invalid principal credentials. Demo ID: principal / Password: principal123</div>';
+  message.innerHTML =
+    '<div class="error-box">Invalid principal credentials. Demo ID: principal / Password: principal123</div>';
 
 };
 
@@ -3149,138 +5879,175 @@ window.principalLogin=function(){
    FEEDBACK
    ===================================================== */
 
-window.submitFeedback=function(){
+window.submitFeedback =
+function(){
 
   const name =
-  document
-    .getElementById(
-      "feedbackName"
-    )
-    .value
-    .trim();
+    document
+      .getElementById(
+        "feedbackName"
+      )
+      .value
+      .trim();
 
 
   const mobile =
-  document
-    .getElementById(
-      "feedbackMobile"
-    )
-    .value
-    .trim();
+    document
+      .getElementById(
+        "feedbackMobile"
+      )
+      .value
+      .trim();
 
 
   const text =
-  document
-    .getElementById(
-      "feedbackText"
-    )
-    .value
-    .trim();
+    document
+      .getElementById(
+        "feedbackText"
+      )
+      .value
+      .trim();
 
 
   const message =
-  document.getElementById(
-    "feedbackMessage"
-  );
+    document.getElementById(
+      "feedbackMessage"
+    );
+
+
+  if(!name){
+
+    message.innerHTML =
+      '<div class="warning">Please enter your name.</div>';
+
+    return;
+
+  }
 
 
   if(
-    !name ||
-    !mobile ||
-    !text
+    !/^[0-9]{10}$/.test(
+      mobile
+    )
   ){
 
-    message.innerHTML=
-    '<div class="warning">Please fill all feedback fields.</div>';
+    message.innerHTML =
+      '<div class="warning">Enter a valid 10-digit mobile number.</div>';
 
     return;
 
   }
 
 
-  if(!/^[0-9]{10}$/.test(mobile)){
+  if(!text){
 
-    message.innerHTML=
-    '<div class="warning">Enter a valid 10-digit mobile number.</div>';
+    message.innerHTML =
+      '<div class="warning">Please enter your feedback.</div>';
 
     return;
 
   }
 
 
-  const feedbacks =
-  JSON.parse(
-    localStorage.getItem(
-      "mamFeedbacks"
-    ) || "[]"
-  );
+  try{
+
+    const feedback =
+      JSON.parse(
+        localStorage.getItem(
+          "mamFeedback"
+        ) || "[]"
+      );
 
 
-  feedbacks.push({
+    feedback.push({
 
-    name:name,
+      name:
+        name,
 
-    mobile:mobile,
+      mobile:
+        mobile,
 
-    text:text,
+      feedback:
+        text,
 
-    createdAt:new Date().toISOString()
+      createdAt:
+        new Date().toISOString()
 
-  });
-
-
-  localStorage.setItem(
-    "mamFeedbacks",
-    JSON.stringify(feedbacks)
-  );
+    });
 
 
-  message.innerHTML=
-  '<div class="success-box">✓ Thank you. Your feedback has been saved.</div>';
+    localStorage.setItem(
+      "mamFeedback",
+      JSON.stringify(
+        feedback
+      )
+    );
 
 
-  document.getElementById(
-    "feedbackText"
-  ).value="";
+    message.innerHTML =
+      '<div class="success-box">✓ Thank you! Your feedback has been submitted.</div>';
+
+
+    document
+      .getElementById(
+        "feedbackText"
+      )
+      .value = "";
+
+  }
+
+  catch(error){
+
+    console.error(
+      "Feedback error:",
+      error
+    );
+
+
+    message.innerHTML =
+      '<div class="error-box">Unable to submit feedback.</div>';
+
+  }
 
 };
 
 
 /* =====================================================
-   AI ASSISTANT
+   CAMPUS AI ASSISTANT
    ===================================================== */
 
-window.aiAssistant=function(){
+window.answerCampusQuestion =
+function(){
 
-  showSection(
-    "aiAssistantSection"
-  );
-
-};
-
-
-window.answerCampusQuestion=function(){
-
-  const question =
-  document
-    .getElementById(
+  const input =
+    document.getElementById(
       "aiQuestion"
-    )
-    .value
-    .trim()
-    .toLowerCase();
+    );
 
 
   const answer =
-  document.getElementById(
-    "aiAnswer"
-  );
+    document.getElementById(
+      "aiAnswer"
+    );
+
+
+  if(!input || !answer){
+
+    return;
+
+  }
+
+
+  const question =
+    input.value
+      .trim()
+      .toLowerCase();
 
 
   if(!question){
 
-    answer.innerHTML=
-    '<div class="warning">Enter a question first.</div>';
+    answer.innerHTML =
+      '<div class="warning">Please enter a question.</div>';
 
     return;
 
@@ -3288,7 +6055,7 @@ window.answerCampusQuestion=function(){
 
 
   let response =
-  "I can help with student registration, course duration, profile, timetable, notices, attendance, fees and campus information.";
+    "I can help with student registration, course duration, profile, timetable, notices, attendance, fees and campus information.";
 
 
   if(
@@ -3297,28 +6064,63 @@ window.answerCampusQuestion=function(){
   ){
 
     response =
-    "MAM Campus Connect supports 3-year and 4-year course durations. The expected ending year is automatically calculated from the joining year.";
+      "MAM Campus Connect supports 3-year and 4-year course durations. The ending year is automatically calculated from the joining year.";
 
   }
 
+
   else if(
-    question.includes("map") ||
-    question.includes("location")
+    question.includes("register") ||
+    question.includes("registration")
   ){
 
     response =
-    "Open Campus Map from the student dashboard to view the MAM College location.";
+      "Open Student Registration, fill in your details and verify your email using the OTP sent through EmailJS.";
 
   }
+
+
+  else if(
+    question.includes("otp") ||
+    question.includes("email")
+  ){
+
+    response =
+      "During registration, a 6-digit OTP is sent to your registered email. Enter it before the OTP expires.";
+
+  }
+
+
+  else if(
+    question.includes("login") ||
+    question.includes("sign in")
+  ){
+
+    response =
+      "Use Student Login and enter your registered roll number, email and password.";
+
+  }
+
+
+  else if(
+    question.includes("profile")
+  ){
+
+    response =
+      "Open My Profile from the student dashboard to view your student information.";
+
+  }
+
 
   else if(
     question.includes("attendance")
   ){
 
     response =
-    "Open Attendance from the dashboard to view the sample attendance information.";
+      "Open Attendance from the student dashboard to view attendance information.";
 
   }
+
 
   else if(
     question.includes("fee") ||
@@ -3326,9 +6128,10 @@ window.answerCampusQuestion=function(){
   ){
 
     response =
-    "Open Fees from the dashboard to view the current fee status.";
+      "Open Fees from the dashboard to view the fee information available in the portal.";
 
   }
+
 
   else if(
     question.includes("timetable") ||
@@ -3336,37 +6139,77 @@ window.answerCampusQuestion=function(){
   ){
 
     response =
-    "Open Timetable from the Academics section to view the sample class schedule.";
+      "Open Timetable from the dashboard to view the class schedule.";
 
   }
 
+
   else if(
-    question.includes("notice")
+    question.includes("notice") ||
+    question.includes("announcement")
   ){
 
     response =
-    "Open Notices to view the latest college announcements.";
+      "Open Notices to view the latest college announcements.";
 
   }
 
 
-  answer.innerHTML=
-  '<div class="info-box">'+
-  '<strong>🤖 Campus Assistant</strong><br><br>'+
-  escapeHtml(response)+
-  '</div>';
+  else if(
+    question.includes("map") ||
+    question.includes("location") ||
+    question.includes("campus")
+  ){
+
+    response =
+      "Open Campus Map to view the campus location and available campus information.";
+
+  }
+
+
+  answer.innerHTML =
+    '<div class="info-box">' +
+    '<strong>🤖 Campus Assistant</strong><br><br>' +
+    escapeHtml(
+      response
+    ) +
+    '</div>';
 
 };
 
 
 /* =====================================================
-   INITIALIZATION
+   FINAL INITIALIZATION
    ===================================================== */
 
 loadJoiningYears();
 
-goHome();
 
+restoreStudent();
+
+
+/* =====================================================
+   SHOW HOME ON FIRST LOAD
+   ===================================================== */
+
+if(
+  !currentStudent
+){
+
+  showSection(
+    "home"
+  );
+
+}
+
+
+/* =====================================================
+   FINISH
+   ===================================================== */
+
+console.log(
+  "MAM Campus Connect loaded successfully."
+);
 
 </script>
 
